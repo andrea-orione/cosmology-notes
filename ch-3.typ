@@ -231,7 +231,7 @@ Sappiamo che $rho_"r" ~ a^(-4)$ e che $rho_"r" ~ T^4$.
 Quindi per specie ultra relativistiche vale la relazione
 $ heq(T_s ~ a^(-1)) $
 
-== Equilibrio chimico
+== Equilibrio chimico<sec:eq_chimico>
 Abbiamo già detto che siamo in equilibrio chimico se per qualunque tipo di interazione #box($A + B <--> C + D$), questa è fatta in entrambi i  versi in modo tale che la concentrazione delle singole specie non cambi ($mu_A + mu_B = mu_C + mu_D$).\
 Per raggiungere questo stato sono necessarie due condizioni:
 - L'energia del sistema deve essere molto maggiore della massa di tutte le particelle (altrimenti alcune di esse non verrebbero generate perché sotto soglia).
@@ -269,7 +269,7 @@ Quindi se consideriamo energie abbastanza alte possiamo assegnare lo stesso valo
 Mettendo tutto assieme otteniamo l'andamento per il rate di interazione
 $ Gamma_A ~ T^3 alpha^2 T^(-2) ~ alpha^2 T $
 Quindi
-$ Gamma/H ~ (alpha T)/(sqrt(G) T^2) ~ qty("e15", "GeV")/T $
+$ Gamma/H ~ (alpha T)/(sqrt(G) T^2) ~ qty("e15", "GeV")/T $<eq:limite_temp>
 Se vogliamo $Gamma >> H$ dovremo avere $T << qty("e15", "GeV")$.\
 Questo significa che inizialmente si parte da una temperatura altissima e l'universo si espande in modo incredibilmente veloce da non far interagire le particelle.
 Poi si scende sotto $qty("e15", "GeV")$ e iniziano ad avvenire le interazioni che portano al raggiungimento dell'equilibrio chimico.
