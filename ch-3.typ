@@ -750,7 +750,7 @@ Questo ha avuto come effetto il fatto che alcuni elettroni siano riusciti a scap
 Combinando le due correzioni il grafico di @fig:conc_elett viene traslato verso temperature più basse e non arriva mai a 0, bensì si ferma a $x_e approx numrange("e-4", "e-3", delimiter:"÷")$
 #figure(
   image("images/3-8_conc_elett2.pdf", width: 60%),
-  caption: [Evoluzione della frazione di elettroni liberi durante la ricombinazione\ con le correzioni per le approssimazioni.\ Il valore minimo ragginto è innalzato per renderlo visibile.\ Con il valore risulterebbe indistinguibile.]
+  caption: [Evoluzione della frazione di elettroni liberi durante la ricombinazione\ con le correzioni per le approssimazioni.\ Il valore minimo ragginto è innalzato per renderlo visibile.\ Con il valore esatto risulterebbe indistinguibile.]
 )
 
 == Last scattering
