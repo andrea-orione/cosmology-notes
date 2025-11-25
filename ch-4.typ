@@ -3,9 +3,9 @@
 
 = Inflazione cosmologica
 == Horizon problem e Flatness problem
-Andiamo ora a trattare un aspetto problematico che ha il modello cosmologico descritto dal Big Bang e dalle equazioni di Friedmann (per il momento useremo Big Bang e singolarità in modo intercambiabile, scopriremo molto presto che questo non si può fare).
+Andiamo ora a trattare un aspetto problematico che ha il modello cosmologico descritto dal Big Bang e dalle equazioni di Friedmann (per il momento useremo Big Bang e singolarità in modo intercambiabile, scopriremo molto presto che questo non è corretto).
 Il problema risiede nell'alto grado di omogeneità che osserviamo nell'universo.\
-Abbiamo già visto come la CMB sia un corpo nero praticamente perfetto a una temperatura omogenea di $overline(T) = qty("2.73", "K")$ ovunque con piccolissime fluttuazioni.
+Abbiamo già visto come la CMB sia un corpo nero praticamente perfetto a una temperatura omogenea di $overline(T) = qty("2.73", "K")$ ovunque, con piccolissime fluttuazioni.
 Di queste fluttuazioni è possibile fare la trasformata in armoniche sferiche
 #aeq[$
   T(vu(n)) = sum_(l=0)^infinity sum_(m=-l)^(+l) a_(l m) Y^m_l (vu(n))
@@ -19,18 +19,18 @@ Quello che invece si osserva è una struttura complessa
 )
 Questa struttura fa pensare a un collegamento causale tra tutte le zone osservate e questo non è quello che ci saremmo aspettati.
 
-Dato un determinato punto dell'universo ad un tempo $t$, possiamo determinare qual è la distanza causalmente connessa a un tempo passato $t_i$ .
-Per fare ciò ci basta calcolare la distanza percorsa dalla luce da $t_i$ a $t$, che corrisponde alla distanza radiale comovente che avevamo definito in precedenza.
+Dato un determinato punto dell'universo a un tempo $t$, possiamo determinare qual è la distanza causalmente connessa a un tempo passato $t_i$.
+Per fare ciò ci basta calcolare la distanza percorsa dalla luce da $t_i$ a $t$, che corrisponde alla distanza radiale comovente che avevamo definito in precedenza
 #aeq[$
   chi (eta) = c (eta - eta_i)
   $]
 dove abbiamo usato il tempo conforme $eta$ (con $a dd(eta) = dd(t)$) per semplicità.
-// TODO: Sostituire immagine
 #figure(
   image("images/4-1_orizzonte.png", width: 60%)
 )
 #let piede_bang = [È importante tenere a mente che il Big Bang è un punto nel tempo, non nello spazio, quindi può essere pensato come una 'ipersuperficie di tipo spazio']
-Se prendiamo come tempo iniziale il Big Bang $t_i = 0$#footnote(piede_bang) questa distanza viene detta *orizzonte comovente* $d_h$ e rappresenta quale zona dell'universo al Big Bang è collegata ad un punto al tempo $t$, o se vogliamo possiamo pensarla come la distanza massima da cui possiamo ricevere luce emessa al Big Bang
+Se prendiamo come tempo iniziale il Big Bang $t_i = 0$#footnote(piede_bang) questa distanza viene detta *orizzonte comovente* $d_h$ e rappresenta quale zona dell'universo al Big Bang è collegata ad un punto al tempo $t$.
+Possiamo pensarla come la distanza massima da cui possiamo ricevere luce emessa al Big Bang
 $ d_h (eta) = c(eta - 0) &= c integral_(0)^(t) dd(t)/(a (t)) = c integral_0^a dv(t, a) dd(a)/a = c integral_0^a  dd(a)/(a dot(a))\
 &= c integral_0^a dd(a)/(a^2 H(a)) = integral_0^(ln(a)) c dd(ln(a))/(cal(H) (ln(a))) $
 dove $cal(H) = (a')/a = 1/a dv(a, eta) = cancel(a)/cancel(a) dv(a, t) = dot(a) = a H$ è il *fattore di Hubble conforme*.
@@ -77,7 +77,6 @@ In questo periodo è necessario che il raggio di Hubble si sia ristretto
 $ dv(,t) cal(H)^(-1) < 0 $
 Ma ricordando che $cal(H) = dot(a)$ si ottiene $dot.double(a) > 0$, quindi un'espansione accelerata.
 Questo periodo di accelerazione viene detto *inflazione*.
-// TODO: Sostituire immagine
 #figure(
   image("images/4-4_inflazione.png", width: 80%)
 )

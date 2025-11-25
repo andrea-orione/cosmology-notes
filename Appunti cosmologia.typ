@@ -27,3 +27,4 @@
 #include "ch-2.typ"
 #include "ch-3.typ"
 #include "ch-4.typ"
+#include "ch-5.typ"
