@@ -361,19 +361,19 @@ Dunque il tensore sarà diagonale
 #aeq[$tensor(T, +mu, +nu) = mat(
   overline(rho)c^2, " " , va(0)^TT, " " ;
   " ", " ", " ", " ";
-  va(0), " ", overline(p) bold(1)_3, " ";
+  va(0), " ", overline(p) bb(1)_3, " ";
   " ", " ", " ", " ";
 augment: #(hline: 1, vline: 1))
  = mat(
   overline(rho)c^2 + overline(p), " " , va(0)^TT, " " ;
   " ", " ", " ", " ";
-  va(0), " ", bold(0)_3, " ";
+  va(0), " ", bb(0)_3, " ";
   " ", " ", " ", " ";
 augment: #(hline: 1, vline: 1))
  + overline(p) mat(
   - 1, " " , va(0)^TT, " " ;
   " ", " ", " ", " ";
-  va(0), " ", bold(1)_3, " ";
+  va(0), " ", bb(1)_3, " ";
   " ", " ", " ", " ";
 augment: #(hline: 1, vline: 1))
   $]

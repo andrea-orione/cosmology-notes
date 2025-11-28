@@ -76,12 +76,152 @@ Separando per specie avremo un sistema di equazioni accoppiate, dove il termine 
 == Evoluzione delle perturbazioni
 Vogliamo ora andare a studiare la funzione che abbiamo appena ottenuto, per sapere come evolvono le perturbazioni.
 Tuttavia è più comodo lavorare nello spazio di Fourier, in questo modo metteremo in relazione l'evoluzione a $va(k)$ che è legata alla scala della perturbazione.\
-Come notazione useremo
+Come notazione useremo $delta$ sia per la funzione nello spazio delle $x$ che in quello delle $k$ (le si distingue vedendo quali variabili compaiono nell'equazione)
 $
 delta (va(k), t) = integral dd(x,3) delta (va(x), t) e^(-i va(k) dot va(x)) wide delta (va(x), t) = integral dd(x,3)/(2 pi)^3 delta (va(k), t) e^(+i va(k) dot va(x))
 $
 Trasformando l'equazione otteniamo
 $ heq(dot.double(delta) + 2 H dot(delta) + c_s^2 k^2 delta - 4 pi G sum_i delta_i overline(rho)_i = 0) $
-Prendiamo ad esempio una perturbazione nella densità di materia (assumendo che nell'universo ci sia solo materia e radiazione)
+Questa equazione è valida per tutte le specie.
+Noi ora la studieremo per perturbazioni di materia, ma il risultato per la radiazione sarà del tutto analogo.\
+#let pie_pert_lam = [Esistono nuove teorie che considerano perturbazioni anche sulla costante cosmologica, ma sono ancora poco accreditate e molto complicate, dunque non le studieremo]
+Per quanto riguarda i termini nella sommatoria avremo solo radiazione e materia, poiché $Lambda$ essendo costante non ha perturbazioni#footnote(pie_pert_lam).
 $ dot.double(delta)_m + 2 H dot(delta)_m + (c_s^2 k^2 - 4 pi G overline(rho)_m) delta_m  = 4 pi G overline(rho)_r delta_r $
-Questa è l'espressione di un oscillatore armonico smorzato con forzante
+Questa è l'espressione di un oscillatore armonico smorzato con forzante.\
+La soluzione completa è difficile da ottenere, e non ne vale la pena in una trattazione Newtoniana che poi andrà rivista.
+Quindi la studieremo solo in alcuni casi particolari.
+
+=== Universo statico
+Il primo caso che consideriamo è un universo senza espansione ($H = 0$).\
+In questo caso le densità medie non variano nel tempo e se c'è una componente dominante, questa continuerà a dominare per sempre
+/ Caso radiation-dominated: #[\
+  Avremo $overline(rho)_r >> overline(rho)_m$ quindi possiamo trascurare $delta_m overline(rho)_m$
+  $ dot.double(delta)_m + c_s^2 k^2 delta_m = 4 pi G overline(rho)_r delta_r $
+  Questa è l'equazione di un oscillatore armonico con forzante.
+  #let pie_laplace = [Un modo forse più formale consiste nel trasformare con Laplace rispetto al tempo.
+    In questo modo l'approssimazione della mediazione su lunghi tempi delle oscillazioni della radiazione corrisponde a dire che nello spazio delle $omega$ le $delta_r$ tendono a 0 per alte pulsazioni.]
+  La forzante $prop overline(rho)_r delta_r$ in linea di principio è variabile nel tempo e rispetta un'equazione differenziale analoga (effettivamente si ottiene che segue un oscillatore armonico semplice), tuttavia possiamo mediare su tempi abbastanza lunghi e rendere quel termine costante#footnote(pie_laplace).
+  Dunque ottenamo oscillazioni con pulsazione $omega = c_s k$ attorno ad un valore $4 pi G overline(rho)_r delta_r$.
+]
+/ Caso matter-dominated: #[\
+  Abbiamo $overline(rho)_r << overline(rho)_m$ quindi possiamo trascurare $delta_r overline(rho)_r$
+  $ dot.double(delta)_m + (c_s^2 k^2 - 4 pi G overline(rho)_m) delta_m = 0 $
+  Abbiamo un oscillatore armonico semplice con
+  $ omega^2 = c_s^2 k^2 - 4 pi G overline(rho)_m $
+  Notiamo che questo valore può diventare negativo, rendendo la pulsazione immaginaria e quindi l'oscillazione instabile.
+  Ciò avviene se la $k$ scende sotto il valore
+  $ k < sqrt(4 pi G overline(rho)_m)/c_s $
+  Si definisce dunque la *lunghezza d'onda di Jeans*
+  $ heq(lambda_J = (2 pi)/k = c_s sqrt(pi/(G overline(rho)_m))) $
+  Sotto questa lunghezza scala si hanno oscillazioni stabili con pulsazione determinata dalla velocità del suono nel plasma.\
+  Sopra questa lunghezza scala si ha un collasso esponenziale (analogo all'instabilità di Jeans trattata nei corsi di Astrofisica).
+]
+
+=== Universo in espansione
+Passiamo ora alla versione più completa con $H > 0$.
+Anche in questo caso tratteremo solo le epoche di dominazione di una sola specie.
+Vedremo che in tutti i risultati avremo una combinazione di due soluzioni entrambe instabili, una detta *decaying mode* e una detta *growing mode*
+/ Caso radiation-dominated: #[\
+  $ dot.double(delta)_m + 2 H dot(delta)_m + c_s^2 k^2 delta_m approx 0 $
+  dove abbiamo messo il termine noto a zero mediando su tempi sufficientemente lunghi (in realtà darebbe un valore costante non nullo che però traslerebbe solo la soluzione).\
+  Possiamo poi sfruttare l'approssimazione di plasma non compresso secondo cui $c_s^2 approx w$ che per la materia è 0.
+  $ dot.double(delta)_m + 2 H dot(delta)_m = 0 $
+  Questa è un'equazione differenziale di secondo ordine a coefficienti non costanti.
+  Le due soluzioni sono
+  $
+    cases(delta_m = "cost", a^2 dot(delta)_m = "cost")
+  $
+  dove la seconda è stata ottenuta notando che l'equazione può essere riscritta come
+  #aeq[$ a^(-2) dv(,t)[a^2 dot(delta)_m] = 0 $]
+  La seconda va ancora risolta separando le variabili $dd(delta_m) prop a^(-2) dd(t)$.
+  Ma ricordiamo che in un universo radiation-dominated si ha $a prop t^(1/2)$, dunque $dd(delta_m) prop dd(t)/t$ che dà
+  $ cases(
+    delta_m ~ ln(a) quad &"growing mode",
+    delta_m ~ "cost" quad &"decaying mode"
+  ) $
+  Vediamo quindi che in questo periodo di dominazione le fluttuazioni crescono molto lentamente (dovuto al fatto che $a$ cresce molto lentamente con $t$).
+]
+/ Caso matter-dominated: #[\
+  $ dot.double(delta)_m + 2 H dot(delta)_m - underbracket(4 pi G overline(rho)_m, 3/2 H^2) delta_m = 0 $
+  dove abbiamo nuovamente posto $c_s = 0$.
+  Questo può anche essere pensato come se stessimo trascurando tutto ciò che ha una scala minore a $lambda_J$.\
+  In un universo matter-dominated vale $a ~ t^(2/3) => dot(a) ~ 2/3 t^(-1/3) => H = 2/(3 t)$
+  $ dot.double(delta)_m + 4/(3 t) dot(delta)_m - 2/(3 t^2) delta_m = 0 $
+  Per risolvere questa equazione differenziale facciamo l'ansatz che la soluzione sia del tipo $delta_m ~ t^alpha$ ottenendo
+  #aeq[$ alpha (alpha - 1) t^(alpha - 2) + 4/(3 t) alpha t^(alpha - 1) - 2/(3 t^2) t^alpha = 0 $]
+  #aeq[$ 3 alpha (alpha - 1) + 4 alpha - 2 = 0 $]
+  #aeq[$ 3 alpha^2 + alpha - 2 = 0 $]
+  $ alpha = (-1 plus.minus sqrt(1+24))/6 = cases(2/3, -1) $
+  $ cases(
+    delta_m ~ t^(2/3) ~ a quad &"growing mode",
+    delta_m ~ t^(-1) quad &"decaying mode"
+  ) $
+  Quindi le zone sovradense continuano ad aumentare di densità con $t^(2/3)$ svuotando le zone sottodense circostanti che continuano a perdere materia.
+]
+/ Caso $Lambda$-dominated: #[\
+  $ dot.double(delta)_m + 2 H dot(delta)_m = 0 $
+  Anche in questo caso le due soluzioni sono
+  $ cases(delta_m = "cost", a^2 dot(delta)_m = "cost") $
+  In questo caso però ho crescita esponenziale $a ~ exp{sqrt(Omega_(Lambda 0)) H_0 t}$ che mi dà
+  $ cases(
+    delta_m ~ "cost" quad &"growing mode",
+    delta_m ~ e^(-2t) quad &"decaying mode"
+  ) $
+  Dunque le regioni sottodense vengono stirate rendendo ancora più estrema la loro sottodensità, mentre le regioni sovradense è come se si disaccoppiassero e smettessero di crescere.
+]
+
+== Teoria perturbativa relativistica
+Possiamo ora passare a vedere la teoria perturbativa nel formalismo relativistico.
+Questa è molto più complicata di quella Newtoniana, dunque non faremo tutti i conti bensì delineeremo solo il procedimento per ottenere i risultati.\
+Partiamo dall'equazione di Einstein
+#aeq[$ tensor(G, -mu, -nu) = (8 pi G)/c^4 tensor(T, -mu, -nu) $]
+=== Perturbazione della metrica
+Iniziamo dal tensore di Einstein.
+Questo dipende dalla metrica che possiamo perturbare
+$ tensor(g, -mu, -nu) (t, va(x)) = tensor(overline(g), -mu, -nu) (t) + tensor(delta g, -mu, -nu) (t, va(x)) $
+Per semplificare la trattazione consideriamo la metrica FRW piatta, inoltre la scriviamo in termini del tempo conforme per poter fattorizzare il fattore di scala.
+Inoltre scomponiamo la perturbazione in una parte scalare $S$, una parte vettoriale $va(V)$ e una parte tensoriale $vt(T)$ (tutte nel senso tridimensionale, non nel senso covariante).
+$
+  a^(-2)(eta)[g(eta, va(x))] = 
+  mat(
+  - 1, " " , va(0)^TT, " " ;
+  " ", " ", " ", " ";
+  va(0), " ", bb(1)_3, " ";
+  " ", " ", " ", " ";
+augment: #(hline: 1, vline: 1))
+
+ + mat(
+  - 2 S, " " , va(V)^TT, " " ;
+  " ", " ", " ", " ";
+  va(V), " ", 2 vt(T), " ";
+  " ", " ", " ", " ";
+augment: #(hline: 1, vline: 1))
+$
+dove i fattori 2 sono solo delle convenzioni usate per semplicità.\
+Abbiamo scomposto la perturbazione in questo modo perché esiste un teorema (che non dimostreremo) che ci dice che al primo ordine le perturbazioni $S$, $va(V)$ e $vt(T)$ evolvono indipendentemente le une dalle altre (possiamo aspettarcelo perché nel momento in cui moltiplichiamo una per l'altra, otteniamo qualcosa di secondo ordine che va trascurato).
+
+Adesso vogliamo estrarre quantità scalari anche da $va(V)$ e $vt(T)$.
+Per fare ciò scomponiamo il vettore in una parte _curl-free_ e una _divergence-free_ (che possiamo sempre fare per il teorema di Helmholtz)
+$ va(V) = va(V)_parallel + va(V)_perp $
+dove $va(V)_parallel$ è la parte _curl-free_ ($curl va(V)_parallel = 0$) mentre $va(V)_perp$ è la parte _divergence-free_ ($div va(V)_perp = 0$).
+Possiamo poi sfruttare il fatto che un campo vettoriale con rotore nullo può essere espresso come gradiente di un campo scalare $va(V)_parallel = - grad V_parallel$
+$ va(V) = grad V_parallel - va(V)_perp $
+Notiamo che il numero di gradi di libertà è sempre 3: 1 per il campo scalare $V_parallel$, e 2 per il campo vettoriale $va(V)_perp$ in quanto una componente è fissata dalla condizione _divergence-free_.
+
+Per il tensore ripetiamo il processo per ciascun indice
+$ vt(T) = vt(T)_(parallel parallel) + vt(T)_(perp perp) + vt(T)_((parallel perp)) $
+dove $vt(T)_((parallel perp))$ è stato simmetrizzato.\
+- $vt(T)_(parallel parallel)$ posso scriverlo come doppio gradiente di un campo scalare #aeq[$vt(T)_(parallel parallel) = grad grad^TT T_(parallel parallel)$]
+- $vt(T)_(parallel perp)$ posso scrivere la componente $parallel$ come gradiente #aeq[$vt(T)_(parallel perp) = - grad va(T)^TT_(parallel perp)$]
+- $vt(T)_(perp perp)$ posso dividerlo nella traccia (scalare) $T_(perp perp)$ e nella parte _transverse-traceless_ $vt(T)_(perp perp)^"T.T."$ (l'analogo del tensore di Weil) che avrà due gradi di libertà (come le polarizzazioni delle onde gravitazionali) #aeq[$vt(T)_(perp perp) = T_(perp perp) + vt(T)^"T.T."_(perp perp)$]
+Quindi posso scrivere
+$ vt(T) = grad grad^TT T_(parallel parallel) - grad va(T)^TT_(parallel perp) + T_(perp perp) + vt(T)^"T.T."_(perp perp) $
+Ricapitolando i gradi di libertà abbiamo:
+- 4 scalari: $S$, $V_(parallel)$, $T_(parallel parallel)$ e $T_(perp perp)$
+- 4 vettoriali: 2 da $va(V)_(perp)$ e 2 da $va(T)_(parallel perp)$
+- 2 tensoriali da $vt(T)^"T.T."_(perp perp)$
+che sommano a 10 come ci aspettiamo.\
+Noi in realtà siamo interessati solo alle componenti scalari (intuitivamente perché la densità è uno scalare) e si può dimostrare che le componenti tensoriali sono legate alle onde gravitazionali, mentre le componenti vettoriali non vengono osservate (e dai calcoli si ottiene che se ci fossero state sarebbero decadute).
+
+Possiam scrivere ora la distanza infinitesima
+$ dd(s)^2 = a^2 (eta) [-(1 + 2S)dd(eta)^2 + 2 V_i dd(x)^i dd(eta) + tensor(gamma, -i, -j) (1 + 2 T_(perp perp)) dd(x)^i dd(x)^j] $

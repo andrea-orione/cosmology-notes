@@ -41,8 +41,7 @@
 
 // Math stuff
 #let Lg = math.op("Lg")
+#let vt(it) = math.overline(math.overline(it))
 #let Tilde(it) = math.accent(it, math.tilde, size: 100% + 0.45em)
-
-// Calligraphic
-#let scr(it) = text(features: ("ss01",), box($cal(it)$),)
-
+#let Dot(it) = math.attach(math.limits(it), t: text(math.dot, size: 2em, baseline: 0.2em, top-edge:"baseline", bottom-edge: "baseline"))
+#let DDot(it) = math.attach(math.limits(it), t: text(math.dot.double, size: 2em, baseline: 0.5em, top-edge:"bounds", bottom-edge: "baseline"))
