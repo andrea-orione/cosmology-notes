@@ -157,16 +157,16 @@ $ rho dot(va(u)) = underbrace(- grad p, "press.") + underbrace(rho va(g), "grav.
 La pressione sarà omogenea ovunque e dunque il suo gradiente sarà nullo.\
 Il campo gravitazionale possiamo scriverlo con l'equazione di Gauss
 $ grad_p dot va(g) = - 4 pi G rho $
-e passando al potenziane $phi$
-$ laplacian_p phi = 4 pi G rho $
+e passando al potenziane $psi$
+$ laplacian_p psi = 4 pi G rho $
 quindi
-#aeq[$ cancel(overline(rho)_m) dot(va(u)) = - cancel(overline(rho)_m) grad_p phi $]
-#aeq[$ dv(,t)(dot(a) va(x)_c + va(v)) = - 1/a grad_c phi$]
+#aeq[$ cancel(overline(rho)_m) dot(va(u)) = - cancel(overline(rho)_m) grad_p psi $]
+#aeq[$ dv(,t)(dot(a) va(x)_c + va(v)) = - 1/a grad_c psi$]
 Posso ora sfruttare l'omogeneità per mandare a 0 le velocità peculiari del fluido (anche se quelle delle singole particelle possono non esserlo).
 Inoltre posso portare fuori dalla temporale $va(x)_c$ sempre per omogeneità#footnote[In realtà potrei avere un moto omogeneo (come una contrazione o un moto di gruppo) rispetto alla griglia. Ma questo vorrebbe solo dire che ho scelto male le coordinate comoventi e posso riassorbirlo cambiando SR.].\
-#aeq[$ dot.double(a) va(x)_c = - 1/a grad_c phi$]
+#aeq[$ dot.double(a) va(x)_c = - 1/a grad_c psi$]
 Prendo ora la divergenza dell'equazione per poter sfruttare l'equazione di Poisson.
-#aeq[$ grad_c dot (dot.double(a) va(x)_c) = - 1/a laplacian_c phi = - a laplacian_p$]
+#aeq[$ grad_c dot (dot.double(a) va(x)_c) = - 1/a laplacian_c psi = - a laplacian_p$]
 #aeq[$ 3 dot.double(a) = - a 4 pi G overline(rho)_m $]
 ottenendo la *seconda equazione di Friedmann*
 $ heq(dot.double(a)/a = -(4 pi G)/3 overline(rho)_m) $

@@ -73,7 +73,7 @@ $ dv(, lambda, d:scr(D))(dv(x^mu, lambda)) = dv(x^mu, lambda, 2) + tensor(Gamma,
 
 Possiamo ora procedere a scrivere l'equazione che descrive come viene generata la curvatura.
 Questa consisterà nella versione covariante dell'equazione di Poisson per la gravità
-#aeq[$ laplacian phi = 4 pi G $]
+#aeq[$ laplacian psi = 4 pi G $]
 Notiamo che il laplaciano ($laplacian = partial^i partial_i$) non è nient'altro che la traccia del *tensore mareale* ($partial_j partial_i$).
 Questo contiene informazioni sulla curvatura (analogamente all'Hessiana per un campo scalare) ed è legato a quanto le geodetiche divergano o convergano.\
 L'unico oggetto che trasformi tensorialmente e contenga informazioni sulle derivate seconde è il *tensore di Riemann*
@@ -139,7 +139,7 @@ Quindi a noi interesserà solo la parte simmetrica di $tensor(T, -alpha, -beta)$
 
 Possiamo quindi scrivere l'*equazione di Einstein* che descrive come l'energia genera la curvatura
 $ heq(tensor(cal(R), -mu, -nu) - 1/2 tensor(g, -mu, -nu) cal(R) = (8 pi G)/c^4 tensor(T, -mu, -nu)) $
-Il coefficiente di proporzionalità arriva da considerazioni dimensionali ($[laplacian(phi)] = T^(-2), [tensor(G, -mu, -nu)] = L^(-2), [rho] = M L^(-3), [tensor(T, -mu, -nu)] = M L^2 T^(-2) L^(-3) $) e imponendo che in approssimazione di campo debole l'equazione si riconduca a Poisson.
+Il coefficiente di proporzionalità arriva da considerazioni dimensionali ($[laplacian(psi)] = T^(-2), [tensor(G, -mu, -nu)] = L^(-2), [rho] = M L^(-3), [tensor(T, -mu, -nu)] = M L^2 T^(-2) L^(-3) $) e imponendo che in approssimazione di campo debole l'equazione si riconduca a Poisson.
 
 
 == Metrica per universo omogeneo e isotropo

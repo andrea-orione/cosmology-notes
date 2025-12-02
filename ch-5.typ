@@ -14,18 +14,18 @@ Ricordiamo infine che la velocità del fluido è data da
 con $H = dot(a)/a$ il fattore di Hubble e $va(v) = a dot(va(x))$ le velocità peculiari (che anch'esse sono non omogenee al primo ordine).
 
 Possiamo ora iniziare facendo uno studio analogo a quello che abbiamo fatto all'inizio del corso, passando dalla trattazione fluidodinamica dell'universo.\
-In questo caso però le nostre quantità (densità $rho$, pressione $p$ e potenziale gravitazionale $phi$) saranno scritte come la somma del loro valore medio più una perturbazione
+In questo caso però le nostre quantità (densità $rho$, pressione $p$ e potenziale gravitazionale $psi$) saranno scritte come la somma del loro valore medio più una perturbazione
 $
 rho (t, va(x)) &= overline(rho) (t) + delta rho (t, va(x))\
 p (t, va(x)) &= overline(p) (t) + delta p (t, va(x))\
-phi (t, va(x)) &= overline(phi) (t, va(x)) + delta phi (t, va(x))
+psi (t, va(x)) &= overline(psi) (t, va(x)) + delta psi (t, va(x))
 $
 dove notiamo che per il potenziale gravitazionale anche l'ordine zero dipenderà dalla posizione (altrimenti nell'equazione di Poisson il laplaciano sarebbe identicamente nullo).\
 Guardiamo per prima l'equazione di Poisson
-$ laplacian phi = 4 pi G a^2 rho $
-#aeq[$ laplacian (cancel(overline(phi)) + delta phi) = 4 pi G a^2 (cancel(overline(rho)) + delta rho) $]
+$ laplacian psi = 4 pi G a^2 rho $
+#aeq[$ laplacian (cancel(overline(psi)) + delta psi) = 4 pi G a^2 (cancel(overline(rho)) + delta rho) $]
 dove abbiamo cancellato i termini medi sfruttando il fatto che la relazione vale anche per il solo ordine zero
-$ heq(laplacian delta phi = 4 pi G a^2 delta rho) $
+$ heq(laplacian delta psi = 4 pi G a^2 delta rho) $
 Passiamo all'equazione di continuità
 $ dot(rho)_m = -rho_m/a div va(u) $
 #aeq[$ dv(,t) (overline(rho)_m + delta rho_m) = -(overline(rho)_m + delta rho_m)/a div (dot(a) va(x) + va(v)) $]
@@ -52,22 +52,22 @@ Riprendendo l'equazione di continuità da cui siamo partiti
 $ heq( dot(delta) = - 1/a div va(v) ) $<eq:cont_contrast>
 
 Passiamo infine all'equazione di Eulero
-$ rho dot(va(u)) = - 1/a grad p - rho/a grad phi $
-#aeq[$ (1+ delta) overline(rho) dv(,t) [dot(a) va(x) + va(v)] = - 1/a grad (w overline(rho) + c_s^2  delta rho) - ((1 + delta) overline(rho))/a grad (overline(phi) + delta phi) $]
-#aeq[$ (1+ delta) cancel(overline(rho)) [dot.double(a) va(x) + H va(v) + dot(va(v))] = - (c_s^2 cancel(overline(rho)))/a grad delta - ((1 + delta) cancel(overline(rho)))/a grad (overline(phi) + delta phi) $]
+$ rho dot(va(u)) = - 1/a grad p - rho/a grad psi $
+#aeq[$ (1+ delta) overline(rho) dv(,t) [dot(a) va(x) + va(v)] = - 1/a grad (w overline(rho) + c_s^2  delta rho) - ((1 + delta) overline(rho))/a grad (overline(psi) + delta psi) $]
+#aeq[$ (1+ delta) cancel(overline(rho)) [dot.double(a) va(x) + H va(v) + dot(va(v))] = - (c_s^2 cancel(overline(rho)))/a grad delta - ((1 + delta) cancel(overline(rho)))/a grad (overline(psi) + delta psi) $]
 Vogliamo ricollegarci all'equazione di Poisson, quindi prendiamo la divergenza
-#aeq[$ div {(1+ delta) [dot.double(a) va(x) + H va(v) + dot(va(v))]} = - c_s^2/a laplacian delta - div {(1 + delta)/a grad (overline(phi) + delta phi)} $]
+#aeq[$ div {(1+ delta) [dot.double(a) va(x) + H va(v) + dot(va(v))]} = - c_s^2/a laplacian delta - div {(1 + delta)/a grad (overline(psi) + delta psi)} $]
 Ora possiamo notare che i termini $(1 + delta)$ stano moltiplicando termini già del primo ordine, qundi possiamo trascurare $delta$
-#aeq[$ div [dot.double(a) va(x) + H va(v) + dot(va(v))] = - c_s^2/a laplacian delta - 1/a laplacian (overline(phi) + delta phi) $]
-#aeq[$ cancel(3 dot.double(a)) + H div va(v) + div dot(va(v)) = - c_s^2/a laplacian delta cancel(- 4 pi G overline(rho)/a) - 1/a laplacian delta phi $]
+#aeq[$ div [dot.double(a) va(x) + H va(v) + dot(va(v))] = - c_s^2/a laplacian delta - 1/a laplacian (overline(psi) + delta psi) $]
+#aeq[$ cancel(3 dot.double(a)) + H div va(v) + div dot(va(v)) = - c_s^2/a laplacian delta cancel(- 4 pi G overline(rho)/a) - 1/a laplacian delta psi $]
 dove abbiamo cancellato i due termini usando l'equazione di Friedmann per le quantità medie
-$ heq(div dot(va(v)) + H div va(v) = - c_s^2/a laplacian delta - 1/a laplacian delta phi) $
+$ heq(div dot(va(v)) + H div va(v) = - c_s^2/a laplacian delta - 1/a laplacian delta psi) $
 Questa equazione vorremmo però riscriverla in funzione unicamente di $delta$ invece che di $va(v)$.
 Per fare ciò basta sfruttare l'@eq:cont_contrast. Derivandola per il tempo ottengo
 $ dot.double(delta) = - H/a div va(v) - 1/a div dot(va(v)) $
 Sostituendo sopra
-#aeq[$ - a dot.double(delta) + 2 H div va(v) = - c_s^2/a laplacian delta - 1/a laplacian delta phi $]
-#aeq[$ dot.double(delta) + 2 H dot(delta) =  c_s^2 laplacian delta + laplacian delta phi $]
+#aeq[$ - a dot.double(delta) + 2 H div va(v) = - c_s^2/a laplacian delta - 1/a laplacian delta psi $]
+#aeq[$ dot.double(delta) + 2 H dot(delta) =  c_s^2 laplacian delta + laplacian delta psi $]
 $ heq(dot.double(delta) + 2 H dot(delta) - c_s^2 laplacian delta - 4 pi G sum_i delta_i overline(rho)_i = 0) $
 Nell'ultimo passaggio abbiamo sostituito l'equazione di Possion, ma abbiamo messo la sommatoria per sottolineare che l'interazione gravitazionale arriva da tutte le componenti insieme.
 Quindi se volessimo studiare l'evoluzione delle disomogeneità di una singola specie, nel contributo gravitazionale dovremmo mettercele tutte.
@@ -169,59 +169,3 @@ Vedremo che in tutti i risultati avremo una combinazione di due soluzioni entram
   ) $
   Dunque le regioni sottodense vengono stirate rendendo ancora più estrema la loro sottodensità, mentre le regioni sovradense è come se si disaccoppiassero e smettessero di crescere.
 ]
-
-== Teoria perturbativa relativistica
-Possiamo ora passare a vedere la teoria perturbativa nel formalismo relativistico.
-Questa è molto più complicata di quella Newtoniana, dunque non faremo tutti i conti bensì delineeremo solo il procedimento per ottenere i risultati.\
-Partiamo dall'equazione di Einstein
-#aeq[$ tensor(G, -mu, -nu) = (8 pi G)/c^4 tensor(T, -mu, -nu) $]
-=== Perturbazione della metrica
-Iniziamo dal tensore di Einstein.
-Questo dipende dalla metrica che possiamo perturbare
-$ tensor(g, -mu, -nu) (t, va(x)) = tensor(overline(g), -mu, -nu) (t) + tensor(delta g, -mu, -nu) (t, va(x)) $
-Per semplificare la trattazione consideriamo la metrica FRW piatta, inoltre la scriviamo in termini del tempo conforme per poter fattorizzare il fattore di scala.
-Inoltre scomponiamo la perturbazione in una parte scalare $S$, una parte vettoriale $va(V)$ e una parte tensoriale $vt(T)$ (tutte nel senso tridimensionale, non nel senso covariante).
-$
-  a^(-2)(eta)[g(eta, va(x))] = 
-  mat(
-  - 1, " " , va(0)^TT, " " ;
-  " ", " ", " ", " ";
-  va(0), " ", bb(1)_3, " ";
-  " ", " ", " ", " ";
-augment: #(hline: 1, vline: 1))
-
- + mat(
-  - 2 S, " " , va(V)^TT, " " ;
-  " ", " ", " ", " ";
-  va(V), " ", 2 vt(T), " ";
-  " ", " ", " ", " ";
-augment: #(hline: 1, vline: 1))
-$
-dove i fattori 2 sono solo delle convenzioni usate per semplicità.\
-Abbiamo scomposto la perturbazione in questo modo perché esiste un teorema (che non dimostreremo) che ci dice che al primo ordine le perturbazioni $S$, $va(V)$ e $vt(T)$ evolvono indipendentemente le une dalle altre (possiamo aspettarcelo perché nel momento in cui moltiplichiamo una per l'altra, otteniamo qualcosa di secondo ordine che va trascurato).
-
-Adesso vogliamo estrarre quantità scalari anche da $va(V)$ e $vt(T)$.
-Per fare ciò scomponiamo il vettore in una parte _curl-free_ e una _divergence-free_ (che possiamo sempre fare per il teorema di Helmholtz)
-$ va(V) = va(V)_parallel + va(V)_perp $
-dove $va(V)_parallel$ è la parte _curl-free_ ($curl va(V)_parallel = 0$) mentre $va(V)_perp$ è la parte _divergence-free_ ($div va(V)_perp = 0$).
-Possiamo poi sfruttare il fatto che un campo vettoriale con rotore nullo può essere espresso come gradiente di un campo scalare $va(V)_parallel = - grad V_parallel$
-$ va(V) = grad V_parallel - va(V)_perp $
-Notiamo che il numero di gradi di libertà è sempre 3: 1 per il campo scalare $V_parallel$, e 2 per il campo vettoriale $va(V)_perp$ in quanto una componente è fissata dalla condizione _divergence-free_.
-
-Per il tensore ripetiamo il processo per ciascun indice
-$ vt(T) = vt(T)_(parallel parallel) + vt(T)_(perp perp) + vt(T)_((parallel perp)) $
-dove $vt(T)_((parallel perp))$ è stato simmetrizzato.\
-- $vt(T)_(parallel parallel)$ posso scriverlo come doppio gradiente di un campo scalare #aeq[$vt(T)_(parallel parallel) = grad grad^TT T_(parallel parallel)$]
-- $vt(T)_(parallel perp)$ posso scrivere la componente $parallel$ come gradiente #aeq[$vt(T)_(parallel perp) = - grad va(T)^TT_(parallel perp)$]
-- $vt(T)_(perp perp)$ posso dividerlo nella traccia (scalare) $T_(perp perp)$ e nella parte _transverse-traceless_ $vt(T)_(perp perp)^"T.T."$ (l'analogo del tensore di Weil) che avrà due gradi di libertà (come le polarizzazioni delle onde gravitazionali) #aeq[$vt(T)_(perp perp) = T_(perp perp) + vt(T)^"T.T."_(perp perp)$]
-Quindi posso scrivere
-$ vt(T) = grad grad^TT T_(parallel parallel) - grad va(T)^TT_(parallel perp) + T_(perp perp) + vt(T)^"T.T."_(perp perp) $
-Ricapitolando i gradi di libertà abbiamo:
-- 4 scalari: $S$, $V_(parallel)$, $T_(parallel parallel)$ e $T_(perp perp)$
-- 4 vettoriali: 2 da $va(V)_(perp)$ e 2 da $va(T)_(parallel perp)$
-- 2 tensoriali da $vt(T)^"T.T."_(perp perp)$
-che sommano a 10 come ci aspettiamo.\
-Noi in realtà siamo interessati solo alle componenti scalari (intuitivamente perché la densità è uno scalare) e si può dimostrare che le componenti tensoriali sono legate alle onde gravitazionali, mentre le componenti vettoriali non vengono osservate (e dai calcoli si ottiene che se ci fossero state sarebbero decadute).
-
-Possiam scrivere ora la distanza infinitesima
-$ dd(s)^2 = a^2 (eta) [-(1 + 2S)dd(eta)^2 + 2 V_i dd(x)^i dd(eta) + tensor(gamma, -i, -j) (1 + 2 T_(perp perp)) dd(x)^i dd(x)^j] $
