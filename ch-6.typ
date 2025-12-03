@@ -177,7 +177,134 @@ Alcuni gauge di particolare interesse sono
 Due tra i più importanti invarianti di gauge vengono detti *potenziali di Bardeen*
 $ heq(Psi &= S - cal(H) (V_parallel + T'_(parallel parallel)) - (V_parallel + T'_(parallel parallel))') $
 $ heq(Phi &= T_(perp perp) - cal(H) (V_parallel + T'_(parallel parallel))) $
-Possiamo riscrivere la metrica in funzione di questi
+Se ci mettiamo nel gauge longitudinale possiamo riscrivere la metrica in funzione di questi
 $ dd(s)^2 = a^2 [-(1 + 2 Psi) dd(eta)^2 + (1 + 2 Phi) tensor(delta, -i, -j) dd(x)^i dd(x)^j] $
-Notiamo che se ci mettiamo nel gauge Newtoniano, $Psi$ e $Phi$ corrispondono rispettivamente a $S$ e $T_(perp perp)$.
-Vedremo in oltre che in questo caso $Psi$ corrisponde al potenziale gravitazionale newtoniano (da cui deriva il nome del gauge).
+in quanto $Psi$ e $Phi$ corrispondono rispettivamente a $S$ e $T_(perp perp)$.
+Vedremo in oltre che in questo caso $Psi$ corrisponde al potenziale gravitazionale newtoniano $psi$ (da cui deriva il nome del gauge).\
+Altri invarianti di gauge sono:
+/ Comoving gauge density perturbation: $Delta$ definita in modo tale che 
+  $ heq(overline(rho) Delta = delta rho - overline(rho)' (v - V_parallel)) $
+  questo è l'analogo comovente al density contrast $delta = (delta rho)/overline(rho)$
+/ Curvature perturbation:
+  $ heq( cases(zeta = -T_(perp perp) + cal(H) (delta rho)/(overline(rho)'), cal(R) = - T_(perp perp) + cal(H) (v + V_parallel)) ) $
+
+== Evoluzione delle perturbazioni
+=== Conservazione del tensore energia-impulso
+Possiamo ora esprimere le condizioni sull'evoluzione delle perturbazioni imponendo l'equazione di conservazione del tensore energia impulso, e l'equazione di Einstein.
+Iniziamo dalla prima
+#aeq[$ nabla_mu tensor(T, +mu, -nu) = 0 wide "con" wide tensor(T, +mu, -nu) = sum_s tensor(T,-(s), +mu, -nu) $]
+Questo significa che è il tensore totale a conservarsi.
+Quello delle singole componenti può invece variare
+$ nabla_mu tensor(T,-(A), +mu, +nu) = tensor(Q, -(A), +nu) $
+a patto che 
+$ sum_s tensor(Q, -(s), +nu) = 0 $
+Questo si ricondurrà a condizioni sulle funzioni di distribuzione $f$ da cui le $T$ sono dipendenti.
+Se ci sono interazioni tra specie, le $f$ saranno regolate dall'equazione di Boltzmann collisionale, mentre se non ci sono interazioni saranno governate dall'equazione di Liouville.\
+Nel 'late universe' (quello matter dominated, relativamente vicino a noi) durante il quale si sono formate le strutture, tutte le specie erano disaccoppiate, dunque la conservazione delle $T$ può essere fatta per le singole specie.
+In linea di principio non sappiamo se questo vale anche per energia oscura e materia oscura, che potrebbero interagire tra loro anche in questo periodo (ovviamente se $Lambda$ è davvero una costante, non c'è di sicuro interazione).
+
+Dobbiamo valutare la conservazione sulle perturbazioni che ricordiamo essere
+#aeq[$ cases(
+tensor(delta T, +0, -0) = - delta rho,
+tensor(delta T, +i, -0) = - (overline(rho) + overline(p)) v^i,
+tensor(delta T, +i, -j) = delta p tensor(delta, +i, -j) + tensor(Pi, +i, -j)
+) $]
+All'ordine 0 avevamo visto che l'unica componente non identicamente nulla era $nabla_mu tensor(overline(T), +mu, -0)$ che ci dava
+$ dot(overline(rho)) = - 3 H (overline(rho) + overline(p)) wide "o" wide overline(rho)' = -3 cal(H) (overline(rho) + overline(p)) $
+Per la perturbazione possiamo aspettarci che ci siano termini analoghi (dati dalla diluizione causata dall'espansione).
+Ci sarà poi un termine legato alla divergenza delle velocità.
+Per quanto riguarda la diluizione dobbiamo tenere conto che non abbiamo più solo il fattore di scala $a$, infatti mettendoci in longitudinal gauge
+#aeq[$ dd(s)^2 = a^2 [-(1+2Psi) dd(eta)^2 + (1+2 Phi) tensor(delta, -i, -j) dd(x)^i dd(x)^j ] $]
+quindi in ruolo giocato da $a$ viene adesso sostituito da $a sqrt(1 + 2 Phi) ~ a (1 + Phi)$.
+#aeq[$ cal(H) = dv(ln(a), eta) --> dv(ln[a(1+Phi)], eta) = 1/(a (1+Phi)) [a' (1+Phi) + a Phi'] = cal(H) + Phi'/(1+ Phi) $]
+svolgendo tutti i calcoli (non visti a lezione) si ottiene
+$ heq( delta rho' = - 3 cal(H) (delta rho + delta p) - 3 Phi' (overline(rho) + overline(p)) - div va(v) (overline(rho) + overline(p))) $
+dove prendendo solo la parte scalare di $va(v)$ la divergenza viene sostituita dal laplaciano #box[$div va(v) = - laplacian v$]
+
+Possiamo passare alle altre componenti dell'equazione di conservazione, che imporranno condizioni su altre quantità.
+Non siamo tanto interessati all'evoluzione di $delta p$, dato che questo è legato a $delta rho$ dall'equazione di stato (per mezzo di $c_s$).
+Quello che più ci interessa è come evolve $v$.
+Questo però non compare da solo in nessuna delle componenti di $delta T$.
+Dobbiamo quindi vedere come evolve la densità di momento $va(v)(overline(rho) + overline(p))$.
+Otterremo l'analogo dell'equazione di Eulero, che sarà legata al gradiente di pressione e al potenziale gravitazionale.
+Ci sarà anche il termine dovuto alla diluzione che va con una potenza di $a$.
+Ci aspettiamo che ci sia un contributo 3 dato che si tratta di una densità, e un contributo 1 dato dal legame tra momento fisico e momento comovente $va(q) = a^(-1) va(P)$.
+Quindi davanti al termine di diluizione avremo un fattore $3+1 = 4$.\
+Si ottiene
+$ [(overline(rho) + overline(p)) va(v)]' = underbrace(- 4 cal(H) (overline(rho) + overline(p)) va(v), "espansione") thick underbrace(- grad p - grad^TT dot vt(Pi), "pressioni") thick underbrace(- (overline(rho) + overline(p)) grad Psi, "gravità") $
+espandendo il primo membro si ottiene
+$ [(overline(rho) + overline(p)) va(v)]'
+&= (overline(rho) + overline(p))' va(v) + (overline(rho) + overline(p)) va(v)'\
+&= [overline(rho) (1 + w)]' va(v) + overline(rho)(1 + w) va(v)'\
+&= overline(rho)' (1 + w) va(v) + overline(rho) w' va(v) + overline(rho) (1 + w) va(v)'\
+&= -3 cal(H) overline(rho) (1 + w)^2 va(v) + overline(rho) w' va(v) + overline(rho)(1 + w) va(v)'
+$
+Anche il secondo membro può essere scritto sfruttando l'equazione di stato
+#aeq[$ -4 cal(H) overline(rho) (1 + w) va(v) - overline(rho) (1 + w) grad Psi - c_s^2 grad delta rho - grad^TT dot vt(Pi) $]
+Possiamo mettere assieme e isolare $va(v)'$
+$ heq( v_i' = -(c_s^2 partial_i delta rho + partial_j tensor(Pi, -i, +j))/(overline(rho) (1+w)) - partial_i Psi - w'/(1+w) v_i - cal(H) v_i (1-3w) ) $
+il termine $w'/(1 + w)$ ci aspettiamo sia 0 per radiazione e materia.
+Abbiamo già visto però che per l'inflatone $w$ dipende dal tempo e dunque può dare un termine non nullo.
+Questo è valido in generale per dei campi scalari o non.
+
+=== Equazione di Einstein
+Passiamo ora all'equazione di Einstein
+$ tensor(delta G, -mu, -nu) = 8 pi G tensor(delta T, -mu, -nu) $
+Per l'universo omogeneo avevamo solo le componenti $00$ e $i i$, mentre per le perturbazioni avremo anche tutti i termini off diagonal.
+Anche in questo caso riporteremo solo il risultato e ci concentreremo sul significato fisico di quest'ultimo.
+
+// TODO: Controllare se effettivamente la vediamo (al massimo è l'equazione 6.122 a pagina 226 del Baumann)
+La componente $i i$ dà la l'equazione per l'evoluzione di $Psi$ (la vedremo poi).
+
+La componente $i j$ con $i != j$ avrà a secondo membro solo $tensor(Pi, -i, -j)$.
+Quindi questa equazione ci dice di che cosa $Pi$ è sorgente.
+Si ottiene
+$ heq(Psi + Phi = - 8 pi G a^2 Pi) $
+Dunque se non c'è stress anisotropo, si ha che $Psi$ e $Phi$ sono uguali.
+Quindi $Pi$ è sorgente di discrepanza tra i due.
+Questo crea un diversità nel modo in cui lo spazio e il tempo reagiscono a perturbazioni.\
+È importante soffermarci sul significato fisico di $Pi$.
+Sappiamo che $delta p med tensor(delta, +i, -j) + tensor(Pi, +i, -j) <--> (q^i q_j)/E_s$.
+Noi vogliamo quindi estrarre la parte trace-less da $(q^i q_j)/E_s$.
+Per fare ciò usiamo un proiettore 
+$ tensor(cal(P), +i, -j) = vu(e)^i vu(e)_j - 1/3 tensor(delta, +i, -j) quad ==> quad tensor(cal(P), +i, -j) q^j q_i = (vu(e) dot va(q))^2 - 1/3 abs(va(q))^2 = abs(va(q))^2 (underbracket((vu(e) dot vu(q)), cos(theta))^2 - 1/3) $
+dove $theta$ è l'angolo tra $va(q)$ e $vu(e)$.
+Ma $cos^2(theta) - 1/3$ è legato a $scr(L)_2 (cos(theta))$ il polinomio di legendre di ordine 2 (quello che descrive la forma degli orbitali atomici).
+Quindi la parte trace-less è data dall'integrale di $f$ pesata su $scr(L)$, dunque legata alla distribuzione di quadrupolo.\
+Ciò che genera $Pi$ deve essere qualcosa fuori dall'equilibrio.
+Inoltre, dato che dipende da $q^2/E$ non può essere una specie non relativistica (che tende a $q^2/m -> 0$).\
+Possono essere fotoni o neutrini.
+I fotoni però si sono disaccoppiati tardi, quindi sono molto poco fuori dall'equilibrio.
+L'unica specie candidata rimanente sono i neutrini.
+Facendo i conti per i neutrini si ottiene che questi generano una differenza tra $Phi$ e $Psi$ di qualche decimo di percento, che noi possiamo trascurare.
+Dunque d'ora in avanti possiamo approssimare (solo nel gauge longitudinale) $Phi approx - Psi$.\
+Possiamo inserire questa relazione nell'equazione che avevamo trovato per $delta rho'$
+$ delta rho' = - 3 cal(H) (delta rho + delta p) underbracket(- 3 Phi', + 3 Psi') (overline(rho) + overline(p)) - div va(v) (overline(rho) + overline(p)) $
+Questo ci dice che la perturbazione di densità aumenta se c'è una buca di potenziale.
+
+Passiamo alla componente $i 0$.
+Si ottiene
+$ heq( Phi' - cal(H) Psi = - 4 pi G a^2 (overline(rho) + overline(p)) v ) $
+
+Infine la componente $0 0$
+$ heq( laplacian Phi - 3 cal(H) (Phi' - cal(H) Psi) = - 4 pi G a^2 delta rho ) $
+Questa ricorda un po' l'equazione di Poisson per la gravità all'ordine 0 $laplacian Psi = 4 pi G a^2 overline(rho)$ (sfruttando il fatto che $Phi approx - Psi$).
+C'è però un termine aggiuntivo.
+Questo è un termine puramente relativistico.
+Per vedere quando diventa importante possiamo trasformare con Fourier
+$ -k^2 Phi - 3 cal(H) (Phi' - cal(H) Psi) = - 4 pi G a^2 delta rho ) $
+Vediamo che il primo termine scala con $k^2$ mentre il secondo con $cal(H)^2$ (assumiamo che la derivata rispetto ad $eta$ sia anch'essa dell'ordine di $cal(H)$).
+Ricordiamo che $cal(H)^(-1)$ è il raggio di Hubble che è un indicatore della scala di causalità.
+- Se $k cal(H)^(-1) << 1 thick ==> thick lambda >> cal(H)^(-1)$ la dimensione scala della perturbazione è molto maggorie del raggio di Hubble (quindi siamo a scale cosmologiche).
+  In questo caso il termine relativistico è dominante.
+- Se $k cal(H)^(-1) >> 1 thick ==> thick lambda << cal(H)^(-1)$ la dimensione scala della perturbazione è molto minore del raggio di Hubble (quindi siamo nell'universo vicino).
+  In questo caso il termine relativistico è trascurabile.
+Queste caratteristiche possiamo vederle direttamente nello spettro di potenza della CMB: se guardiamo a bassi $l$ (quindi a grandi scale) dobbiamo per forza tenere in considerazione le correzioni relativistiche.
+Se invece guardiamo ad alti $l$ abbiamo una buona descrizione anche tenendo conto solo dei termini Newtoniani.
+
+Possiamo ora combinare l'equazione $0 i$ con la $0 0$ ottenendo
+$ laplacian Phi = - 4 pi G a^2 delta rho - 3 cal(H) (-4 pi G a^2 (overline(rho) + overline(p)) v) $
+ma $3 cal(H) (overline(rho)+ overline(p)) = -overline(rho)'$ quindi
+$ heq( laplacian Phi = - 4 pi G a^2 (delta rho - overline(rho)' v) = - 4 pi G a^2 overline(rho) Delta ) $
+Abbiamo ottenuto una relazione tra invarianti di gauge ($Phi$ e $Delta$), quindi sarà valida in tutti i gauge.
+Tornando a vederla come equazione di Poisson possiamo vedere il termine aggiuntivo $overline(rho)' v$ come se la materia che esce non debba essere contata tra quella che genera la buca di potenziale.
