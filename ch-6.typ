@@ -253,8 +253,8 @@ $ tensor(delta G, -mu, -nu) = 8 pi G tensor(delta T, -mu, -nu) $
 Per l'universo omogeneo avevamo solo le componenti $00$ e $i i$, mentre per le perturbazioni avremo anche tutti i termini off diagonal.
 Anche in questo caso riporteremo solo il risultato e ci concentreremo sul significato fisico di quest'ultimo.
 
-// TODO: Controllare se effettivamente la vediamo (al massimo è l'equazione 6.122 a pagina 226 del Baumann)
-La componente $i i$ dà la l'equazione per l'evoluzione di $Psi$ (la vedremo poi).
+La componente $i i$ dà
+$ heq(Phi'' + 1/3 laplacian (Psi - Phi) + cal(H) Psi' + 2 cal(H) Phi' + (2 cal(H)' + cal(H)^2) Psi = 4 pi G a^2 delta p) $
 
 La componente $i j$ con $i != j$ avrà a secondo membro solo $tensor(Pi, -i, -j)$.
 Quindi questa equazione ci dice di che cosa $Pi$ è sorgente.
@@ -292,7 +292,7 @@ Questa ricorda un po' l'equazione di Poisson per la gravità all'ordine 0 $lapla
 C'è però un termine aggiuntivo.
 Questo è un termine puramente relativistico.
 Per vedere quando diventa importante possiamo trasformare con Fourier
-$ -k^2 Phi - 3 cal(H) (Phi' - cal(H) Psi) = - 4 pi G a^2 delta rho ) $
+$ -k^2 Phi - 3 cal(H) (Phi' - cal(H) Psi) = - 4 pi G a^2 delta rho $
 Vediamo che il primo termine scala con $k^2$ mentre il secondo con $cal(H)^2$ (assumiamo che la derivata rispetto ad $eta$ sia anch'essa dell'ordine di $cal(H)$).
 Ricordiamo che $cal(H)^(-1)$ è il raggio di Hubble che è un indicatore della scala di causalità.
 - Se $k cal(H)^(-1) << 1 thick ==> thick lambda >> cal(H)^(-1)$ la dimensione scala della perturbazione è molto maggorie del raggio di Hubble (quindi siamo a scale cosmologiche).
@@ -308,3 +308,126 @@ ma $3 cal(H) (overline(rho)+ overline(p)) = -overline(rho)'$ quindi
 $ heq( laplacian Phi = - 4 pi G a^2 (delta rho - overline(rho)' v) = - 4 pi G a^2 overline(rho) Delta ) $
 Abbiamo ottenuto una relazione tra invarianti di gauge ($Phi$ e $Delta$), quindi sarà valida in tutti i gauge.
 Tornando a vederla come equazione di Poisson possiamo vedere il termine aggiuntivo $overline(rho)' v$ come se la materia che esce non debba essere contata tra quella che genera la buca di potenziale.
+
+== Crescita delle strutture di materia
+Vogliamo ora studiare la formazione delle strutture a grande scala.
+Ricapitoliamo le equazioni che ci interessano.
+$ cases(Phi'' + 1/3 laplacian (Psi - Phi) + cal(H) Psi' + 2 cal(H) Phi' + (2 cal(H)' + cal(H)^2) Psi = 4 pi G a^2 delta p,
+Psi + Phi = - 8 pi G a^2 Pi,
+ Phi' - cal(H) Psi = - 4 pi G a^2 (overline(rho) + overline(p)) v,
+ laplacian Phi - 3 cal(H) (Phi' - cal(H) Psi) = - 4 pi G a^2 delta rho 
+) $
+
+Supporremo che queste evolvano in fasi a dominazione di una singola specie, quindi con $w approx c_s^2 approx "cost"$.
+Iniziamo dalla prima equazione cercando di analizzare termine per termine.
+Possiamo riscrivere il secondo membro sfruttando la quarta e l'equazione di stato
+#aeq[$ 4pi G a^2 delta p = w 4 pi G a^2 c_s^2 delta rho = w laplacian Phi - 3 w cal(H) (Phi' - cal(H) Psi) $]
+Valutiamo poi $cal(H)'$
+#aeq[$ cal(H)' = (a'/a)' = a''/a - (a'/a)^2 $]
+dove
+#aeq[$ a''/a &= 1/a dv(,eta) (a dot(a)) = dv(,t)(a dot(a)) = dot(a)^2 + a^2/a dot.double(a)\
+ &= cal(H)^2 - a^2 (4 pi G)/3 (overline(rho) + 3 overline(p)) = cal(H)^2 - underbrace((4 pi G)/3 overline(rho) a^2, cal(H)^2/2)(1 + 3w) = cal(H)^2/2 (1 - 3w)$]
+#aeq[$ ==> quad cal(H)' = a''/a - (a'/a)^2 = cal(H)^2/2 (1 - 3w) - cal(H)^2 = -cal(H)^2/2(1 + 3w)$]
+#aeq[$ ==> quad 2 cal(H)' + cal(H)^2 = -cal(H)^2(1 + 3w) + cal(H)^2 = -3w cal(H)^2 $]
+Sostituendo ora nella prima equazione e sfurttando $Phi'' = - Psi''$ si ottiene
+// FIXME: Controllare conti
+$ heq(Psi'' + 3 Psi' cal(H)(1+ w) - w laplacian Psi = 0) $
+Passiamo nello spazion di Fourier
+$ Psi'' + 3 (1 + w) cal(H) Psi' + k^2 w Psi = 0 $
+Possiamo ora risolverla nei due perio di dominazione
+
+Durante la dominazione della materia ($w = 0$) vale
+$ Psi'' + 3 cal(H) Psi' = 0 $
+Inoltre in questo periodo vale
+#aeq[$ cal(H)^2 = (8 pi G)/3 a^2 underbracket(overline(rho), prop a^(-3)) ~ a^(-1) quad ==> quad cal(H) ~ a^(-1/2) ~ 1/(2 eta) $]
+quindi si ottiene che la soluzione _growing-mode_ è un andamento costante, mentre quella _decaying-mode_ è una decrescita con una potenza negativa di $eta$.
+Dunque nell'universo che si espande il potenziale gravitazionale locale si congela.
+
+Durante la dominazione della radiazione ($w = 1/3$) vale
+$ Psi'' + 4 cal(H) Psi' + k^2/3 Psi = 0 $
+In questo caso c'è una differenza di comportamento in base alla scala (se la perturbazione ha scala maggiore del raggio di Hubble $cal(H)^(-1)$)
+- #[
+Se $k << cal(H)$ (quindi $lambda >> cal(H)^(-1)$) posso trascurare il terso termine.
+Inoltre ho
+#aeq[$ cal(H)^2 ~ a^(-2) quad => quad cal(H) ~ 1/eta $]
+Dunque ho nuovamente che la _growing-mode_ è costante e la _decaying-mode_ è una decrescita a potenza negativa.\
+Posso provare quindi a collegare il comportamento a queste scale tra i due periodi.
+Per far ciò sfrutto un invariante di Gauge che avevo definito in precedenza:
+$ zeta &= -T_(perp perp) + cal(H) (delta rho)/overline(rho)' = Psi + cal(H) (delta rho)/(- 3 cal(H) (overline(rho) + overline(p)))\
+&= Psi + cal(H) 1/(- 3 cal(H) overline(rho) (1 + w)) (k^2 Psi - 3 cal(H) (Psi' + cal(H) Psi))/(4 pi G a^2) $
+ma se $k << cal(H) => Psi = "cost"$ quindi
+$ zeta = Psi + 2/3 Psi/(1 + w) = (5 + 3w)/(3 + 3w) Psi $
+// TODO: Sono consapevole che è una gran cazzata questa, è un ragionamento circolare da manuale
+Essendo $Psi$ costante, anche $zeta$ lo sarà quindi
+$ zeta(a_"RD") = zeta(a_"MD") quad &==> quad 6/4 Psi(a_"RD") = 5/3 Psi(a_"MD") \ &==> quad heq( Psi(a_"MD") = 9/10 Psi(a_"RD") ) $
+Quindi a grande scala il potenziale gravitazionale rimane costante, tranne nella transizione tra le due dominazionei dove scende (gradualmente) del 10%.
+]
+- #[
+Se $k >> cal(H)$ (quindi $lambda << cal(H)^(-1)$) non posso trascurare più il terso termine.
+$ Psi'' + 4/eta Psi' + k^2/3 Psi = 0 $
+moltiplicando tutto per $eta^2$ ottengo
+#aeq[$ eta^2 Psi'' + 4 eta Psi' + eta^2 k^2/3 Psi = 0 $]
+per risolvere questa equazione cambio variabile
+#aeq[$ y = (k eta)/sqrt(3) wide "e" wide psi(y) =Psi/y $]
+#aeq[$ y^2 dv(psi, y,2) + 2 y dv(psi, y) + (y^2 - 2) psi = 0 $]
+Questa è l'equazione per le funzioni di Bessel di ordine 1 (l'ordine $l$ è determinato dal 2 nel terzo termine che corrisponde a $l(l+1)$).
+$ psi (y) = C_1 j_1 (y) + C_2 n_1 (y) quad ==> quad Psi (k, eta) = A_(va(k)) (j_1 ((k eta)/sqrt(3)))/((k eta)/sqrt(3)) + B_(va(k)) (n_1 ((k eta)/sqrt(3)))/((k eta)/sqrt(3)) $
+dove $j_1$ e $n_1$ sono le funzioni di Bessel
+$ cases(
+  j_1 (y) = sin(y)/y^2 - cos(y)/y,
+  n_1 (y) = cos(y)/y^2 - sin(y)/y
+) $
+come si può notare $n_1$ diverge per $y-->0$ (quindi per $eta-->0$), dunque $Psi$ non può dipendere da $n_1$, quindi $B_va(k) = 0$.
+$j_1$ invece per $y-->0$ va come $j_1 ~ y/3 + Order(3)$ e diverge per $eta --> infinity$.
+$ Psi(k, eta) = A_va(k) [sin((k eta)/sqrt(3))/((k eta)/sqrt(3)) - cos((k eta)/sqrt(3))] $
+]
+Possiamo quindi graficare l'evoluzione di $Psi$ nel tempo, per diverse scale (per semplicità lo si rapporta al valore oggi)
+#figure(
+image("images/6-1_curvature_evolution.png", width: 80%)
+)
+Ricordiamo che $k$ sono numeri d'onda comoventi, quindi vengono stirati assieme alla 'griglia' e in questo sistema di coordinate rimangono uguali.
+Invece $cal(H)^(-1)$ si allarga rispetto alla griglia al passare del tempo.
+Se un modo di oscillazione entra nel raggio di Hubble prima di $eta_"eq"$ viene soprresso, mentre se entra dopo $eta_"eq"$ sopravvive solo ridotto del 10%.
+// TODO: Mettere immagine
+
+Possiamo quindi passare al calcolo delle perturbazioni di massa
+$ -k^2 Psi = 4 pi G a^2 overline(rho) Delta $
+Quest'ultima equazione va valutata nei quattro casi (2 dominazioni per 2 scale)
+- #[
+Se $k >> cal(H)$ allora $Delta approx delta$ e abbiamo lo stesso andamento che avevamo visto nel caso newtoniano
+$ Delta approx cases(ln(a) quad &"se rad. dom.", a quad &"se mat. dom") $
+]
+- #[
+Se $k << cal(H)$ allora
+$ -k^2 Psi = underbracket(4 pi G a^2 overline(rho), cal(H)^2) Delta $
+ma dato che $Psi$ deve essere costante, avremo che $Delta prop cal(H)^(-2)$
+$ Delta prop cases(a^2 quad &"se rad. dom.", a quad &"se mat. dom.") $
+]
+Quindi una volta entrati nell'era di dominazione della materia, le perturbazioni a tutte le scale evolvono linearmente.
+Al contrario durante la dominazione della radiazione le piccole scale vengono soppresse con una crescita solo logaritmica in confronto a quella quadratica delle grandi scale.\
+Possiamo poi fare una supposizione dicendo che la $Delta (k, a)$ sia scomponibile in fattori che evolvono in funzione dello spazio e del tempo separatamente
+$ Delta (k, a) = "growth"(a) + "transfer"(k) + Delta (k, a_i) $
+Questa approssimazione non è esatta, però descrive abbastanza bene l'andamento generale
+// TODO: Inserire immagine
+
+== Spettro di potenza
+Possiamo provare a fare della statistica per le fluttuazioni (che saranno le quantità che poi potremo misurare)
+La media sarà nulla perché $rho$ deve essere centrata su $overline(rho)$
+$ expval(Delta (a, va(k))) = 0 $
+Per quanto riguarda la varianza la cosa si fa più interessante
+#aeq[$ expval(Delta^2) - cancel(expval(Delta)^2) = integral dd(x,3) Delta^2 (x) $]
+Tuttavia noi conosciamo $Delta (va(k))$, quindi dobbiamo scrivere $Delta (x)$ come l'antitrasformata (il quadrato in realtà è un modulo quadro, quindi avremo la trasformata per il complesso coniugato)
+#aeq[$ expval(Delta^2)
+  &= integral dd(x, 3) [integral dd(k, 3)/(2 pi)^3 e^(-i va(k) dot va(x)) Delta(va(k))][integral dd(k, 3)/(2 pi)^3 e^(-i va(k) dot va(x)) Delta(va(k))]^*\
+  &= integral dd(x, 3) integral dd(k, 3)/(2 pi)^3 integral dd(k', 3)/(2 pi)^3 e^(-i (va(k) - va(k')) dot va(x)) Delta(va(k)) med Delta^*(va(k'))\
+  &= integral dd(k, 3)/(2 pi)^3 integral dd(k', 3) delta_("D")(va(k) - va(k')) med Delta(va(k)) med Delta^*(va(k'))\
+  &= integral dd(k, 3)/(2 pi)^3 abs(Delta(va(k)))^2
+  $]
+dove $delta_"D"$ è la delta di Dirac (questa in realtà era una dimostrazione poco formale del teorema di Parseval che ci garantisce l'uguaglianza tra gli integrali nei due spazi).\
+Ora possiamo imporre l'isotropia richiedendo che la varianza possa dipendere solo dal modulo di $k$.
+In linea di principi $Delta$ può continuare a dipendere da $va(k)$, l'importante è che il suo quadrato dipenda solo dal modulo.
+$ expval(Delta^2) = integral dd(k)/(2 pi^2) k^2 abs(Delta(va(k)))^2 = integral dd(ln(k)) k^3/(2 pi) abs(Delta)^2 $
+abbiamo riscritto l'integrale passando al logaritmo perché come integrando troviamo una quantità molto importante (che arriva dal mondo del _signal processing_) detta *matter power spectrum* $cal(P)$
+$ heq(cal(P)_(m)(k) = k^3/(2 pi) abs(Delta)^(2)(k)) $
+Spesso si una la *matter power spectrum density* $P_m$ che a volte viene chiamata essa stessa power spectrum
+$ heq(P_(m)(k) = (2 pi)/k^3 cal(P)_(m)(k) = abs(Delta)^(2)(k)) $
