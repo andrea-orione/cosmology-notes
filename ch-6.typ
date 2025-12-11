@@ -406,9 +406,28 @@ $ Delta prop cases(a^2 quad &"se rad. dom.", a quad &"se mat. dom.") $
 Quindi una volta entrati nell'era di dominazione della materia, le perturbazioni a tutte le scale evolvono linearmente.
 Al contrario durante la dominazione della radiazione le piccole scale vengono soppresse con una crescita solo logaritmica in confronto a quella quadratica delle grandi scale.\
 Possiamo poi fare una supposizione dicendo che la $Delta (k, a)$ sia scomponibile in fattori che evolvono in funzione dello spazio e del tempo separatamente
-$ Delta (k, a) = "growth"(a) + "transfer"(k) + Delta (k, a_i) $
+$ Delta (k, a) = G(a) + T(k) + Delta (k, a_i) $
+dove $G$ viene detta *growth function* mentre $T$ viene detta *transfer function*.\
 Questa approssimazione non è esatta, però descrive abbastanza bene l'andamento generale
 // TODO: Inserire immagine
+Cerchiamo a valutare $G$ e $T$ andando a studiare due casi particolari: il caso di un modo $k_1$ che entra nel raggio di Hubble dopo l'equivalenza e uno $k_2$ che ci entra prima.
+Per semplicità possiamo definire indichiamo con $k_"eq" = cal(H)(a_"eq")$ e con $a_k$ il fattore di scala a cui vale $k = cal(H)(a_k)$.
+Possiamo iniziare studiando il caso $k_1 < k_"eq"$.
+Questo evolverà quadraticamente fino all'equivalena e poi linearmente
+#aeq[$ (Delta_m (k_1, a))/(Delta_m (k_1, a_i)) = (Delta_m (k_1, a_"eq"))/(Delta_m (k_1, a_i))(Delta_m (k_1, a))/(Delta_m (k_1, a_"eq"))=
+  a^2_"eq"/a^2_i a/a_"eq"$]
+Vediamo che otteniamo una dipendenza solo da $a$ e non da $k$, quindi possiamo concludere
+$ heq((G (a))/(G (a_i)) = a^2_"eq"/a^2_i a/a_"eq") wide "e" wide heq( T(k < k_"eq") = 1) $
+Passiamo ora a $k_2 > k_"eq"$. Questo ha un'evoluzione quadratica fino al quando non entra all'interno del raggio di Hubble, dopo ha una crescita logaritmica fino all'equivalenza e infine anche questo ha crescita lineare.
+Dobbiamo fare inoltre un'approssimazione forte: dato che la crescita logaritmica è molto più lenta delle altre due, la trascureremo approssimando che in quel tratto rimanga $Delta$ rimanga costante
+#aeq[$ (Delta_m (k_2, a))/(Delta_m (k_2, a_i)) = (Delta_m (k_2, a_(k_2)))/(Delta_m (k_2, a_i)) underbracket((Delta_m (k_2, a_"eq"))/(Delta_m (k_2, a_(k_2))), approx 1) (Delta_m (k_2, a))/(Delta_m (k_2, a_"eq"))=
+  a^2_(k_2)/a^2_i a/a_"eq" = (a_"eq"/a_i)^2 a/a_"eq" a^2_(k_2)/a^2_"eq"$]
+possiamo poi sfruttare il fatto che nel periodo di dominazione della radiazione vale la relazione $cal(H)^2 ~ a^2 overline(rho) ~ a^(-2)$ per riscrivere $a^2_(k_2)/a_"eq"^2 = (k_"eq"/k_2)^2$ (da notare come $a_"eq"$ e $a_(k_2)$ sono costanti e non dipendono da $a$, bensì da $k$).
+Quindi si ottiene
+#aeq[$ (Delta_m (k_2, a))/(Delta_m (k_2, a_i)) =
+  (a_"eq"/a_i)^2 a/a_"eq" (k_"eq"/k_2)^2$]
+Riconosciamo il termine $(G (a))/(G (a_i))$ accompagnato da un nuovo termine dipendente solo da $k$
+$ heq( T(k > k_"eq") = (k_"eq"/k)^2) $
 
 == Spettro di potenza
 Possiamo provare a fare della statistica per le fluttuazioni (che saranno le quantità che poi potremo misurare)
@@ -431,3 +450,103 @@ abbiamo riscritto l'integrale passando al logaritmo perché come integrando trov
 $ heq(cal(P)_(m)(k) = k^3/(2 pi) abs(Delta)^(2)(k)) $
 Spesso si una la *matter power spectrum density* $P_m$ che a volte viene chiamata essa stessa power spectrum
 $ heq(P_(m)(k) = (2 pi)/k^3 cal(P)_(m)(k) = abs(Delta)^(2)(k)) $
+
+Le definizioni che abbiamo ottenuto fin'ora arrivano da una ragionamento che non è del tutto formalmente corretto.
+Vogliamo ora riformularlo con una teoria un po' più solida.
+Innanzitutto possiamo riflettere sul fatto che ha senso parlare di varianza se pensiamo alle fluttuazioni come a variabili stocastiche (considerazione sensata se pensiamo che arrivano da fluttuazioni quantistiche).
+Quindi pensiamo a una perturbazione $f(va(x))$ come a un elemento estratto da una distribuzione di probabilità $PP[f]$.
+Notiamo che questa non è una distribuzione di probabilità nel senso che siamo abituati a vedere, infatti si tratta di un funzionale che prende come argomento una funzione invece che un numero.
+Dato che stiamo lavorando con funzionali, avremo due nozioni di media
+$ overline(f) = 1/V integral_V dd(x,3) f(va(x)) wide "e" wide expval(f) = integral dd(f, d:cal(D)) med f med PP[f] $
+La prima definizione è una media sul volume per una particolare realizzazione di $f$ (quella dell'universo in cui viviamo).
+La seconda invece è una media di ensemble ossia una media su tutte le realizzazioni di $f$ pesate per la distribuzione di probabilità che ciascuna avvenga.
+Purtroppo noi non siamo dotati di infiniti universi e quindi possima osservare una sola realizzazione di $f$.
+Però possiamo fare l'ipotesi che essendo il volume dell'universo incredibilmente grande, i due valori medi tendano a coincidere.
+Questa viene detta *ipotesi ergodica* (è come se facessi delle medie su sottovolumi più piccoli che rappresentano diverse realizzazioni di $f$).\
+Torniamo a parlare di varianza $"Var"[Delta_m] = expval(Delta_m^2)$.
+Dato che stiamo lavorando su volumi finiti dobbiamo utilizzare la serie di Fourier invece che la trasformata
+#aeq[$
+  1/V integral_V dd(x,3) [Delta_m (va(x))]^2 &= 1/V integral_V dd(x,3) [sum_(va(k)_1) Delta_m (va(k)_1) thin e^(i va(k)_1 dot va(x)) ][sum_(va(k)_2) Delta_m (va(k)_2) thin e^(i va(k)_2 dot va(x)) ]^*\
+  &= sum_(va(k)_1) sum_(va(k)_2) Delta_m (va(k)_1) Delta_m^* (va(k)_2) integral_V dd(x,3)/V e^(i (va(k)_1 - va(k)_2) dot va(x))\
+  &= sum_(va(k)_1) sum_(va(k)_2) Delta_m (va(k)_1) Delta_m^* (va(k)_2) delta_"K" (va(k)_1 - va(k)_2)\
+  &= sum_(va(k)) abs(Delta_m (va(k)))^2
+$]
+La varianza però non è altro che un caso particolare della covarianza
+$ expval(Delta_m (va(x)_1) Delta_m (va(x)_2)) = xi (va(x)_1,va(x)_2) = integral dd(Delta_m, d: cal(D)) PP[Delta_m] Delta_m (va(x)_1) Delta_m (va(x)_2) $
+dove $xi$ viene detto *fattore di correlazione* (è quello che in teoria dei campi viene detto correlatore).
+In linea di principio noi non sappiamo com'è fatta $PP$, però possiamo sfruttare il principio cosmologico per ottenere delle proprietà di $xi$
+- Dato che deve esserci invarianza traslazionale, $xi$ può dipendere solo dalla distanza tra i due punti $va(s) = va(x)_1 - va(x)_2$
+- Dato che deve esserci invarianza rotazionale, può dipendere solo dal modulo della distanza e non dalla direzione
+Quindi $xi (va(x)_1,va(x)_2) = xi (s)$.
+Questa condizione ha un'interessante conseguenza detta *integral constraint* sull'integrale di $xi$ rispetto a $s$
+$ dd(s,3) xi(s) &= integral dd(s,3) 1/V integral dd(x,3) Delta_m (va(x)) Delta_m (va(x) + va(s))\ &= 1/V integral dd(x_1,3) integral dd(x_2,3) Delta_m (va(x)_1) Delta_m (va(x)_2)\ &= 1/V integral dd(x_1,3) Delta_m (va(x)_1) integral dd(x_2,3) Delta_m (va(x)_2) = 0 $
+dove l'ultima uguaglianza arriva dal fatto che il valor medio della singola $Delta_m$ deve essere nullo.\
+Questo risultato vuo dire che se la varianza (corrispondente a $xi(0)$) è positiva, allora alle distanze maggiori di zero ci aspettiamo ci sia anticorrelazione.
+Ciò possiamo spiegarcelo pensando che attorno ad una sovradensità è più probabile che ci sia una sottodensità.
+
+Possiamo adesso scrivere la covarianza in spazio di Fourier
+$
+expval(Delta_m (va(k)_1) Delta_m^* (va(k)_2))
+&= expval( integral_(V_1) dd(x_1,3)/V e^(-i va(k)_1 dot va(x)_1) Delta_m (va(x)_1) integral_(V_2) dd(x_2,3)/V e^(+i va(k)_2 dot va(x)_2) Delta_m^* (va(x)_2))\
+&= 1/(V_1 V_2) integral_(V_1) dd(x_1,3) integral_(V_2) dd(x_2,3) e^(-i va(k)_1 dot va(x)_1) e^(+i va(k)_2 dot va(x)_2) underbrace(expval( Delta_m (va(x)_1) Delta_m (va(x)_2)), xi(s))\
+&= 1/(V_1 V_2) integral_(V_1) dd(s,3) integral_(V_2) dd(x_2,3) underbracket(e^(-i va(k)_1 dot (va(x)_2 + va(s))) e^(+i va(k)_2 dot va(x)_2),  e^(-i (va(k)_1 - va(k)_2) dot va(x)_2) e^(+i va(k)_1 dot va(s))) xi(s)\
+&=delta_"K" (va(k)_1 - va(k)_2) 1/V integral_V dd(s,3) e^(-i va(k)_1 dot va(s)) xi(s)
+$
+Però noi sappiamo grazie all'integral constraint che $xi(s)$ è sommabile, quindi possiam far tendere il volume all'infinito, in modo tale che la delta di Kronecker diventi delta di Dirac e che l'integrale diventi la trasformata di Fourier
+$ expval(Delta_m (va(k)_1) Delta_m^* (va(k)_2)) = delta_"D" (va(k)_1 - va(k)_2) scr(F) [xi] (va(k)) $
+Il fatto che ci sia la delta di Dirac significa che sono presenti solo varianze (non ci sono i "termini off-diagonal" della matrice).
+Quindi i vari modi $va(k)$ non si _parlano_ tra loro.\
+Possiamo ora sfruttare il fatto che $xi$ dipende solo dal modulo di $s$.
+Questo fa sì che la trasformata di Fourier assuma una forma particolare, detta trasformata di Hankel
+$
+scr(F) [xi] (va(k))
+&= integral dd(s) e^(-i va(k) dot va(s)) xi(s)\
+&= integral_0^(2 pi) dd(phi) integral_(-1)^(1) dd(cos(theta)) integral_0^(+ infinity) dd(s) s^2 e^(-i k s cos(theta)) xi(s)\
+&= 2 pi integral_0^(+ infinity) dd(s) s^2 [(e^(-i k s cos(theta)))/(-i k s)]_(-1)^(+1) xi(s)\
+&= 4 pi integral_0^(+ infinity) dd(s) s^2 (-e^(-i k s) + e^(+i k s))/(2 i) xi(s)/(k s)\
+&= 4 pi integral_0^(+ infinity) dd(s) s^2 sin(k s)/(k s) xi(s) = scr(F)[xi] (k)
+$
+Vediamo quindi che anche la trasformata dipende solo dal modulo di $va(k)$ come ci aspettavamo.\
+Possiamo analogamente calcolare l'antitrasformata
+$ xi(s) = integral_0^(+ infinity) dd(k)/(2 pi^2) k^2 sin(k s)/(k s) scr(F)[xi](k) = scr(F)[xi] (k) $
+Adesso abbiamo due formule per la varianaza che possiamo confrontare
+#aeq[$ xi(0) = sum_(va(k)) abs(Delta_m (va(k)))^2 --> integral dd(k,3)/(2 pi)^3 abs(Delta_m (va(k)))^2 = integral dd(ln(k)) underbrace(k^3/(2 pi^2) abs(Delta_m (va(k)))^2, cal(P)_m (k))$]
+e
+#aeq[$ xi(0) = integral dd(k)/(2 pi^2) k^2 1 scr(F)[xi](k) $]
+quindi
+$ heq(scr(F)[xi](k) = (2 pi^2)/k^3 cal(P)_m (k) = P_m (k)) $
+
+Rimane solo più un passaggio da fare:
+queste informazioni le abbiamo scritte in funzione di $Delta$ che però cambia l'andamento in base a se ci troviamo prima o dopo l'equivalenza.
+Vorremmo quindi riscrivere lo spettro di potenza in funzione di qualcosa che non cambi.
+La soluzione è scriverlo in funzione della curvature perturbation $zeta$.
+Per far ciò iniziamo dall'equazione di Poisson
+#aeq[$ laplacian Psi = 4 pi G a^2 Delta_m overline(rho)$]
+riscriviamo il secondo termine in funzione dell'evoluzione di $overline(rho) = overline(rho)_(m 0) a^(-3) = Omega rho_c a^(-3)$
+#aeq[
+  $4 pi G a^2 Delta_m (va(k), a) overline(rho)_m &= (G(a))/G(a_i) T(k) 4 pi G a^2 a^(-3) Omega_m rho_c Delta_m (va(k), a_i)\
+&= (G(a)"/"a)/(G(a_i)"/"a_i) T(k) underbrace(4 pi G Omega_m rho_c Delta_m (va(k), a_i) a^(-1), laplacian Psi (k^2, a_i))
+  $]
+quindi 
+$ Psi(va(k), a) = (G(a)"/"a)/(G(a_i)"/"a_i) Psi(va(k), a_i) T(k) $
+Abbiamo quindi una scomposizione come avevamo per $Delta_m$, ma il growth rate viene riscalato per $a$.
+Si definisce quindi il *growth suppression rate*
+$ heq(g(a) prop G(a)/a) $
+tornando allo spettro di potenza
+$
+cal(P)_m (k, a) &= k^3/(2 pi^2) abs(Delta_m (va(k),a))^2 = [(G(a))/(G(a_i))]^2 T^2 (k) k^3/(2 pi^2) abs(Delta_m (va(k), a))^2\
+&= [(G(a))/(G(a_i))]^2 T^2 (k) k^3/(2 pi^2) (-3/2 Omega_m H_0^2 (k^(-2))/(a_i))^(-2) abs(Psi(va(k), a_i))^2\
+$
+a questo punto passiamo a $zeta = (5 +3w)/(3+3w) Psi$ con $w=0$
+$
+cal(P)_m (k, a) &= [(G(a))/(G(a_i)"/"a_i)]^2 T^2 (k) k^3/(2 pi^2) k^4/(Omega_m^2 H_0^4) 4/9 abs(3/5 zeta(va(k),a_i))^2\
+&= [(G(a))/(G(a_i)"/"a_i)]^2 T^2 (k) k^4/(Omega_m^2 H_0^4) 4/25 underbrace(k^3/(2 pi^2) abs(zeta(va(k),a_i))^2, cal(P)_(zeta zeta) (k))
+$
+Ho quindi questo spettro di potenza che ora non varia l'evoluzione in base all'equivalenza
+$ cal(P)_(zeta zeta) (k) = k^3/(2 pi^2) abs(zeta(va(k),a_i))^2 $
+In linea di principio non sappiamo nulla su $cal(P)_(zeta zeta)$, ma possiamo fare un ansatz che abbia la forma di potenza
+$ cal(P)_(zeta zeta) (k) = A (k/k_p)^(n - 1) $
+questo viene detto *ansatz di Harrison-Zel'dovich*.
+Dato che vediamo tante galassie che sono strutture a media scala, ci aspettiamo che la potenza cresca con potenza circa 0.
+Se avesse una potenza più grande, sarebbe più alta a larga scala e quindi vedremmo molti più ammassi.
+Se avesse una potenza più piccola, sarebbe più alta a piccola scala e quindi vedremmo molti più buchi neri.
