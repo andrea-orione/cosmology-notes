@@ -583,7 +583,7 @@ Ricapitolando le epoche di dominazione abbiamo
 Possiamo anche aggiornare la nostra equazione delle abbondanze
 $ heq( H^2 (cal(Z)) = H_0^2 [Omega_(r, 0) (1 + cal(Z))^4 + Omega_(m, 0) (1 + cal(Z))^3 + Omega_(K, 0) (1 + cal(Z))^2 + Omega_(Lambda, 0)] ) $
 
-== Evoluzione delle disomogeneità e formazione delle galassie
+== Evoluzione delle disomogeneità e formazione delle galassie<sec:collasso_sferico>
 Iniziamo ora un processo di rilassamento delle assunzioni che abbiamo fatto fin'ora.\
 Consideriamo per semplicità un universo matter-dominated con delle fluttuazioni rispetto all'omogeneità
 #aeq[$ rho = (1 + delta) overline(rho) $]

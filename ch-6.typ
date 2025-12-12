@@ -550,3 +550,126 @@ questo viene detto *ansatz di Harrison-Zel'dovich*.
 Dato che vediamo tante galassie che sono strutture a media scala, ci aspettiamo che la potenza cresca con potenza circa 0.
 Se avesse una potenza più grande, sarebbe più alta a larga scala e quindi vedremmo molti più ammassi.
 Se avesse una potenza più piccola, sarebbe più alta a piccola scala e quindi vedremmo molti più buchi neri.
+
+== Formazione delle strutture
+Siamo arrivati all'espressione per lo spettro di potenza
+#aeq[$ cal(P)_m (k, a) = [(G(a))/(G(a_i)"/"a_i)]^2 T^2(k) k^4 4/(25 H_0^2 Omega_m^2) cal(P)_(zeta zeta) (k, a) $]
+con
+#aeq[$ T(k) = cases(1 wide &k<k_"eq", k^(-2) ln(k/k_"eq") &k>k_"eq") wide "e" wide cal(P)_(zeta zeta) = A_s (k/k_p)^(n_s - 1) $]
+nell'approssimazione di Harrison-Zel'dovich. Possiamo riscrivere come
+#aeq[$ cal(P)_m (k, a) prop D^2(a) T^2(k) k^(3+n_s) $]
+Possiamo determinare le costanti $A_s$ e $n_s$ dalle osservazioni della CMB e delle Large Scale Structures ottenendo $A_s approx num("e-9")$ e $n_s approx 0.96$.\
+Possiamo quindi fare i grafici dello spettro di potenza
+\ #text(red)[mettere grafico]\
+// TODO: Mettere grafico
+Tendenzialmente però si tende ad utilizzare la densità $P$, perché è anche quella che si misura (basta moltiplicare $cal(P)$ per $k^3$).
+\ #text(red)[mettere grafico]\
+// TODO: Mettere grafico
+Dal punto di inversione che osserviamo, possiamo ricavare informazioni sul punto di equivalenza.\
+C'è però un problema: se andiamo a $k$ alti, ad un certo punto arriviamo alle scale delle singole galassie e delle singole stelle.
+Queste strutture però sono soggette a fenomeni più complessi rispetto alla sola interazione gravitazionale, e questi effetti non possono essere catturati da un'approssimazione al primo ordine.
+Dunque bisogna aggingere una correzione ad alti $k$ ottenuta tramite simulazioni.
+Tendenzialmente però si tende ad utilizzare la densità $P$, perché è anche quella che si misura (basta moltiplicare $cal(P)$ per $k^3$).
+\ #text(red)[mettere grafico]\
+// TODO: Mettere grafico
+Fin'ora infatti ci siamo concentrati sul caso in cui il density contrast $delta$ fosse molto minore di 1.
+Adesso che andiamo a guardare la formazione delle strutture dobbiamo spingerci a $delta > 1$.
+
+Per la formazione delle strutture esistono due possibili scenari:
+/ Bottom-up: si formano prima le strutture piccole che poi si uniscono per formare quelle a scala maggiore
+/ Top-down: si formano prima le strutture grandi che poi coagulano anche a piccola scala
+Si può dimostrare che il modello Bottom-up è favorito nel caso di Cold Dark Matter (che correntemente è il modello più accreditato), mentre quello Top-down è favorito nel caso di Hot Dark Matter.
+#digressione[
+  Al momento ci sono due teorie maggiori su cosa costituisca la materia oscura
+  / I MACHOs: (MAssive Compact Halo Objects) oggetti molto grandi e massivi che non sono visibili come i buchi neri
+  / Le WIMPs: (Weakly Interactive Massive Particles) particelle molto massive che interagiscono solo tramite l'interazione debole
+  Ad oggi sono favorite le WIMPs.
+]
+
+=== Modello di collasso sferico
+Per studiare come si formano le strutture iniziamo da un caso semplificato: il modello a collasso sferico.
+Questo l'avevamo già visto nella @sec:collasso_sferico, notando che l'evoluzione di una sovradensità a simmetria sferica era identica all'evoluzione di un universo dominto da materia e curvatura.
+Ricordiamo che una particolarità di questo caso era il completo disaccoppiamento della perturbazione dall'universo circostante, che ci permetterà di semplificare molto la trattazione.
+Avevamo ottenuto la parametrizzazione
+$ cases(r = (G M)/(2 abs(E)) (1 - cos(theta)), t = (G M)/(2 abs(E))^(3/2) (theta - sin(theta))) $
+dove $theta = 2 abs(E) eta$ è il parametro e $E$ è l'energia interna del sistema.\
+Possiamo aspettarci che nel primo periodo, le perturbazioni fossero molto piccole.
+Quindi possiamo sviluppare in attorno a $theta = 0$
+$ cases(r = (G M)/(2 abs(E)) theta^2/2, t = (G M)/(2 abs(E))^(3/2) theta^3/6) $
+ottenendo
+$ r(t) prop t^(2/3) $
+che è esattamente quello che avevamo già ottenuto in precedenza per perturbazioni in un universo matter dominated.\
+Vogliamo ora scrivere $delta$, per fare ciò ci servono $rho$ e $overline(rho)$.
+$rho$ è facile ottenerlo perché essendo la struttura disaccoppiata la massa è sempre la stessa, quindi la densità sarà data semplicemente dalla massa sul volume.
+#aeq[$ rho = M/V = (3M)/(4 pi r^2(theta))$]
+Per $overline(rho)$ possiamo usare l'equazione di Friedman
+#aeq[$ overline(rho) = (3 H^2)/(8 pi G) $]
+usando il fatto che in dominazione della materia vale $H = 2/(3t)$ otteniamo
+#aeq[$ overline(rho) = 1/(6 pi G t^2(theta)) $]
+possiamo quindi scrivere l'espressione per $delta$
+$ rho/overline(rho) = 1 - delta = (18 M pi G t^2)/(4 pi r^3) = 9/2 (theta - sin(theta))^2/(1- cos(theta))^3 $
+possiamo graficare questo risultato confrontandolo con l'approssimazione lineare
+\ #text(red)[mettere grafico]\
+// TODO: Mettere grafico
+Se però guardiamo i risultati delle simulazioni osserviamo un risultato differente da entrambi.
+Questo sempre perché il processo di formazione delle galassie coinvolge processi non solo gravitazionali
+\ #text(red)[mettere grafico]\
+// TODO: Mettere grafico
+Infatti quello che si ottiene che a $theta = 2 pi$ si ha la formazione di un alone di materia oscura.
+
+All'atto pratico quando si vogliono poi fare simulazioni a grande scala dell'universo non si possono tenere conto di tutti questi processi e allora si segue l'approssimazione solo gravitazionale fino ad un certo punto e dopo si sostituisce il valore con il risultato della formazione dell'alone.
+Tendenzialmente il limite prima di sostituire è $delta_"linear"(theta = 2 pi) = 1.69$.\
+Per capire quale valore sostituirci bisogna andare a guardare i processi che effettivamente avvengono.
+Il processo principale è quello di *virializzazione*.
+Il teorema del viriale ci dice se il sistema è virializzato
+$ T_"vir" = -1/2 V_"vir" $
+con $T$ l'energia cinetica e $V$ la potenziale.
+Possiamo riscriverlo in funzione dell'energia totale
+#aeq[$E_"vir" = T_"vir" + V_"vir" = 1/2 V_"vir"$]
+Dato che l'energia si conserva, questa sarà uguale al punto di inversione (dove $E = V_"turn-around"$ perché l'energia cinetica è nulla).
+Quindi si ha
+$ 1/2 V_"vir" = V_"turn-around" $
+ora possiamo sfruttare il fatto che il potenziale segue $V prop 1/r$ ottenendo
+$ r_"vir" = 1/2 r_"turn-around" => rho_"vir" = 8 rho_"turn-around" $
+mentre per $overline(rho)$ si sfrutta il fatto che il $theta$ a cui avviene la virializzazione e il doppio di quello a cui c'è il turn around
+$ overline(rho)_"vir" = overline(rho)_"turn-around"/4 $
+quindi il density contrast diventa
+$ 1 + delta_"vir" = rho_"vir"/overline(rho)_"vir" = (8 rho_"turn-around")/(overline(rho)_"turn-around""/"4) = 32 (1+delta_"turn-around") approx 178 $
+dove nell'ultimo passaggio abbiamo usato il valore ottenuto prima (dato che al turn around gli altri processi sono ancora trascurabili).\
+Per ricapitolare in una simulazione a grande scala possiamo usare sempre il modello lineare, però quando in una zona viene raggiunto un valore $delta_"lin" = 1.69$ lo si sostituisce (dopo un tempo prefissato) con il valore $delta approx 178$.
+
+=== Teoria di Press-Schechter
+Abbiamo appena viesto che quando viene raggiunta una perturbazione che in teoria lineare eccede $delta_"lin" = 1.69$, si forma un alone virializzato con $delta_"vir" = 178 $.
+Questo fatto è stato sfruttato da Press e Shechter per formulare una teoria che descrivesse la statistica di comparizione degli aloni di materia oscura.
+Questa viene chiamata *teoria di Press-Schechter*.
+
+Il primo passo consiste nell'introduzione di un filtro (il termine inglese _smoothing_ rende bene l'idea) della densità evoluta linearmente.
+Questo fa sì che vengano rimossi i contributi sotto una scala $R$.
+Per fare ciò si considera la massa contenuta all'interno di una distanza $R$ da un punto $va(x)$
+#aeq[$ M(va(x), <R) &= integral_(V_R) dd(y,3) med rho(y) = integral dd(y,3) med rho(va(y)) med Theta(1- abs(va(x)- va(y))/R)\
+&= integral dd(y,3) med (overline(rho) + delta rho(va(y))) thick Theta(1- abs(va(x)- va(y))/R)\
+&= (4 pi)/3 overline(rho) R^3 + (4 pi)/3 R^3 integral dd(y,3) med  delta rho(va(y))thick underbrace(Theta(dots)/((4 pi)/3 R^3), W_"TH") $]
+dove $W_"TH"$ viene detta *funzione top-hat* (per via della sua forma) che sarà
+$ W_"TH" (abs(va(x) - va(y)), R) = cases(3/(4 pi R^3) quad &"se" abs(va(x) - va(y)) < R, 0 & "se" abs(va(x) - va(y)) > R) $
+quindi indicando con $expval(M)_R$ la massa media (ottenuta come densità media per volume)
+$ M(va(x), <R) = expval(M)_R + expval(M)_R underbrace(1/rho integral dd(y,3) med delta rho(va(y)) thick W_"TH" (abs(va(x) - va(y)), R), delta_M) = expval(M)_R [1 + delta_M] $
+dove
+// TODO: Considerare di chiamarla delta_R
+$ heq(delta_M (va(x)) = 1/rho integral dd(y,3) med delta rho(va(y)) thick W_"TH" (abs(va(x) - va(y)), R)) $
+Notiamo che questo calcolo non sta aggiungengo informazione 'fisica', dunque la statistica di $delta_M$ sarà la stessa di $delta$.
+Possiamo pensarlo come il processo analogo al _blurring_ (sfocamento) che si può fare nelle immagini, dove ogni pixel viene sostituito con la media pesata dei vicini.
+In questo caso $W_"TH"$ rappresenta il peso.
+In termini tecnici stiamo facendo la convoluzione di $delta$ con $W_"TH"$.\
+Possiamo adesso passare nello spazio di Fourier, dove la convoluzione diventa un prodotto
+$ delta_M (va(k)) = delta(va(k)) med W_"TH" (va(k), R) $
+è necessario fare la trasformata di Fourier di $W_"TH"$ che si può dimostrare essere
+$ W_"TH" (va(k), R) &= integral dd(y, 3) med e^(-i va(k) dot va(y)) med W_"TH" (abs(va(y)), R)\ &= 3/(k R)^3 [sin(k R) - k R cos(k R)] = W_"TH" (k, R) $
+Notiamo che anche la trasformata dipende solo dal modulo di $va(k)$ come ci saremmo potuti aspettare.
+Notiamo inoltre che $W_"TH"$ è una funzione monotona decrescente di $k$.
+
+Possiamo adesso passare a fare statistica.
+Vogliamo chiederci quale sia la probabilità di incontrare un alone di massa $M$.
+Per fare questo ci serve sapere quale sia la densità di probabilità, che in linea di principio non sappiamo, ma che possiamo decidere di assumere come gaussiana
+$ PP(delta_M) = 1/(sqrt(2 pi) sigma_M) exp{ - delta_M^2/(2 sigma_M^2)} $
+dove $sigma_M^2$ è la varianza che sarà data da
+$ sigma_M^2 = integral dd(ln(k)) med cal(P)_m (k) med abs(W_"TH" (k, R))^2 $
