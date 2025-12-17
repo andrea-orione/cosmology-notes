@@ -332,7 +332,7 @@ dove
 Sostituendo ora nella prima equazione e sfurttando $Phi'' = - Psi''$ si ottiene
 // FIXME: Controllare conti
 $ heq(Psi'' + 3 Psi' cal(H)(1+ w) - w laplacian Psi = 0) $
-Passiamo nello spazion di Fourier
+Passiamo nello spazio di Fourier
 $ Psi'' + 3 (1 + w) cal(H) Psi' + k^2 w Psi = 0 $
 Possiamo ora risolverla nei due perio di dominazione
 
@@ -347,7 +347,7 @@ Durante la dominazione della radiazione ($w = 1/3$) vale
 $ Psi'' + 4 cal(H) Psi' + k^2/3 Psi = 0 $
 In questo caso c'è una differenza di comportamento in base alla scala (se la perturbazione ha scala maggiore del raggio di Hubble $cal(H)^(-1)$)
 - #[
-Se $k << cal(H)$ (quindi $lambda >> cal(H)^(-1)$) posso trascurare il terso termine.
+Se $k << cal(H)$ (quindi $lambda >> cal(H)^(-1)$) posso trascurare il terzo termine.
 Inoltre ho
 #aeq[$ cal(H)^2 ~ a^(-2) quad => quad cal(H) ~ 1/eta $]
 Dunque ho nuovamente che la _growing-mode_ è costante e la _decaying-mode_ è una decrescita a potenza negativa.\
@@ -363,7 +363,7 @@ $ zeta(a_"RD") = zeta(a_"MD") quad &==> quad 6/4 Psi(a_"RD") = 5/3 Psi(a_"MD") \
 Quindi a grande scala il potenziale gravitazionale rimane costante, tranne nella transizione tra le due dominazionei dove scende (gradualmente) del 10%.
 ]
 - #[
-Se $k >> cal(H)$ (quindi $lambda << cal(H)^(-1)$) non posso trascurare più il terso termine.
+Se $k >> cal(H)$ (quindi $lambda << cal(H)^(-1)$) non posso trascurare più il terzo termine.
 $ Psi'' + 4/eta Psi' + k^2/3 Psi = 0 $
 moltiplicando tutto per $eta^2$ ottengo
 #aeq[$ eta^2 Psi'' + 4 eta Psi' + eta^2 k^2/3 Psi = 0 $]
@@ -673,3 +673,89 @@ Per fare questo ci serve sapere quale sia la densità di probabilità, che in li
 $ PP(delta_M) = 1/(sqrt(2 pi) sigma_M) exp{ - delta_M^2/(2 sigma_M^2)} $
 dove $sigma_M^2$ è la varianza che sarà data da
 $ sigma_M^2 = integral dd(ln(k)) med cal(P)_m (k) med abs(W_"TH" (k, R))^2 $
+che arriva dalla $xi(0)$ pesato per il filtro.
+Notiamo che questo integrale converge perchè $W_"TH"$ scende con $(k R)^(-3)$
+#osservazione[
+  $PP[delta_M]$ è una funzione della posizione.
+  Si può pensarla nel seguente modo: prendiamo un punto $va(x)$, in quel punto la $delta_M$ avrà valori distribuiti secondo una gaussiana.
+]
+#osservazione[
+  In realtà $PP[delta_M]$ non può essere gaussiana perché è limitata nei valori che può assumere $delta_M in [-1, +infinity)$.
+  Si può dimostrare che una migliore approssimazione è la distribuzione log-normale (ovvero è la quantità $ln(1 + delta_M)$ a essere gaussiana).
+  Poi per alcune varie e magiche proprietà delle gaussiane, possiamo fare la trattazione con $delta_M$ gaussiano e non ci perdiamo troppo.
+]
+
+Noi vogliamo calcolare la probabilità che si formi un alone, questo corrisponde alla probabilità che $delta_M$ superi il valore critico $delta_c approx 1.69$.
+Quindi avremo
+$ PP[delta_M >= delta_c]  integral_(delta_c)^(+ infinity) dd(delta_M, d: cal(D)) PP[delta_M] = 1/2 op("erfc") [delta_c/(sqrt(2) sigma_M)] $<eq:prob_alone>
+dove $op("erfc")$ è la _complementary error function_ $op("erfc") (x) = 1-erf(x)$
+// TODO: Mettere immagine
+\ #text(red)[mettere immagine]\
+di solito si usa definire la *peak height*
+$ heq(nu_c = delta_c/sigma_M) $
+Sappiamo che la varianza $sigma_M$ dipende dalla $R$ su cui facciamo lo _smoothing_.
+Dato che $W ~ (k R)^(-3)$, più $R$ sarà grande, più la varianza sarà piccola.
+Ma allora più mi metto a grande scala, minore sarà la varianza e minore sarà dunque la probabilità di formare un alone.\
+Quindi questo suggerisce un modello bottom-up, che effettivamente è quello che si osserva.
+Infatti ad alti $cal(Z)$ non si osservano strutture a grande scala come gli ammassi di galassie.
+
+Avevamo detto precedentemente che l'andamento bottom-up suggerisce un modello a materia oscura fredda.
+Questo è per materia oscura calda (come ad esempio i neutrini che sono relativistici) la velocità è talmente alta da 'lavar via' le fluttuazioni a piccola scala.
+Si può definire una lunghezza *free-streaming* $k_"fs"$ che rappresenta la scala a cui le fluttuazioni vengono eliminate dall'alta velocità ($v_1 > v_2 <==> k_"fs" (v_1) < k_"fs" (v_2)$).
+Oltre questo $k_"fs"$ (quindi a scale più piccole) non si hanno fluttuazioni e quindi non si formano strutture.
+Questo è il motivo per cui la materia favorisce un modello top-down, infatti una volta che si sono formate strutture a grande scala, il sistema si è 'raffreddato' si iniziano a formarsi 'grumi' anche a scale più piccole.
+
+Tornando alla probabilità, noi ci aspettiamo che più aumenta la varianza più la probabilità sarà alta e per $sigma_M --> infinity$ ci aspetteremmo di avere la certezza di formare l'alone.
+Tuttavia abbiamo che $nu_c --> 0 ==> op("erfc") --> 1 ==> PP --> 1/2$ che è metà di quanto vorremmo.
+L'idea (un po' naive) di Press e Schechter fu di moltiplicare per 2 la probabiltà nell'integrale dell'@eq:prob_alone (quindi mandando $PP --> 2 PP$).\
+Quest'idea è stata poi studiata da Bond, Cole, Efstathiou e Kaiser che sono riusciti a darne una spiegazione.
+Innanzitutto notano che l'idea che le sovradensità sferiche si disaccoppino dall'universo circostante non può essere del tutto corretta, in quanto se c'è della materia che fluisce dentro queste sovradensità allora la zona circostante deve perdere materia.
+Dunque la $delta_M$ va trattata in modo diverso.
+Loro proposero di assumere che $delta_M$ segua un random walk centrato in 0 con varianza $sigma_M$.
+La probabilità gaussiana la si ottiene come la 'proiezione integrata nel tempo
+// TODO: Mettere immagine
+\ #text(red)[mettere immagine]\
+Il problema è che in questo modello ci sono anche dei casi in cui $delta_M$ supera $delta_c$ e poi torna indietro.
+Ma noi sappiamo che una volta superato $delta_c$ si forma l'alone.
+Dunque alla gaussiana devo togliere i contributi di tutti questi eventi.
+Si può dimostrare che questo corrisponde a togliere un'altra gaussiana centrata in $2 delta_c$.
+// TODO: Mettere immagine
+\ #text(red)[mettere immagine]\
+$ PP[delta_M >= delta_c] = integral_(delta_c)^(+ infinity) dd(delta_M, d:cal(D)) (e^(-(delta^2_M)/(2 sigma_M^2)) - e^(-(delta_M - 2 delta_c)^2/(2 sigma_M^2)))/(sqrt(2 pi) sigma_M) = op("erfc") [nu_c/sqrt(2)] = PP_(>= delta_c) (M) $
+Molto bene. Adesso però vogliamo la probabilità di formare un alone di una specifica massa, mentre quella calcolata fin'ora era per una qualsiasi massa più piccola.
+$ PP("alone di massa" M) &= [PP_(>= delta_c) (M) - PP_(>= delta_c) (M + dd(M))]dd(M) = -dv(PP_(>= delta_c), M) dd(M)\
+&= -dv(PP_(>= delta_c), nu_c) dv(nu_c, sigma_M) dv(sigma_M, M) dd(M)\
+&= - (- sqrt(2/pi) e^(- nu_c^2/2)) (-nu_c/sigma_M) dv(sigma_M, M) dd(M) $
+Possiamo ottenere a questo punto l'abbondanza di questi aloni moltiplicando la probabiltà di ottenerne uno per il numero massimo che si può creare.
+Quest'ultimo viene calcolato come la densità media nella zona diviso la massa dell'alone considerata.
+Questa abbondanza viene detta *halo mass function* $n_h (M)$
+$ n_h (M) = -overline(rho)/M dv(PP, M) = - sqrt(2/pi) e^(- nu_c^2/2) nu_c/sigma_M overline(rho)/M dv(sigma_M, M) = - sqrt(2/pi) e^(- nu_c^2/2) nu_c overline(rho)/sigma_M^2 dv(ln(sigma_M), ln(M)) $
+// TODO: Mettere immagine
+\ #text(red)[mettere immagine]\
+Ma questa è la stessa forma della funzione di Schechter vista nel corso di Galassie.
+
+=== Peak background splitting
+Facciamo un'ultima considerazione.
+Definiamo un density contrast per gli aloni
+$ delta_h (va(x)) = (n_h (va(x)) - overline(n)_h)/overline(n)_h $
+a questo punto possiamo dividere il contributo in _long-wavelength_ (scale cosmologiche) e _short-wavelenght_ (scale galattiche)
+$ delta = delta_s + delta_l $
+// TODO: Mettere immagine
+\ #text(red)[mettere immagine]\
+Gli aloni possiamo pensarli come dei campionamenti di questo density contrast.
+Ovviamente però per come abbiamo splittato, sarà più facile che gli aloni si formino sulle creste di $delta_l$.
+Possiamo quindi riscalare $delta_c$ perché sia un threshold solo su $delta_s$
+$ cases(Tilde(delta)_c = delta_c - delta_l, Tilde(overline(rho)) = overline(rho) (1 + delta_l)) $
+A questo punto sviluppiamo al primo ordine in $delta_l$
+#aeq[$ n_h &= overline(n)_h + evaluated(dv(n, delta_l))_(delta_l = 0) delta_l + Order(delta_l^2)\
+&=overline(n)_h + delta_l [(dv(Tilde(delta)_c, delta_l) pdv(, Tilde(delta)_c) + dv(Tilde(overline(rho)), delta_l) pdv(ln, Tilde(overline(rho)))) n_h]_(delta_l = 0)\
+&=overline(n)_h {1 + delta_l [(underbracket(dv(Tilde(delta)_c, delta_l), -1) pdv(ln, Tilde(delta)_c) + underbracket(dv(Tilde(overline(rho)), delta_l),overline(rho)) pdv(ln, Tilde(overline(rho)))) n_h]_(delta_l = 0)} $]
+ma
+#aeq[$ pdv(ln(n_h), Tilde(overline(rho))) = overline(rho)/Tilde(overline(rho)) wide "e" wide pdv(ln(n_h), Tilde(delta)_l) = 1/(delta_c - delta_l) - 2 (delta_c - delta_l)/sigma_M^2 $]
+quindi
+#aeq[$ n_h = overline(n)_h [1 + delta_l (1 - 1/delta_c + delta_c/sigma_M^2)] $]
+rimettendo dentro l'halo density contrast
+$ delta_h (va(x)) = (n_h - overline(n)_h)/overline(n)_h = b_1 (M) med delta_l (va(x)) $
+dove $b_1$ è il *linear bias*
+$ heq(b_1 (M) = 1 - 1/delta_c + delta_c/sigma_M^2 = 1 + (nu_c^2 - 1)/delta_c) $
+quindi $delta_h$ è un campionamento di $delta_l$ pesati con un bias dipendente solo da $M$
