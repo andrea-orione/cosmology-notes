@@ -639,7 +639,7 @@ Per ricapitolare in una simulazione a grande scala possiamo usare sempre il mode
 
 === Teoria di Press-Schechter
 Abbiamo appena viesto che quando viene raggiunta una perturbazione che in teoria lineare eccede $delta_"lin" = 1.69$, si forma un alone virializzato con $delta_"vir" = 178 $.
-Questo fatto è stato sfruttato da Press e Shechter per formulare una teoria che descrivesse la statistica di comparizione degli aloni di materia oscura.
+Questo fatto è stato sfruttato da Press e Shechter per formulare una teoria che descrivesse la statistica di comparsa degli aloni di materia oscura.
 Questa viene chiamata *teoria di Press-Schechter*.
 
 Il primo passo consiste nell'introduzione di un filtro (il termine inglese _smoothing_ rende bene l'idea) della densità evoluta linearmente.
