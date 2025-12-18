@@ -569,7 +569,6 @@ Dal punto di inversione che osserviamo, possiamo ricavare informazioni sul punto
 C'è però un problema: se andiamo a $k$ alti, ad un certo punto arriviamo alle scale delle singole galassie e delle singole stelle.
 Queste strutture però sono soggette a fenomeni più complessi rispetto alla sola interazione gravitazionale, e questi effetti non possono essere catturati da un'approssimazione al primo ordine.
 Dunque bisogna aggingere una correzione ad alti $k$ ottenuta tramite simulazioni.
-Tendenzialmente però si tende ad utilizzare la densità $P$, perché è anche quella che si misura (basta moltiplicare $cal(P)$ per $k^3$).
 \ #text(red)[mettere grafico]\
 // TODO: Mettere grafico
 Fin'ora infatti ci siamo concentrati sul caso in cui il density contrast $delta$ fosse molto minore di 1.
