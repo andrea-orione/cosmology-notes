@@ -28,10 +28,11 @@ $Lambda$#sub[CDM] è il modello attualmente più accreditato ed è quello che vi
 Nel grafico di destra di @img:triangle_model vediamo infatti che le tre fonti di dati si sovrappongono in corrispondenza di $Lambda$#sub[CDM].
 Andiamo ad approfondire brevemente cosa sono queste misure.
 
+// TODO: Cambiare in sottoparagrafo
 / Supernovae (SNe): #[\
 Quando parliamo di supernovae in contesto cosmologico, tendenzialmente intendiamo supernovae di tipo Ia.
 Questo fenomeno si verifica in sistemi binari composti da una nana bianca (WD) e una gigante rossa (RG).
-Se le stelle sono sufficientemente vicine e l'attrazione gravitazionale è sufficientemente forte è possibile che la nana bianca inizi ad assorbire materiale dalla gigante rossa (che essendo molto più grande ha un'attrazione molto debole sui propri strati più esterni).\
+Se le stelle sono sufficientemente vicine e l'attrazione gravitazionale è sufficientemente forte, è possibile che la nana bianca inizi ad assorbire materiale dalla gigante rossa (che essendo molto più grande ha un'attrazione molto debole sui propri strati più esterni).\
 Questo processo va avanti fino a quando non viene raggiunta una massa limite detta _limite di Chandrasekhar_ ($M_("Ch") approx 1.44 M_(sun)$).
 A questo punto la nana bianca esplode#footnote[Per maggiori approfondimenti sui processi che avvengono consultare il corso Fondamenti di Astrofisica I: Stelle e Via Lattea].\
 Essendo un processo a soglia, l'energia rilasciata è sempre la stessa, dunque questo tipo di eventi può essere utilizzato come candela standard (una *candela standard* è un processo di cui si conosce la luminosità alla sorgente e di cui si può ricavare la distanza facendo il confronto con il flusso osservato). \
@@ -41,7 +42,7 @@ Sono stati osservati numerosi eventi di SNe a varie distanze.
   caption: [Modulo di distanza per supernovae a diversi redshift.]
 )
 #wrap-content(fig_sne_dist_redshift, align:right)[
-  Di fianco riportiamo quello che si ottiene graficando il modulo di distanza $m - M = 5 Lg (d)$ (con $m$ la magnitudine apparente e $M$ la magnitudine assoluta) in funzione del redshift $cal(Z)$ (definito in seguito, per ora basta considerarlo una misura delle distanze su scale cosmologiche).\
+  Di fianco riportiamo quello che si ottiene graficando il modulo di distanza #box[$m - M = 5 Lg (d)$] (con $m$ la magnitudine apparente e $M$ la magnitudine assoluta) in funzione del redshift $cal(Z)$ (definito in seguito, per ora basta considerarlo una misura delle distanze su scale cosmologiche).\
   Nel grafico superiore si vedono i dati e i fit ottenuti utilizzando tre modelli cosmologici differenti, mentre nel grafico inferiore vengono riportati i residui rispetto al modello indicato con la linea tratteggiata.
   Come si può osservare specialmente nel secondo grafico, è possibile discriminare quale modello seguano i dati (con misure più recenti, la divisione è ancora più marcata.\
   Questo ci permette di andare a ridurre lo spazio dei parametri in cui il modello potrà ricadere.

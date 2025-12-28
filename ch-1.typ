@@ -34,12 +34,13 @@ Per misurare questo moto, si sfrutta il _redshift_.
   Sia $O$ il Sistema di Riferimento (SR) dell'osservatore che emette la luce e sia $O'$ il SR dell'osservatore che la riceve, e siano $lambda_s$ e $lambda_o$ le lunghezze d'onda misurate rispettivamente alla sorgente da $O$ e alla ricezione da $O'$.
   Assumiamo inoltre che i sistemi $O$ e $O'$ si stiano allontanando con velocità relativa $v$ e che la luce venga emessa parallelamente a questa velocità.
   Nel caso generico questa velocità diventerà la $v_("l.o.s.")$ (lungo la linea di vista).\
-  Il tempo che intercorre tra l'emissione di due fronti d'onda per l'osservatore $O$ sarà
+  Il tempo che intercorre tra l'emissione di due fronti d'onda per l'osservatore $O$ è
   #aeq[$Delta t_s = lambda_s/c$]
-  mentre il tempo che intercorre tra la ricezione di due fronti d'onda sempre per $O$ sarà (il secondo fronte deve percorrere uno spazio maggiore perché la sorgente si è allontanato)
-  #aeq[$Delta t_r = Delta t_s + (v Delta t_s)/c = Delta t_s (1 + beta)$]
-  lo stesso tempo misurato dall'osservatore $O'$ sarà
-  #aeq[$Delta t'_r = gamma Delta t_r = 1/sqrt(1 - beta^2) Delta t_s (1 + beta) = Delta t_s sqrt((1+beta)/(1-beta))$]
+  Sempre $O$ osserva che il tempo che intercorre tra la ricezione dei due fronti sarà maggiore, perché il ricevitore si sta allontanando (è come se il secondo fronte stesse rincorrendo il ricevitore)
+  #aeq[$Delta t_r = Delta t_s + (v Delta t_r)/c quad ==> quad Delta t_r = (Delta t_s)/(1 - beta)$]
+  questo tempo (misurato in un sistema dove le ricezioni dei due fronti non avvengono nello stesso punto) è soggetto a dilatazione temporale rispetto a quello comovente con il ricevitore $Delta t_r = gamma Delta t'_r$.
+  Quindi lo stesso tempo misurato dall'osservatore $O'$ sarà
+  #aeq[$Delta t'_r = 1/gamma Delta t_r = sqrt(1 - beta^2)/(1 - beta) Delta t_s = Delta t_s sqrt((1+beta)/(1-beta))$]
   da cui
   $ lambda_o = c Delta t'_r = lambda_s sqrt((1+beta)/(1-beta)) arrow.long_(beta lt.double 1) lambda_s (1 + beta) $
 ]
