@@ -95,8 +95,9 @@ Questa discrepanza di $numrange("3", "5", delimiter:"#sym.div") sigma$ viene det
 == Coordinate comoventi
 Siamo quasi pronti per ricavare le equazioni per l'evoluzioni dell'universo.
 Prima però introduciamo un concetto che ci accompagnerà in tutto il corso: le coordinate comoventi.\
-La legge di Hubble ha un andamento che ci permette di intrepretarla come se fossero le distanze stesse ad aumentare (vedremo in seguito l'interpretazione spaziotemporale).
-Possiamo quindi definire un sistema di coordinate che fattorizzi questa crescita delle distanze e in generale fattorizzi qualsiasi moto omogeneo degli oggetti all'intenrno dell'universo in modo tale che non siano loro a muoversi, bensì le coordinate stesse a cambiare.
+La legge di Hubble ha un andamento che ci permette un'interpretazione alternativa.
+Possiamo pensare che siano le distanze stesse ad aumentare (vedremo in seguito l'interpretazione spaziotemporale), e definire quindi un sistema di coordinate che fattorizzi questa crescita delle distanze e in generale fattorizzi qualsiasi moto omogeneo degli oggetti all'interno dell'universo.
+In questo modo non sono gli oggetti a muoversi, bensì le coordinate stesse a cambiare.
 Questo sistema viene detto *coordinate comoventi*.\
 Indichiamo con $va(x)_p$ le coordinate fisiche (quelle che effettivamente misuriamo) e con $va(x)_c$ le coordinate comoventi.
 Varrà la relazione
@@ -134,7 +135,7 @@ $ evaluated(pdv(,t))_p != evaluated(pdv(,t))_c $
 == Equazioni di Friedmann da principi fluidodinamici
 Possiamo ora ricavare le equazioni per l'evoluzione dell'universo in modo euristico.
 Iniziamo notando che alle scale a cui lavoriamo ($qty("100", "Mpc")$), la dimensione delle galassie ($qty("10","kpc")$) è trascurabile.
-Quindi possiamo considerare le galassie come particelle puntiformi di un fluido molto rarefatto (le zone dense degli ammassi possono essere considerate anch'esse come singoli punti materiali) e non interagente#footnote[Per maggiori approfondimenti consultare il corso Fondamenti di Astrofisica II: Galassie e strutture cosmiche.]\
+Quindi possiamo considerare le galassie come particelle puntiformi di un fluido molto rarefatto (le zone dense degli ammassi possono essere considerate anch'esse come singoli punti materiali) e non interagenti#footnote[Per maggiori approfondimenti consultare il corso Fondamenti di Astrofisica II: Galassie e strutture cosmiche.]\
 Questo fluido rispetterà le equazioni di continuità e di Eulero. Iniziamo dalla continuità
 #aeq[$ pdv(rho, t) + div (rho va(u)) = 0 $]
 #aeq[$ pdv(rho, t) + rho div va(u) + va(u) dot grad rho = 0 $]
@@ -150,7 +151,7 @@ ottenendo l'*equazione di continuità cosmologica*
 $ heq( dot(overline(rho))_m = -3 overline(rho)_m dot(a)/a ) $
 che si può integrare da un qualsiasi punto nel passato fino ad oggi (uso oggi come valore di scala perché so misurarlo)
 $ integral_(overline(rho)_m(t))^(overline(rho)_(m 0)) dd((ln(overline(rho)_m))) = -3 integral_(a(t))^(a_0) dd((ln(a))) $
-$ heq(overline(rho)_m(t) = overline(rho)_(m 0) ((a(t))/a_0)^(-3)) $
+$ heq(overline(rho)_m (t) = overline(rho)_(m 0) ((a(t))/a_0)^(-3)) $
 vediamo che c'è un andamento del tipo $overline(rho)_m (t) prop a^(-3)$ che è ragionevole ricordando che $a$ è legato alla distanza e dunque $a^3$ sarà legato al volume.
 
 Passiamo ora all'equazione di Eulero
@@ -205,14 +206,14 @@ Questa è una funzione monotona, quindi si può utilizzare $cal(Z)$ al posto di 
 Consideriamo ora una zona vicina a noi e sviluppiamo ambo i membri
 #aeq[$ (a (t))/a_0 ~ 1 + underbrace((dot(a)_0)/(a_0), H_0) (t-t_0) $]
 #aeq[$ 1/(1 + cal(Z)) ~ 1 - cal(Z) $]
-#aeq[$ c cal(Z) = H_0 (t-t_0) c$]
-Ma $(t-t_0)c$ rappresenta la distanza $d$ percorsa dalla luce per arrivare all'osservatore (e quindi la distanza della sorgente da noi).
+#aeq[$ c cal(Z) = H_0 (t_0-t) c$]
+Ma $(t_0-t)c$ rappresenta la distanza $d$ percorsa dalla luce per arrivare all'osservatore (e quindi la distanza della sorgente da noi).
 $ c cal(Z) = H_0 d $
 Quindi otteniamo nuovamente la legge di Hubble Lemaitre, questa volta però esplicitamente come un'approssimazione in un universo locale.
 
 == Gas interagente
 Nella trattazione fatta fin'ora abbiamo sempre considerato il fluido come non interagente, sfruttando il fatto che le dimensioni delle galassie (le particelle del fluido) sono ordini di grandezza più piccole delle distanze tra le stesse.
-Tuttavia abbiamo anche visto che l'universo si sta espandendo, dunque possiamo concludere che in un tempo passato le particelle fossero molto più vicine e dunque interagenti.\
+Tuttavia abbiamo anche visto che l'universo si sta espandendo, quindi possiamo concludere che in un tempo passato le particelle fossero molto più vicine e dunque interagenti.\
 Per descrivere questa situazione partiamo dalla prima legge della termodinamica
 $ dd(U) = T dd(S) - p dd(V) $
 ma questo lo consideriamo per tutto l'universo che non ha nulla con cui scambiare calore (è totalmente adiabatico), dunque $dd(S) = 0$.\
