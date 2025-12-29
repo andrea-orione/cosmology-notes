@@ -156,6 +156,7 @@ $eta$ viene detto *tempo conforme*, ma lo riprenderemo solo in seguito.
 Rimane ancora da capire come sia fatto $dd(l)^2$.
 Questo, dovendo valere le due condizioni, dovrà essere massimamente simmetrico (ovvero con scalari di curvatura costanti ovunque).
 Si dà il caso che ci siano solo 3 opzioni possibili:
+// TODO: Mettere le 3 immagini
 / Spazio piatto: con curvatura $=0$ (come lo spazio euclideo $EE^3$). La sua metrica la conosciamo
 $ dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 $
 / Spazio sferico: con curvatura $>0$ (come una sfera ma tridimensionale $SS^3$). La sua metrica la possiamo costruire con un immersione in $RR^4$ (la coordinata aggiuntiva la chiamiamo $u$)
@@ -223,6 +224,7 @@ La coordinata $r = S_K (chi)$ viene detta *angular comoving distance* (o *transv
 Essa rappresenta la distanza comovente che lega le lunghezze d'arco a agli angoli sottesi.\
 Per uno spazio piatto la distanza angolare e radiale coincidono, così non è per spazi curvi dove per 'appiattire' una delle due devo 'stirare' l'altra.\
 La figura seguente cerca di dare un'intuizione di questo concetto.
+// TODO: Mettere immagine vista da davanti e non da sopra
 #subpar.grid(
   figure(
     image("images/2-1_parametrizzazione_sfera_a.pdf", width: 80%),
@@ -260,7 +262,7 @@ Operativamente si definisce tale che
 $ F_o = L_e/(4 pi d_L^2) $
 Per collegarla alla distanza comovente (anche in questo caso mi interessa quella angolare), bisogna tenere conto di cosa succede ai fotoni nel viaggio fino a noi (possiamo ignorare l'azione diretta del fattore di scala su $r$ perché tanto l'osservazione è fatta oggi).
 La luminosità è data da
-#aeq[$ L = E_(gamma)/Delta t $]
+#aeq[$ L = E_(gamma)/(Delta t) $]
 dove $E_(gamma) = planck nu = planck c/lambda$ è l'energia dei singoli fotoni, mentre $Delta t$ è il tasso a cui vengono emessi.\
 Ma la lunghezza d'onda dei fotoni viene stirata ($lambda_e = a lambda_o$) quindi perdono energia.
 Inoltre il tasso di arrivo cambia, ciò che rimane costante è $Delta eta = a Delta t = Delta t_0$
