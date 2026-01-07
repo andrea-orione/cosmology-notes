@@ -437,7 +437,7 @@ Abbiamo inoltre risolto le equazioni per universi a singola componente trovando
 Andiamo ora a studiare come evolve l'universo a due componenti materia e curvatura. Iniziamo dall'equazione con le abbondanze
 #aeq[$(dot(a)/a)^2 = H^2_0 (Omega_(m 0) a^(-3) + Omega_(k 0) a^(-2))$]
 #aeq[$dot(a)^2 = H^2_0 (Omega_(m 0) a^(-1) + Omega_(k 0))$]
-Passiamo poi al tempo conforme $eta = t/a => dv(,t) = 1/a dv(,eta)$ (indichiamo $dot(Q) = dv(Q,t)$ e $Q' = dv(Q, eta)$)
+Passiamo poi al tempo conforme $dd(t) = a dd(eta) => dv(,t) = 1/a dv(,eta)$ (indichiamo $dot(Q) = dv(Q,t)$ e $Q' = dv(Q, eta)$)
 #aeq[$
   (a')^2 &= H^2_0 (Omega_(m 0) a + Omega_(k 0) a ^2)\
   &= H^2_0 Omega_(m 0) a (1 + Omega_(k 0)/Omega_(m 0) a)\
@@ -446,9 +446,9 @@ $]
 Facciamo ora un cambio di variabile $y^2 = -Omega_(k 0)/Omega_(m 0) a => a = -Omega_(m 0)/Omega_(k 0) y^2 => a' = - Omega_(m 0)/Omega_(k 0) 2 y y' $.
 Notiamo che $y$ può assumere anche valori immaginari (perché $Omega_(k 0)$ può essere positivo o negativo), ma questo non ci spaventa in quanto ci basta anteporre una $i$ a tutti i conti, e trasformare le funzioni trigonometriche in iperboliche.
 #aeq[$cancel(Omega_(m 0)^2)/Omega_(k 0)^(cancel(2)) 4 cancel(y^2) (y')^2 = - H^2_0 cancel(Omega_(m 0)) cancel(Omega_(m 0))/cancel(Omega_(k 0)) cancel(y^2) (1 - y^2)$]
-#aeq[$y' = dv(y, eta) = 1/2 H_0^2 sqrt(- Omega_(k 0))sqrt(1 - y^2)$]
-#aeq[$integral dd(eta) = 2/(H_0^2 sqrt(- Omega_(k 0))) integral dd(y)/sqrt(1 - y^2)$]
-#aeq[$eta = 2/(H_0^2 sqrt(- Omega_(k 0))) arcsin(y)$]
+#aeq[$y' = dv(y, eta) = 1/2 H_0 sqrt(- Omega_(k 0))sqrt(1 - y^2)$]
+#aeq[$integral dd(eta) = 2/(H_0 sqrt(- Omega_(k 0))) integral dd(y)/sqrt(1 - y^2)$]
+#aeq[$eta = 2/(H_0 sqrt(- Omega_(k 0))) arcsin(y)$]
 #aeq[$y = sin(1/2 underbrace(H_0 sqrt(-Omega_(k 0)) eta, theta)) = sin(theta/2)$]
 #aeq[$a =  -Omega_(m 0)/Omega_(k 0) y^2 = -Omega_(m 0)/Omega_(k 0) sin^2(theta/2) = -Omega_(m 0)/Omega_(k 0) 1/2(1 - cos(theta)) $]
 $ a = 1/2 Omega_(m 0)/Omega_(k 0) (cos(theta)- 1) $

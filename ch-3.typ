@@ -243,7 +243,7 @@ Definiamo un *rate di interazione* (*interaction rate*) $Gamma$ come il numero m
 - Se $Gamma << H$ le particelle vengono allontanate le une dalle altre troppo in fretta e non hanno tempo di interagire.
 Il nostro interesse è studiare in quali intervalli di temperatura queste condizioni sono soddisfatte.
 Ci concentreremo per semplicità sui primi istanti di vita dell'universo in cui tutto era ultra-relativistico e l'evoluzione era radiation dominated.
-#aeq[$H^2 = (8 pi G)/3 overline(rho)_(r 0) = (8 pi G)/3 overline(rho)_(r) a^(-4)$]
+#aeq[$H^2 = (8 pi G)/3 overline(rho)_(r) = (8 pi G)/3 overline(rho)_(r 0) a^(-4)$]
 $ H ~ T^2 sqrt(G) $
 dove lasciamo la dipendenza da $G$ poiché questa costante è molto diversa da $1$ (#box[$G approx qty("6.7e-39", "GeV")$]) e vogliamo valutare degli ordini di grandezza.\
 Dobbiamo ora valutare $Gamma$.
