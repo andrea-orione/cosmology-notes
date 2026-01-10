@@ -78,21 +78,21 @@ Notiamo che il laplaciano ($laplacian = partial^i partial_i$) non è nient'altro
 Questo contiene informazioni sulla curvatura (analogamente all'Hessiana per un campo scalare) ed è legato a quanto le geodetiche divergano o convergano.\
 L'unico oggetto che trasformi tensorialmente e contenga informazioni sulle derivate seconde è il *tensore di Riemann*
 $ heq(
-  tensor(cal(R), +mu, -nu, -rho, -kappa) =
+  tensor("R", +mu, -nu, -rho, -kappa) =
   partial_rho tensor(Gamma, +mu, -nu, -kappa) - partial_kappa tensor(Gamma, +mu, -nu, -rho) +
   tensor(Gamma, +lambda, -nu, -kappa) tensor(Gamma, +mu, -lambda, -rho) - tensor(Gamma, +lambda, -nu, -rho) tensor(Gamma, +mu, -lambda, -kappa)
 ) $
 A noi interessa la traccia che è rappresentata dal *tensore di Ricci*
-$ tensor(cal(R), -mu, -nu) = tensor(cal(R), +sigma, -mu, -sigma, -nu) $
+$ tensor("R", -mu, -nu) = tensor("R", +sigma, -mu, -sigma, -nu) $
 Possiamo pensare che la traccia descrive come i volumi vengono contratti o dilatati, mentre la parte trace-less (detta _tensore di Weil_) descrive come vengono deformati.
 
 Rimane un ultimo problema, ovvero che il tensore di Ricci non ha derivata covariante nulla, a differenza del tensore energia-impulso (nel secondo membro, che vedremo dopo) che rispetta una legge di continuità.
 Questo problema viene risolto definendo il *tensore di Einstein* che ha derivata nulla
-$ tensor(G, -mu, -nu) = tensor(cal(R), -mu, -nu) - 1/2 tensor(g, -mu, -nu) cal(R) $
-dove $cal(R) = tensor(cal(R), -mu, -nu) tensor(g, +mu, +nu)$ è lo *scalare di Ricci*.\
+$ tensor(G, -mu, -nu) = tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu) "R" $
+dove $"R" = tensor("R", -mu, -nu) tensor(g, +mu, +nu)$ è lo *scalare di Ricci*.\
 
 === Il tensore Energia-Impulso
-Abbiamo visto il primo membro dell'equazione di Einstein $tensor(G, -mu, -nu) = tensor(cal(R), -mu, -nu) - 1/2 tensor(g, -mu, -nu) cal(R)$.
+Abbiamo visto il primo membro dell'equazione di Einstein $tensor(G, -mu, -nu) = tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu) "R"$.
 Passiamo ora al secondo.
 
 Dobbiamo scrivere qualcosa di analogo al termine $4 pi G rho$ dell'equazione di Poisson, ma che abbia 2 indici simmetrici e derivata covariante nulla.
@@ -138,7 +138,7 @@ In linea di principio la densità di momento e la corrente di energia sono quant
 Quindi a noi interesserà solo la parte simmetrica di $tensor(T, -alpha, -beta)$.
 
 Possiamo quindi scrivere l'*equazione di Einstein* che descrive come l'energia genera la curvatura
-$ heq(tensor(cal(R), -mu, -nu) - 1/2 tensor(g, -mu, -nu) cal(R) = (8 pi G)/c^4 tensor(T, -mu, -nu)) $
+$ heq(tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu) "R" = (8 pi G)/c^4 tensor(T, -mu, -nu)) $
 Il coefficiente di proporzionalità arriva da considerazioni dimensionali ($[laplacian(psi)] = T^(-2), [tensor(G, -mu, -nu)] = L^(-2), [rho] = M L^(-3), [tensor(T, -mu, -nu)] = M L^2 T^(-2) L^(-3) $) e imponendo che in approssimazione di campo debole l'equazione si riconduca a Poisson.
 
 
@@ -326,29 +326,29 @@ $
 $
 
 Possiamo quindi calcolare il tersore di Ricci
-#aeq[$ tensor(cal(R), -mu, -nu) = tensor(cal(R), +sigma, -mu, -sigma, -nu) =
+#aeq[$ tensor("R", -mu, -nu) = tensor("R", +sigma, -mu, -sigma, -nu) =
   partial_sigma tensor(Gamma, +sigma, -mu, -nu) - partial_nu tensor(Gamma, +sigma, -mu, -sigma) +
   tensor(Gamma, +lambda, -mu, -nu) tensor(Gamma, +sigma, -lambda, -sigma) - tensor(Gamma, +lambda, -mu, -sigma) tensor(Gamma, +sigma, -lambda, -nu) $]
 Svolgendo i conti ci si rende conto che anche il tensore di Ricci è diagonale (ci si può anche arrivare ricordando che l'universo è isotropo e se Ricci avesse componenti off-diagonal, questo definirebbe direzioni preferenziali).
 Dunque mi basta calcolare 4 componenti (riportiamo di seguito solo i risultati):
 #aeq[$
- tensor(cal(R), -0, -0) &= -3/c^2 dot.double(a)/a\
- tensor(cal(R), -1, -1) &= (a dot.double(a))/c^2 + 2 dot(a)^2/c^2 - 2S''_K/S_K = a^2/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
- tensor(cal(R), -2, -2) &= (a dot.double(a))/c^2 S^2_K + 2 dot(a)^2/c^2 S_K^2 - S_K S''_K + 1 -(S'_K)^2 = a^2/c^2 S_K^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
- tensor(cal(R), -3, -3) &= sin^2(theta)[(a dot.double(a))/c^2 S^2_K + 2 dot(a)^2/c^2 S_K^2 - S_K S''_K + 1 -(S'_K)^2] = a^2/c^2 S_K^2 sin^2(theta)[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
+ tensor("R", -0, -0) &= -3/c^2 dot.double(a)/a\
+ tensor("R", -1, -1) &= (a dot.double(a))/c^2 + 2 dot(a)^2/c^2 - 2S''_K/S_K = a^2/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
+ tensor("R", -2, -2) &= (a dot.double(a))/c^2 S^2_K + 2 dot(a)^2/c^2 S_K^2 - S_K S''_K + 1 -(S'_K)^2 = a^2/c^2 S_K^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
+ tensor("R", -3, -3) &= sin^2(theta)[(a dot.double(a))/c^2 S^2_K + 2 dot(a)^2/c^2 S_K^2 - S_K S''_K + 1 -(S'_K)^2] = a^2/c^2 S_K^2 sin^2(theta)[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
 $]
 Gli ultimi tre risultati possono essere riuniti assieme formando
 $
- tensor(cal(R), -0, -0) &= -3/c^2 dot.double(a)/a\
- tensor(cal(R), -i, -j) &= 1/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] tensor(g, -i, -j)
+ tensor("R", -0, -0) &= -3/c^2 dot.double(a)/a\
+ tensor("R", -i, -j) &= 1/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] tensor(g, -i, -j)
 $
 Calcoliamo lo scalare di Ricci
 $
-cal(R) &= tensor(g, +mu, +nu) tensor(cal(R), -mu, -nu) = - tensor(cal(R), -0, -0) + tensor(g, +i, +j) tensor(cal(R), -i, -j)\
+"R" &= tensor(g, +mu, +nu) tensor("R", -mu, -nu) = - tensor("R", -0, -0) + tensor(g, +i, +j) tensor("R", -i, -j)\
 &= 3/c^2 dot.double(a)/a + 1/c^2 [dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] underbracket(tensor(g, +i, +j) tensor(g, -i, -j), 3)\
 &= 6/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2]
 $
-Infine possiamo calcolare il tensore di Einstein $tensor(G, +mu, -nu) = tensor(G, -rho, -nu)tensor(g, +rho, +mu) = tensor(cal(R), +mu, -nu) - 1/2 tensor(delta, +mu, -nu) cal(R)$ (questo è quello con la forma più semplice)
+Infine possiamo calcolare il tensore di Einstein $tensor(G, +mu, -nu) = tensor(G, -rho, -nu)tensor(g, +rho, +mu) = tensor("R", +mu, -nu) - 1/2 tensor(delta, +mu, -nu) "R"$ (questo è quello con la forma più semplice)
 $
  tensor(G, +0, -0) & = 3/c^2 dot.double(a)/a -3/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2] = -3/c^2 [(dot(a)/a)^2 + (K c^2)/a^2]\
  tensor(G, +i, -j) &= 1/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] tensor(delta, +i, -j) -3/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2] tensor(delta, +i, -j) \
@@ -424,7 +424,7 @@ $ heq(dot(overline(rho)) = -3 dot(a)/a (overline(rho) + overline(p)/c^2)) $
 Abbiamo riottenuto l'equazione di continuità cosmologica.\
 Non calcoliamo i termini $nu = 1$, in quanto danno tutti soluzioni triviali $0=0$ (sopravvivono solo le derivate spaziali di $T$ che sono nulle).
 
-Passiamo ora all'equazione di Einstein $tensor(cal(R), -mu, -nu) - 1/2 tensor(g, -mu, -nu)cal(R) = (8 pi G)/c^4 tensor(T, -mu, -nu)$:
+Passiamo ora all'equazione di Einstein $tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu)"R" = (8 pi G)/c^4 tensor(T, -mu, -nu)$:
 $ heq((dot(a)/a)^2 = (8 pi G)/3 overline(rho) - (K c^2)/a^2) $
 $ heq(dot.double(a)/a = - (4 pi G)/3 (overline(rho) + 3 overline(p)/c^2)) $
 Queste sono rispettivamente la prima e la seconda equazione di Friedmann. Notiamo che la prima è identica a quella già ottenuta in precedenza, solo che ora sappiamo il significato di $K$. La seconda invece ha un termine in più che nella trattazione classica ci siamo persi non avendo tenuto conto che anche la radiazione gravita.
@@ -532,7 +532,7 @@ Si scelse di preservare la SEC e dunque si reinserì la costante cosmologica
 
 === Costante cosmologica come forma di energia
 Al giorno d'oggi, nelle equazioni di Einstein si tende a spostare $Lambda$ dall'altro lato (mettiamo $c = 1$)
-$ tensor(cal(R), -mu, -nu) -1/2 tensor(g, -mu, -nu) cal(R) = (8 pi G)/c^4 (tensor(T, -mu, -nu) + tensor(T^(Lambda), -mu, -nu)) wide "con" wide
+$ tensor("R", -mu, -nu) -1/2 tensor(g, -mu, -nu) "R" = (8 pi G)/c^4 (tensor(T, -mu, -nu) + tensor(T^(Lambda), -mu, -nu)) wide "con" wide
 tensor(T^(Lambda), -mu, -nu) = - Lambda c^4/(8 pi G) tensor(g, -mu, -nu) $
 Questo per due motivi principali:
 - Operativamente risulta più semplice trattare $Lambda$ come tutte le altre sorgenti

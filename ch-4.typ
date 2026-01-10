@@ -102,7 +102,7 @@ $ dv(cal(H)^1, ln(a)) &= - a/cal(H)^2 dv(cal(H), a) = - cancel(a)/(a^cancel(2) H
 dove abbiamo introdotto lo *slow-roll parameter* $epsilon_H = - dot(H)/H^2$.\
 Per avere $dv(cal(H)^(-1), ln(a)) < 0$ serve avere $epsilon_H < 1$, ma $epsilon$ può essere riscritto usando le equazioni di Friedmann:
 $ epsilon_H = - dot(H)/H^2 = - 1/H^2 [dot.double(a)/a - (dot(a)/a)^2] = 1 - 1/H^2 dot.double(a)/a = 1 + 1/(2 overline(rho)) (overline(rho) + 3 overline(p)) = 3/2(1 + overline(p)/overline(rho)) $
-Ma allora imporre $epsilon_H < 1$ equivale a $overline(rho) + 3 overline(p) < 0$ che corrispondere a rompere la strong energy condition ($w > -1/3$).\
+Ma allora imporre $epsilon_H < 1$ equivale a $overline(rho) + 3 overline(p) < 0$ che corrispondere a rompere la strong energy condition ($w < -1/3$).\
 Quindi vogliamo qualcosa che si comporti in modo simile alla costante cosmologica.
 
 === Inflatone

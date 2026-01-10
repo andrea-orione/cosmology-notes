@@ -498,7 +498,7 @@ Definiamo anche
 #aeq[$ n_s^((0)) (T) = g_s ((m_s T)/(2 pi))^(3/2) exp{-(m_s)/T} $]
 che sarebbe la densità numerica che avrebbe la specie se avesse potenziale chimico nullo (sarà utile successivamente).\
 In questo modo possiamo scrivere
-$ exp{- (m_A - mu_A)/T} exp{-m_A/T} = (n_A (T))/(n_A^((0)) (T)) $
+$ exp{- (m_A - mu_A)/T} exp{m_A/T} = (n_A (T))/(n_A^((0)) (T)) $
 Quindi esponenziando ambo i lati dell'@eq:equilibrio_masse si ottiene
 $ heq( (n_A (T))/(n_A^((0)) (T)) (n_B (T))/(n_B^((0)) (T)) = (n_C (T))/(n_C^((0)) (T)) (n_D (T))/(n_D^((0)) (T))) $
 Questa viene detta *Equazione di Saha*, che descrive la relazione tra concentrazioni numeriche di specie non relativistiche all'equilibrio chimico.
