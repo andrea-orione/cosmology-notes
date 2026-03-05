@@ -369,6 +369,7 @@ moltiplicando tutto per $eta^2$ ottengo
 #aeq[$ eta^2 Psi'' + 4 eta Psi' + eta^2 k^2/3 Psi = 0 $]
 per risolvere questa equazione cambio variabile
 #aeq[$ y = (k eta)/sqrt(3) wide "e" wide psi(y) =Psi/y $]
+// TODO: Girare la seconda
 #aeq[$ y^2 dv(psi, y,2) + 2 y dv(psi, y) + (y^2 - 2) psi = 0 $]
 Questa è l'equazione per le funzioni di Bessel di ordine 1 (l'ordine $l$ è determinato dal 2 nel terzo termine che corrisponde a $l(l+1)$).
 $ psi (y) = C_1 j_1 (y) + C_2 n_1 (y) quad ==> quad Psi (k, eta) = A_(va(k)) (j_1 ((k eta)/sqrt(3)))/((k eta)/sqrt(3)) + B_(va(k)) (n_1 ((k eta)/sqrt(3)))/((k eta)/sqrt(3)) $
