@@ -48,7 +48,7 @@ Quindi il tempo conforme tra il Big Bang e ricombinazione sarà molto minore ris
   image("images/4-2_ricombinazione_noi.png", width: 80%)
 )
 Ma questo significa che la maggior parte dei punti della CMB hanno coni luce passati che non si incrociano, quindi devono essere causalmente disconnessi.
-Può essere utile pensare a cosa succederebbe se le cose fossero al contrario: se la ricombinazione fosse più vicina a noi che alla singolarità, la base del triangolo tratteggiato sarebbe più corta mentre i trinagoli grigi sarebbero più grandi e si sorvapporrebbero.
+Può essere utile pensare a cosa succederebbe se le cose fossero al contrario: se la ricombinazione fosse più vicina a noi che alla singolarità, la base del triangolo tratteggiato sarebbe più corta mentre i triangoli grigi sarebbero più grandi e si sovrapporrebbero.
 
 Possiamo provare a quantificare il problema: calcolando il rapporto tra l'orizzonte comovente oggi e alla ricombinazione si ottiene che oggi è circa 50 volte quello alla ricombinazione.\
 Un risultato più interessante è l'angolo sotteso dall'orizzonte alla ricombinazione, questo si ottiene facendo
@@ -83,8 +83,8 @@ Questo periodo di accelerazione viene detto *inflazione*.
 
 // TODO: Spostare questa parte sotto
 Possimo provare a valutare quanto deve essere stata grande questa espansione.
-Se consideriamo un universo radiation-dominate abbiamo $cal(H)^(-1) ~ a ~ T^(-1)$, quindi calcoliamo il rapporto tra il raggio di Hubble conforme oggi e alla fine dell'inflazione (che corrisponde al Big Bang caldo).
-Alla fine dell'inflazione abbiamo la temperatura di reheating $T approx qty("e15", "GeV")$ (temperatura a cui tutte le interazioni iniziano ad avvenire con tasso maggiore all'espanisione dell'universo, vedi @eq:limite_temp della @sec:eq_chimico).
+Se consideriamo un universo radiation-dominated abbiamo $cal(H)^(-1) ~ a ~ T^(-1)$, quindi calcoliamo il rapporto tra il raggio di Hubble conforme oggi e alla fine dell'inflazione (che corrisponde al Big Bang caldo).
+Alla fine dell'inflazione abbiamo la temperatura di reheating $T approx qty("e15", "GeV")$ (temperatura a cui tutte le interazioni iniziano ad avvenire con tasso maggiore all'espansione dell'universo, vedi @eq:limite_temp della @sec:eq_chimico).
 $ (cal(H)^(-1))_"reheating"/(cal(H)^(-1))_"oggi" = T_"oggi"/T_"reheating" = qty("2.73", "K")/qty("e15", "GeV") approx num("e-28") approx e^(-65) $
 Quindi tra il reheating e noi ci sono state 65 $e$-folds, e se vogliamo avere la causalità è necessario che ce ne siano state altrettante durante l'inflazione prima del reheating.
 Ma noi sappiamo che il reheating è avvenuto dopo $qty("e-30", "s")$.
@@ -96,7 +96,7 @@ Infatti qualsiasi valore di curvatura avesse l'universo all'inizio, la grande es
 Andiamo ora alcune condizioni sui processi fisici che devono aver causato l'inflazione.
 Innanzitutto vogliamo che
 $ dv(cal(H)^(-1), ln(a)) < 0 $
-$ dv(cal(H)^1, ln(a)) &= - a/cal(H)^2 dv(cal(H), a) = - cancel(a)/(a^cancel(2) H) dv((a H), a) = - 1/(dot(a) a H^2) dv((a H), t)\
+$ dv(cal(H)^(-1), ln(a)) &= - a/cal(H)^2 dv(cal(H), a) = - cancel(a)/(a^cancel(2) H^2) dv((a H), a) = - 1/(dot(a) a H^2) dv((a H), t)\
 &= - 1/(a^2 H^3) (dot(a) H + a dot(H)) = - 1/(a H) (dot(a)/a H/H^2 + a/a dot(H)/H^2)\
 &= - (1 + dot(H)/H^2)/(a H) = - (1 - epsilon_H)/(a H) $
 dove abbiamo introdotto lo *slow-roll parameter* $epsilon_H = - dot(H)/H^2$.\
@@ -164,7 +164,7 @@ Poi man mano che aumenta l'energia cinetica, l'inflazione finisce.
 In questo periodo c'è stato un 'super raffreddamento'.
 Una volta che si arriva al minimo, il campo inizia ad oscillare rilasciando energia e decadendo in tutte le particelle del modello standard.
 
-Vediamo cosa succede al problema dell'orizzonte
+Vediamo cosa succede al problema dell'orizzonte.
 Abbiamo che $dot(overline(rho)) = -3 H overline(rho) (1 + w) => overline(rho) ~ a^(-3(1+w))$ quindi
 $
 eta(a) = integral dd(a)/(a^2 H) prop integral dd(a)/(a^(1/2(1- 3w))) = 2/(1+3w) a^(1/2(1+3w))

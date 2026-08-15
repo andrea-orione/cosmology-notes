@@ -120,7 +120,7 @@ Passiamo ai termini spaziali
 Il primo integrale è integrato su un volume e ci restituisce un momento, quindi $tensor(S, +i, +0)$ sarà una densità di momento.
 Gli altri tre sono integrati su un'area e su un tempo, quindi $tensor(S, +i, +j)$ rappresenta una densità di corrente di momento.
 Questa non è nient'altro che una generalizzazione della pressione, infatti integrando la pressione su un'area otteniamo una forza, che integrata sul tempo dà un impulso.
-Questo è quello che in meccanica solida viene detto 'tensore degli sforzi' con le componenti pressorie sulla diagonale e le componenti di taglio (_sheer_) fuori dalla diagonale.
+Questo è quello che in meccanica solida viene detto 'tensore degli sforzi' con le componenti pressorie sulla diagonale e le componenti di taglio (_shear_) fuori dalla diagonale.
 
 #osservazione[
   Questa 'definizione' euristica del tensore $tensor(S, +alpha, +beta)$ l'abbiamo ottenuta da considerazioni fatte in relatività speciale, dove è sempre possibile definire ipersuperfici arbitrariamente grandi con una coordinata costante.
@@ -181,7 +181,7 @@ Questa invarianza ci permette di fissare il valore del fattore di scala odierno 
 Quindi $K$ (dunque anche $R$) rappresenta il valore oggi.
 Un'interessante implicazione di ciò è che fino ad oggi $a$ è rimasto nell'intervallo $(0,1]$.
 ]
-- La coordinata $r$ è rappresenta una coordinata comovente, e non un'osservabile fisica (che misurerei con degli ipotetici righelli).\
+- La coordinata $r$ rappresenta una coordinata comovente, e non un'osservabile fisica (che misurerei con degli ipotetici righelli).\
   La coordinata fisica sarà $r_p = r a(t)$ (come abbiamo definito precedentemente).
   Potremmo provare a scrivere la metrica in questo sistema di coordinate, ma risulterebbe molto più complicata e scomoda la trattazione.
   Conviene fare teoria in coordinate comoventi e fare la conversione in sede sperimentale.
@@ -225,15 +225,15 @@ Le figure seguenti cerca di dare un'intuizione di questo concetto.
 #subpar.grid(
   figure(
     image("images/2-1_parametrizzazione_sfera_a.pdf", width: 80%),
-    caption: [Rappresentazione immersa]
+    caption: [Rappresentazione\ immersa]
   ),
   figure(
     image("images/2-1_parametrizzazione_sfera_b.pdf"),
-    caption: [Parametrizzazione in $r$ e $Omega$]
+    caption: [Parametrizzazione\ in $r$ e $Omega$]
   ),
   figure(
     image("images/2-1_parametrizzazione_sfera_c.pdf"),
-    caption: [Paramterizzazione in $chi$ e $Omega$]
+    caption: [Parameterizzazione\ in $chi$ e $Omega$]
   ),
   columns: (1fr, 1fr, 1fr),
   caption: [Parametrizzazioni di uno spazio positivamente curvo.],
@@ -424,7 +424,7 @@ Iniziamo dall'equazione di continuità $tensor(nabla, -mu) tensor(T, +mu, -nu) =
 $]
 $ heq(dot(overline(rho)) = -3 dot(a)/a (overline(rho) + overline(p)/c^2)) $
 Abbiamo riottenuto l'equazione di continuità cosmologica.\
-Non calcoliamo i termini $nu = 1$, in quanto danno tutti soluzioni triviali $0=0$ (sopravvivono solo le derivate spaziali di $T$ che sono nulle).
+Non calcoliamo i termini $nu = i$, in quanto danno tutti soluzioni triviali $0=0$ (sopravvivono solo le derivate spaziali di $T$ che sono nulle).
 
 Passiamo ora all'equazione di Einstein $tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu)"R" = (8 pi G)/c^4 tensor(T, -mu, -nu)$:
 $ heq((dot(a)/a)^2 = (8 pi G)/3 overline(rho) - (K c^2)/a^2) $
@@ -467,7 +467,7 @@ a = Omega_(m 0)/(2(-Omega_(k 0))) (1 - cos(theta))
 ) $
 Questa è la parametrizzazione di una cicloide.
 - Se $K > 0 <=> Omega_(k 0) < 0$ ho effettivamente la cicloide.
-  All'inizio ho un _Big-Bang_ seguito da un'espanzione, poi una decelerazione che porta ad una contrazione e infine un _Big-Crunch_. Si parla di *universo chiuso*.
+  All'inizio ho un _Big-Bang_ seguito da un'espansione, poi una decelerazione che porta ad una contrazione e infine un _Big-Crunch_. Si parla di *universo chiuso*.
   Se sviluppo attorno a 0 (nella dominazione della materia) ottengo $t ~ a^(2/3)$ che è il risultato che avevamo già trovato.
 - Se $K < 0 <=> Omega_(k 0) > 0$ le funzioni trigonometriche diventano iperboliche.
   Questo significa che non ho mai la ricontrazione, qundi l'universo si espande per sempre. Si parla di *universo aperto*.
@@ -509,14 +509,14 @@ Andiamo a considerare un ordine superiore nello sviluppo in serie di $a$ nell'un
 Definiamo il *parametro di decelerazione* (chiamato così per motivi storici)
 $ heq(q = - dot.double(a)/(a H^2)) $
 e otteniamo
-#aeq[$a(t) = 1 + H_0(t-t_0) + 1/2 H_0^2 q_0 (t- t_0)^2$]
+#aeq[$a(t) = 1 + H_0(t-t_0) - 1/2 H_0^2 q_0 (t- t_0)^2$]
 Quindi $q_0$ sarà il nuovo parametro che dovremo determinare con un fit sui dati.\
 Andiamo dunque a sviluppare l'espressione per la distanza di luminosità
 #aeq[$d_L (cal(Z)) = (1 + cal(Z)) r (cal(Z)) = (1 + cal(Z)) chi sinc(chi sqrt(K)) ~ (1 + cal(Z)) chi$]
 Sviluppiamo $chi$
 #aeq[$chi (cal(Z)) = integral_0^cal(Z) (c dd(cal(Z)'))/(H (cal(Z)')) = c integral_0^cal(Z) [1/H_0 + evaluated(dv(H, cal(Z)'))_(cal(Z) = 0) cal(Z)' + ...] dd(cal(Z)') = (c cal(Z))/H_0 - cal(Z)^2 c/(2 H_0^2) evaluated(dv(H, cal(Z)))_(cal(Z) = 0) + ... $]
 Dobbiamo calcolare la derivata di $H = dot(a)/a$
-#aeq[$dv(H, cal(Z)) = dv(H, t) dv(t, a) dv(a, cal(Z)) = (- dot(a)^2/a^2 + dot.double(a)/a ) 1/dot(a) (-a^2) = cancel(a^2)/cancel(dot(a)) dot(a)^(cancel(2))/cancel(a^2) (1 underbrace(- dot.double(a)/(a H^2) , -q)) = dot(a) (1+q)$]
+#aeq[$dv(H, cal(Z)) = dv(H, t) dv(t, a) dv(a, cal(Z)) = (- dot(a)^2/a^2 + dot.double(a)/a ) 1/dot(a) (-a^2) = cancel(a^2)/cancel(dot(a)) dot(a)^(cancel(2))/cancel(a^2) (1 underbrace(- dot.double(a)/(a H^2) , +q)) = dot(a) (1+q)$]
 Reinserendo nello sviluppo di $chi$
 $ chi (cal(Z)) = c/H_0 (cal(Z) - cal(Z)^2(q_0 + 1)) + ... $
 Quindi
@@ -608,7 +608,7 @@ dove tutte le energie sono per unità di massa.
 Notiamo che se il sistema è legato, l'energia è negativa e possiamo scrivere
 $ (dot(r)/r)^2 = (8 pi G)/3 rho - (2 abs(E_"tot"))/(r^2) $<eq:energia>
 Abbiamo trovato la prima equazione di Friedmann dove $2 abs(E_"tot")$ gioca il ruolo di curvatura positiva.
-Mettendo insieme le due equazioni, scrivendole con li fattore di scala, otteniamo
+Mettendo insieme le due equazioni, scrivendole con il fattore di scala, otteniamo
 $ heq(cases(
   dot.double(a)/a = -(4 pi G)/3 rho ,
   (dot(a)/ a)^2 = (8 pi G)/3 rho - (2 abs(E_"tot"))/(a^2 R^2)

@@ -159,7 +159,7 @@ $ rho dot(va(u)) = underbrace(- grad_p p, "press.") + underbrace(rho va(g), "gra
 La pressione sarà omogenea ovunque e dunque il suo gradiente sarà nullo.\
 Il campo gravitazionale possiamo scriverlo con l'equazione di Gauss
 $ grad_p dot va(g) = - 4 pi G rho $
-e passando al potenziane $psi$
+e passando al potenziale $psi$
 $ laplacian_p psi = 4 pi G rho $
 quindi
 #aeq[$ cancel(overline(rho)_m) dot(va(u)) = - cancel(overline(rho)_m) grad_p psi $]

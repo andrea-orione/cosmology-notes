@@ -57,7 +57,7 @@ $ rho dot(va(u)) = - 1/a grad p - rho/a grad psi $
 #aeq[$ (1+ delta) cancel(overline(rho)) [dot.double(a) va(x) + H va(v) + dot(va(v))] = - (c_s^2 cancel(overline(rho)))/a grad delta - ((1 + delta) cancel(overline(rho)))/a grad (overline(psi) + delta psi) $]
 Vogliamo ricollegarci all'equazione di Poisson, quindi prendiamo la divergenza
 #aeq[$ div {(1+ delta) [dot.double(a) va(x) + H va(v) + dot(va(v))]} = - c_s^2/a laplacian delta - div {(1 + delta)/a grad (overline(psi) + delta psi)} $]
-Ora possiamo notare che i termini $(1 + delta)$ stano moltiplicando termini già del primo ordine, qundi possiamo trascurare $delta$
+Ora possiamo notare che i termini $(1 + delta)$ stanno moltiplicando termini già del primo ordine, qundi possiamo trascurare $delta$
 #aeq[$ div [dot.double(a) va(x) + H va(v) + dot(va(v))] = - c_s^2/a laplacian delta - 1/a laplacian (overline(psi) + delta psi) $]
 #aeq[$ cancel(3 dot.double(a)) + H div va(v) + div dot(va(v)) = - c_s^2/a laplacian delta cancel(- 4 pi G overline(rho)/a) - 1/a laplacian delta psi $]
 dove abbiamo cancellato i due termini usando l'equazione di Friedmann per le quantità medie
@@ -101,7 +101,7 @@ In questo caso le densità medie non variano nel tempo e se c'è una componente 
   #let pie_laplace = [Un modo forse più formale consiste nel trasformare con Laplace rispetto al tempo.
     In questo modo l'approssimazione della mediazione su lunghi tempi delle oscillazioni della radiazione corrisponde a dire che nello spazio delle $omega$ le $delta_r$ tendono a 0 per alte pulsazioni.]
   La forzante $prop overline(rho)_r delta_r$ in linea di principio è variabile nel tempo e rispetta un'equazione differenziale analoga (effettivamente si ottiene che segue un oscillatore armonico semplice), tuttavia possiamo mediare su tempi abbastanza lunghi e rendere quel termine costante#footnote(pie_laplace).
-  Dunque ottenamo oscillazioni con pulsazione $omega = c_s k$ attorno ad un valore $4 pi G overline(rho)_r delta_r$.
+  Dunque otteniamo oscillazioni con pulsazione $omega = c_s k$ attorno ad un valore $4 pi G overline(rho)_r delta_r$.
 ]
 / Caso matter-dominated: #[\
   Abbiamo $overline(rho)_r << overline(rho)_m$ quindi possiamo trascurare $delta_r overline(rho)_r$
