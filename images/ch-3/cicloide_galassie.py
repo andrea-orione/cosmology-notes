@@ -35,4 +35,4 @@ ax.text(2.2, 4.3, "  Universo\ncircostante")
 # ax.legend()
 # ax.grid()
 
-fig.savefig("2-4_evoluzione_sovradens.pdf", bbox_inches="tight")
+fig.savefig("4-evoluzione_sovradens.pdf", bbox_inches="tight")

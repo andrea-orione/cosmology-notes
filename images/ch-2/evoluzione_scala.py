@@ -30,4 +30,4 @@ ax.set_ylim(0.,1)
 ax.grid()
 ax.legend()
 
-fig.savefig("1-2_evoluzione_scala.pdf", bbox_inches="tight")
+fig.savefig("3-evoluzione_scala.pdf", bbox_inches="tight")

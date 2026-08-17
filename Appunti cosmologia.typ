@@ -22,10 +22,10 @@
   stroke: (0.5pt + luma(200)),
 )
 
-#include "ch-0.typ"
 #include "ch-1.typ"
 #include "ch-2.typ"
 #include "ch-3.typ"
 #include "ch-4.typ"
 #include "ch-5.typ"
 #include "ch-6.typ"
+#include "ch-7.typ"

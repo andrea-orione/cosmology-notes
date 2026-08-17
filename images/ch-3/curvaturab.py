@@ -26,4 +26,4 @@ for x,y in zip(xs_long, ys_long):
 for x,y in zip(xs_lat, ys_lat):
     ax.plot(x, y, color="black", linewidth=0.5)
 
-fig.savefig("2-1_parametrizzazione_sfera_b.pdf", bbox_inches="tight")
+fig.savefig("1-2-parametrizzazione_sfera_b.pdf", bbox_inches="tight")

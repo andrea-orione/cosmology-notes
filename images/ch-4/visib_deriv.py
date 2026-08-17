@@ -44,4 +44,4 @@ ax.text(300, 20, r"$(1+\mathcal{Z})^{\frac{1}{2}}$", fontsize='small', rotation=
 ax.grid()
 # ax.legend()
 
-fig.savefig("3-9_vis_deriv.pdf", bbox_inches="tight")
+fig.savefig("10-vis_deriv.pdf", bbox_inches="tight")

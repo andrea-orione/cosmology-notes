@@ -37,4 +37,4 @@ ax.text(2.3, 4.7, "$K < 0$")
 # ax.legend()
 ax.grid()
 
-fig.savefig("2-2_cicloide.pdf", bbox_inches="tight")
+fig.savefig("2-cicloide.pdf", bbox_inches="tight")

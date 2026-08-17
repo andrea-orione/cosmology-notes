@@ -1,852 +1,645 @@
 //LTeX: language=it
 #import "pkg-preamble.typ": *
 
-= Modello a Big Bang Caldo
-Abbiamo studiato fin'ora quello che succede a scale macroscopiche, vedendo l'evoluzione del fattore di scala.
-Passiamo adesso a studiare le scale microscopiche delle particelle fondamentali, per vedere come queste si comportano all'interno di un universo che si evolve e come contribuiscono all'evoluzione dell'universo stesso.
-In particolare siamo interessati al loro comportamento nei primi istanti di vita dell'universo.\
-In questo capitolo, verranno utilizzate le unità naturali $c = planck = k_B = 1$.
-
-== Ripasso modello standard
-Prima di iniziare facciamo un ripasso del modello standard.
-Questo è in modello che raggruppa le particelle fondamentali conosciute e descrive le interazioni tra loro.
-Facciamo un breve elenco della classificazione delle particelle e delle loro masse:
-/ Fermioni: sono particelle a spin semi-intero e sono i costituenti della materia.\
-  Si dividono a loro volta in
-  - Quark: che sentono interazione elettromagnetica, forte e debole.\
-    Sono divisi in tre generazioni:
-    - Quark up '$u$' ($m = qty("2.16", "MeV")$) e quark down '$d$' ($m = qty("4.70", "MeV")$)
-    - Quark charm '$c$' ($m = qty("1.273", "GeV")$) e quark strange '$s$' ($m = qty("93.5", "MeV")$)
-    - Quark top '$t$' ($m = qty("172", "GeV")$) e quark bottom '$b$' ($m = qty("4.18", "GeV")$)
-  - Leptoni: che sentono interazione elettromagnetica debole.\ Anch'essi sono divisi in tre generazioni:
-    - Elettrone '$e$' ($m = qty("0.549", "MeV")$) e neutrino elettronico '$nu_e$' ($m < qty("0.8", "eV")$)
-    - Muone '$mu$' ($m = qty("105.7", "MeV")$) e neutrino muonico '$nu_mu$' ($m < qty("150", "keV")$)
-    - Tauone '$tau$' ($m = qty("1.78", "GeV")$) e neutrino tauonico '$nu_tau$' ($m < qty("18.2", "GeV")$)
-/ Bosoni: sono particelle a spin intero e sono i portatori delle interazioni.\ Si dividono in
-  - Bosoni vettori: a spin 1
-    - Fotone '$gamma$' ($m = 0$) portatore dell'interazione elettromagnetica
-    - Bosoni '$W^(plus.minus)$' ($m = qty("80.4", "GeV")$) e '$Z^0$' ($m = qty("91.2", "GeV")$) portatori dell'interazione debole
-    - Gluoni '$g_(1, ..., 8)$' ($m = 0$) portatore dell'interazione forte
-  - Bosoni scalari: a spin 0
-    - Bosone di Higgs '$H$' ($m = qty("125.2", "GeV")$) responsabile del meccanismo che fornisce la massa di tutte le particelle
-#figure(
-  image("images/3-0_modello_standard.svg", width: 60%),
-)
-
-== Evoluzione del quadri-momento con l'espansione dell'universo
-Sappiamo che le particelle possono essere più o meno relativistiche in base alla loro velocità (quindi al rapporto energia-massa $E^2 = m^2 + abs(va(q))^2$), fino ai due limiti estremi:
-- Limite non relativistico: $E approx m$ che in precedenza abbiamo chiamato materia
-- Limite ultra-relativistico: $E approx abs(va(q))$ che in precedenza abbiamo chiamato radiazione
-Vediamo ora come evolve il momento. Partiamo dall'equazione delle geodetiche
-#aeq[$ dv(x^alpha, lambda, 2) + tensor(Gamma, +alpha, -beta, -gamma) dv(x^beta, lambda) dv(x^gamma, lambda) = 0 $]
-ma $u^alpha = dv(x^alpha, lambda)$ e $P^alpha = m u^alpha$, quindi moltiplicando per $m^2$ otteniamo
-#aeq[$ m dv(P^alpha, lambda) + tensor(Gamma, +alpha, -beta, -gamma) P^beta P^gamma = 0 $]
-inoltre $dv(, lambda) = dv(x^0, lambda)dv(, x^0) = u^0 dv(, t)$
-$ heq(P^0 dot(P)^alpha + tensor(Gamma, +alpha, -beta, -gamma) P^beta P^gamma = 0) $
-
-Studiamo la componente $alpha = 0$ per il caso _mass-less_:
-#aeq[$
-  P^0 dot(P)^0 & = - tensor(Gamma, 0, -beta, -gamma) P^beta P^gamma = - tensor(Gamma, 0, -i, -j) P^i P^j \
-               & = -dot(a)a tensor(gamma, -i, -j) P^i P^j = -dot(a)a 1/a^2 tensor(g, -i, -j)P^i P^j \
-               & = - dot(a)/a (-tensor(g, -0, -0) P^0 P^0) \
-$]
-#aeq[$
-  cancel(E) dot(E) = - dot(a)/a cancel(E) E quad ==> quad dot(E)/E = -dot(a)/a quad ==> quad E prop a^(-1)
-$]
-Facendo i calcoli per particelle massive (per cui $P^mu P_mu = -m^2$) si ottiene
-$ heq(abs(va(q)) prop a^(-1)) wide "con" quad va(q) = a P^i vu(e)_i $
-Questo significa che il momento delle particelle (e di conseguenza la parte cinetica dell'energia) viene diluito con l'espansione dell'universo.
-Avevamo già visto euristicamente questo concetto quando abbiamo notato che la lunghezza d'onda dei fotoni si dilata (perdendo momento).\
-Tra l'altro, questo è il motivo per cui $rho_r prop a^(-4)$, infatti si ha una perdita di densità con $a^(-3)$ dovuta all'aumento del volume e una diluizione dell'energia (che nel caso dei fotoni è tutta cinetica) con $a^(-1)$.
-Per $rho_m$ non c'è la parte di diluizione dell'energia, in quanto questa è per lo più energia di massa che non varia con l'espansione.
-
-Il fatto che le particelle perdano momento significa che, con il passare del tempo, si ha un passaggio da stati ultra-relativistici a non relativistici.
-Quindi, oltre alla variazione delle densità delle specie che abbiamo già visto in precedenza, bisognerebbe considerare un flusso tra materia e radiazione dovuto al 'raffreddamento'.
-Questo è un fenomeno che avviene a tempi diversi per particelle diverse, infatti particelle più leggere dovranno diluire la loro energia cinetica molto di più perché questa diventi trascurabile rispetto alla massa.
-#figure(
-  image("images/3-0_cooldown_particelle.pdf", width: 46%),
-)
-
-Nel modello standard ci sono delle energie di scala, di cui alcuni esempi sono
-- $Lambda_"QCD" = qtyrange("150", "200", "MeV", delimiter: "÷")$: energia scala della QCD oltre la quale smette di essere efficacie il processo di confinameto, dunque è possibile osservare quark e gluoni liberi (detto _quark-gluon plasma_)
-- $Lambda_"EW" = qty("150", "GeV")$: energia sotto la quale si rompe la simmetria elettrodebole.
-  A energia superiore l'interazione elettromagnetica e debole vengono unificate e i bosoni #sym.gamma, W#super(sym.plus.minus) e Z#super("0") vengono sostituiti da un altro tipo di bosoni vettoriali tutti massless.
-Queste energie corrisponderanno a diversi tempi evolutivi dell'universo (in cui l'energia media si trovava al di sopra o al di sotto di queste soglie).
-Per diverse fasi evolutive il comportamento microscopico sarà differente.
-
-== Statistica delle specie
-Il nostro intento è andare a studiare il comportamento delle varie specie nelle prime fasi dell'universo.
-Queste si trovavano in uno stato di gas caldo, è dunque necessaria una descrizione statistica.\
-La quantità fondamentale è la *funzione di distribuzione* $f_s (va(x), va(q), t)$ che rappresenta la densità di probabilità che una particella della specie $s$ al momento $t$ si trovi nella posizione $va(x)$ con momento $va(q)$.\
-Se vogliamo ottenere la *densità numerica* $n_s$ (quantità che useremo molto), bisogna integrare su tutti gli stati di momento possibili.
-#let foot_struttura = [Questa spiegazione è molto euristica. Per una spiegazione più rigorosa fare riferimento ad un corso di meccanica statistica o più semplicemente a Struttura della Materia.]
-Tuttavia è necessario tenere conto che, a causa della meccanica quantistica, lo spazio delle fasi è quantizzato dunque è necessario moltiplicare la misura $dd(x, p, 3)$ per un fattore $g_s/(2 pi)^3$ (in SI $g_s/(2 pi planck)^3$) dove $g_s$ rappresenta la molteplicità di uno stato per la specie (ad esempio per gli elettroni che hanno 2 stati di spin possibili $g_s = 2$) e il fattore $2 pi$ rappresenta la dimensione di una celletta fondamentale dello spazio delle fasi#footnote(foot_struttura).\
-La *densità numerica* sarà
-$ heq(n_s (va(x), t) = g_s integral dd(q, 3)/(2pi)^3 f_s (va(x), va(q), t)) $
-mentre il numero totale $N_s$ lo si può otterene integrando sulle posizioni
-$ heq(N_s (t) = integral n_s (va(x), t) dd(x, 3) = g_s integral dd(x, q, 3)/(2pi)^3 f_s (va(x), va(q), t)) $
-
-Vogliamo ora legare la funzione di distribuzione a quantità macroscopiche che abbiamo già visto: la densità di energia $rho_s$ e la pressione $p_s$.\
-Per quanto riguarda l'energia è sufficiente sfruttare la relazione $E_s (va(q)) = sqrt(m_s^2 + abs(va(q))^2)$ valida per ciascuna particella, ottenendo
-$
-  heq(rho_s (va(x), t) = g_s integral dd(q, 3)/(2pi)^3 f_s (va(x), va(q), t) E_s (va(q))) quad = g_s integral dd(q, 3)/(2pi)^3 f_s (va(x), va(q), t) sqrt(m^2 + abs(va(q))^2)
-$
-Per quel che riguarda la pressione bisogna fare un ragionamento più delicato.
-#let figura_cono_sup = [#figure(
-  image("images/3-1_cono_superficie.pdf", width: 90%),
-)]
-#wrap-content(figura_cono_sup, align: right, columns: (6fr, 5fr))[
-  Consideriamo una superficie $dd(S)$ orientata con versore normale $vu(n)$, che abbia delle particelle da un lato.
-  La pressione esercitata dalle particelle sulla superficie sarà data dagli urti (e quindi dal trasferimento di momento) che le prime fanno sulla seconda.\
-  Prendiamo in considerazione un volume conico con apertura di un angolo solido $dd(Omega)$ e le particelle con momento $va(q)$ (e quindi velocità $va(v)$).
-  Le particelle che riusciranno a raggiungere la superficie in un tempo $dd(t)$ saranno quelle entro una distanza $dd(R) = abs(va(v)) dd(t)$.
-  Quindi bisogna considerare le particelle dentro un volume $abs(va(v)) dd(t) R^2 dd(Omega)$.]
-Tra tutte le particelle all'interno di questo volume non tutte hanno la direzione giusta per raggiungere la superficie.
-Assumiamo che le particelle abbiano una distribuzione isotropa, la frazione di quelle con direzione compatibile sarà data dalla frazione di angolo solido occupata dalla superficie (dal punto di vista delle particelle) $(dd(S) cos(theta))/(4 pi R^2)$ dove mettiamo il $cos(theta)$ perché dal punto di vista delle particelle ci interessa solo la parte ortogonale della superficie.\
-Quindi il numero di particelle a cui siamo interessati sarà
-#aeq[$ n abs(va(v)) dd(t) cancel(R^2) dd(Omega) (dd(S) cos(theta))/(4 pi cancel(R^2)) $]
-Ciascuna di queste urtando con momento $va(q)$ contro la superificie scambierà con quest'ultima (assumendo un urto totalmente elastico) un impulso $2 va(q) dot vu(n)$ (perché deve cambiare la direzione ortogonale alla superficie).
-Quindi l'impulso scambiato $dd(I)$ sarà
-#aeq[$ dd(I) = n/(4 pi) abs(va(v)) dd(t) dd(Omega) dd(S) 2 abs(va(q)) cos^2(theta) $]
-Ma la pressione non è nient'altro che impulso scambiato per unità di tempo per unità di area
-#aeq[$p = dd(I)/(dd(t)dd(S))$]
-#let foot_angolo = [Il motivo vero per cui integriamo su metà dell'angolo solido è che la pressione è definita all'equilibrio, quando la forza applicata dalle particelle da un lato è uguale a quella applicata da quelle dall'altro lato.
-Dunque è sufficiente considerare metà dell'angolo solido.\
-Volendola pensare geometricamente, quando facciamo i prodotti scalari dobbiamo trascurare i valori negativi perché corrispondono a particelle che si allontanano.
-Il risultato è però equivalente a considerare particelle solo da un lato.]
-Quindi otteniamo, riscrivendo $va(v) = va(q)/E$ (relazione in realtà valida solo in relatività speciale) e integrando su metà dell'angolo solido (perché le particelle abbiamo detto essere solo da un lato#footnote(foot_angolo)) si ottiene che la pressione data da particelle con momento $va(q)$ sarà
-$
-  p(va(q)) = integral_0^(2 pi) integral_0^1 n/(2 pi) abs(va(q))^2/E cos^2(theta) dd((cos(theta))) dd(phi)= n/cancel(2 pi) abs(va(q))^2/E cancel(2 pi) 1/3 = n abs(va(q))^2/(3 E)
-$
-Per darci un senso di questo risultato possiamo pensare che $abs(va(q))^2/E$ ci dà una pressione che va distribuita su 3 dimensioni.\
-Non ci rimane quindi che integrare sui momenti ottenendo
-$
-  heq(p_s (va(x), t) = g_s integral dd(q, 3)/(2pi)^3 f_s (va(x), va(q), t) abs(va(q))^2/(3 E)) quad = g_s integral dd(q, 3)/(2pi)^3 f_s (va(x), va(q), t) abs(va(q))^2/(3 sqrt(m^2 + abs(va(q))^2))
-$
-
-== Funzioni di distribuzione
-Possiamo ora andare a concentrarci sulla forma che hanno le funzioni di distribuzione.
-Iniziamo imponendo le condizioni di omogeneità e isotropia.
-L'omogeneità ci dice che non c'è dipendenza dalla posizione, mentre l'isotropia ci dice che non c'è dipendenza dalla direzione del momento bensì solo dal suo modulo (che indicheremo per semplicità come $q$).
-Sappiamo inoltre che in un universo omogeneo e isotropo la dipendenza temporale rientra solo implicitamente per scalare le distanze e i momenti.
-Quindi avremo $f_s (va(x), va(q), t) = f_s (q)$.\
-Questo semplifica anche l'integrazione che infatti diventa $dd(q, 3) --> 4 pi q^2 dd(q)$.
-$
-    n_s & = g_s/(2 pi^2) integral_0^(+infinity) dd(q) q^2 f_s (q) \
-  rho_s & = g_s/(2 pi^2) integral_0^(+infinity) dd(q) q^2 f_s (q) E(q) \
-    p_s & = g_s/(2 pi^2) integral_0^(+infinity) dd(q) f_s (q) q^4/(3 E(q))
-$
-
-Le condizioni che abbiamo appena descritto corrispondono a quello che viene detto *equilibrio termodinamico*: se il gas collide abbastanza da raggiungere la massima entropia possibile (si dice che il gas _termalizza_) si ottiene che le particelle seguono la *distribuzione di Fermi-Dirac* $f_"FD"$ se sono fermioni o la *distribuzione di Bose-Einstein* $f_"BE"$ se sono bosoni.
-$ heq(f_"FD" (q) = 1/(exp{(E(q) - mu)/T} + 1)) wide wide heq(f_"BE" (q) = 1/(exp{(E(q) - mu)/T} - 1)) $
-dove $T$ è la temperatura (che possiamo definire solo perché siamo in equilibrio) e $mu$ è il *potenziale chimico*.
-Quest'ultimo rappresenta la risposta del sistema (quindi la sua variazione in energia intera) quando viene cambiato il numero di particelle a entropia e volume costanti:
-$ heq(mu = (pdv(U, N))_(S,V)) $
-Quando si possono trascurare gli effetti quantistici (perché ci sono molte particelle, o la temperatura è molto bassa rispetto alla massa) le due distribuzioni convergono alla *distribuzione di Maxwell-Boltzmann* $f_"MB"$
-$ heq(f_"MB" (q) = exp{-(E(q) - mu)/T}) $
-
-Tutto il discorso che abbiamo fatto fin'ora vale per una singola specie.
-Nel momento in cui si ha un sistema con più specie al suo interno, bisogna tenere conto di come queste interagiscono tra loro.
-Se queste si urtano, viene raggiunto un equilibrio termico comune, che permette di definire una singola temperatura valida per tutte.
-Questa condizione viene detta *bagno termico*.
-Nel momento in cui una specie non interagisce più con le altre, questa può evolvere separatamente e potenzialmente avere una temperatura diversa dal bagno.
-In questo caso si dice che la specie si è *disaccoppiata dal bagno termica*.
-
-È anche possibile che durante le interazioni alcune particelle vengano create o distrutte, cambiando la densità numerica delle singole specie.
-È quindi necessario definire il concetto di *equilibrio chimico* che significa che possono anche esserci scambi tra specie ma nel complesso, le concentrazioni delle singole specie non possono cambiare (tante particelle di $A$ vengono create quante ne vengono distrutte).
-#aeq[$ A + B <--> C + D $]
-Dal punto di vista di potenziale chimico, ciò si traduce nella condizione
-$ mu_A + mu_B = mu_C + mu_D $
-
-== Quantità macroscopiche nei limiti ultra- e non relativistico
-Vogliamo andare a vedere le distribuzioni delle quantità $n_s$, $rho_s$ e $p_s$ nel limite non relativistico (quello che all'inizio chiamavamo materia o polvere) e nel limite ultra relativistico (quello che chiamavamo radiazione).
-Prima di iniziare introduciamo della notazione: spesso torna utile adimensionalizzare le forme di energia raccogliendo la temperatura
-$ X_s = m_s/T wide Y=q/T wide W_s = mu_s/T $
-dove $Y$ non ha il pedice perché il momento non ha dipendenza dalla specie.
-Le espressioni per le quantità macroscopiche in queste quantità diventano
-$
-  n_s &= g_s/(2 pi^2) T^3 integral_0^(+infinity) dd(Y) Y^2/(exp{sqrt(X_s^2 + Y^2) - W_s } plus.minus 1) = g_s/(2 pi^2) T^3 I_(plus.minus) (X_s, W_s)\
-  rho_s &= g_s/(2 pi^2) T^4 integral_0^(+infinity) dd(Y) (Y^2 sqrt(X_s^2 + Y^2))/(exp{sqrt(X_s^2 + Y^2) - W_s } plus.minus 1) = g_s/(2 pi^2) T^4 J_(plus.minus) (X_s, W_s)\
-  p_s &= g_s/(2 pi^2) T^4 integral_0^(+infinity) dd(Y) Y^4/(3 sqrt(X_s^2 + Y^2)) 1/(exp{sqrt(X_s^2 + Y^2) - W_s } plus.minus 1)
-$
-dove $I_(plus.minus) (X_s, W_s)$ e $J_(plus.minus) (X_s, W_s)$ raccolgono gli integrali.
-
-=== Limite non relativistico
-Il limite non relativistico corrisponde a $Y << X_s$ e ad una temperatura molto minore della massa.
-Ma questo significa che le due distribuzioni convergono a Maxwell-Boltzmann.\
-Iniziamo calcolando $n_s$
-#aeq[$ sqrt(X_s^2 + Y) = X_s sqrt(1+(Y/X_s)^2) = X_s (1 + 1/2 (Y/X_s)^2 + ...) ~ X_s + Y^2/(2 X_s) $]
-#aeq[$
-  I_(plus.minus) (X_s, Y) &~ e^(-X_s + W_s) integral_0^(+infinity) dd(Y) Y^2 exp{- Y^2/(2X_s) } wide wide & "definisco" A = 1/(2 X_s)\
-  & = e^(-X_s + W_s) integral_0^(+infinity) dd(Y) (- dv(, A) exp{- A Y^2 })\
-  & = e^(-X_s + W_s) (-dv(, A) 1/2 integral_(-infinity)^(+infinity) dd(Y) exp{- A Y^2 }) wide & "ho una gaussiana" = sqrt(pi/A)\
-  & = e^(-X_s + W_s) 1/2 (- dv(, A) sqrt(pi/A)) = e^(-X_s + W_s) sqrt(pi)/4 A^(-3/2)\
-  & = e^(-X_s + W_s) sqrt(pi)/4 (2 X_s)^(+3/2)
-$]
-#aeq[$ n_s & = g_s/(2 pi^2) T^3 exp{-(m_s - mu_s)/T} sqrt(pi)/4 2^(3/2) (m_s/T)^(3/2) $]
-$ heq(n_s & = g_s ((m_s T)/(2 pi))^(3/2) exp{-(m_s - mu_s)/T}) $
-Dato che $m_s$ e $mu_s$ sono fissati dalla specie, abbiamo solo $T$ che può variare e porta a due regimi:
-- Se $T >> m_s$ ho $n_s prop (m_s T)^(3/2)$
-- Se $T << m_s$ ho $n_s prop exp{-m_s/T}$
-#figure(
-  image("images/3-2_densita_primordiale.pdf", width: 50%),
-)
-Il motivo per cui si ha la caduta esponenziale a basse temperature è che le particelle hanno molta poca energia cinetica, quindi è molto improbabile che riescano in un'interazione a produrre nuove partecelle.
-È invece possibile che queste annichilino tra loro, dunque è favorevole la diminuzione di $n_s$ che all'equilibrio poi dà questo andamento.
-
-Passiamo ora a $rho_s$
-#aeq[$
-  J_(plus.minus) (X_s, Y) & approx e^(-X_s + W_s) integral_0^(+infinity) dd(Y) Y^2 exp{- Y^2/(2X_s) } (X_s + Y^2/(2 X_s))
-$]
-Possiamo dividere la somma in due integrali, di cui il primo è uguale a quello che abbiamo già risolto.
-Quindi rimane solo il secondo che si risolve in modo analogo
-#aeq[$
-  1/(2X_s) integral_0^(+infinity) dd(Y) exp{- Y^2/(2X_s) } Y^4
-  &= A 1/2 dv(, A, 2) integral_(-infinity)^(+infinity) dd(Y) exp{- A Y^2 }\
-  &= A/2 dv(, A, 2) sqrt(pi/A)\ &= A/2 3/4 A^(-5/2)\ &= 3/8 sqrt(pi) A^(-3/2)
-$]
-Anche questo è simile all'integrale di prima, infatti otteniamo
-#aeq[$ J_(plus.minus) (X_s, Y) = I_(plus.minus) X_s + 3/2 I_(plus.minus) $]
-quindi
-$ heq(rho_s = m_s n_s + 3/2 n_s T) $
-possiamo notare che questa è l'analogo statistico dell'approssimazione $E = m + E_K$
-
-Terminiamo con $p_s$
-#aeq[$ Y^4/sqrt(X_s^2 + Y^2) = Y^4/X_s (1 + (Y/X_s)^2)^(-1/2) = Y^4/X_s (1 - 1/2 (Y/X_s)^2 + ...) ~ Y^4/(X_s) $]
-#aeq[$ p_s = g_s/(2 pi^2) T^4 e^(-X_s + W_s) integral_0^(+infinity) dd(Y) Y^4/(X_s) exp{- Y^2/(2X_s) } $]
-Ma questo integrale è uguale a quello che abbiamo appena calcolato moltiplicato per $2/3$, quindi otteniamo
-$ heq(p_s = 0 + n_s T) $
-Lo 0 è stato messo per evidenziare come non ci siano termini che dipendono dalla massa, in accordo con quello che avevamo ottenuto nei primi capitoli (dove avevamo trovato $w = 0$ per la materia).
-
-=== Limite ultra-relativistico
-In questo limite abbiamo che $E_s approx q$ e quindi $X_s -> 0$.
-Possiamo anche trascurare $W_s$, questo può essere dimostrato (almeno per elettroni e protoni) ma non lo faremo.
-Un'intuizione della verità di questa affermazione può arrivarci pensando ai fotoni, che sono sempre ultra-relativistici.
-Esiste un fenomeno detto 'doppio scattering Compton' in cui si ha $e^- + gamma <--> e^- + gamma + gamma$.
-Ma questo significa che l'energia interna del sistema non dipende dal numero di fotoni presenti, quindi $mu = 0$.\
-Dobbiamo quindi valutare
-$
-  I_(plus.minus) (0, 0) = integral_0^(+infinity) dd(Y) Y^2/(e^Y plus.minus 1) wide J_(plus.minus) (0, 0) = integral_0^(+infinity) dd(Y) Y^3/(e^Y plus.minus 1)
-$
-Questi due integrali possono essere risolti utilizzando due integrali notevoli (che arrivano direttamente dalla definizione della zeta di Riemann $zeta(x)$)
-$
-  integral_0^(+infinity) dd(x) x^n/(e^x - 1) = zeta(n+1) n! wide integral_0^(+infinity) dd(x) x^n/(e^x + 1) = zeta(n+1) n! (1 - 2^(-n))
-$
-Quindi
-$ heq(n_s = zeta(3)/pi^2 g_s T^3 cases(1 quad s in "BE", 3/4 quad s in "FD")) $
-Notiamo che la densità numerica scala con una potenza doppia rispetto al caso non relativistico.
-Questo è dovuto al fatto che ad alta energia è molto più semplice generare nuove particelle dalle interazioni.
-#aeq[$ rho_s = (3 zeta(4))/pi^2 g_s T^4 cases(1 quad s in "BE", 7/8 quad s in "FD") $]
-Usando $zeta(4) = pi^4/90$
-$ heq(rho_s = pi^2/30 g_s T^4 cases(1 quad s in "BE", 7/8 quad s in "FD")) $
-#aeq[$ p_s = g_s/(2 pi^2) integral_0^(+infinity) dd(q) q^(cancel(4)^3)/(3 cancel(q)) f_s(q) $]
-$ heq(p_s = 1/3 rho_s) $
-Anche questo è uguale al risultato che abbiamo ottenuto nei primi capitoli ($w = 1/3$ per la radiazione).
-
-Notiamo che in tutti i risultati in limite ultra-relativistico, la massa della specie non compare.
-Quindi significa che in questa approssimazione, tutte le specie si comportano allo stesso modo (a meno della molteplicità).
-
-Con i risultati che abbiamo ottenuto, proviamo ora a calcolare l'abbondanza odierna dei fotoni
-#aeq[$ Omega_(gamma 0) = overline(rho)_(gamma 0)/(rho_c) quad "con" quad rho_c = (3 H_0^2)/(8 pi G) $]
-Scrivendo l'espressione ottenuta per $overline(rho)_(gamma 0)$ (reinserendo le dovute costanti) si ottiene
-$
-  Omega_(gamma 0) = (8 pi G)/(3 H_0^2) g_gamma/(planck^3 c^5) pi^2/30 (underbracket(T_(gamma 0), qty("3", "K")) k_B)^4 approx num("5e-5")
-$<eq:abb_fot_ogg>
-Questo risultato è circa metà dell'abbondanza di radiazione che abbiamo già visto ($num("9e-5")$).
-Quindi c'è qualcosa che non stiamo considerando.
-Sono i neutrini, che ancora oggi possono essere considerati ultra-relativistici e dunque radiazione.
-
-Un'ultima cosa che possiamo fare prima di procedere è andare a sfruttare queste relazioni per collegare la temperatura ai parametri legati al tempo.
-Sappiamo che $rho_"r" ~ a^(-4)$ e che $rho_"r" ~ T^4$.
-Quindi per specie ultra relativistiche vale la relazione
-$ heq(T_s ~ a^(-1)) $
-
-== Equilibrio chimico<sec:eq_chimico>
-Abbiamo già detto che siamo in equilibrio chimico se per qualunque tipo di interazione #box($A + B <--> C + D$), questa è fatta in entrambi i  versi in modo tale che la concentrazione delle singole specie non cambi ($mu_A + mu_B = mu_C + mu_D$).\
-Per raggiungere questo stato sono necessarie due condizioni:
-- L'energia del sistema deve essere molto maggiore della massa di tutte le particelle (altrimenti alcune di esse non verrebbero generate perché sotto soglia).
-- L'interazione deve avere abbastanza tempo per avvenire.
-Questa condizione non è necessariamente soddisfatta in un universo in espansione.\
-Sappiamo che il _rate_ di espansione è $H$.
-Definiamo un *tasso di interazione* (*interaction rate*) $Gamma$ come il numero medio di interazioni che avvengono in un intervallo di tempo.
-- Se $Gamma >> H$ le interazioni hanno tempo di avvenire e il sistema può raggiungere l'equilibrio chimico.
-- Se $Gamma << H$ le particelle vengono allontanate le une dalle altre troppo in fretta e non hanno tempo di interagire.
-Il nostro interesse è studiare in quali intervalli di temperatura queste condizioni sono soddisfatte.
-Ci concentreremo per semplicità sui primi istanti di vita dell'universo in cui tutto era ultra-relativistico e l'evoluzione era radiation dominated.
-#aeq[$H^2 = (8 pi G)/3 overline(rho)_(r) = (8 pi G)/3 overline(rho)_(r 0) a^(-4)$]
-$ H ~ T^2 sqrt(G) $
-dove lasciamo la dipendenza da $G$ poiché questa costante è molto diversa da $1$ (#box[$G approx qty("6.7e-39", "GeV^-2")$]) e vogliamo valutare degli ordini di grandezza.\
-Dobbiamo ora valutare $Gamma$.
-Ne avremo uno per ogni reagente e avrà una forma del tipo (direttamente dalla definizione di sezione d'urto che si vede ad un corso di particelle)
-$ Gamma_A = n_B expval(v_(A B)) sigma_(A B, C D) $
-Sappiamo che $n_B ~ T^3$, mentre $expval(v_(A B)) approx 1$ (in unità di $c$) perché le particelle sono tutte ultra-relativistiche.\
-Per quanto riguarda $sigma$ sappiamo che a livello fondamentale le interazioni possono essere descritte con diagrammi di Feynman
-#figure(
-  include "images/feynmann_debole.typ",
-)
-L'ampiezza di interazione sarà legata al valore di aspettazione del diagramma, che a sua volta è proporzionale alla costante di accoppiamento dell'interazione
-$ sigma ~ alpha^2/T^2 quad "con" alpha = g^2/(4 pi) $
-dove abbiamo diviso per $T^2$ per far quadrare le dimensioni ($[sigma] = L^2 = E^(-2)$).\
-La costante di accoppiamento dipende dal tipo di interazione
-#aeq[$alpha_("EM") approx 1/137 wide alpha_"W" approx numrange("e-6", "e-5", delimiter: "÷") wide alpha_S approx Order(1)$]
-questi valori però non sono costanti, bensì variano con l'energia.\
-Ad alte energie le interazioni elettromagnetica e debole diventano più efficienti (e tendono asintoticamente ad unirsi nell'interazione elettrodebole).
-Ad esempio ad un'energia dell'ordine della massa del bosone $Z^0$, si ha $alpha_"EM" approx 1/127$ e $alpha_"W" approx num("e-2")$.\
-L'interazione forte invece si comporta in modo opposto (infatti ad alta energia si ha il deconfinamento di quark e gluoni).
-All'energia $E approx m_(Z^0)$, si ha $alpha_"S" approx num("e-2")$.\
-Quindi se consideriamo energie abbastanza alte possiamo assegnare lo stesso valore a tutte le costanti di accoppiamento
-#aeq[$alpha_"EM" approx alpha_"W" approx alpha_"S" approx alpha approx num("e-2")$]
-Mettendo tutto assieme otteniamo l'andamento per il rate di interazione
-$ Gamma_A ~ T^3 alpha^2 T^(-2) ~ alpha^2 T $
-Quindi
-$ Gamma/H ~ (alpha^2 T)/(sqrt(G) T^2) ~ qty("e15", "GeV")/T $<eq:limite_temp>
-Se vogliamo $Gamma >> H$ dovremo avere $T << qty("e15", "GeV")$.\
-Questo significa che inizialmente si parte da una temperatura altissima e l'universo si espande in modo incredibilmente veloce da non far interagire le particelle.
-Poi si scende sotto $qty("e15", "GeV")$ e iniziano ad avvenire le interazioni che portano al raggiungimento dell'equilibrio chimico.
-La temperatura poi continua a scendere fino a quando non passa sotto la massa del quark top.
-A questo punto il quark diventa non relativistico e inizia ad annichilire senza poter essere prodotto (perché non c'è più abbastanza energia) quindi piano piano si esaurisce completamente (quando la temperatura inizia a calare tanto si raggiunge il decadimento esponenziale che abbiamo visto nell'approssimazione non relativistica).
-Poi è il turno del bosone di Higgs che fa la stessa fine.\
-Quando però la temperatura scende sotto una certa soglia, le interazioni non hanno più una costante di accoppiamento che può essere considerata uguale per tutti.
-Quindi le specie iniziano a differenziarsi in base a quali interazioni sentono.\
-Prendiamo ad esempio l'interazione debole.
-Quando si raggiunge la temperatura corrispondente alla massa del bosone $Z^0$ (la prima ad essere raggiunta dopo il bosone di Higgs, $m_(Z^0) approx qty("100", "GeV")$), inizia a non essere più possibile risolvere tutta l'interazione che sembra invece un'interazione puntiforme come descritto dalla teoria di Fermi
-#figure(
-  include "images/feynmann_fermi.typ",
-)
-In questa teoria la costante di accoppiamento diventa
-$ alpha_"W" ~ G_F E^2 $
-con $G_F$ la costante di Fermi ($G_F approx qty("1.17e-5", "GeV^-2")$).
-Questo andamento di $alpha_"W"$ con l'energia (che qui abbiamo ricavato solo da uno studio dimensionale) deriva dal fatto che la forza di interazione dipende dalla risoluzione con cui si campiona.\
-
-Possiamo quindi vedere cosa succede ai neutrini (gli unici che sentono solo l'interazione debole) quando si scende sotto i $qty("100", "GeV")$
-$
-  Gamma/H ~ (T^3 (G_F T^2)^2 T^(-2))/(sqrt(G) T^2) ~ T^3 qty("e-10", "GeV^-4")/qty("e-19", "GeV^-1") ~ (T/qty("1", "MeV"))^3
-$
-La situazione si ribalta: sotto il $unit("MeV")$ i neutrini non riescono più ad interagire, quindi si disaccoppiano dal resto del bagno continuando ad evolvere in modo separato con una loro temperatura.
-Si dice che l'universo diventa _trasparente_ per loro.
-
-== Entropia dell'universo
-Finché ci troviamo in equilibrio termodinamico e chimico (nel range tra $qty("e15", "GeV")$ e $qty("1", "MeV")$) ci troviamo in un bagno termico, in cui vale la prima legge della termodinamica
-$ dd(U) + p dd(V) = T dd(S) + sum_i mu_i dd(N_i) $
-Quindi posso calcolare l'entropia del sistema
-#aeq[$
-  T dd(S) & = underbracket(dd(U), dd((rho V))) + p dd(V) - sum_i mu_i dd(N_i) \
-          & = rho dd(V) + V dd(rho) + p dd(V) - sum_i mu_i dd(N_i) \
-          & = V [(rho + p) dd(ln(V)) + dd(rho) - 1/V sum_i mu_i dd(N_i)]
-$]
-Calcolo quindi la derivata temporale
-#aeq[$ dv(S, t) = V/T [(rho + p) dv(ln(V), t) + dv(rho, t) - 1/V sum_i mu_i dv(N_i, t)] $]
-Possiamo ora notare che i primi due termini nella parentesi non sono altro che la legge di continuità. Infatti
-#aeq[$ dv(ln(V), t) = 1/V dv(V, t) = 1/(cancel(L^3) a^3) dv(cancel(L^3) a^3, t) = 1/a^3 3 a^2 dot(a) = 3 dot(a)/a $]
-quindi
-#aeq[$(rho + p) dv(ln(V), t) + dv(rho, t) = 3 dot(a)/a (rho + p) + dot(rho) = 0$]
-Rimettendo nell'equazione sopra otteniamo
-$ heq(dv(S, t) = - 1/T sum_i mu_i dv(N_i, t)) $
-ma dato che siamo all'equilibrio chimico, il numero di paticelle di ciascuna specie non varia, quindi
-$ dv(S, t) = 0 $
-Quindi per buona parte della sua vita, l'universo ha subito un'espansione adiabatica.
-
-Però noi sappiamo anche che i fotoni hanno $mu_gamma = 0$ quindi gli è concesso di variare in numero anche mantenendo l'equilibrio chimico.
-Dunque potremmo aspettarci un alto numero di fotoni.\
-Definiamo il *rapporto tra barioni e fotoni* (*baryon-to-photon ration*) $eta$
-$ heq(eta = N_b/N_gamma) quad = n_b/n_gamma $
-Proviamo a valutarlo oggi, assumendo che tutta la componente di barioni sia data da protoni (ci sarebbero anche gli elettroni ma hanno massa trascurabile)
-#aeq[$n_(b 0) = overline(rho)_b/m_p = (Omega_(b 0) rho_c)/m_p wide wide n_(gamma 0) = g_gamma/(planck c)^3 zeta(3)/pi^3 T^3_(gamma 0) k_B^3$]
-Facendo il calcolo si ottiene $eta approx num("6e-10")$.
-Questo significa che ci sono quasi 2 miliardi di fotoni (stiamo contando solo quelli primordiali della CMB, poi ci sono quelli emessi dalle sorgenti) per ogni barione (dove barione è inteso in senso cosmologico ossia qualsiasi materia che non sia materia oscura).
-
-Torniamo all'entropia e cerchiamo di scriverla come un differenziale perfetto (tenendo conto che la variazione del numero di particelle è nulla)
-#aeq[$ dd(S) = 1/T [(rho + p) dd(V) + V dd(rho)] = 1/T [dd(((rho + p)V)) - V dd(p)] $]
-ma sappiamo che
-#aeq[$
-  p = 1/3 rho = 1/3 g pi^2/30 T^4 quad ==> quad dv(p, T) = 4/3 rho/T = (rho + p)/T quad ==> quad dd(p) = 1/T (rho + p) dd(T)
-$]
-quindi
-$ heq(dd(S) = dd("") [(rho + p)/T V]) $
-Ma questo è una quantità moltiplicata per un volume.
-Quindi posso definire una *densità di entropia* $s$
-$ heq(s = (rho + p)/T) $
-Dato che l'entropia totale deve restare costante e il volume si espande, la densità di entropia si diluisce con il tempo.
-
-== Numero di gradi di libertà
-Consideriamo ora solo le particelle ultra-relativistiche (siamo in un universo primordiale, quindi radiation dominated). La densità di energia di queste sarà
-$
-  rho_r = sum_(i in "u-rel") rho_i = pi^2/30 [sum_(i in "BE") g_i T^4_i + 7/8 sum_(i in "FD") g_i T^4_i]_(i in "u-rel")
-$
-Notiamo che se anche considerando le specie non relativistiche queste darebbero un contributo trascurabile in quanto hanno la caduta esponenziale.
-Dato che i fotoni sono le particelle di gran lunga più abbondanti nell'universo, di solito si usa la temperatura di questi ultimi come valore di riferimento:
-$ rho_r = pi^2/30 g_* (T_gamma) T^4_gamma $
-dove $g_*$ viene detto *numero efficace di gradi di libertà in energia*
-$ g_* (T) = sum_(i in "BE") g_i (T_i/T)^4 + 7/8 sum_(i in "FD") g_i (T_i/T)^4 $
-Noi sappiamo che man mano che le specie diventano non relativistiche e si svuotano, ci sono sempre meno specie che contribuiscono a questo conteggio.
-Quindi ci aspettiamo una funzione 'a gradini'.
-
-#box[Prendiamo ora la densità di entropia
-  $
-    s_r = sum_(i in "u-rel") s_i = sum_(i in "UR") (p_i + rho_i)/T_i = 4/3 sum_(i in "UR") rho_i/T_i = (2 pi^2)/45 Tilde(g_*) (T_gamma) T^3_gamma
-  $]
-dove $Tilde(g_*)$ viene detto *numero efficace di gradi di libertà in entropia*
-$ Tilde(g_*) (T) = sum_(i in "BE") g_i (T_i/T)^3 + 7/8 sum_(i in "FD") g_i (T_i/T)^3 $
-#osservazione[
-  Finché siamo nel bagno termico tutte le specie condividono la stessa temperatura $T$ qundi tutti i rapporti $T_i/T$ fanno 1.
-  Se è così, allora $g_* = Tilde(g_*)$.\
-  Nel momento in cui una qualsiasi specie si disaccoppia, questa specie potrà avere una temperatura diversa.
-  In tal caso il contributo dato a $g_*$ e a $Tilde(g_*)$ sarà diverso (perché dipendono da una potenza diversa del rapporto tra temperature) e quindi $g_* != Tilde(g_*)$.]
-=== Valori effettivi
-Andiamo ora a vedere effettivamente i valori che assume $g_*$.
-Iniziamo dal momento in cui tutte le specie erano ultra-relativistiche.
-- Per i bosoni abbiamo
-#aeq[$
-  & 2       & + quad & "fotoni (2 polarizzazioni)" \
-  & 2 dot 8 & + quad & "gluoni (8 colorazioni e 2 polarizzazioni)" \
-  & 3 dot 3 & + quad & "bosoni" W^(plus.minus), Z^0 "(3 stati di spin)" \
-  & 1       & = quad & "bosone di Higgs" \
-  & 28
-$]
-- Per i fermioni abbiamo
-#aeq[$
-  & 3 dot 2 dot 2 & + quad & "leptoni" e^(plus.minus), mu^(plus.minus), tau^(plus.minus) "(2 spin e 2 part.-antipart.)"\
-  & 6 dot 3 dot 2 dot 2 & + quad & "quark (3 colori, 2 spin e 2 part.-antipart.)"\
-  & 3 dot 2 & = quad & "neutrini (2.-antipart.)"\
-  & 90
-$]
-dove non ho moltiplicato per 2 spin i neutrini in quanto esistono solo quelli _left-handed_.\
-Se sono tutti nel bagno termico (con la stessa temperatura)
-#aeq[$ g_* = 28 + 7/8 90 = 106.75 $]
-Man mano che le specie diventano non relativistiche dobbiamo togliere il loro contributo (ad esempio quando per primo il quark top transisce dobbiamo togliere $3 dot 2 dot 2 = 12$ gradi di libertà fermionici).\
-Facendo il conto dopo ogni transizione si ottengono i risultati riportati nella seguente tabella e mostrati nel grafico.
-#figure(
-  table(
-    columns: 3,
-    table.header[Evento/Particelle che transiscono][Energia scala][$g_*$ rimanenti],
-    [Big Bang], [], [106.75],
-    [$t$], [$qty("170", "GeV")$], [96.25],
-    [$H$, $Z^0$, $W^(plus.minus)$], [$qty("100", "GeV")$], [86.25],
-    [$b$], [$qty("4", "GeV")$], [75.75],
-    [$c$, $tau$], [$qty("1.5", "GeV")$], [61.75],
-    [QCD phase transition], [$qty("150", "MeV")$], [17.25],
-    [$pi^(plus.minus,0)$, $mu$], [$qty("100", "MeV")$], [10.75],
-    [Disaccoppiamento $nu$], [$qty("1", "MeV")$], [5.5],
-    [$e$], [$qty("0.5", "MeV")$], [2],
-  ),
-)
-#figure(
-  image("images/3-3_gradi_lib.png", width: 80%),
-  caption: [Evoluzione del numero efficace di gradi di libertà in energia],
-)
-La zona evidenziata in grigio corrisponde alla *trasizione di fase della QCD*.
-Questo è il processo in cui si stabilisce il confinamento di quark e gluoni che si condensano a formare adroni.
-Tutti gli adroni formatisi, fatta eccezione per i pioni $pi^(plus.minus, 0)$, hanno una massa maggiore dell'energia a cui avviene la transizione dunque si formano già non relativistici (motivo della grande caduta di $g_*$ che perde tutti i quark e gluoni in un colpo solo).
-
-== Evoluzione della temperatura
-Vogliamo ora vedere come evolve la temperatura legandola al fattore di scala.
-Noi sappiamo che l'entropia totale del bagno termico rimane costante, e questa sarà data dalla densità di entropia per il volume, quindi
-#aeq[$ s a^3 = "cost" = (2 pi^2)/45 Tilde(g_*) (T) T^3 a^3 $]
-dove usiamo semplicemente $T$ perché in questa fase $T_gamma = T$.
-Quindi otteniamo che la temperatura del bagno evolve come
-$ heq(T prop a^(-1) [Tilde(g_*) (T)]^(-1/3)) $
-Cerchiamo di capire cosa succede nella pratica.
-Supponiamo di avere il bagno termico e ad un certo punto avviene la transizione di una specie.
-Quella specie non contribuirà più nel conteggio dei gradi di libertà.
-Quindi $g_*$ scende e $T$ sale.
-Nella realtà $T$ non sale, bensì rallenta la diminuzione data dal fattore $a$, come si vede nel grafico seguente
-#figure(
-  image("images/3-4_evoluzione_temperatura.jpg", width: 50%),
-  caption: [Evoluzione della temperatura durante la transizione di fase degli elettroni.],
-)
-Dal punto di vista fisico, quando la specie transisce ci sono molte annichilazioni e quindi un grosso rilascio di energia (tipicamente sotto forma di fotoni).
-Questa energia viene redistribuita al bagno che riesce a resistere temporaneamente al calo di temperatura (come se avessi del calore che viene fornito al bagno).
-Questo è esattamente analogo a quanto avviene nelle transizioni di stato (e.g. da liquido a solido) dove durante la transizione la temperatura non scende perché ho il _calore latente_.
-
-Dato che l'energia viene ridistribuita al bagno, se ho una specie che non interagisce più, questa non riceverà l'energia liberata e quindi non sentirà l'effetto della transizione di fase.
-Un esempio è la transizione di fase degli elettroni che avviene dopo che i neutrini si sono disaccoppiati.
-
-=== Disaccoppiamento dei neutrini
-Prima di trattare cosa succede ai neutrini durante la transizione degli elettroni facciamo un paio di considerazioni.
-Innanzitutto notiamo che se il potenziale chimico dei neutrini $mu_nu$ è circa 0 (come ci si aspetta da quanto ci dicono i particellari), allora possiamo dire che l'entropia dei soli neutrini sarà anch'essa conservata (e dunque sarà conservata anche l'entropia del bagno senza neutrini).
-Infatti
-#aeq[$ dv(S_nu, t) = -1/T mu_nu dv(N_nu, t) = 0 $]
-In secondo luogo possiamo considerare il numero di neutrini.
-Sappiamo che questi sono stabili quindi il loro numero non varia nel tempo (ci sono le oscillazioni tra una famiglia e l'altra ma il numero totale è costante)
-#aeq[$ N_nu = V n_nu prop a^3 n_nu prop cancel(a^3) g cancel(a^(-3)) integral dd(q, 3) 1/(exp{-q/T} + 1) $]
-dove abbiamo trascurato la loro massa e il loro potenziale chimico.
-Sapendo che questo deve essere costante, vuol dire che l'integrale non può dipendere da $a$.
-Tuttavia c'è una dipendenza da $a$ nascosta nel trimomento, infatti passando al momento comovente $abs(va(P)) = a abs(va(q))$ l'integrale diventa
-#aeq[$integral dd(q, 3) 1/(exp{-abs(va(P))/(a T)} + 1)$]
-Se vogliamo che questo non dipenda da $a$ vuol dire che la temperatura deve controbilanciare.
-Quindi concludiamo che per i neutrini dopo il disaccoppiamento si ha
-$ heq(T_nu prop a^(-1)) $
-
-Passiamo ora a studiare cosa succede quando c'è la transizione di fase degli elettroni (a $T approx m_e approx qty("0.5", "MeV")$).
-Consideriamo l'entropia del bagno termico (senza i neutrini) che dovendosi conservare sarà uguale prima e dopo la transizione
-#aeq[$ evaluated(Tilde(g_*) (T) T^3 a^3)_(T > m_e) = evaluated(Tilde(g_*) (T) T^3 a^3)_(T < m_e) $]
-#aeq[$ (Tilde(g_*) (T > m_e))/(Tilde(g_*) (T<m_e)) = ([T a]^3_(T < m_e))/([T a]^3_(T > m_e)) $]
-Prima della transizione nel bagno rimangono solo più elettroni e fotoni quindi
-#aeq[$Tilde(g_*) (T > m_e) = 2 + 7/8 dot 2 dot 2 = 11/2$]
-Dopo ci sono solo più i fotoni
-#aeq[$Tilde(g_*) (T < m_e) = 2$]
-Quindi
-#aeq[$ 11/4 = ([T a]^3_(T < m_e))/([T a]^3_(T > m_e)) $]
-Dato che i fotoni fanno parte del bagno sia prima che dopo (a noi interessa solo il dopo) abbiamo che
-#aeq[$evaluated(T)_(T < m_e) = evaluated(T_gamma)_(T < m_e)$]
-Inoltre prima della transizione anche i neutrini avevano la stessa temperatura del bagno.
-Infatti erano avvenuto da poco il disaccoppiamento (a $T approx qty("1", "MeV")$) e nel lasso di tempo tra $qty("1", "MeV")$ e $qty("0.5", "MeV")$ sia i neutrini che il bagno erano evoluti allo stesso modo anche senza 'parlarsi' (perché non essendo successo 'niente di interessante', erano soggetti solo all'espansione dell'universo uguale per tutti) mantenendo la stessa temperatura.
-#aeq[$evaluated(T)_(T > m_e) = evaluated(T_nu)_(T > m_e)$]
-Questo ovviamente non è vero dopo $qty("0.5", "MeV")$ perché per il bagno è successa la transizione degli elettroni, di cui i neutrini non si sono accorti.
-Quindi
-#aeq[$ 11/4 = ([T_gamma a]^3_(T < m_e))/([T_nu a]^3_(T > m_e)) $]
-Possiamo ora sfruttare l'evoluzione della temperatura per i neutrini.
-Infatti abbiamo che $T_nu a$ rimane costante e ha valore uguale sia prima che dopo la transizione (di cui tanto i neutrini non si accorgono)
-#aeq[$ 11/4 = [(T_gamma cancel(a))/(T_nu cancel(a))]^3_(T < m_e) $]
-$ heq(T_nu = (4/11)^(1/3) T_gamma) $
-Questa relazione è valida a qualunque tempo successivo alla transizione degli elettroni (che sono stati gli ultimi a transire).
-Possiamo quindi valutarlo oggi
-$ T_(nu 0) = (4/11)^(1/3) T_(gamma 0) = (4/11)^(1/3) qty("2.73", "K") approx qty("1.95", "K") $
-Ciò significa che possiamo aspettarci un *fondo cosmico di neutrini* (*Cosmic neutrinos Background*, *C$nu$B*) con una temperatura di circa $qty("1.95", "K")$.\
-Bisogna però tenere conto che ad un certo punto anche in neutrini diventeranno non relativistici annichilendosi e diventando molto più rari.
-
-Volendo ora possiamo correggere la stima che avevamo fatto dell'abbondanza della radiazione che avevamo fatto nell'@eq:abb_fot_ogg, aggiungendo ai fotoni della CMB anche i neutrini della C$nu$B.
-Facendo il conto si ottiene effettivamente un risultato compatibile con quanto atteso #box[($Omega_(r 0) approx num("9e-5")$)].
-
-== Scale temporali ed energetiche
-Abbiamo visto in precedenza che ci sono alcune scale energetiche fondamentali dettate dalla fisica delle particelle.
-È nostro interesse ora cercare di legare queste scale energetiche a valori temporali dopo il Big Bang.
-Per fare ciò possiamo utilizzare l'equazione di Friedmann (in regime radiation-dominated)
-#aeq[$ H^2 = (8 pi G)/3 overline(rho)_r = (8 pi G)/3 pi^2/(30) g_* (T) T^4 $]
-$ H = 2/3 [(pi^3 G)/5 g_* (T)]^(1/2) T^2 $
-Ma sappiamo che in un universo radiation-dominated la relazione tra tempo e fattore di scala segue $a ~ t^(1/2) quad ==> quad dot(a) ~ 1/2 t^(-1/2) quad ==> quad dot(a)/a = H = 1/(2t)$.\
-Quindi posso legare le energie ai tempi a cui le incontriamo.
-Riportiamo di seguito una tabella con gli eventi, la loro energia e il tempo a cui sono avvenuti dopo il Big Bang
-#figure(
-  table(
-    columns: 3,
-    table.header[Evento][Temperatura][Tempo],
-    [EW phase transition], [$qty("100", "GeV")$], [$qty("20", "ps")$],
-    [QCD phase transition], [$qty("150", "MeV")$], [$qty("20", "us")$],
-    [Disaccoppiamento $nu$], [$qty("1", "MeV")$], [$qty("1", "s")$],
-  ),
-)
-
-== Equazione di Saha
-Supponiamo di essere in equilibrio chimico per la reazione $A + B <--> C + D$
-#aeq[$ mu_A + mu_B = mu_C + mu_D $]
-#aeq[$ mu_A + mu_B + m_A + m_B - m_A - m_B = mu_C + mu_D + m_C + m_D - m_C - m_D $]
-$
-  -(m_A - mu_A)/T - (m_B - mu_B)/T + m_A/T + m_B/T = -(m_C - mu_C)/T - (m_D - mu_D)/T + m_C/T + m_D/T
-$<eq:equilibrio_masse>
-Possiamo poi esprimere questi termini in funzione delle funzione della densità numerica per specie non relativistiche
-#aeq[$ n_s (T) = g_s ((m_s T)/(2 pi))^(3/2) exp{-(m_s - mu_s)/T} $]
-Definiamo anche
-#aeq[$ n_s^((0)) (T) = g_s ((m_s T)/(2 pi))^(3/2) exp{-(m_s)/T} $]
-che sarebbe la densità numerica che avrebbe la specie se avesse potenziale chimico nullo (sarà utile successivamente).\
-In questo modo possiamo scrivere
-$ exp{- (m_A - mu_A)/T} exp{m_A/T} = (n_A (T))/(n_A^((0)) (T)) $
-Quindi esponenziando ambo i lati dell'@eq:equilibrio_masse si ottiene
-$ heq((n_A (T))/(n_A^((0)) (T)) (n_B (T))/(n_B^((0)) (T)) = (n_C (T))/(n_C^((0)) (T)) (n_D (T))/(n_D^((0)) (T))) $
-Questa viene detta *Equazione di Saha*, che descrive la relazione tra concentrazioni numeriche di specie non relativistiche all'equilibrio chimico.
-
-== Nucleosintensi primordiale
-Passiamo ora allo studio di un altro evento imporante nella storia dell'universo.
-Consideriamo lo stato dopo l'annichilazione $e^+$ $e^-$
-Troviamo fotoni e neutrini che sono relativistici.
-Poi ci sono in quantità molto minore tutte le specie non relativistiche, tra cui elettroni, protoni e neutroni (gli unici a questo punto sufficientemente abbondanti da essere interessanti).\
-Iniziamo considerando quali sono le interazioni che agiscono su queste particelle:
-- L'interazione gravitazionale è ancora trascurabile
-- L'interazione debole è diventata poco efficiente e sta per superare la soglia oltre la quale non riuscirà più a tenere il passo con l'espansione
-- L'interazione forte è confinata all'interno degli adroni e schermata. Sopravvive solo una forza residua a molto corto raggio (analoga alle interazioni di Van der Waals per le molecole) detta *interazione nucleare forte* agente tra i nucleoni trasportata da pioni virtuali
-- L'interazione elettromagnetica rimane ancora efficiente
-Tra queste quella dominante è la nucleare forte che continua a dominare anche sulla elettromagnetica. Sotto l'azione di questa forza, i nucleoni tendono ad aggregarsi negli stati stabili: i nuclei atomici.
-#definizione[
-  Indichiamo con $Z$ il numero di protoni detto *numero atomico*, con $A$ il numero di protoni e neutroni detto *numero di massa*.
-
-  Dato il nucleo $isotope(E, a: A, z: Z)$ questo avrà massa
-  $ m_E = Z m_p + (A-Z) m_n - B_E $
-  dove $B_E$ è l'*energia di legame*
+= Trattazione in relatività generale
+#let foot_rel = [
+  Riportiamo di seguito una veloce e incompleta rassegna dei concetti più importanti di geometria differenziale e relatività generale.
+  Tuttavia questa è carente di esempi e sottigliezze non ovvie.
+  In caso di dubbi consultare un corso di Relatività Generale.
 ]
-Questo processo (detto *nucleosintesi primordiale*) è analogo a quello che è successo durante la transizione di fase della QCD.
-La differenza è che per la QCD l'energia di legame era dell'ordine dei $unit("GeV")$ mentre in questo caso siamo sull'ordine dei $unit("MeV")$.\
-Anche in questo caso i nuclei vengono prodotti già non relativistici.
+== Ripasso di relatività generale
+La relatività generale è miglior teoria che abbiamo della gravità.
+Essa si basa sul principio che il campo gravitazionale non sia altro che una manifestazione della curvatura dello spazio tempo.#footnote(foot_rel)
+Il linguaggio di questa teoria è quello della geometria differenziale, quindi tutte le equazioni dovranno essere scritte in forma *manifestamente covariante*.
 
-Siamo ora interessati a quale sia la temperatura sotto la quale dobbiamo scendere per avere un numero apprezzabile di nuclei formati (vedremo che non è solo leggermente sotto l'energia di legame, bensì molto al di sotto).\
-Supponiamo che un particolare nucleo sia in equilibrio chimico con i protoni e neutroni liberi
-$ mu_E = Z mu_p + (A - Z) mu_n $
-Andiamo ora a valutare l'argomento dell'esponenziale nell'espressione della densità numerica non relativistica.
-#aeq[$
-  -(m_E - mu_E)/T & = - Z m_p/T - (A - Z) m_n/T + B_E/T + Z mu_p/T + (A - Z) mu_n/T \
-                  & = Z (m_p - mu_p)/T - (A - Z) (m_n - mu_n)/T + B_E/T
-$]
-Esponenziando e scrivendo in funzione delle densità numeriche di protoni e neutroni otteniamo
-#aeq[$
-  exp{- (m_E - mu_E)/T} = [(n_p (T))/g_p ((m_p T)/(2 pi))^(-3/2)]^Z [(n_n (T))/g_n ((m_n T)/(2 pi))^(-3/2)]^(A-Z) exp{B_E/T}
-$]
-Dove $g_n = g_p = 2$.\
-Assumiamo inoltre che la massa dei nucleoni sia circa uguale ($m_p approx m_n approx m_N$).
-Infatti la differenza tra le masse, che d'ora in poi chiameremo $Q = m_n - m_p approx qty("1.3", "MeV")$ è molto minore delle masse stesse.\
-Quindi otteniamo
-#aeq[$
-  exp{- (m_E - mu_E)/T} = 2^(-A) n_p^Z n_n^(A-Z) ((m_N T)/(2 pi))^(-3/2 A) exp{B_E/T}
-$]
-Possiamo quindi scrivere la densità numerica del nucleo facendo l'approssimazione $m_E approx A m_N$
-$
-  n_E (T) = g_E 2^(-A) n_p^Z n_n^(A-Z) A^(3/2) ((m_N T)/(2 pi))^(3/2 (1 - A)) exp{B_E/T}
-$
-Per avere idea quantitativa di quanti ce ne siano ci serve una scala, quindi si usa calcolare il rapporto rispetto al numero di barioni (qualsiasi materia non oscura).\
-Si definisce la quantità
-$ x_E = N_E/N_B = n_E/n_B = n_E/(n_gamma eta) $
-Possiamo sfruttare l'equazione trovata sopra per capire l'andamento.
-$
-  x_E prop ((x_p n_gamma eta)^Z (x_n n_gamma eta)^(A-Z))/(n_gamma eta) T^(3/2 (1 - A)) exp{B_E/T}
-$
-Ricordando che $n_gamma prop T^3$ e trascurando $x_p$ e $x_n$ (sono dell'ordine dell'unità e a noi interessano solo gli ordini di grandezza) si ottiene
-$
-  x_E prop eta^(A-1) T^(3/2 (A - 1)) e^(B_E/T) prop eta^(A-1) e^(B_E/T)
-$
-Dove nell'ultimo passaggio abbiamo trascurato il termine con andamento a potenza, in quanto domina l'esponenziale.
-Questo è vero perché $B_E > T$, infatti siamo a temperature al di sotto del $unit("MeV")$, mentre le energie di legame anche solo le più basse sono
-$B_"D" approx qty("2.2", "MeV")$ ($"D"$ è il deutone), $B_(isotope("H", a: 3)) approx qty("7.8", "MeV")$, $B_(isotope("He", a: 3)) approx qty("3.4", "MeV")$ e $B_(isotope("He", a: 4)) approx qty("25", "MeV")$.\
-Prendiamo il logaritmo dell'espressione
-$
-  ln(x_E) ~ (A-1) ln(eta) + B_E/T
-$
-$
-  heq(T = B_E/((1-A) ln(eta) + ln(x_E)))
-$
-Questa è la temperatura sotto la quale bisogna scendere per avere un determinato $x_E$.
-Se supponiamo di voler raggiungere $x_E approx 1 => ln(x_E) approx 0$, notiamo che dobbiamo andare a temperature molto più basse di $B_E$ (perché ricordiamo che $eta approx num("6e-10")$).\
-Fisicamente questo succede perché c'è un numero enorme di fotoni.
-Quindi anche se l'energia di legame ricade nella coda della distribuzione, questa sarà popolata da un numero cospicuo di fotoni che potranno quindi distruggere il nucleo.
-Per far sì che non ci siano più abbastanza fotoni che possono distruggere il nucleo è necessario dunque che l'energia di legame sia incredibilmente in profondità nella coda.\
+Il concetto fondamentale della geometria differenziale è come trasformano le componenti degli oggetti sotto cambio di coordinate.
+Supponiamo di avere due sistemi di coordinate $tensor(x,+mu)$ e $tensor(Tilde(x),+nu)$ e una mappa che li leghi $tensor(x,+mu) = tensor(x,+mu)(tensor(Tilde(x),+nu))$.
+Sia inoltre $pdv(tensor(x,+mu), tensor(Tilde(x),+nu))$ lo Jacobiano del cambio di coordinate.
 
-Possiamo pensare ora a quale nucleo si forma prima.
-Si potrebbe pensare che quelli con energia di legame maggiore si formino prima, ad esempio tra i quattro elencati sopra ci si aspetterebbe si sia formato prima l'elio.
-Tuttavia per la formazione diretta dell'elio sarebbe necessario uno scattering a 4 corpi che è cinematicamente soppresso.
-Dunque per formare l'elio è prima necessario formare il deutone ($p + n --> D + gamma$).
-Una volta che ho deutoni a sufficienza posso poi formare elio.
-Ma $D$ si forma a temperature più basse, quindi devo aspettare di più rispetto a quello che avrei se potessi formare direttamente $isotope("He", a: 4)$.
-Si parla di *Deuterion Bottleneck*, infatti una volta che ho il deutone la produzione di elio è incredibilmente efficiente e veloce.\
-Facendo il conto con la formula sopra, per raggiungere $x_D approx 1$ bisogna aspettare fino a
-#aeq[$T approx qty("0.1", "MeV")$]
-Se si usa invece la formula completa si ottiene
-$ heq(T approx qty("0.05", "MeV")) $
-Questa è la temperatura a cui avviene la nucleosintesi
+#definizione[
+  Un tensore ha un indice *covariante* (indicato con un indice basso $tensor(U,-mu)$) se trasforma con lo Jacobiano
+  $ tensor(Tilde(U), -mu) = tensor(U, -nu) pdv(tensor(x,+nu), tensor(Tilde(x),+mu)) $
+  Un tensore ha un indice *controvariante* (indicato con un indice alto $tensor(V,+mu)$) se trasforma con lo Jacobiano inverso
+  $ tensor(Tilde(V), +mu) = tensor(V, +nu) pdv(tensor(Tilde(x),+mu), tensor(x,+nu)) $
+  Un generico tensore $(n,m)$ è un oggetto che trasforma con $n$ trasformazioni controvarianti e $m$ trasformazioni covarianti
+  $
+  tensor(Tilde(T), +mu_1, +dots, +mu_n, -nu_1, -dots, -nu_m) =
+  tensor(T, +rho_1, +dots, +rho_n, -sigma_1, -dots, -sigma_m)
+  pdv(tensor(Tilde(x),+mu_1), tensor(x,+rho_1)) dots pdv(tensor(Tilde(x),+mu_n), tensor(x,+rho_n))
+  pdv(tensor(x,+sigma_1), tensor(Tilde(x),+nu_1)) dots pdv(tensor(x,+sigma_m), tensor(Tilde(x),+nu_m))
+  $
+  Uno *scalare* è un tensore $(0,0)$ che quindi è uguale in tutti i sistemi di riferimento.
+  $ Tilde(phi.alt) = phi.alt $
+  Tensori con un solo indice vengono anche detti *vettori controvarianti* e *vettori covarianti* (o *covettori*).
+]
 
-=== Concentrazione di elio
-Vogliamo andare ora a calcolare quanto elio è stato prodotto nella nucleosintesi primordiale.
-In particolare siamo interessati al rapporto tra la massa di elio e la massa totale barionica indicato con $Y_p$
-$
-  Y_p = (sum m_(isotope("He", a: 4)))/(sum m_b) = (4 m_N N_(isotope("He", a: 4)))/(m_N (N_p + N_n)) = (4 m_N N_n/2)/(m_N (N_p + N_n)) = 2 x_n
-$
-Dove abbiamo sostituito $N_n/2$ a $N_(isotope("He", a: 4))$ perché stiamo supponendo che tutti i neutroni vengano usati per formare elio.
-Dobbiamo notare tre cose:
-- A denominatore abbiamo tutti i protoni e tutti i neutroni, anche quelli usati per formare l'elio (perché nella massa barionica stiamo considerando anche l'elio)
-- Non stiamo contando gli elettroni (che sono barioni nel senso cosmologico di materia non oscura) perché hanno massa trascurabile
-- Abbiamo sostituito con $N_n$ e non con $N_p$ perché ci sono meno neutroni che protoni.\
-  Questo perché sappiamo che la densità numerica dipende inversamente dalla massa della specie, ed essendo i neutroni più massivi si diradano più velocemente.
-Quindi abbiamo
-$
-  Y_p = 2 (N_n)/(N_p + N_n) = 2 (n_n)/(n_p + n_n) = 2/(1 + n_p/n_n)
-$
-Concentriamoci su $n_p/n_n$.
-Le interazioni che influenzano questo rapporto sono $p + e^- --> n + nu_e$ e $n + e^+ --> p + overline(nu)_e$.
-Notiamo che sono entrambe mediate dall'interazione debole.\
-Se siamo ancora prima del disaccoppiamento dei neutrini (quindi in equilibrio chimico) possiamo usare l'equazione di Saha, sfruttando il fatto che i neutrini e gli elettroni hanno potenziale chimico pressoché nullo (quindi la loro densità numerica è uguale a quella con $(0)$ ad apice)
-#aeq[$
-  (n_p cancel(n_(e^-)))/(n_n cancel(n_(nu_e))) = (n_p^((0)) cancel(n_(e^-)^((0))))/(n_n^((0)) cancel(n_(nu_e)^((0))))
-$]
-$
-  n_p/n_n = cancel(g_p)/cancel(g_n) cancel(((m_p T)/(2 pi))^(3/2))/cancel(((m_n T)/(2 pi))^(3/2)) (e^(-m_p/T))/(e^(-m_n/T)) approx e^(Q/T)
-$
-Questa relazione è valida solo fino a quando non avviene il disaccoppiamento dei neutrini.
-Dopo sappiamo che l'interazione debole non riesce a tenere il passo con l'espansione dell'universo.\
-Quando avviene il disaccoppiamento, anche i neutroni smettono di interagire (trascuriamo l'interazione nucleare forte che lavora solo a corto range).
-Quindi possiamo usare la formula vista sopra per calcolare fino a $x_n (T = qty("1", "MeV"))$.
-In realtà facendo i conti più correttamente il disaccoppiamento dei neutrini avviene a $T = qty("0.8", "MeV")$.\
-Se i neutroni fossero stabili, oltre questo punto il rapporto si congelerebbe, tuttavia questi decadono con un tempo di decadimento $tau_n approx qty("890", "s")$.
-Dunque ho quello che si chiama il #box[*freeze-out*] dei protoni, mentre i neutroni piano piano diminuiscono.\
-Dobbiamo calcolare come evolve il rapporto nel lasso di tempo tra $T = qty("0.8", "MeV")$ e $T = qty("0.05", "MeV")$, che se si trasforma in relazione temporale dà un risultato molto vicino a $tau_n$.
-È come se fosse una corsa contro il tempo tra il decadimento e la ricombinazione.
-#aeq[$
-  x_n (T = qty("0.05", "MeV")) = x_n (T = qty("0.8", "MeV"))exp{- (t (T = qty("0.05", "MeV")))/tau_n}
-$]
-Se si fanno tutti i conti si ottiene
-$ heq(Y_p approx 0.25) $
-che corrisponde effettivamente alla concentrazione che si osserva nell'universo.\
-Notiamo che se vogliamo ottenere la frazione numerica di He dobbiamo dividere per un fattore 4 (perché l'elio ha 4 volte la massa dei singoli protoni), ottenendo $x_("He") = n_("He")/n_b = Y_p/4 approx 6.25%$.
+Un esempio di vettore controvariante è un normale vettore, infatti se immaginiamo di dimezzare la base, le componenti dovranno raddoppiarsi per lasciarlo invariato.
+Un esempio di vettore covariante è il gradiente di un campo scalare.
 
-Questo è un risultato molto importante in cosmologia perché permette di legare una quantità misurata astronomicamente ($Y_p$) a una misurata cosmologicamente ($eta$).
-La stessa relazione può essere calcolata anche per altri nuclei, anche se la cosa è molto più complicata (non basta l'equazione di Saha, bisogna utilizzare l'equazione di Boltzmann collisionale) ottenendo il risultato riportato qui di fianco.
+Un tensore fondamentale nella teoria è il *tensore metrico* (o *metrica*), un tensore simmetrico che ci permette di definire le distanze:
+$ dd(s)^2 = tensor(g, -mu, -nu) dd(x)^mu dd(x)^nu $
+Con la metrica possiamo anche alzare e abbassare gli indici
+$ tensor(T, -mu) = tensor(T, +nu) tensor(g, -mu, -nu) quad tensor(T, +mu) = tensor(T, -nu) tensor(g, +mu, +nu) $
+dove $tensor(g, +mu, +nu)$ è la metrica inversa ($tensor(g, +mu, +nu)tensor(g, -nu, -rho) = tensor(delta, +mu, -rho)$).
+
+Per fare fisica è necessario avere il concetto di derivazione anche di campi vettoriali.
+Tuttavia questi non trasformano 'bene'. È quindi necessario definire il concetto di derivata covariante.
+#definizione[
+  La *derivata covariante* (di seguito indicata con $tensor(nabla, -mu)$ o $tensor(scr(D), -mu)$) di un campo scalare è definita con la normale derivata
+  $ tensor(nabla, -mu)phi.alt = tensor(partial, -mu)phi.alt $
+  La derivata covariante di un campo vettoriale è definita come
+  $ tensor(nabla, -mu) tensor(V, +nu) = tensor(partial, -mu) tensor(V, +nu) + tensor(Gamma, +nu, -mu, -sigma) tensor(V, +sigma) $
+  La derivata covariante di un campo covettoriale è definita come
+  $ tensor(nabla, -mu) tensor(U, -nu) = tensor(partial, -mu) tensor(U, -nu) - tensor(Gamma, +sigma, -mu, -nu) tensor(U, -sigma) $
+  La derivata covariante di un generico tensore è definita sommando alla derivata normale tante $Gamma$ per ogni indice controvariante e sottraendone tante per ogni indice covariante.
+
+  $tensor(Gamma, +mu, -nu, -sigma)$ è la *connessione*: un oggetto che trasforma in modo da far trasformare bene la derivata.
+  In linea di principio questa è l'unica condizione da applicare alla connessione, però noi siamo interessati a una particolare connessione detta *connessione di Levi-Civita*.
+  Questa ha la proprietà di essere _metric-compatible_ (ovvero tale che la derivata covariante della metrica sia nulla) e _torsion-free_ (ovvero simmetrica rispetto ai due indici bassi).\
+  Imponendo queste condizioni si ottiene una relazione tra la connessione di Levi-Civita e la metrica codificata nei *simboli di Christoffel*
+  $ heq(
+    tensor(Gamma, +mu, -nu, -rho) =
+    1/2 tensor(g, +mu, +sigma) (partial_nu tensor(g, -rho, -sigma) + partial_rho tensor(g, -sigma, -nu) - partial_sigma tensor(g, -nu, -rho))
+  ) $
+]
+
+Un'idea intuitiva di cosa sia la connessione la si può avere pensandola come quell'oggetto che 'connette' i piani tangenti su cui i vettori vivono.
+
+Avendo definito la derivata covariante si può anche introdurre il concetto di trasporto parallelo di un tensore su una curva, imponendo che la derivata covariante del tensore lungo la curva sia nullo
+$ dv(tensor(T, +mu_1, +dots, +mu_n, -nu_1, -dots, -nu_m), lambda, d:scr(D)) = dv(x^sigma, lambda) nabla_sigma tensor(T, +mu_1, +dots, +mu_n, -nu_1, -dots, -nu_m) = 0 $
+Dove $lambda$ è un parametro _affine_ per parametrizzare la curva.\
+Si può anche definire il concetto di geodetica come la curva che trasporta parallelamente il proprio vettore tangente (è l'analogo della retta in spazio piatto)
+$ dv(, lambda, d:scr(D))(dv(x^mu, lambda)) = dv(x^mu, lambda, 2) + tensor(Gamma, +mu, -nu, -sigma) dv(x^nu, lambda) dv(x^sigma, lambda) = 0 $
+
+Possiamo ora procedere a scrivere l'equazione che descrive come viene generata la curvatura.
+Questa consisterà nella versione covariante dell'equazione di Poisson per la gravità
+#aeq[$ laplacian psi = 4 pi G rho $]
+Notiamo che il laplaciano $laplacian = partial^i partial_i$ non è nient'altro che la traccia del *tensore mareale* $partial_j partial_i$.
+Questo contiene informazioni sulla curvatura (analogamente all'Hessiana per un campo scalare) ed è legato a quanto le geodetiche divergano o convergano.
+L'unico oggetto che trasformi tensorialmente e contenga informazioni sulle derivate seconde è il *tensore di Riemann*
+$ heq(
+  tensor("R", +mu, -nu, -rho, -kappa) =
+  partial_rho tensor(Gamma, +mu, -nu, -kappa) - partial_kappa tensor(Gamma, +mu, -nu, -rho) +
+  tensor(Gamma, +lambda, -nu, -kappa) tensor(Gamma, +mu, -lambda, -rho) - tensor(Gamma, +lambda, -nu, -rho) tensor(Gamma, +mu, -lambda, -kappa)
+) $
+A noi interessa la traccia che è rappresentata dal *tensore di Ricci*
+$ tensor("R", -mu, -nu) = tensor("R", +sigma, -mu, -sigma, -nu) $
+Possiamo pensare che la traccia descriva come i volumi vengono contratti o dilatati, mentre la parte trace-less (detta _tensore di Weil_) descriva come vengono deformati.
+
+Rimane un ultimo problema, ovvero che il tensore di Ricci non ha derivata covariante nulla, a differenza del tensore energia-impulso (nel secondo membro, che vedremo dopo) che rispetta una legge di continuità.
+Questo problema viene risolto definendo il *tensore di Einstein* che ha derivata nulla
+$ tensor(G, -mu, -nu) = tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu) "R" $
+dove $"R" = tensor("R", -mu, -nu) tensor(g, +mu, +nu)$ è lo *scalare di Ricci*.\
+
+=== Il tensore Energia-Impulso
+Passiamo ora al secondo membro dell'equazione di Einstein
+Dobbiamo scrivere qualcosa di analogo al termine $4 pi G rho$ dell'equazione di Poisson, ma che abbia 2 indici simmetrici e derivata covariante nulla.
+Sappiamo che la densità è legata alla massa, e questa la possiamo trovare nel quadrimomento $q^mu = m u^mu = gamma(E/c, m va(v))$ con $q^mu q^nu tensor(g, -mu, -nu) = -m^2$.\
+La densità è una massa su volume e segue la relazione
+#aeq[$ m = integral dd(V) rho$]
+ma in relatività parlare di volumi non è banale, in quanto questi sono ipersuperfici tridimensionali dello spazio-tempo valutati a tempo costante.
+Possiamo definire una relazione che sia più generale integrando una quantità $tensor(S, +alpha, +beta)$ su ipersuperfici 3D generiche (con una delle coordinate costanti) e imponendo che l'integrale sia uguale al quadrimomento.
+$ q^alpha = 1/(3!) integral dd(x^lambda, x^mu, x^nu, p: and) tensor(epsilon.alt, -lambda, -mu, -nu, -beta) tensor(S, +alpha, +beta)  $
+dove $1/(3!)$ è un fattore combinatorio per compensare le permutazioni dei differenziali (per coloro con una conoscenza di base di geometria differenziale stiamo facendo l'Hodge per ottenere un oggetto ad un indice da contrarre con un indice di $tensor(S, +alpha, +beta)$).
+Per chi non dovesse essere familiare con questa notazione, basti sapere che ad esempio
+#aeq[$1/(3!) integral dd(x^1, x^2, x^3, p: and) tensor(epsilon.alt, -1, -2, -3, -0) tensor(S, +alpha, +0) = integral dd(x^1, x^2, x^3) tensor(S, +alpha, +0) $]
+dove gli indici $lambda$, $mu$, $nu$ e $beta$ devono essere obbligatoriamente diversi tra loro
+
+Andiamo a studiare meglio le singole componenti per dare un senso fisico a $tensor(S, +alpha, +beta)$:
+#aeq[$ q^0 = integral dd(x^1, x^2, x^3) tensor(S, +0, +0)
+  + integral dd(x^0, x^2, x^3) tensor(S, +0, +1)
+  + integral dd(x^0, x^1, x^3) tensor(S, +0, +2)
+  + integral dd(x^0, x^1, x^2) tensor(S, +0, +3)$]
+Il primo integrale è integrato su un volume e ci restituisce un'energia $E/c$, quindi il termine $tensor(S, +0, +0)$ sarà una densità di Energia.
+Gli altri tre sono integrati su un'area e su un tempo, quindi $tensor(S, +0, +i)$ rappresenta una densità di corrente di energia (di qui in avanti la chiameremo solo corrente di energia) in analogia a quello che è $j^i$ per l'elettromagnetismo (che integrato su un area dà la corrente $I$, che a sua volta integrata sul tempo dà la variazione di carica).\
+Passiamo ai termini spaziali
+#aeq[$ q^i = integral dd(x^1, x^2, x^3) tensor(S, +i, +0)
+  + integral dd(x^0, x^2, x^3) tensor(S, +i, +1)
+  + integral dd(x^0, x^1, x^3) tensor(S, +i, +2)
+  + integral dd(x^0, x^1, x^2) tensor(S, +i, +3)$]
+Il primo integrale è integrato su un volume e ci restituisce un momento, quindi $tensor(S, +i, +0)$ sarà una densità di momento.
+Gli altri tre sono integrati su un'area e su un tempo, quindi $tensor(S, +i, +j)$ rappresenta una densità di corrente di momento.
+Questa non è nient'altro che una generalizzazione della pressione, infatti integrando la pressione su un'area otteniamo una forza, che integrata sul tempo dà un impulso.
+Questo è quello che in meccanica solida viene detto 'tensore degli sforzi' con le componenti pressorie sulla diagonale e le componenti di taglio (_shear_) fuori dalla diagonale.
+
+#osservazione[
+  Questa 'definizione' euristica del tensore $tensor(S, +alpha, +beta)$ l'abbiamo ottenuta da considerazioni fatte in relatività speciale, dove è sempre possibile definire ipersuperfici arbitrariamente grandi con una coordinata costante.
+  In relatività generale ciò non è così semplice e necessita di una maggior cautela.
+  Tuttavia noi ci faremo bastare l'intuizione che arriva dalla trattazione fatta sopra e non indagheremo oltre.
+]
+
+Possiamo a questo punto definire il *tensore energia-impulso*
+$ tensor(T, +alpha, +beta) = c tensor(S, +alpha, +beta) $
+che rispetterà la condizione di continuità come il tensore di Einstein
+$ nabla_beta tensor(T, +alpha, +beta) = 0 $
+In linea di principio la densità di momento e la corrente di energia sono quantità diverse, ma noi sappiamo (a posteriori) dall'equazione di Einstein che $tensor(T, -alpha, -beta)$ è proporzionale a $tensor(G, -alpha, -beta)$ che è simmetrico.
+Quindi a noi interesserà solo la parte simmetrica di $tensor(T, -alpha, -beta)$.
+
+Possiamo quindi scrivere l'*equazione di Einstein* che descrive come l'energia genera la curvatura
+$ heq(tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu) "R" = (8 pi G)/c^4 tensor(T, -mu, -nu)) $
+Il coefficiente di proporzionalità arriva da considerazioni dimensionali ($[laplacian(psi)] = T^(-2), [tensor(G, -mu, -nu)] = L^(-2), [rho] = M L^(-3), [tensor(T, -mu, -nu)] = M L^2 T^(-2) L^(-3) $) e imponendo che in approssimazione di campo debole l'equazione si riconduca a Poisson.
+
+== Metrica per universo omogeneo e isotropo
+Possiamo ora andare a scrivere l'equazione di Einstein per un universo omogeneo e isotropo.
+Ciò consiste nel trovare l'espressione per il tensore metrico.\
+Per prima cosa dobbiamo imporre le condizioni di omogeneità e isotropia.
+Queste ci dicono che l'universo può essere rappresentato come una sequenza ordinata di sezioni spaziali ciascuna omogenea e isotropa, da cui la forma della metrica
+$ dd(s)^2 = -c^2dd(t)^2 + a^2(t)dd(l)^2 $
+dove $dd(l)^2$ rappresenta la distanza spaziale e $a$ non è nient'altro che il fattore di scala che abbiamo introdotto in precedenza.
+Talvolta si usa ridefinire il tempo in modo tale da raccogliere $a$ anche per il primo termine
+$ dd(s)^2 = a^2(eta)(-c^2dd(eta)^2 + dd(l)^2) $
+$eta$ viene detto *tempo conforme*, ma lo riprenderemo solo in seguito.
+
+Rimane ancora da capire come sia fatto $dd(l)^2$.
+Questo, dovendo valere le due condizioni, dovrà essere massimamente simmetrico (ovvero con scalari di curvatura costanti ovunque).
+Si dà il caso che ci siano solo 3 opzioni possibili:
+// TODO: Mettere le 3 immagini
+/ Spazio piatto: con curvatura $=0$ (come lo spazio euclideo $EE^3$). La sua metrica la conosciamo
+$ dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 $
+/ Spazio sferico: con curvatura $>0$ (come una sfera ma tridimensionale $SS^3$). La sua metrica la possiamo costruire con un immersione in $RR^4$ (la coordinata aggiuntiva la chiamiamo $u$)
+$ cases(dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 + dd(u)^2, x^2 + y^2 + z^2 + u^2 = R^2) $
+/ Spazio iperbolico: con curvatura $<0$ (indicato con $HH^3$). Esiste un teorema che ci dice che non possiamo immergerlo in $RR^4$, tuttavia lo si può immergere in $RR^(1,3)$ (spazio pseudoeuclideo con segnatura $(-,+) = (1,3)$)
+$ cases(dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 - dd(u)^2, x^2 + y^2 + z^2 - u^2 = -R^2) $
+Possiamo riassumere questi tre casi in una forma generica
+$ cases(dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 + kappa dd(u)^2, u^2 = R^2 - kappa x^i x_i) $
+Dove $kappa$ può assumere i valori 0 per spazio piatto, $+1$ per spazio sferico, $-1$ per spazio iperbolico.\
+Differenziando la seconda equazione otteniamo
+#aeq[$ cancel(2) u dd(u) = - cancel(2) kappa x^i dd(x)_i $]
+#aeq[$ dd(l)^2 = dd(x)^i dd(x)_i + kappa (kappa^2(x^i dd(x)_i)^2)/u^2 = dd(x)^i dd(x)_i + (kappa^3(x^i dd(x)_i)^2)/(R^2 - kappa x^i x_i) $]
+Possiamo notare che $kappa^3 = kappa$ quindi
+$ dd(l)^2 = dd(x)^i dd(x)_i + (kappa (x^i dd(x)_i)^2)/(R^2 - kappa x^i x_i) $
+Passiamo ora in coordinate sferiche 3D $(r, theta, phi)$
+#aeq[$ cases(x^i x_i = r^2, x^i dd(x)_i = r dd(r), dd(x)^i dd(x)_i = dd(r)^2 + r^2 dd(theta)^2 + r^2 sin^2(theta) dd(phi)^2 = dd(r)^2 + r^2 dd(Omega)^2) $]
+$ dd(l)^2 = dd(r)^2 + r^2 dd(Omega)^2 + kappa r^2/R^2 (dd(r)^2)/(1 - kappa r^2/R^2) = (dd(r)^2)/(1 - kappa r^2/R^2) + r^2 dd(Omega)^2 $
+Rinominando $K := kappa/R^2$ otteniamo la *Metrica di Friedmann-Lemaitre-Robertson-Walker* (*FLRW*):
+$ heq(dd(s)^2 = -c^2 dd(t)^2 + a^2(t)[(dd(r)^2)/(1 - K r^2) + r^2 dd(Omega)^2]) $
+Notiamo un paio di cose:
+- #[La metrica è invariante sotto un riscalamento del tipo
+$ cases(a --> a lambda, r --> r/lambda, K --> K lambda^2) quad "per" forall lambda in RR $
+dove il riscalamento di $K$ corrisponde a fare $R --> R/lambda$.
+Questa invarianza ci permette di fissare il valore del fattore di scala odierno $a_0 = a(t_0) equiv 1$.\
+Quindi $K$ (dunque anche $R$) rappresenta il valore oggi.
+Un'interessante implicazione di ciò è che fino ad oggi $a$ è rimasto nell'intervallo $(0,1]$.
+]
+- La coordinata $r$ rappresenta una coordinata comovente, e non un'osservabile fisica (che misurerei con degli ipotetici righelli).\
+  La coordinata fisica sarà $r_p = r a(t)$ (come abbiamo definito precedentemente).
+  Potremmo provare a scrivere la metrica in questo sistema di coordinate, ma risulterebbe molto più complicata e scomoda la trattazione.
+  Conviene fare teoria in coordinate comoventi e fare la conversione in sede sperimentale.
+Talvolta può essere comodo cambiare la coordinata radiale per semplificare ulteriormente la trattazione:
+#aeq[$ dd(chi)^2 = dd(r)^2/(1-K r) $]
+#aeq[$ chi = integral dd(chi) = integral dd(r)/sqrt(1-K r^2) = 1/sqrt(K) arcsin(r sqrt(K)) $]
+$ r(chi) &= cases(
+  1/sqrt(K)sin(chi sqrt(K)) & "per" K>0,
+  chi & "per" K=0,
+  1/sqrt(abs(K))sinh(chi sqrt(abs(K))) & "per" K<0
+) quad
+= quad cases(
+  R sin(chi/R) & "per" kappa = +1,
+  chi & "per" kappa=0,
+  R sinh(chi/R) & "per" kappa =-1
+) $
+$ r(chi) = chi sinc(chi sqrt(K)) := S_K (chi) $
+Quindi in queste coordinate la metrica diventa
+$ heq(dd(s)^2 = -c^2 dd(t)^2 + a^2(t)[dd(chi)^2 + S_K^2 (chi) dd(Omega)^2]) $
+Se la scriviamo con il tempo conforme
+$ dd(s)^2 = a^2(eta)[-c^2 dd(eta)^2 + dd(chi)^2 + S_K^2 (chi) dd(Omega)^2] $
+
+== Nozioni di distanza
+Abbiamo già detto che la metrica che abbiamo scritto è in funzione di coordinate comoventi e ne abbiamo già viste due.
+Studiamo quindi cosa queste coordinate rappresentano, come si legano a nozioni fisiche e quali sono le distanze che misuriamo.
+=== Radial comoving distance
+La coordinata $chi$ che abbiamo visto nella seconda espressione della metrica viene detta *radial comoving distance* (o *proper distance*).\
+Consideriamo un fotone ($dd(s)^2 = 0$)
+#aeq[$ c^2 dd(eta)^2 = dd(chi)^2 quad ==> quad dd(chi) = plus.minus c dd(eta) $]
+Prendendo un fotone che viene verso di noi#h(1em) $heq(chi = (eta_0 - eta)c)$\
+
+Se volessi scriverlo in funzione del tempo $t$ avrei
+$ chi(t) = c integral^(t_0)_t 1/(a(t)) dd(t) = c integral^(a_0)_a dd(a)/(dot(a)a) = c integral^(cal(Z))_0 dd(cal(Z))/H(cal(Z)) $
+
+=== Angular comoving distance
+La coordinata $r = S_K (chi)$ viene detta *angular comoving distance* (o *transverse comoving distance* o *metric distance*).
+Essa rappresenta la distanza comovente che lega le lunghezze d'arco agli angoli sottesi.\
+Per uno spazio piatto la distanza angolare e radiale coincidono, così non è per spazi curvi dove per 'appiattire' una delle due devo 'stirare' l'altra.\
+Le figure seguenti cerca di dare un'intuizione di questo concetto.
+// TODO: Mettere immagine vista da davanti e non da sopra
 #subpar.grid(
   figure(
-    image("images/3-6_nucleosintesis2.png", width: 85%),
+    image("images/ch-3/1-1-parametrizzazione_sfera_a.pdf", width: 80%),
+    caption: [Rappresentazione\ immersa]
   ),
   figure(
-    image("images/3-6_nucleosintesis.jpg", width: 80%),
+    image("images/ch-3/1-2-parametrizzazione_sfera_b.pdf"),
+    caption: [Parametrizzazione\ in $r$ e $Omega$]
   ),
-
-  columns: (1fr, 1fr),
-  caption: [Andamento delle concentrazioni dei nuclei in funzione di $eta$.\ Le bande orizzontali rappresentano i valori sperimentali.],
-)
-Come si può notare, i valori per il litio non sono in accordo.
-Questo è un problema ancora aperto in cosmologia detto *Lithium problem*.
-
-== Ricombinazione atomica
-A questo punto ci troviamo in un universo in cui sono presenti dei nuclei e degli elettroni, entrambi non relativistici e un gran numero di fotoni.
-L'unica interazione rimanente oltre a quella gravitazionale è quella elettromagnetica che è ancora dominante.
-In analogia a quanto successo nella nucleosintesi, gli elettroni iniziano a legarsi con i nuclei formando atomi elettricamente neutri
-$
-  isotope(E, a: A, z: Z)^(Z+) + Z e^- --> isotope(E, a: A, z: Z) + gamma_s
-$
-dove i $gamma_s$ hanno energie uguali alle energie di legame atomiche.\
-Questo fenomeno viene detto *ricombinazione*, anche se un termine più corretto dovrebbe essere _combinazione_ dato che gli atomi non sono mai stati combinati prima di questo momento.
-Tuttavia si utilizza ricombinazione per ragioni storiche.
-
-Indichiamo con $I_E = sum_(i=1)^Z I_(E,i)$ la somma di tutte le energie di legame per un determinato atomo
-$
-  cases(
-    I_"H" = I_("H", 1) approx qty("13.6", "eV"),
-    I_("He", 1) approx qty("25", "eV"),
-    I_("He", 2) approx qty("55", "eV")
-  )
-$
-Notiamo innanzitutto che ci troviamo ad una scala di energia diversa dalla nucleosintesi (lì avevamo i $unit("MeV")$, qui abbiamo i $unit("eV")$).\
-Inoltre anche qui notiamo una scala di energie ben definita e dato che non ci sono fenomeni analoghi al bottleneck del deuterio, questa scala impone direttamente un ordine temporale: viene ricombinato inizialmente $"He"^(++)$ poi $"He"^+$ e infine $"H"^+$.\
-Dato che l'elio è presente in quantità inferiore e la sua ricombinazione avviene prima e più velocemente, possiamo concentrarci solo sulla ricombinazione dell'idrogeno che dura più a lungo.
-
-Innanzitutto facciamo l'assunzione di essere in equilibrio non relativistico, in questo modo vale l'equazione di Saha
-#aeq[$
-  (n_A n_B)/(n_C n_D) = (n_A^((0)) n_B^((0)))/(n_C^((0)) n_D^((0)))
-$]
-Nel nostro caso abbiamo $p^+ + e^- --> "H" + gamma$, che implica (assumendo tutto non relativistico)
-$ m_p + m_e = m_"H" + I_"H" wide "e" wide mu_p + mu_e = mu_"H" $
-(notiamo che diversamente dalla nucleosintesi abbiamo $mu_e != 0$ perché ora gli elettroni sono diventati non relativistici).
-$
-  (n_p n_e)/(n_"H") = (n_p^((0)) n_e^((0)))/(n_"H"^((0)))
-$
-noi vogliamo ottenere la concentrazione numerica
-$ x_"H" = N_"H"/N_b = n_"H"/n_b = 1 - x_p $
-dove $x_p$ è la frazione di protoni, e nell'ultima uguaglianza abbiamo fatto l'assunzione che tutto ciò che non è idrogeno siano protoni liberi.
-Dobbiamo fare l'ulteriore assunzione (che per il momento non è stata ancora sperimentalmente smentita) che l'universo sia nel complesso elettricamente neutro, dunque che il numero di elettroni sia uguale a quello di protoni $x_e = x_p$
-$
-  1 - x_e = n_"H"/n_b = n_"H"^((0))/(n_e^((0)) n_p^((0))) underbracket(n_p/n_b, = x_p = x_e) overbracket(n_e, =x_e n_b)
-$
-Possiamo ora scrivere l'espressione degli $n_s^((0))$
-#aeq[$
-  n_s^((0)) = g_s ((m_s T)/(2 pi))^(3/2) exp{-m_s/T}
-$]
-dove $g_"H" = 4 = 3 + 1$ dato dal singoletto e tripletto.
-Facciamo poi l'approssimazione $m_"H" approx m_p$ (solo nel termine con la potenza, nell'esponenziale che è più sensibile teniamo tutto)
-#aeq[$
-  1 - x_e = ((2 pi)/ (T m_e))^(3/2) exp{I_H/T}x_e^2 eta n_gamma
-$]
-Andando a scrivere l'espressione di $n_gamma$ otteniamo
-$
-  1 - x_e = x_e^2 underbrace(((2 pi)/ (m_e))^(3/2) exp{I_H/T} eta (2 zeta (3))/(pi^2) T^(3/2), f(T)) = f(T) x_e^2
-$
-#aeq[$
-  f(T) x_e^2 + x_e - 1 = 0
-$]
-$
-  heq(x_e (T) = (-1 + sqrt(1 + 4 f (T)))/(2 f(T))) wide "con" wide f (T) = (2 zeta (3))/(pi^2) eta ((2 pi T)/ (m_e))^(3/2) exp{I_H/T}
-$
-#figure(
-  image("images/3-7_conc_elett.pdf", width: 60%),
-  caption: [Evoluzione della frazione di elettroni liberi durante la ricombinazione.],
-)<fig:conc_elett>
-
-Possiamo chiederci a che redsift (e quindi a che tempo) corrisponde questo evento (ricordiamo che la nucleosintesi è avvenuta circa 3 minuti dopo il Big Bang).
-#aeq[$
-  T ~ [Tilde(g_*) (T)]^(-1/3) a^(-1) ~ [Tilde(g_*) (T)]^(-1/3) (1 + cal(Z))
-$]
-Ma dopo che c'è stata la ricombinazione di $e^(plus.minus)$, nel bagno termico sono rimasti solo più fotoni e dunque $Tilde(g_*)$ non è più cambiata da quel momento fino ad oggi
-#aeq[$
-  T = T_(gamma 0) (1 + cal(Z)) quad ==> quad cal(Z) = T/T_(gamma 0) - 1
-$]
-Facendo il calcolo per $T approx qty("0.35", "eV")$ (temperatura a cui inizia il processo) si ottiene $cal(Z) approx 1400$ che corrisponde ad un tempo $t approx num("3e5") "y"$.
-Ma quel redshift si trova in un universo che è già matter-dominated.
-Quindi è passato moltissimo tempo da quando è avvenuta la nucleosintesi.\
-Se si fa il conto anche per l'altro estremo ($T approx qty("0.25", "eV")$) si ottiene una durata di $Delta cal(Z) approx 400$.
-Dunque oltre a metterci molto tempo ad iniziare è un processo molto lungo.
-
-Se vogliamo mettere una soglia di ricombinazione, un modo possibile (ne vedremo poi uno ancora migliore) è scegliere un threshold sulla $x_e$ e convertirlo in redshift. Se ad esempio scegliamo $x_e = 0.5$ otteniamo $cal(Z)_"rec" approx 1270$ e $t_"rec" approx num("2.9e5")"y"$.
-
-== Disaccoppiamento dei fotoni e CMB
-Fermiamoci ora a riflettere sulle interazioni che avvengono prima della ricombinazione e che mantengono in equilibrio chimico i fotoni, i protoni e gli elettroni.\
-Tra fotoni e elettroni l'interazione avviene sotto forma di scattering Compton, mentre tra fotoni e protoni sotto forma di scattering Rutherford.
-Per entrambi i tipi di scattering vale la formula per il tasso di reazione di $Gamma = n sigma c$, e perché questo riesca ad avvenire è necessario avere #box[$Gamma >> H$] (dove $H = H_0 sqrt(Omega_(m 0)) a^(-3/2)$ perché siamo in regime matter dominated).\
-La concentrazione di protoni (che scende tanto più velocemente tanto più la specie è massiva) cala molto più velocemente di quella degli elettroni.
-Quindi dato che le sezioni d'urto sono comparabili (essendo entrambi processi elettromagnetici) possiamo trascurare gli scattering Rutherford e pensare che i fotoni fossero accoppiati al bagno solo attraverso lo scattering Compton.\
-A queste temperature lo scattering Compton tende a semplice scattering Thompson (essendo gli elettroni non relativistici) che ha sezione d'urto non dipendente dalla temperatura
-$ sigma_"Th" approx qty("2e-3", "MeV^-2") $
-dunque
-$ Gamma_gamma = n_e sigma_"Th" c = x_e n_b sigma_"Th" c = x_e eta n_gamma sigma_"Th" c $
-dove l'unica dipendenza dalla temperatura è data da $x_e$ che lentamente scende a causa della ricombinazione.
-Ad un certo punto non ci saranno più abbastanza elettroni liberi con cui interagire e dunque si avrà il *disaccoppiamento dei fotoni* dal bagno.\
-Calcoliamo a che temperatura avviene
-#aeq[$ H (T_"dec") = Gamma (T_"dec") $]
-$ H_0 sqrt(Omega_(m 0)) (T_"dec"/T_(gamma 0))^(3/2) = (2 zeta (3))/pi^2 eta sigma_"Th" c T^3_"dec" x_e (T_"dec") $
-$ heq(T_"dec" approx qty("0.27", "eV") quad ==> quad cal(Z)_"dec" approx 1200) $
-Tutto questo discorso è una buona approssimazione di quello che è successo davvero, ma molto semplificata.
-Infatti se fosse andata solo così, ogni volta che un elettrone veniva catturato si aveva l'emissione di un $gamma$ a $qty("13.6", "eV")$ che poteva andare a estrarre l'elettrone di un idrogeno formato in precedenza, rallentando incredibilmente la ricombinazione.\
-Nella realtà gli elettroni non sono stati catturati subito al livello fondamentale, bensì si sono combinati ad un livello intermedio per poi decadere a quello fondamentale.
-In questo modo c'era il rilascio di due fotoni nessuno dei quali con energia sufficiente a strappare un elettrone già ricombinato.\
-Un altra approssimazione che abbiamo fatto non del tutto vera è che tutto il processo di ricombinazione sia avvenuto in equilibrio.
-Tuttavia durante la ricombinazione stava avvenendo il disaccoppiameto dei fotoni che ha rotto l'equilibrio.
-Questo ha avuto come effetto il fatto che alcuni elettroni siano riusciti a scappare alla ricombinazione.\
-Combinando le due correzioni il grafico di @fig:conc_elett viene traslato verso temperature più basse e non arriva mai a 0, bensì si ferma a $x_e approx numrange("e-4", "e-3", delimiter: "÷")$
-#figure(
-  image("images/3-8_conc_elett2.pdf", width: 60%),
-  caption: [Evoluzione della frazione di elettroni liberi durante la ricombinazione\
-    con le correzioni per le approssimazioni.\
-    Il valore minimo raggiunto è innalzato per renderlo visibile.\
-    Con il valore esatto risulterebbe indistinguibile.],
+  figure(
+    image("images/ch-3/1-3-parametrizzazione_sfera_c.pdf"),
+    caption: [Parameterizzazione\ in $chi$ e $Omega$]
+  ),
+  columns: (1fr, 1fr, 1fr),
+  caption: [Parametrizzazioni di uno spazio positivamente curvo.],
 )
 
-== Last scattering
-Abbiamo visto che ad un certo punto i fotoni smettono di interagire con gli elettroni.
-Ci sarà quindi un momento in cui ciascun fotone scattera per l'ultima volta.\
-Per calcolare questo dobbiamo studiare la probabilità che ci siano enne scattering in un tempo $Delta t$.
-Questa sarà data dalla distribuzione di Poisson
+=== Angular diameter distance
+Passiamo ora alle distanze fisiche misurabili.\
+Si dice *angular diameter distance* $d_A$ la distanza ottenuta confrontando la dimensione angolare di un oggetto con la sua reale dimensione fisica.
+Questo ovviamente lo si può fare solo per oggetti di cui si conosce la dimensione reale, detti *righelli standard*.
+Un esempio di righello standard sono le Barionic Acustic Oscilltions.\
+Questa all'atto pratico si definisce come
+$ heq(d_A approx L/(delta theta)) $
+dove $L$ è la dimensione reale dell'oggetto (valutata al tempo dell'emissione dei fotoni che vediamo oggi), $delta theta$ la sua dimensione angolare e dove abbiamo fatto l'approssimazione di piccoli angoli (valida per osservazioni cosmologiche).\
+Vogliamo legarci ad una delle distanze comoventi.
+Per farlo basta usare la metrica, usando $dd(t) = dd(chi) = 0$ e sapendo che $L$ corrisponde alla distanza $dd(s)$
+#aeq[$ L = dd(s) = a(t) underbracket(dd(Omega), delta theta) $]
+dove $t$ è il tempo a cui è avvenuta l'emissione (ed effettivamente per i righelli standard noi conosciamo la dimensione a quel tempo)
+$ heq(d_A = r a = r/(1 + cal(Z))) $
+
+=== Luminosity distance
+Si dice *luminosity distance* $d_L$ la distanza ottenuta confrontando il flusso $F$ osservato con la luminosità reale di un oggetto.
+Gli oggetti con luminosità nota vengono detti *candele standard* (un esempio sono le supernove di tipo Ia).
+Operativamente si definisce tale che
+$ F = L_e/(4 pi d_L^2) $
+dove $L_e$ è la luminosità alla sorgente (che è quella che ci viene fornita dalla teoria).
+Questa luminosità però va riscalata per tenere conto di quello che succede alla luce nel percorso fino a noi.
+Avremo che la luminosità riscalata (che indichiamo con $L_o$) rispetterà la solita relazione con il flusso
+$ F = L_o/(4 pi r^2) $
+Per valutare la relazione tra le luminosità ricordiamo che
+#aeq[$ L = E_(gamma)/(Delta t) $]
+dove $E_(gamma) = planck nu = planck c/lambda$ è l'energia dei singoli fotoni, mentre $Delta t$ è la distanza temporale tra un fotone e un altro.\
+Ma la lunghezza d'onda dei fotoni viene stirata ($lambda_e = a lambda_o$) che quindi perdono energia
+#aeq[$ E_e = E_o/a $]
+Anche la distanza temporale di arrivo cambia (basta pensare che $Delta t ~ lambda/c$)
+#aeq[$ Delta t_e = a Delta t_o $]
+quindi la luminosità osservata sarà
+#aeq[$ L_o = a^2 L_e $]
+quindi
+#aeq[$ F = L_o/(4 pi r^2) = (a^2 L_e)/(4 pi r^2) = L_e/(4 pi d_L^2) $]
+$ heq(d_L = r/a = (1 + cal(Z))r ) $
+Possiamo quindi scrivere una relazione tra le due distanze fisiche che viene detta *relazione di Etherington sulla dualità delle distanze*
+$ heq(d_L (cal(Z)) = (1 + cal(Z))^2 d_A (cal(Z))) $
+
+== Tensore di Einstein per universo omogeneo e isotropo
+Procediamo ora a calcolare il tensore di Einstein per la metrica FLRW.
+Volendo semplificare i calcoli, scegliamo l'espressione nelle coordinate $x^mu = (c t, chi, theta, phi)$.\
+In questa abbiamo
+$ tensor(g, -0, -0) = -1 wide tensor(g, -1, -1) = a^2 wide tensor(g, -2, -2) = a^2 S_K^2 wide tensor(g, -3, -3) = a^2 S_K^2 sin^2(theta) $
+Le funzioni metriche inverse sono
+$ tensor(g, +0, +0) = -1 wide tensor(g, +1, +1) = 1/a^2 wide tensor(g, +2, +2) = 1/(a^2 S_K^2) wide tensor(g, +3, +3) = 1/(a^2 sin^2(theta) S_K^2) $
+Di seguito indicheremo la metrica spaziale come $tensor(gamma, -i, -j)$, che non dipende dal tempo.\
+Possiamo quindi calcolare i simboli di Christoffel
+#aeq[$ tensor(Gamma, +mu, -nu, -rho) =
+  1/2 tensor(g, +mu, +sigma) (partial_nu tensor(g, -rho, -sigma) + partial_rho tensor(g, -sigma, -nu) - partial_sigma tensor(g, -nu, -rho)) $]
+Ricordando che la metrica è diagonale, ogni volta che uno dei due indici verrà fissato, potremo fissare anche l'altro.
+
+#aeq[$ tensor(Gamma, +0, -0, -0) &=
+  1/2 tensor(g, +0, +sigma) (cancel(partial_0 tensor(g, -0, -sigma)) + cancel(partial_0 tensor(g, -sigma, -0)) - cancel(partial_sigma tensor(g, -0, -0))) = 0 \
+
+  tensor(Gamma, +i, -0, -0) &=
+  1/2 tensor(g, +i, +sigma) (partial_0 tensor(g, -0, -sigma) + partial_0 tensor(g, -sigma, -0) - cancel(partial_sigma tensor(g, -0, -0))) =
+  1/2 tensor(g, +i, +i)(2 partial_0 cancel(tensor(g, -0, -i))) = 0\
+
+ tensor(Gamma, +0, -i, -0) &=
+  1/2 tensor(g, +0, +sigma) (partial_i tensor(g, -0, -sigma) + partial_0 tensor(g, -sigma, -i) - partial_sigma cancel(tensor(g, -0, -i))) =
+  1/2 tensor(g, +0, +0)(cancel(partial_i tensor(g, -0, -0)) + partial_0 cancel(tensor(g, -0, -i))) = 0 = tensor(Gamma, +0, -0, -i)\
+
+ tensor(Gamma, +0, -i, -j) &=
+  1/2 tensor(g, +0, +sigma) (partial_i tensor(g, -j, -sigma) + partial_j tensor(g, -sigma, -i) - partial_sigma tensor(g, -i, -j)) =
+  1/2 tensor(g, +0, +0)(partial_i cancel(tensor(g, -j, -0)) + partial_j cancel(tensor(g, -0, -i)) - partial_0 tensor(g, -i, -j)) = \
+  &= 1/2 (-1)( - partial_0 (a^2 tensor(gamma, -i, -j))) = (a dot(a))/c tensor(gamma, -i, -j) = 1/c dot(a)/a tensor(g, -i, -j)\
+
+ tensor(Gamma, +i, -j, -0) &=
+  1/2 tensor(g, +i, +sigma) (partial_j tensor(g, -0, -sigma) + partial_0 tensor(g, -sigma, -j) - partial_sigma cancel(tensor(g, -j, -0))) =
+  1/2 tensor(g, +i, +i)(partial_j cancel(tensor(g, -0, -i)) + partial_0 tensor(g, -i, -j)) = \
+  &= 1/2 (a^(-2) tensor(gamma, +i, +i))(partial_0 (a^2 tensor(gamma, -i, -j))) = 1/c (dot(a))/a tensor(delta, -i, -j)\
+
+ tensor(Gamma, +i, -j, -k) &=
+  1/2 tensor(g, +i, +sigma) (partial_j tensor(g, -k, -sigma) + partial_k tensor(g, -sigma, -j) - partial_sigma tensor(g, -j, -k)) = \
+  &= 1/2 (tensor(gamma, +i, +m))(partial_j tensor(gamma, -k, -m) + partial_k tensor(gamma, -m, -j) - partial_m tensor(gamma, -j, -k))$]
+
+Svolgendo i calcoli per le componenti spaziali riportiamo di seguito i termini non nulli
 $
-  cal(P) (n, Delta t) = (Gamma_gamma Delta t)^n/(n!) e^(-Gamma_gamma Delta t)
+ tensor(Gamma, +0, -i, -j) &= (a dot(a))/c tensor(gamma, -i, -j) wide &
+ tensor(Gamma, +i, -j, -0) &= 1/c (dot(a))/a tensor(delta, -i, -j) wide &
+ tensor(Gamma, +1, -2, -2) &= -S_K S'_K wide &
+ tensor(Gamma, +1, -3, -3) &= -S_K S'_K sin^2(theta)\
+ tensor(Gamma, +2, -2, -1) &= S'_K/S_K wide &
+ tensor(Gamma, +2, -3, -3) &= - sin(theta)cos(theta) wide &
+ tensor(Gamma, +3, -3, -1) &= S'_K/S_K wide &
+ tensor(Gamma, +3, -3, -2) &= cot(theta)\
 $
-Ma dato che $Gamma_gamma$ varia nel tempo bisogna utilizzare una versione generalizzata
+
+Possiamo quindi calcolare il tersore di Ricci
+#aeq[$ tensor("R", -mu, -nu) = tensor("R", +sigma, -mu, -sigma, -nu) =
+  partial_sigma tensor(Gamma, +sigma, -mu, -nu) - partial_nu tensor(Gamma, +sigma, -mu, -sigma) +
+  tensor(Gamma, +lambda, -mu, -nu) tensor(Gamma, +sigma, -lambda, -sigma) - tensor(Gamma, +lambda, -mu, -sigma) tensor(Gamma, +sigma, -lambda, -nu) $]
+Svolgendo i calcoli ci si rende conto che anche il tensore di Ricci è diagonale (ci si può anche arrivare ricordando che l'universo è isotropo e se Ricci avesse componenti off-diagonal, questo definirebbe direzioni preferenziali).
+Dunque mi basta calcolare 4 componenti (riportiamo di seguito solo i risultati):
 #aeq[$
-  Gamma_gamma Delta t --> integral dd(t) Gamma_gamma (t)
+ tensor("R", -0, -0) &= -3/c^2 dot.double(a)/a\
+ tensor("R", -1, -1) &= (a dot.double(a))/c^2 + 2 dot(a)^2/c^2 - 2S''_K/S_K = a^2/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
+ tensor("R", -2, -2) &= (a dot.double(a))/c^2 S^2_K + 2 dot(a)^2/c^2 S_K^2 - S_K S''_K + 1 -(S'_K)^2 = a^2/c^2 S_K^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
+ tensor("R", -3, -3) &= sin^2(theta)[(a dot.double(a))/c^2 S^2_K + 2 dot(a)^2/c^2 S_K^2 - S_K S''_K + 1 -(S'_K)^2] = a^2/c^2 S_K^2 sin^2(theta)[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
 $]
-Questo integrale non è nient'altro che la profondità ottica
-$ heq(tau(t_1, t_2) = integral_(t_1)^(t_2) dd(t) Gamma_gamma (t)) $
-(questa si riconduce alla formula ottenuta nei corsi di astrofisica che $Gamma_gamma$ è equivalente al libero cammino medio, dato che $c = 1$).\
-Quindi possiamo pensare al disaccoppiamento come il processo che ha reso l'universo otticamente sottile per i fotoni.
-Passiamo alla parametrizzazione in redshift
+Gli ultimi tre risultati possono essere riuniti assieme formando
 $
-  tau(cal(Z)_2, cal(Z)_1) = integral_(cal(Z)_2)^(cal(Z)_1) dd(cal(Z)) Gamma_gamma/((1 + cal(Z)) H (cal(Z)))
+ tensor("R", -0, -0) &= -3/c^2 dot.double(a)/a\
+ tensor("R", -i, -j) &= 1/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] tensor(g, -i, -j)
 $
-Vogliamo calcolare il tempo più lungo senza avere scattering, quindi ottenere $cal(Z)_"dec"$ tale che $tau(0, cal(Z)_"dec")$ mi dia la massima probabilità $cal(P) (0, tau) = e^(-tau)$.\
-Per semplicità passo in redshift $cal(P) (tau) dd(tau) = cal(g) (cal(Z)) dd(cal(Z))$ dove $cal(g)$ è la densità di probabilità in redshift, anche detta *visibilità*.
-$ cal(g) (cal(Z)) = e^(-tau) dv(tau, cal(Z)) $
-Sviluppando i vari termini ho
+Calcoliamo lo scalare di Ricci
+$
+"R" &= tensor(g, +mu, +nu) tensor("R", -mu, -nu) = - tensor("R", -0, -0) + tensor(g, +i, +j) tensor("R", -i, -j)\
+&= 3/c^2 dot.double(a)/a + 1/c^2 [dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] underbracket(tensor(g, +i, +j) tensor(g, -i, -j), 3)\
+&= 6/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2]
+$
+Infine possiamo calcolare il tensore di Einstein $tensor(G, +mu, -nu) = tensor(G, -rho, -nu)tensor(g, +rho, +mu) = tensor("R", +mu, -nu) - 1/2 tensor(delta, +mu, -nu) "R"$ (questo è quello con la forma più semplice)
+$
+ tensor(G, +0, -0) & = 3/c^2 dot.double(a)/a -3/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2] = -3/c^2 [(dot(a)/a)^2 + (K c^2)/a^2]\
+ tensor(G, +i, -j) &= 1/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] tensor(delta, +i, -j) -3/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2] tensor(delta, +i, -j) \
+ &= -1/c^2[2 dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2] tensor(delta, +i, -j)
+$
+
+== Tensore energia-impulso per un gas perfetto
+Vogliamo ora calcolare il tensore energia-impulso (ricordiamo che approssimiamo tutto ad un fluido).
+Dato che stiamo considerando un universo omogeneo e isotropo non possiamo avere densità di momenti, correnti di energia o sforzi di taglio (altrimenti questi definirebbero una direzione preferenziale, rompendo l'isotropia).
+Inoltre, sempre per isotropia, ci mettiamo nel sistema di riferimento a riposo con il fluido.\
+Dunque il tensore sarà diagonale
+#aeq[$tensor(T, +mu, +nu) = mat(
+  overline(rho)c^2, " " , va(0)^TT, " " ;
+  " ", " ", " ", " ";
+  va(0), " ", overline(p) bb(1)_3, " ";
+  " ", " ", " ", " ";
+augment: #(hline: 1, vline: 1))
+ = mat(
+  overline(rho)c^2 + overline(p), " " , va(0)^TT, " " ;
+  " ", " ", " ", " ";
+  va(0), " ", bb(0)_3, " ";
+  " ", " ", " ", " ";
+augment: #(hline: 1, vline: 1))
+ + overline(p) mat(
+  - 1, " " , va(0)^TT, " " ;
+  " ", " ", " ", " ";
+  va(0), " ", bb(1)_3, " ";
+  " ", " ", " ", " ";
+augment: #(hline: 1, vline: 1))
+  $]
+La prima matrice la possiamo ottenere sfruttando il fatto che, essendo comoventi con il fluido, $u^mu = (c, va(0))$ , mentre la seconda non è nient'altro che Minkowski, quindi otteniamo
+$ tensor(T, +mu, +nu) = (overline(rho) + overline(p)/c^2)u^mu u^nu + overline(p)tensor(eta, +mu, +nu) $
+passando in relatività generale
+$ heq(tensor(T, +mu, +nu) = (overline(rho) + overline(p)/c^2)u^mu u^nu + overline(p)tensor(g, +mu, +nu)) $
+quindi
+#aeq[$tensor(T, +mu, +nu) = mat(
+  overline(rho)c^2, " " , va(0)^TT, " " ;
+  " ", " ", " ", " ";
+  va(0), " ", overline(p) 1/a^2 tensor(gamma, +i, +j), " ";
+  " ", " ", " ", " ";
+augment: #(hline: 1, vline: 1))
+  $]
+
+Bisogna però fare attenzione che in relatività generale alzare e abbassare gli indici non è banale quanto cambiare dei segni.
+Infatti si ottiene
+#aeq[$tensor(T, +mu, -nu) = tensor(T, +mu, +rho) tensor(g, -nu, -rho)= mat(
+  -overline(rho)c^2, " " , va(0)^TT, " " ;
+  " ", " ", " ", " ";
+  va(0), " ", overline(p) tensor(delta, +i, -j), " ";
+  " ", " ", " ", " ";
+augment: #(hline: 1, vline: 1))
+  wide
+tensor(T, -mu, -nu) = tensor(T, +rho, -nu) tensor(g, -mu, -rho) = mat(
+  overline(rho)c^2, " " , va(0)^TT, " " ;
+  " ", " ", " ", " ";
+  va(0), " ", overline(p) a^2 tensor(gamma, -i, -j), " ";
+  " ", " ", " ", " ";
+augment: #(hline: 1, vline: 1))
+
+  $]
+
+== Equazioni di Friedmann
+Siamo pronti per mettere insieme tutti i risultati ottenuti finora.\
+Iniziamo dall'equazione di continuità $tensor(nabla, -mu) tensor(T, +mu, -nu) = 0$ per la componente $nu = 0$:
 #aeq[$
-  Gamma_gamma & ~ x_e (T) T^3 ~ x_e (cal(Z)) (1 + cal(Z))^3 \
-            H & ~ (1 + cal(Z))^(3/2)
+0 = tensor(nabla, -mu) tensor(T, +mu, -0)
+  &= partial_mu tensor(T, +mu, -0) + tensor(Gamma, +mu, -rho, -mu)tensor(T, +rho, -0) - tensor(Gamma, +rho, -mu, -0)tensor(T, +mu, -rho)\
+  &= partial_0 tensor(T, +0, -0) +partial_i cancel(tensor(T, +i, -0)) + cancel(tensor(Gamma, +0, -rho, -0))tensor(T, +rho, -0) + tensor(Gamma, +i, -rho, -i)tensor(T, +rho, -0) - cancel(tensor(Gamma, +rho, -0, -0))tensor(T, +0, -rho) - tensor(Gamma, +rho, -i, -0)tensor(T, +i, -rho)\
+  &= partial_0 tensor(T, +0, -0) + tensor(Gamma, +i, -0, -i)tensor(T, +0, -0) + tensor(Gamma, +i, -j, -i)cancel(tensor(T, +j, -0)) - tensor(Gamma, +0, -i, -0)cancel(tensor(T, +i, -0)) - tensor(Gamma, +j, -i, -0)tensor(T, +i, -j)\
+  &= 1/cancel(c) dv(,t) (-overline(rho)c^2) + 1/cancel(c) dot(a)/a underbracket(tensor(delta, +i, -i), 3)(-overline(rho)c^2) - 1/cancel(c) dot(a)/a overline(p) underbracket(tensor(delta, +j, -i)tensor(delta, +i, -j), 3)
 $]
+$ heq(dot(overline(rho)) = -3 dot(a)/a (overline(rho) + overline(p)/c^2)) $
+Abbiamo riottenuto l'equazione di continuità cosmologica.\
+Non calcoliamo i termini $nu = i$, in quanto danno tutti soluzioni triviali $0=0$ (sopravvivono solo le derivate spaziali di $T$ che sono nulle).
+
+Passiamo ora all'equazione di Einstein $tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu)"R" = (8 pi G)/c^4 tensor(T, -mu, -nu)$:
+$ heq((dot(a)/a)^2 = (8 pi G)/3 overline(rho) - (K c^2)/a^2) $
+$ heq(dot.double(a)/a = - (4 pi G)/3 (overline(rho) + 3 overline(p)/c^2)) $
+Queste sono rispettivamente la prima e la seconda equazione di Friedmann. Notiamo che la prima è identica a quella già ottenuta in precedenza, solo che ora sappiamo il significato di $K$. La seconda invece ha un termine in più che nella trattazione classica ci siamo persi non avendo tenuto conto che anche la radiazione gravita.
+
+== Evoluzione in presenza di curvatura<ch:ev_curv>
+Oggi dalle misure sappiamo che $K$ è compatibile con $0$, tuttavia è interessante capire come sarebbe l'evoluzione dell'universo in presenza di curvatura.
+In particolare abbiamo già visto che l'universo è stato inizialmente dominato dalla radiazione e ora è dominato dalla materia, e se ci fosse anche la curvatura (che si diluisce come $~a^(-2)$) questa dominerebbe in un futuro.
+Abbiamo inoltre risolto le equazioni per universi a singola componente trovando
+#aeq[$ a ~ t^(2/(3(1+w))) quad "con" quad overline(p) = w overline(rho) $]
+Andiamo ora a studiare come evolve l'universo a due componenti materia e curvatura. Iniziamo dall'equazione con le abbondanze
+#aeq[$(dot(a)/a)^2 = H^2_0 (Omega_(m 0) a^(-3) + Omega_(k 0) a^(-2))$]
+#aeq[$dot(a)^2 = H^2_0 (Omega_(m 0) a^(-1) + Omega_(k 0))$]
+Passiamo poi al tempo conforme $dd(t) = a dd(eta) => dv(,t) = 1/a dv(,eta)$ (indichiamo $dot(Q) = dv(Q,t)$ e $Q' = dv(Q, eta)$)
+#aeq[$
+  (a')^2 &= H^2_0 (Omega_(m 0) a + Omega_(k 0) a ^2)\
+  &= H^2_0 Omega_(m 0) a (1 + Omega_(k 0)/Omega_(m 0) a)\
+  &= H^2_0 Omega_(m 0) a (1 - (-Omega_(k 0))/Omega_(m 0) a)
+$]
+Facciamo ora un cambio di variabile $y^2 = -Omega_(k 0)/Omega_(m 0) a => a = -Omega_(m 0)/Omega_(k 0) y^2 => a' = - Omega_(m 0)/Omega_(k 0) 2 y y' $.
+Notiamo che $y$ può assumere anche valori immaginari (perché $Omega_(k 0)$ può essere positivo o negativo), ma questo non ci spaventa in quanto ci basta anteporre una $i$ a tutti i conti, e trasformare le funzioni trigonometriche in iperboliche.
+#aeq[$cancel(Omega_(m 0)^2)/Omega_(k 0)^(cancel(2)) 4 cancel(y^2) (y')^2 = - H^2_0 cancel(Omega_(m 0)) cancel(Omega_(m 0))/cancel(Omega_(k 0)) cancel(y^2) (1 - y^2)$]
+#aeq[$y' = dv(y, eta) = 1/2 H_0 sqrt(- Omega_(k 0))sqrt(1 - y^2)$]
+#aeq[$integral dd(eta) = 2/(H_0 sqrt(- Omega_(k 0))) integral dd(y)/sqrt(1 - y^2)$]
+#aeq[$eta = 2/(H_0 sqrt(- Omega_(k 0))) arcsin(y)$]
+#aeq[$y = sin(1/2 underbrace(H_0 sqrt(-Omega_(k 0)) eta, theta)) = sin(theta/2)$]
+#aeq[$a =  Omega_(m 0)/( - Omega_(k 0)) y^2 = Omega_(m 0)/(- Omega_(k 0)) sin^2(theta/2) = Omega_(m 0)/(- Omega_(k 0)) 1/2(1 - cos(theta)) $]
+$ a = Omega_(m 0)/(2(- Omega_(k 0))) (1 - cos(theta)) $
+Torniamo ora al tempo cosmologico $t$
+#aeq[$t = integral dd(t) = integral a dd(eta) = Omega_(m 0)/(2 (- Omega_(k 0))) integral dd(eta) (1 -cos(theta)) $]
+ma notiamo che
+#aeq[$dd(eta) = dd(theta)/(H_0 sqrt(-Omega_(k 0)))$]
+quindi
+$ t = 1/(2 H_0) Omega_(m 0)/(- Omega_(k 0))^(3/2)[theta - sin(theta)] $
+mettendo assieme $a$ e $t$
+$ cases(
+t = 1/(2 H_0) Omega_(m 0)/(- Omega_(k 0))^(3/2)[theta - sin(theta)],
+a = Omega_(m 0)/(2(-Omega_(k 0))) (1 - cos(theta))
+) $
+Questa è la parametrizzazione di una cicloide.
+- Se $K > 0 <=> Omega_(k 0) < 0$ ho effettivamente la cicloide.
+  All'inizio ho un _Big-Bang_ seguito da un'espansione, poi una decelerazione che porta ad una contrazione e infine un _Big-Crunch_. Si parla di *universo chiuso*.
+  Se sviluppo attorno a 0 (nella dominazione della materia) ottengo $t ~ a^(2/3)$ che è il risultato che avevamo già trovato.
+- Se $K < 0 <=> Omega_(k 0) > 0$ le funzioni trigonometriche diventano iperboliche.
+  Questo significa che non ho mai la ricontrazione, qundi l'universo si espande per sempre. Si parla di *universo aperto*.
+- Se $K = Omega_(k 0) = 0$ abbiamo il caso già visto in precedenza.
+#figure(
+  image("images/ch-3/2-cicloide.pdf", width: 55%),
+  caption: [Evoluzione del fattore di scala per universo dominato da materia e curvatura.]
+)
+
+== La costante cosmologica
+Abbiamo già visto l'equazione
+#aeq[$ 1 = Omega_(m 0) + Omega_(r 0) + Omega_(k 0) $]
+e abbiamo visto che le misure odierne sono $Omega_(r 0) approx num("e-4")$, $Omega_(m 0) approx num("0.3")$ e $Omega_(k 0) approx 0$.
+È evidente che queste non sommino a 1.
+Dunque è necessario aggiungere qualcosa, quello che si fa è introdurre una nuova componente detta *costante cosmologica* $Omega_(Lambda)$.
+
+La constante cosmologica è stata inizialmente introdotta da Einstein, non soddisfatto del risultato di un universo che non fosse statico.\
+Si rese conto che poteva ridefinire il tensore $tensor(G, -mu, -nu)$
+$ tensor(G, -mu, -nu) -> tensor(G, -mu, -nu) + tensor(g, -mu, -nu) Lambda $
+Questo tensore continua a rispettare la legge di continuità $tensor(nabla, -mu)tensor(G, +mu, -nu) = 0$ se $Lambda = "cost"$ (dato che $tensor(g, -mu, -nu)$ ha derivata covariante nulla).
+Con questa modifica le equazioni di Friedmann diventano
+$ heq((dot(a)/a)^2 = (8 pi G)/3 overline(rho) - (K c^2)/a^2 + Lambda/3) $
+$ heq(dot.double(a)/a = - (4 pi G)/3 (overline(rho) + 3 overline(p)/c^2) + Lambda/3) $
+Einstein voleva ottenere un universo statico ($dot.double(a) = dot(a) = 0$) e di sola materia ($overline(p) = 0$).
+Imponendo queste condizioni si ottiene
+$ Lambda_E = 4 pi G overline(rho)_m wide K_E = 4 pi G overline(rho)_m a^2/c^2 $
+In seguito si osservò che l'universo si stava espandendo e questa idea venne accantonata (alcune fonti riportano che Einstein l'abbia definita l'errore più grande della sua vita) anche se in linea di principio questa non era da escludere.\
+Un'ulteriore cosa da notare è che l'universo di Einstein era in un punto di equilibrio instabile (anche un solo elettrone in più avrebbe causato la contrazione o l'espansione).
+
+L'idea venne ripresa in considerazione negli anni \'90 quando le osservazioni delle SNeIa misero in evidenza dei problemi nel modello.
+
+=== Misura dell'espansione accelerata
+La misura dell'espanzione accelerata viene fatta con la stessa tecnica con cui è stata scoperta la legge di Hubble: si osservano oggetti di cui si riesce a misurare sia un qualche tipo di distanza (tendenzialmente la distanza di luminosità $d_L$) sia il redshift.
+L'unica differenza è che si osserva a distanze maggiori, dove si riesce ad apprezzare un termine superiore dello sviluppo in serie rispetto alla legge di Hubble.
+Gli oggetti osservati a così grande distanza sono le SNeIa e le sorgenti di onde gravitazionali.
+
+Andiamo a considerare un ordine superiore nello sviluppo in serie di $a$ nell'universo locale
+#aeq[$a(t) = 1 + H_0(t-t_0) + 1/2 evaluated(dot.double(a))_(a=1) (t- t_0)^2$]
+Definiamo il *parametro di decelerazione* (chiamato così per motivi storici)
+$ heq(q = - dot.double(a)/(a H^2)) $
+e otteniamo
+#aeq[$a(t) = 1 + H_0(t-t_0) - 1/2 H_0^2 q_0 (t- t_0)^2$]
+Quindi $q_0$ sarà il nuovo parametro che dovremo determinare con un fit sui dati.\
+Andiamo dunque a sviluppare l'espressione per la distanza di luminosità
+#aeq[$d_L (cal(Z)) = (1 + cal(Z)) r (cal(Z)) = (1 + cal(Z)) chi sinc(chi sqrt(K)) ~ (1 + cal(Z)) chi$]
+Sviluppiamo $chi$
+#aeq[$
+  chi (cal(Z)) = integral_0^cal(Z) (c dd(cal(Z)'))/(H (cal(Z)'))
+  = c integral_0^cal(Z) [1/H_0 + [- 1/H^2 dv(H, cal(Z)')]_(cal(Z) = 0) cal(Z)' + ...] dd(cal(Z)')
+  = (c cal(Z))/H_0 - cal(Z)^2 c/(2 H_0^2) evaluated(dv(H, cal(Z)))_(cal(Z)
+  = 0) + ...
+$]
+Dobbiamo calcolare la derivata di $H = dot(a)/a$
+#aeq[$dv(H, cal(Z)) = dv(H, t) dv(t, a) dv(a, cal(Z)) = (- dot(a)^2/a^2 + dot.double(a)/a ) 1/dot(a) (-a^2) = cancel(a^2)/cancel(dot(a)) dot(a)^(cancel(2))/cancel(a^2) (1 underbrace(- dot.double(a)/(a H^2) , +q)) = dot(a) (1+q)$]
+Reinserendo nello sviluppo di $chi$
+$ chi (cal(Z)) = c/H_0 (cal(Z) - cal(Z)^2/2(q_0 + 1)) + ... $
 Quindi
-$
-  dv(tau, cal(Z)) & = 1/dd(cal(Z)) (Gamma_gamma dd(cal(Z)))/((1 + cal(Z)) H (cal(Z))) \
-                  & ~ (1 + cal(Z))^3 (1 + cal(Z))^(-1) (1 + cal(Z))^(-3/2) x_e (cal(Z)) \
-                  & ~ (1 + cal(Z))^(1/2) x_e (cal(Z))
-$
-Ma $x_e$ è costante prima e dopo la ricombinazione, quindi ho due andamenti paralleli che vengono interpolati durante la ricombinazione
-#figure(
-  image("images/3-9_vis_deriv.pdf", width: 50%),
-)
-Integrando otteniamo $tau$ che avrà un andamento analogo a legge di potenza con esponente di uno più grande alla sua derivata.\
-Quindi $cal(g)$ sarà 0 sia a valori di $cal(Z)$ piccoli (a causa di $dv(tau, cal(Z))$) che a valori grandi (a causa di $e^(-tau)$).
-#figure(
-  image("images/3-10_visibility.png", width: 60%),
-)
-Notiamo che la distribuzione non è simmetrica (perché $x_e$ non lo è).
-Definiamo il *last scattering* come il punto in cui è più probabile che sia avvenuto lo scattering, dunque il picco della distribuzione, che si trova a $cal(Z)_"ls" approx 11000$ (corrispondente a $t_"ls" approx 400000$ anni dopo il Big Bang).\
-La luce che riceviamo dalla CMB proviene proprio da quell'ultimo scattering avvenuto in quel momento.
-Possiamo notare che la distribuzione ha una larghezza di $Delta cal(Z) approx 80$ (corrispondente a $t approx numrange("150", "200", delimiter: "÷")$ anni).
-Questo significa che la CMB non è stata prodotta istantaneamente (se vogliamo, non è 'infinitamente sottile'), bensì ha uno 'spessore' di circa 1000 anni.
+$ d_L = (c cal(Z))/H_0 - 1/2 (c cal(Z)^2)/H_0 (1 + q_0) + (c cal(Z)^2)/H_0 + ... = (c cal(Z))/H_0 + (c cal(Z)^2)/(2 H_0) (1 - q_0) + ... $
+Questa viene detta *espansione cosmografica* e ha la meravigliosa caratteristica di essere indipendente dal modello di universo scelto.\
+Al giorno d'oggi tuttavia si tende a fare il fit direttamente con tutto il modello cosmologico per non perdere termini nello sviluppo in serie.
 
+Quando negli anni \'90 si iniziò a fare misure a grandi distanza, si notò che il fit dava un'accelerazione invece che una decelerazione come atteso.
+Le opzioni principali per spiegare questo andamento erano 2:
+- Violare la *strong enery condition* (SEC)
+  $ overline(rho) + 3 overline(p) > 0 $
+  dove ricordiamo $overline(rho) = sum_s overline(rho)_s$ e $overline(p) = sum_s overline(p)_s$ con $s$ le specie (radiazione, materia, ecc...)
+- Reinserire la costante cosmologica nelle equazioni di Einstein
+Si scelse di preservare la SEC e dunque si reinserì la costante cosmologica.
+
+=== Costante cosmologica come forma di energia
+Al giorno d'oggi, nelle equazioni di Einstein si tende a spostare $Lambda$ dall'altro lato
+$ tensor("R", -mu, -nu) -1/2 tensor(g, -mu, -nu) "R" = (8 pi G)/c^4 (tensor(T, -mu, -nu) + tensor(T^(Lambda), -mu, -nu)) wide "con" wide
+tensor(T^(Lambda), -mu, -nu) = - Lambda c^4/(8 pi G) tensor(g, -mu, -nu) $
+Questo per due motivi principali:
+- Operativamente risulta più semplice trattare $Lambda$ come tutte le altre sorgenti
+- Non sapremmo il significato di un termine aggiuntivo alla curvatura
+
+Andiamo a vedere le componenti del tensore energia-impulso di $Lambda$:
+#aeq[$ tensor(T^(Lambda), -0, -0) = - Lambda c^4/(8 pi G)(-1) wide tensor(T^(Lambda), -i, -j) = -Lambda c^4/(8 pi G) a^2 tensor(gamma, -i, -j)$]
+Interpretando i termini come densità e pressione ($ tensor(T, -0, -0) = rho c^2$ e $tensor(T, -i, -j) = p a^2 tensor(gamma, -i, -j)$) si ottiene
+$ overline(rho)_Lambda = Lambda c^2/(8 pi G) wide overline(p)_Lambda = -Lambda c^4/(8 pi G) = -overline(rho)_Lambda c^2 $
+Quindi abbiamo una nuova specie con $w_Lambda = -1$ (dove ricordiamo $overline(rho)_s = overline(p)_s w_s c^2$).\
+Sottolineiamo inoltre che essendo $Lambda$ costante avremo $overline(rho) = "cost" != overline(rho)(t)$.
+
+Questo ci porta ad aggiornare il grafico con le evoluzioni delle abbondanze al variare del fattore di scala (continuando a ignorare la curvatura)
+#subpar.grid(
+  figure(
+    image("images/ch-3/3-1-evoluzione_specie.pdf", width: 100%),
+  ),
+  figure(
+    image("images/ch-3/3-2-evoluzione_specie_b.png", width: 100%),
+  ),
+  columns: (1fr, 1fr),
+  caption: [Evoluzione delle densità delle specie.]
+)
+Abbiamo ancora che per la maggior parte del tempo l'universo è descrivibile come epoche dominate da una singola componente, intervallate da epoche di equivalenza:
+- L'*equivalenza materia-radiazione* che abbiamo già visto $overline(rho)_r (a_"eq") = overline(rho)_m (a_"eq")$
+- L'*equivalenza $Lambda$-materia* dove $overline(rho)_m (a_"eq") = overline(rho)_Lambda$
+Possiamo andare a calcolare il fattore di scala di quest'ultima dividendo per $rho_(c 0)$
+#aeq[$(overline(rho)_(m 0) a^(-3)_Lambda)/rho_(c 0) = overline(rho)_Lambda/rho_(c 0)$]
+#aeq[$Omega_(m 0) a^(-3)_Lambda = Omega_(Lambda 0)$]
+dove
+$ Omega_(Lambda 0) = Lambda/cancel(8 pi G) cancel(8 pi G)/(3 H_0^2) = Lambda/(3 H_0^2) $
+Notiamo che è importante mettere il pedice 0, perché sebbene $Lambda$ sia costante, $rho_c$ non lo è, quindi ho un'evoluzione
+#aeq[$Omega_Lambda (cal(Z)) = Omega_(Lambda 0)/(H^2 (cal(Z)) \/ H^2_0)$]
+Risolvendo per $a_Lambda$
+#aeq[$a_Lambda = root(3, Omega_(m 0) / Omega_(Lambda 0)) approx root(3, 0.3/0.7) approx 0.75 quad ==> quad cal(Z)_Lambda = 1/a_Lambda - 1 approx 0.33$]
+Notiamo che questo è un valore abbastanza vicino.
+
+Calcoliamo ora l'andamento temporale del fattore di scala nella dominazione della costante cosmologica
+#aeq[$dot(a)^2/a^2 = Lambda/3 = (8 pi G)/3 overline(rho)_Lambda = H_0^2 Omega_(Lambda, 0)$]
+#aeq[$dot(a) = H_0 a sqrt(Omega_(Lambda, 0))$]
+$ heq(a ~ exp{sqrt(Omega_(Lambda, 0)) H_0 t}) $
+
+Ricapitolando le epoche di dominazione abbiamo
+/ Radiation dominated: con un andamento $a ~ t^(1/2)$
+/ Matter dominated: con un andamento $a ~ t^(2/3)$ detto _universo di Einstein-De Sitter_
+/ Curvature dominated: con un andamento $a ~ sqrt(-K) t$ detto _universo di Milne_.\
+  Da notare come in questo caso sia concessa solo una curvatura positiva $K < 0$, quindi solo un universo chiuso
+/ $Lambda$ dominated: con un andamento $a ~ exp{sqrt(Omega_(Lambda, 0))H_0 t}$ detto _universo di De Sitter_ che è l'universo in cui ci troviamo noi oggi
+
+Possiamo anche aggiornare la nostra equazione delle abbondanze
+$ heq( H^2 (cal(Z)) = H_0^2 [Omega_(r, 0) (1 + cal(Z))^4 + Omega_(m, 0) (1 + cal(Z))^3 + Omega_(K, 0) (1 + cal(Z))^2 + Omega_(Lambda, 0)] ) $
+
+== Evoluzione delle disomogeneità e formazione delle galassie<sec:collasso_sferico>
+Facciamo ora un calcolo che ci tornerà molto utile nell'ultima parte del corso: l'evoluzione di usa sovradensità sferica.
+Consideriamo un universo matter-dominated con delle fluttuazioni rispetto all'omogeneità
+#aeq[$ rho = (1 + delta) overline(rho) $]
+Consideriamo una regione sferica di raggio comovente $R$ con densità $rho$ immersa in un universo di densità $overline(rho)$.
+La massa all'interno della regione sarà
+#aeq[$ M = 4/3 pi r^3 rho $]
+dove $r$ è la dimensione fisica ($r = a R$).\
+Un punto sulla superficie sferica sarà soggetta ad un'accelerazione gravitazionale
+$ dot.double(r) = -G M/r^2 = -(4 pi G)/3 rho r quad ==> quad dot.double(r)/r = - (4 pi G)/3 rho $<eq:acc_grav>
+che ricorda molto la seconda equazione di Friedmann.\
+Per ottenere la prima moltiplichiamo entrambi i membri per $dot(r)$
+#aeq[$ dot(r) dot.double(r) = -G M/r^2 dot(r) $]
+che possiamo scrivere come
+#aeq[$ dot(r)dot.double(r) = dot(r)dv(dot(r), t) = 1/2 dv(dot(r)^2, t) wide 1/r^2 dv(r, t) = - dv(,t)(1/r) $]
+Quindi intergrando su $t$ 
+#aeq[$ underbracket(1/2 dot(r)^2, E_K) = underbracket((G M)/r, -E_P) + underbracket(C, E_"tot") quad ==> quad 1/2 dot(r)^2 = (4 pi G)/3 rho r^2 + E_"tot" $]
+dove tutte le energie sono per unità di massa.
+Notiamo che se il sistema è legato, l'energia è negativa e possiamo scrivere
+$ (dot(r)/r)^2 = (8 pi G)/3 rho - (2 abs(E_"tot"))/(r^2) $<eq:energia>
+Abbiamo trovato la prima equazione di Friedmann dove $2 abs(E_"tot")$ gioca il ruolo di curvatura positiva.
+Mettendo insieme le due equazioni, scrivendole con il fattore di scala, otteniamo
+$ heq(cases(
+  dot.double(a)/a = -(4 pi G)/3 rho ,
+  (dot(a)/ a)^2 = (8 pi G)/3 rho - (2 abs(E_"tot"))/(a^2 R^2)
+)) $
+che abbiamo già risolto nella sezione @ch:ev_curv ottenendo la cicloide
+#aeq[$ cases(
+t = 1/(2 H_0) Omega_(m 0)/(- Omega_(k 0))^(3/2)[theta - sin(theta)],
+a = Omega_(m 0)/(2(-Omega_(k 0))) (1 - cos(theta))
+) $]
+dove le abbondanze sono (sfruttando che $r_0 = R$)
+$ Omega_(m 0) = 1/H_0^2 (8 pi G)/3 rho_0 = (2 G M)/(H_0^2 R^3) wide "e" wide -Omega_(k 0) = 1/H_0^2 (2 abs(E_"tot"))/R^2 $
+da cui
+#aeq[$ 1/(2 H_0) Omega_(m 0)/(- Omega_(k 0))^(3/2) = (G M)/(2 abs(E_"tot"))^(3/2) wide "e" wide
+  Omega_(m 0)/(2(-Omega_(k 0))) = (G M)/(2 abs(E_"tot") R) $]
+Inserendo nel sistema sopra (e ricordando che $a R = r$) otteniamo
+$ heq(cases(
+r = (G M)/(2 abs(E) r_i) [1 - cos(theta)],
+t = (G M)/(2 abs(E))^(3/2) [theta - sin(theta)]
+)) $
+Durante tutto questo processo, l'universo circostante evolve per conto proprio seguendo l'equazione di Friedmann
+$ r_"Uni" ~ a_"Uni" ~ t^(3/2) $
+Quello che fisicamente accade è che inizialmente la bolla sovradensa evolve espandendosi assieme all'universo circostante.
+In seguito inizia a decelerare e contrarsi, disaccoppiandosi dal comportamento omogeno del flusso di Hubble che coinvolge tutto l'universo circostante.\
+Questo possiamo intuire essere il modo in cui si sono formate le galassie, e il motivo per cui possiamo parlare di questi oggetti puntiformi in un universo a grande scala omogeneo.
+Notiamo inoltre che tanto più è massiva una sovradensità, tanto più sarà grande e tanto più ci metterà a contrarsi.
+#figure(
+  image("images/ch-3/4-evoluzione_sovradens.pdf", width: 55%),
+  caption: [Evoluzione di una sovradensità.]
+)

@@ -1,171 +1,174 @@
 //LTeX: language=it
 #import "pkg-preamble.typ": *
 
-= Disomogeneità nell'universo
-Fin'ora abbiamo trattato l'universo come omogeneo e questa approssimazione ci ha portato a dei buoni risultati, con predizioni teoriche che sono state verificate sperimentalmente.
-Tuttavia per poter comprendere le strutture a larga scala dell'universo è necessario considerare delle disomogeneità.\
-Dato che l'approssimazione omogenea è all'ordine zero corretta, possiamo procedere allo studio delle approssimazioni con la teoria perturbativa.
+= Inflazione cosmologica
+== Horizon problem e Flatness problem
+Andiamo ora a trattare un aspetto problematico che ha il modello cosmologico descritto dal Big Bang e dalle equazioni di Friedmann (per il momento useremo Big Bang e singolarità in modo intercambiabile, scopriremo molto presto che questo non è corretto).
+Il problema risiede nell'alto grado di omogeneità che osserviamo nell'universo.\
+Abbiamo già visto come la CMB sia un corpo nero praticamente perfetto a una temperatura omogenea di $overline(T) = qty("2.73", "K")$ ovunque, con piccolissime fluttuazioni.
+Di queste fluttuazioni è possibile fare la trasformata in armoniche sferiche
+#aeq[$
+  T(vu(n)) = sum_(l=0)^infinity sum_(m=-l)^(+l) a_(l m) Y^m_l (vu(n))
+  $]
+con $expval(a_(l m)) = overline(T)$ e $expval(a_(l m) a^*_(l' m'))$ la covarianza (si prende il complesso coniugato perché $a_(l m)$ possono assumere valori complessi).\
+Se le fluttuazioni fossero casuali (come rumore bianco) si avrebbe un andamento costante per i coefficienti della trasformata.
+Quello che invece si osserva è una struttura complessa
+#figure(
+  image("images/ch-5/1-momenti_cmb.jpg", width: 60%),
+  caption: [Sviluppo in armoniche sferiche delle anisotropie della CMB.]
+)
+Questa struttura fa pensare a un collegamento causale tra tutte le zone osservate e questo non è quello che ci saremmo aspettati.
 
-== Teoria perturbativa Newtoniana
-Prima di iniziare fissiamo la notazione e ripassiamo alcuni concetti: indichiamo con $va(x)$ le coordinate comoventi e con $va(r)$ le coordinate fisiche, con $va(r) = a va(x)$.\
-Quando facciamo derivate (gradienti e divergenze) se non viene riportato nessun pedice viene sottinteso che la derivazione è rispetto alle coordinate comoventi ($grad_x$), altrimenti verranno scritte come $grad_r$, e vale la relazione $grad_r = 1/a grad_x$.\
-Ricordiamo infine che la velocità del fluido è data da
-#aeq[$ va(u) = dot(va(r)) = dot(a) va(x) + va(v) = H va(r) + va(v) $]
-con $H = dot(a)/a$ il fattore di Hubble e $va(v) = a dot(va(x))$ le velocità peculiari (che anch'esse sono non omogenee al primo ordine).
+Dato un determinato punto dell'universo a un tempo $t$, possiamo determinare qual è la distanza causalmente connessa a un tempo passato $t_i$.
+Per fare ciò ci basta calcolare la distanza percorsa dalla luce da $t_i$ a $t$, che corrisponde alla distanza radiale comovente che avevamo definito in precedenza
+#aeq[$
+  chi (eta) = c (eta - eta_i)
+  $]
+dove abbiamo usato il tempo conforme $eta$ (con $a dd(eta) = dd(t)$) per semplicità.
+#figure(
+  image("images/ch-5/2-orizzonte.png", width: 60%)
+)
+#let piede_bang = [È importante tenere a mente che il Big Bang è un punto nel tempo, non nello spazio, quindi può essere pensato come una 'ipersuperficie di tipo spazio']
+Se prendiamo come tempo iniziale il Big Bang $t_i = 0$#footnote(piede_bang) questa distanza viene detta *orizzonte comovente* $d_h$ e rappresenta quale zona dell'universo al Big Bang è collegata ad un punto al tempo $t$.
+Possiamo pensarla come la distanza massima da cui possiamo ricevere luce emessa al Big Bang
+$ d_h (eta) = c(eta - 0) &= c integral_(0)^(t) dd(t)/(a (t)) = c integral_0^a dv(t, a) dd(a)/a = c integral_0^a  dd(a)/(a dot(a))\
+&= c integral_0^a dd(a)/(a^2 H(a)) = integral_0^(ln(a)) c dd(ln(a))/(cal(H) (ln(a))) $
+dove $cal(H) = (a')/a = 1/a dv(a, eta) = cancel(a)/cancel(a) dv(a, t) = dot(a) = a H$ è il *fattore di Hubble conforme*.
+$dd(N) = dd(ln(a))$ viene detto solitamente numero di '$e$-folds' (con $e$ numero di Nepero) e lo si può pensare come un analogo del tempo di dimezzamento dei decadimenti.\
+Notiamo che questo integrale non è risolvibile analiticamente.\
+$c cal(H)^(-1)$ viene detto *raggio di Hubble comovente*, banalmente perché se prendiamo la legge di Hubble $v = H_0 d$ e poniamo come velocità quella della luce otteniamo la distanza
+#aeq[$ r_(H 0) = c/H_0 quad ==> quad r_H = c/H quad ==> quad r_H/a = c/cal(H)$]
+Per specie ordinarie $cal(H)$ è una funzione decrescente, verifichiamolo:
+- Radiation dominated: $rho ~ a^(-4)  ==>  H ~ sqrt(rho) ~ a^(-2)  ==>  cal(H) ~ a^(-1)$
+- Matter dominated: $rho ~ a^(-3) ==> H ~ a^(-3/2)  ==>  cal(H) ~ a^(-1/2)$
+Questo significa che $cal(H)^(-1)$ è crescente, dunque l'integrale per il tempo conforme è dominato dai contributi a tempi fisici più grandi.
+Quindi il tempo conforme tra il Big Bang e ricombinazione sarà molto minore rispetto al tempo tra la ricombinazione e il presente.
+// TODO: Sostituire immagine
+#figure(
+  image("images/ch-5/3-ricombinazione_noi.png", width: 80%)
+)
+Ma questo significa che la maggior parte dei punti della CMB hanno coni luce passati che non si incrociano, quindi devono essere causalmente disconnessi.
+Può essere utile pensare a cosa succederebbe se le cose fossero al contrario: se la ricombinazione fosse più vicina a noi che alla singolarità, la base del triangolo tratteggiato sarebbe più corta mentre i triangoli grigi sarebbero più grandi e si sovrapporrebbero.
 
-Possiamo ora iniziare facendo uno studio analogo a quello che abbiamo fatto all'inizio del corso, passando dalla trattazione fluidodinamica dell'universo.\
-In questo caso però le nostre quantità (densità $rho$, pressione $p$ e potenziale gravitazionale $psi$) saranno scritte come la somma del loro valore medio più una perturbazione
+Possiamo provare a quantificare il problema: calcolando il rapporto tra l'orizzonte comovente oggi e alla ricombinazione si ottiene che oggi è circa 50 volte quello alla ricombinazione.\
+Un risultato più interessante è l'angolo sotteso dall'orizzonte alla ricombinazione, questo si ottiene facendo
 $
-rho (t, va(x)) &= overline(rho) (t) + delta rho (t, va(x))\
-p (t, va(x)) &= overline(p) (t) + delta p (t, va(x))\
-psi (t, va(x)) &= overline(psi) (t, va(x)) + delta psi (t, va(x))
+theta = (2 chi ("sing"-"rec"))/(chi ("rec"-"oggi")) = (2 cancel(c) (eta_"rec" - 0))/(cancel(c) (eta_0 - eta_"rec")) approx 2°
 $
-dove notiamo che per il potenziale gravitazionale anche l'ordine zero dipenderà dalla posizione (altrimenti nell'equazione di Poisson il laplaciano sarebbe identicamente nullo).\
-Guardiamo per prima l'equazione di Poisson
-$ laplacian psi = 4 pi G a^2 rho $
-#aeq[$ laplacian (cancel(overline(psi)) + delta psi) = 4 pi G a^2 (cancel(overline(rho)) + delta rho) $]
-dove abbiamo cancellato i termini medi sfruttando il fatto che la relazione vale anche per il solo ordine zero
-$ heq(laplacian delta psi = 4 pi G a^2 delta rho) $
-Passiamo all'equazione di continuità
-$ dot(rho)_m = -rho_m/a div va(u) $
-#aeq[$ dv(,t) (overline(rho)_m + delta rho_m) = -(overline(rho)_m + delta rho_m)/a div (dot(a) va(x) + va(v)) $]
-#aeq[$ cancel(dot(overline(rho))_m) + dot(delta rho_m) = cancel(-overline(rho)_m dot(a)/a div va(x)) - delta rho_m dot(a)/a underbracket(div va(x), 3) -overline(rho)_m 1/a div va(v) -1/a underbracket(delta rho_m div va(v), Order(2))$]
-$ heq( dot(delta rho_m) + 3 H delta rho_m = -overline(rho)_m 1/a div va(v) ) $
-Questa equazione è corretta, tuttavia può essere scritta in un modo più utile introducendo una nuova quantità
-#definizione[
-  Si definisce *density contrast* $delta$ la quantità
-  $ heq( delta(t, va(x)) = (rho (t, va(x)) - overline(rho)(t))/(overline(rho)(t)) ) quad = (delta rho(va(x), t))/(overline(rho)(t)) $
-  Questa potrà assumere valori nell'intervallo $[-1, + infinity)$, poiché $rho$ non può essere negativa.
-  Per poter applicare la teoria perturbativa è necessario che sia molto prossima a 0.
-]
-È necessario inoltre riscrivere la pressione in funzione della densità.
-Ricordiamo che per fluidi barotropici avevamo
-$ overline(p) = w overline(rho) = pdv(overline(p), overline(rho)) overline(rho) $
-Possiamo estendere questa relazione:
-$ heq( p = rho pdv(p, rho) = (overline(rho) + delta rho) pdv(,rho) [overline(p) + delta p] = w overline(rho) + c_s^2 delta rho ) $
-dove $c_s$ è la velocità del suono
-$ c_s = sqrt(pdv(p, rho)) $
-Riprendendo l'equazione di continuità da cui siamo partiti
-#aeq[$ dot(rho) = - rho/a div va(u) $]
-#aeq[$ dv(,t)[(1 + delta) overline(rho)] = - ((1+delta) overline(rho))/a [div (dot(a) va(x) + va(v))] $]
-#aeq[$ cancel((1 + delta) dot(overline(rho))) + dot(delta) thin overline(rho) = cancel(- 3 H (1+delta) overline(rho)) - 1/a overline(rho)(div va(v)) $]
-$ heq( dot(delta) = - 1/a div va(v) ) $<eq:cont_contrast>
+Questo corrisponde a circa quattro volte la dimensione angolare del Sole o della Luna
+#figure(
+  image("images/ch-5/4-orizzonte_cerchio.png", width: 60%)
+)
 
-Passiamo infine all'equazione di Eulero
-$ rho dot(va(u)) = - 1/a grad p - rho/a grad psi $
-#aeq[$ (1+ delta) overline(rho) dv(,t) [dot(a) va(x) + va(v)] = - 1/a grad (w overline(rho) + c_s^2  delta rho) - ((1 + delta) overline(rho))/a grad (overline(psi) + delta psi) $]
-#aeq[$ (1+ delta) cancel(overline(rho)) [dot.double(a) va(x) + H va(v) + dot(va(v))] = - (c_s^2 cancel(overline(rho)))/a grad delta - ((1 + delta) cancel(overline(rho)))/a grad (overline(psi) + delta psi) $]
-Vogliamo ricollegarci all'equazione di Poisson, quindi prendiamo la divergenza
-#aeq[$ div {(1+ delta) [dot.double(a) va(x) + H va(v) + dot(va(v))]} = - c_s^2/a laplacian delta - div {(1 + delta)/a grad (overline(psi) + delta psi)} $]
-Ora possiamo notare che i termini $(1 + delta)$ stanno moltiplicando termini già del primo ordine, qundi possiamo trascurare $delta$
-#aeq[$ div [dot.double(a) va(x) + H va(v) + dot(va(v))] = - c_s^2/a laplacian delta - 1/a laplacian (overline(psi) + delta psi) $]
-#aeq[$ cancel(3 dot.double(a)) + H div va(v) + div dot(va(v)) = - c_s^2/a laplacian delta cancel(- 4 pi G overline(rho)/a) - 1/a laplacian delta psi $]
-dove abbiamo cancellato i due termini usando l'equazione di Friedmann per le quantità medie
-$ heq(div dot(va(v)) + H div va(v) = - c_s^2/a laplacian delta - 1/a laplacian delta psi) $
-Questa equazione vorremmo però riscriverla in funzione unicamente di $delta$ invece che di $va(v)$.
-Per fare ciò basta sfruttare l'@eq:cont_contrast. Derivandola per il tempo ottengo
-$ dot.double(delta) = - H/a div va(v) - 1/a div dot(va(v)) $
-Sostituendo sopra
-#aeq[$ - a dot.double(delta) + 2 H div va(v) = - c_s^2/a laplacian delta - 1/a laplacian delta psi $]
-#aeq[$ dot.double(delta) + 2 H dot(delta) =  c_s^2 laplacian delta + laplacian delta psi $]
-$ heq(dot.double(delta) + 2 H dot(delta) - c_s^2 laplacian delta - 4 pi G sum_i delta_i overline(rho)_i = 0) $
-Nell'ultimo passaggio abbiamo sostituito l'equazione di Possion, ma abbiamo messo la sommatoria per sottolineare che l'interazione gravitazionale arriva da tutte le componenti insieme.
-Quindi se volessimo studiare l'evoluzione delle disomogeneità di una singola specie, nel contributo gravitazionale dovremmo mettercele tutte.
-Separando per specie avremo un sistema di equazioni accoppiate, dove il termine di accoppiamento deriva proprio da quella sommatoria.
+Quindi da un lato ci aspettiamo di avere zone di omogeneità non più grandi di $2°$, dall'altra osserviamo la che la CMB è omogenea ovunque.
+Si potrebbe pensare che i vari punti si siano evoluti separatamente tutti verso un equilibrio comune.
+Tuttavia con questa spiegazione bisognerebbe avere che le perturbazioni all'omogeneità siano rumore bianco, mentre invece si osserva l'andamento mostrato prima.
+Questo viene detto *Horizon problem*.
 
-== Evoluzione delle perturbazioni
-Vogliamo ora andare a studiare la funzione che abbiamo appena ottenuto, per sapere come evolvono le perturbazioni.
-Tuttavia è più comodo lavorare nello spazio di Fourier, in questo modo metteremo in relazione l'evoluzione a $va(k)$ che è legata alla scala della perturbazione.\
-Come notazione useremo $delta$ sia per la funzione nello spazio delle $x$ che in quello delle $k$ (le si distingue vedendo quali variabili compaiono nell'equazione)
+// TODO: Spiegare meglio
+L'altro problema del modello cosmologico presentato fin'ora è quello che viene detto *Flatness problem* e consiste nel fatto che sia altamente improbabile che l'universo tra tutti i valori possibili di curvatura abbia esattamente 0, come si osserva.
+
+== Inflazione
+Per poter spiegare queste due osservazioni utilizzando il modello cosmologico visto fin'ora, servirebbe quindi che le condizioni iniziali fossero accuratamente _fine-tuned_ in modo tale da far raggiungere uno stato dove tutte le parti sembrano essere state causalmente connesse, anche senza mai esserlo state.
+È inutile dire che questa spiegazione non è per nulla soddisfacente, e dunque se ne è cercata una alternativa.
+
+Una possibile spiegazione alternativa è che prima del Big Bang caldo (anche detto *reheating*, che a questo punto non coincide più con la singolarità!) ci sia sia stato un periodo in cui l'omogeneità e la correlazione tra le fluttuazioni si sono generate.
+In questo periodo è necessario che il raggio di Hubble si sia ristretto
+$ dv(,t) cal(H)^(-1) < 0 $
+Ma ricordando che $cal(H) = dot(a)$ si ottiene $dot.double(a) > 0$, quindi un'espansione accelerata.
+Questo periodo di accelerazione viene detto *inflazione*.
+#figure(
+  image("images/ch-5/5-inflazione.png", width: 80%)
+)
+
+// TODO: Spostare questa parte sotto
+Possimo provare a valutare quanto deve essere stata grande questa espansione.
+Se consideriamo un universo radiation-dominated abbiamo $cal(H)^(-1) ~ a ~ T^(-1)$, quindi calcoliamo il rapporto tra il raggio di Hubble conforme oggi e alla fine dell'inflazione (che corrisponde al Big Bang caldo).
+Alla fine dell'inflazione abbiamo la temperatura di reheating $T approx qty("e15", "GeV")$ (temperatura a cui tutte le interazioni iniziano ad avvenire con tasso maggiore all'espansione dell'universo, vedi @eq:limite_temp della @sec:eq_chimico).
+$ (cal(H)^(-1))_"reheating"/(cal(H)^(-1))_"oggi" = T_"oggi"/T_"reheating" = qty("2.73", "K")/qty("e15", "GeV") approx num("e-28") approx e^(-65) $
+Quindi tra il reheating e noi ci sono state 65 $e$-folds, e se vogliamo avere la causalità è necessario che ce ne siano state altrettante durante l'inflazione prima del reheating.
+Ma noi sappiamo che il reheating è avvenuto dopo $qty("e-30", "s")$.
+Dunque nei primi $qty("e-30", "s")$ l'universo si è espanso di 28 ordini di grandezza con espansione accelerata.\
+Questo se ci pensiamo risolve anche il flatness problem.
+Infatti qualsiasi valore di curvatura avesse l'universo all'inizio, la grande espansione che ha subìto ha fatto sì che la piccola parte di universo oggi osservabile ci sembri piatta (analogamente a come la piccola parte di Terra visibile entro l'orizzonte ci sembra piatta).
+
+== Fisica dell'inflazione
+Andiamo ora alcune condizioni sui processi fisici che devono aver causato l'inflazione.
+Innanzitutto vogliamo che
+$ dv(cal(H)^(-1), ln(a)) < 0 $
+$ dv(cal(H)^(-1), ln(a)) &= - a/cal(H)^2 dv(cal(H), a) = - cancel(a)/(a^cancel(2) H^2) dv((a H), a) = - 1/(dot(a) a H^2) dv((a H), t)\
+&= - 1/(a^2 H^3) (dot(a) H + a dot(H)) = - 1/(a H) (dot(a)/a H/H^2 + a/a dot(H)/H^2)\
+&= - (1 + dot(H)/H^2)/(a H) = - (1 - epsilon_H)/(a H) $
+dove abbiamo introdotto lo *slow-roll parameter* $epsilon_H = - dot(H)/H^2$.\
+Per avere $dv(cal(H)^(-1), ln(a)) < 0$ serve avere $epsilon_H < 1$, ma $epsilon$ può essere riscritto usando le equazioni di Friedmann:
+$ epsilon_H = - dot(H)/H^2 = - 1/H^2 [dot.double(a)/a - (dot(a)/a)^2] = 1 - 1/H^2 dot.double(a)/a = 1 + 1/(2 overline(rho)) (overline(rho) + 3 overline(p)) = 3/2(1 + overline(p)/overline(rho)) $
+Ma allora imporre $epsilon_H < 1$ equivale a $overline(rho) + 3 overline(p) < 0$ che corrispondere a rompere la strong energy condition ($w < -1/3$).\
+Quindi vogliamo qualcosa che si comporti in modo simile alla costante cosmologica.
+
+=== Inflatone
+Il modello più semplice prevede l'esistenza di un campo scalare $phi.alt (va(x), t)$ detto *inflatone*.
+In un universo omogeneo e isotropo potremo scriverlo come la somma di un valore medio più piccole fluttuazioni
+$ phi.alt (va(x), t) = overline(phi.alt) (t) + delta phi.alt (va(x), t) $
+Per il momento concentriamoci sulla parte omogenea e consideriamo una teoria non interagente.
+La densità di lagrangiana sarà
+$ cal(L)_phi.alt = - 1/2 thin partial_mu phi.alt thin partial^mu phi.alt - V (phi.alt) $
+Questa però è valida in uno spazio di Minkowski, se consideriamo l'universo in espansione avremo (stiamo banalmente mettendo la forma volume)
+#aeq[$ integral dd(t) dd(x, 3) cal(L) --> integral dd(t) dd(x_c, 3) a^3 cal(L) $]
+quindi la lagrangiana diventa (considerando già che le derivate non temporali sono nulle perché siamo omogenei)
+$ cal(L)_overline(phi.alt) = (1/2 dot(overline(phi.alt))^2 - V (overline(phi.alt))) a^3 $
+Possiamo risolvere l'equazione di Eulero-Lagrange
+$ partial_mu (pdv(cal(L), (partial_mu overline(phi.alt)))) = pdv(cal(L), overline(phi.alt)) $
+dove
+#aeq[$ pdv(cal(L), overline(phi.alt)) = a^3 dv(V, overline(phi.alt)) $]
+#aeq[$ partial_mu (pdv(cal(L), (partial_mu overline(phi.alt)))) = - dv(,t) pdv(cal(L), dot(overline(phi.alt))) = - dv(,t) (dot(overline(phi.alt)) a^3)
+  = - dot.double(overline(phi.alt)) a^3 - dot(overline(phi.alt)) a^2 3 dot(a) $]
+quindi
+$ a^3 dot.double(overline(phi.alt)) + 3 a^3 H dot(overline(phi.alt)) + a^3 dv(V, overline(phi.alt)) = 0
+quad ==> wide heq(dot.double(overline(phi.alt)) + 3 H dot(overline(phi.alt)) + dv(V, overline(phi.alt)) = 0)
 $
-delta (va(k), t) = integral dd(x,3) delta (va(x), t) e^(-i va(k) dot va(x)) wide delta (va(x), t) = integral dd(x,3)/(2 pi)^3 delta (va(k), t) e^(+i va(k) dot va(x))
+Questa è una sorta di equazione di Klein-Gordon con un termine di viscosità in più, anche detta *Hubble friction*.
+
+Supponiamo ora che l'inflatone domini l'universo subito dopo la singolarità.
+Vogliamo scrivere densità di energia e pressione per questa specie.
+Data la forma della lagrangiana, avremo che la densità di energia non sarà nient'altro che la densità di Hamiltoniana
 $
-Trasformando l'equazione otteniamo
-$ heq(dot.double(delta) + 2 H dot(delta) + c_s^2 k^2 delta - 4 pi G sum_i delta_i overline(rho)_i = 0) $
-Questa equazione è valida per tutte le specie.
-Noi ora la studieremo per perturbazioni di materia, ma il risultato per la radiazione sarà del tutto analogo.\
-#let pie_pert_lam = [Esistono nuove teorie che considerano perturbazioni anche sulla costante cosmologica, ma sono ancora poco accreditate e molto complicate, dunque non le studieremo]
-Per quanto riguarda i termini nella sommatoria avremo solo radiazione e materia, poiché $Lambda$ essendo costante non ha perturbazioni#footnote(pie_pert_lam).
-$ dot.double(delta)_m + 2 H dot(delta)_m + (c_s^2 k^2 - 4 pi G overline(rho)_m) delta_m  = 4 pi G overline(rho)_r delta_r $
-Questa è l'espressione di un oscillatore armonico smorzato con forzante.\
-La soluzione completa è difficile da ottenere, e non ne vale la pena in una trattazione Newtoniana che poi andrà rivista.
-Quindi la studieremo solo in alcuni casi particolari.
+heq(overline(rho)_(phi.alt) = 1/2 dot(overline(phi.alt))^2 + V(phi.alt))
+$
+Per la pressione possiamo derivare l'espressione sopra
+#aeq[$
+  dot(overline(rho))_(phi.alt) = (dot(overline(phi.alt)) dot.double(overline(phi.alt)) + dv(V, t))
+  = dot(overline(phi.alt)) (dot.double(overline(phi.alt)) + dv(V, overline(phi.alt))) = - dot(overline(phi.alt)) 3 H dot(overline(phi.alt))
+  $]
+dove nell'ultima uguaglianza abbiamo utilizzato l'equazione di Eulero-Lagrange.
+A questo punto basta usare la legge di continuità $dot(overline(rho)) = - 3 H (overline(rho) + overline(p))$ ottenendo
+#aeq[$
+cancel(- 3 H) dot(overline(phi.alt))^2 = cancel(- 3 H)( 1/2 dot(overline(phi.alt))^2 + V + overline(p)_phi.alt)
+$]
+$
+heq(overline(p)_(phi.alt) = 1/2 dot(overline(phi.alt))^2 - V(phi.alt))
+$
+Con queste due è possibile calcolare l'accelerazione $dot.double(a) prop -(overline(rho)_phi.alt + 3 overline(p)_phi.alt)$.\
+Possiamo notare che il rapporto tra densità e pressione non è costante come le altre specie
+$
+w_phi.alt = overline(p)_phi.alt/overline(rho)_phi.alt = (1/2 dot(overline(phi.alt))^2 - V(phi.alt))/(1/2 dot(overline(phi.alt))^2 + V(phi.alt))
+$
+Tuttavia se l'energia cinetica è trascurabile si ottiene un rapporto $w_phi.alt -> -1$ come per la costante cosmologica, che come abbiamo già visto dà un universo di De Sitter con un'espansione esponenziale.
 
-=== Universo statico
-Il primo caso che consideriamo è un universo senza espansione ($H = 0$).\
-In questo caso le densità medie non variano nel tempo e se c'è una componente dominante, questa continuerà a dominare per sempre
-/ Caso radiation-dominated: #[\
-  Avremo $overline(rho)_r >> overline(rho)_m$ quindi possiamo trascurare $delta_m overline(rho)_m$
-  $ dot.double(delta)_m + c_s^2 k^2 delta_m = 4 pi G overline(rho)_r delta_r $
-  Questa è l'equazione di un oscillatore armonico con forzante.
-  #let pie_laplace = [Un modo forse più formale consiste nel trasformare con Laplace rispetto al tempo.
-    In questo modo l'approssimazione della mediazione su lunghi tempi delle oscillazioni della radiazione corrisponde a dire che nello spazio delle $omega$ le $delta_r$ tendono a 0 per alte pulsazioni.]
-  La forzante $prop overline(rho)_r delta_r$ in linea di principio è variabile nel tempo e rispetta un'equazione differenziale analoga (effettivamente si ottiene che segue un oscillatore armonico semplice), tuttavia possiamo mediare su tempi abbastanza lunghi e rendere quel termine costante#footnote(pie_laplace).
-  Dunque otteniamo oscillazioni con pulsazione $omega = c_s k$ attorno ad un valore $4 pi G overline(rho)_r delta_r$.
-]
-/ Caso matter-dominated: #[\
-  Abbiamo $overline(rho)_r << overline(rho)_m$ quindi possiamo trascurare $delta_r overline(rho)_r$
-  $ dot.double(delta)_m + (c_s^2 k^2 - 4 pi G overline(rho)_m) delta_m = 0 $
-  Abbiamo un oscillatore armonico semplice con
-  $ omega^2 = c_s^2 k^2 - 4 pi G overline(rho)_m $
-  Notiamo che questo valore può diventare negativo, rendendo la pulsazione immaginaria e quindi l'oscillazione instabile.
-  Ciò avviene se la $k$ scende sotto il valore
-  $ k < sqrt(4 pi G overline(rho)_m)/c_s $
-  Si definisce dunque la *lunghezza d'onda di Jeans*
-  $ heq(lambda_J = (2 pi)/k = c_s sqrt(pi/(G overline(rho)_m))) $
-  Sotto questa lunghezza scala si hanno oscillazioni stabili con pulsazione determinata dalla velocità del suono nel plasma.\
-  Sopra questa lunghezza scala si ha un collasso esponenziale (analogo all'instabilità di Jeans trattata nei corsi di Astrofisica).
-]
+Quindi è necessario che inizialmente il potenziale sia alto e vari poco (si parla di *potenziale slow-roll*)
+#figure(
+  image("images/ch-5/6-slow_roll.png", width: 60%),
+  caption: [Esempio di potenziale slow-roll.\ L'inflazione avviene nella zona evidenziata in grigio.]
+)
+// TODO: Cambiare sta parte appena ci capisci di più
+Poi man mano che aumenta l'energia cinetica, l'inflazione finisce.
+In questo periodo c'è stato un 'super raffreddamento'.
+Una volta che si arriva al minimo, il campo inizia ad oscillare rilasciando energia e decadendo in tutte le particelle del modello standard.
 
-=== Universo in espansione
-Passiamo ora alla versione più completa con $H > 0$.
-Anche in questo caso tratteremo solo le epoche di dominazione di una sola specie.
-Vedremo che in tutti i risultati avremo una combinazione di due soluzioni entrambe instabili, una detta *decaying mode* e una detta *growing mode*
-/ Caso radiation-dominated: #[\
-  $ dot.double(delta)_m + 2 H dot(delta)_m + c_s^2 k^2 delta_m approx 0 $
-  dove abbiamo messo il termine noto a zero mediando su tempi sufficientemente lunghi (in realtà darebbe un valore costante non nullo che però traslerebbe solo la soluzione).\
-  Possiamo poi sfruttare l'approssimazione di plasma non compresso secondo cui $c_s^2 approx w$ che per la materia è 0.
-  $ dot.double(delta)_m + 2 H dot(delta)_m = 0 $
-  Questa è un'equazione differenziale di secondo ordine a coefficienti non costanti.
-  Le due soluzioni sono
-  $
-    cases(delta_m = "cost", a^2 dot(delta)_m = "cost")
-  $
-  dove la seconda è stata ottenuta notando che l'equazione può essere riscritta come
-  #aeq[$ a^(-2) dv(,t)[a^2 dot(delta)_m] = 0 $]
-  La seconda va ancora risolta separando le variabili $dd(delta_m) prop a^(-2) dd(t)$.
-  Ma ricordiamo che in un universo radiation-dominated si ha $a prop t^(1/2)$, dunque $dd(delta_m) prop dd(t)/t$ che dà
-  $ cases(
-    delta_m ~ ln(a) quad &"growing mode",
-    delta_m ~ "cost" quad &"decaying mode"
-  ) $
-  Vediamo quindi che in questo periodo di dominazione le fluttuazioni crescono molto lentamente (dovuto al fatto che $a$ cresce molto lentamente con $t$).
-]
-/ Caso matter-dominated: #[\
-  $ dot.double(delta)_m + 2 H dot(delta)_m - underbracket(4 pi G overline(rho)_m, 3/2 H^2) delta_m = 0 $
-  dove abbiamo nuovamente posto $c_s = 0$.
-  Questo può anche essere pensato come se stessimo trascurando tutto ciò che ha una scala minore a $lambda_J$.\
-  In un universo matter-dominated vale $a ~ t^(2/3) => dot(a) ~ 2/3 t^(-1/3) => H = 2/(3 t)$
-  $ dot.double(delta)_m + 4/(3 t) dot(delta)_m - 2/(3 t^2) delta_m = 0 $
-  Per risolvere questa equazione differenziale facciamo l'ansatz che la soluzione sia del tipo $delta_m ~ t^alpha$ ottenendo
-  #aeq[$ alpha (alpha - 1) t^(alpha - 2) + 4/(3 t) alpha t^(alpha - 1) - 2/(3 t^2) t^alpha = 0 $]
-  #aeq[$ 3 alpha (alpha - 1) + 4 alpha - 2 = 0 $]
-  #aeq[$ 3 alpha^2 + alpha - 2 = 0 $]
-  $ alpha = (-1 plus.minus sqrt(1+24))/6 = cases(2/3, -1) $
-  $ cases(
-    delta_m ~ t^(2/3) ~ a quad &"growing mode",
-    delta_m ~ t^(-1) quad &"decaying mode"
-  ) $
-  Quindi le zone sovradense continuano ad aumentare di densità con $t^(2/3)$ svuotando le zone sottodense circostanti che continuano a perdere materia.
-]
-/ Caso $Lambda$-dominated: #[\
-  $ dot.double(delta)_m + 2 H dot(delta)_m = 0 $
-  Anche in questo caso le due soluzioni sono
-  $ cases(delta_m = "cost", a^2 dot(delta)_m = "cost") $
-  In questo caso però ho crescita esponenziale $a ~ exp{sqrt(Omega_(Lambda 0)) H_0 t}$ che mi dà
-  $ cases(
-    delta_m ~ "cost" quad &"growing mode",
-    delta_m ~ e^(-2t) quad &"decaying mode"
-  ) $
-  Dunque le regioni sottodense vengono stirate rendendo ancora più estrema la loro sottodensità, mentre le regioni sovradense è come se si disaccoppiassero e smettessero di crescere.
-]
+Vediamo cosa succede al problema dell'orizzonte.
+Abbiamo che $dot(overline(rho)) = -3 H overline(rho) (1 + w) => overline(rho) ~ a^(-3(1+w))$ quindi
+$
+eta(a) = integral dd(a)/(a^2 H) prop integral dd(a)/(a^(1/2(1- 3w))) = 2/(1+3w) a^(1/2(1+3w))
+$
+Senza inflazione alla singolarità ($a->0$) avremmo ottenuto $eta->0$.
+Con l'inflazione per $a->0$ si ottiene $eta -> -infinity$.\
+Quindi tra la singolarità e l'inflazione c'è un'infinità di tempo conforme, il che rende tutti i punti dell'universo causalmente connessi

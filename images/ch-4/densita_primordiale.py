@@ -40,4 +40,4 @@ ax.plot(x, y3, color="black", ls ="-", label=r"$T^{\frac{3}{2}}\exp{\{-\frac{1}{
 ax.legend(loc=(0.6,0.1))
 ax.grid()
 
-fig.savefig("3-2_densita_primordiale.pdf", bbox_inches="tight")
+fig.savefig("04-densita_primordiale.pdf", bbox_inches="tight")

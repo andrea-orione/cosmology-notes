@@ -60,4 +60,4 @@ ax.text(-0.16, 0.52, "$\\theta$")
 ax.text(-1.25, 0.8, "$R = |v|$d$t$")
 
 
-fig.savefig("3-1_cono_superficie.pdf", bbox_inches="tight")
+fig.savefig("03-cono_superficie.pdf", bbox_inches="tight")

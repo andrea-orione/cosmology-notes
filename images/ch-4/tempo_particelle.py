@@ -42,4 +42,4 @@ ax.text(-0.12, -0.01, r"$|\overrightarrow{q} |$")
 ax.text(xend - 0.15, -0.1, "Non rel.")
 ax.text(0, -0.1, "Ultra rel.")
 
-fig.savefig("3-0_cooldown_particelle.pdf", bbox_inches="tight")
+fig.savefig("02-cooldown_particelle.pdf", bbox_inches="tight")

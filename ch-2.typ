@@ -1,645 +1,326 @@
 //LTeX: language=it
 #import "pkg-preamble.typ": *
 
-= Trattazione in relatività generale
-#let foot_rel = [
-  Riportiamo di seguito una veloce e incompleta rassegna dei concetti più importanti di geometria differenziale e relatività generale.
-  Tuttavia questa è carente di esempi e sottigliezze non ovvie.
-  In caso di dubbi consultare un corso di Relatività Generale.
+= Equazioni per l'evoluzione dell'universo
+Possiamo ora iniziare a ricavare le equazioni che governano l'evoluzione dell'universo.
+Per fare ciò iniziamo dalle evidenze sperimentali (da non confondere con le interpretazioni che diamo a esse) che sono state raccolte a partire dal \'900:
+- A grande scala (ossia oltre i $qty("100", "Mpc")$) l'universo che osserviamo sembra essere isotropo.
+- Osservando le galassie, notiamo che in genere queste si stanno allontanando da noi tanto più velocemente quanto più sono lontane.
+== Il principio cosmologico
+Iniziamo dalla prima evidenza, che ci permette di fare delle grandi semplificazioni ai calcoli.
+Le misure più recenti sono quelle ottenute dalle osservazioni _deep field_ del telescopio Hubble (nel visibile) e del JWSP (nell'infrarosso).
+Queste possono essere viste come dei 'carotaggi' nel cosmo in cui risultano visibili le galassie a tutte le distanze.
+Da queste misure si osserva che l'universo è in prima approssimazione isotropo.\
+Un'ulteriore conferma di questa evidenza la troviamo nella CMB, che come abbiamo detto in precedenza risulta essere uno spettro di corpo nero di $T = qty("2.725", "K")$ in tutte le direzioni con fluttuazioni incredibilmente piccole.
+
+Questa isotropia può portarci alla condizione di omogeneità se assumiamo il *principio Copernicano*, secondo il quale noi non ci troviamo in un luogo speciale dell'universo.
+Ciò ci porta a dire che l'universo è isotropo non solo rispetto a noi, bensì rispetto a un osservatore in qualunque luogo.
+Questi risultati vengono riassunti nel *principio cosmologico*.
+#legge(title: "Principio cosmologico")[
+  L'universo a grande scala ($l gt.tilde qty("100", "Mpc")$), può essere considerato omogeneo e isotropo.
 ]
-== Ripasso di relatività generale
-La relatività generale è miglior teoria che abbiamo della gravità.
-Essa si basa sul principio che il campo gravitazionale non sia altro che una manifestazione della curvatura dello spazio tempo.#footnote(foot_rel)
-Il linguaggio di questa teoria è quello della geometria differenziale, quindi tutte le equazioni dovranno essere scritte in forma *manifestamente covariante*.
+#osservazione[
+  Il principio cosmologico potrebbe sembrare in contrasto con quello che abbiamo detto nel @ch:introduzione[Capitolo], quando abbiamo parlato di ragnatela cosmica.
+  Questo parzialmente è vero, tuttavia dobbiamo tenere a mente che quando parliamo di omogeneità non intendiamo per forza che le osservabili siano costanti e ovunque uguali, bensì che la struttura a grande scala abbia le stesse caratteristiche ovunque (eventualmente anche le disomogeneità locali).\
+  Nella trattazione successiva avremo bisogno di assumere che l'universo sia effettivamente costante ovunque, in tal caso la struttura data dalla ragnatela cosmica verrà considerata come una perturbazione al primo ordine.
+]
 
-Il concetto fondamentale della geometria differenziale è come trasformano le componenti degli oggetti sotto cambio di coordinate.
-Supponiamo di avere due sistemi di coordinate $tensor(x,+mu)$ e $tensor(Tilde(x),+nu)$ e una mappa che li leghi $tensor(x,+mu) = tensor(x,+mu)(tensor(Tilde(x),+nu))$.
-Sia inoltre $pdv(tensor(x,+mu), tensor(Tilde(x),+nu))$ lo Jacobiano del cambio di coordinate.
+== La legge di Hubble
+Passiamo ora alla seconda evidenza: poco dopo la scoperta delle galassie (in particolare della scoperta che questi oggetti fossero esterni alla Via Lattea), si scoprì che queste avevano un moto rispetto a noi.
+Per misurare questo moto, si sfrutta il _redshift_.
 
+#box[#digressione(title: "Effetto Doppler")[
+  Ricaviamo velocemente per ripasso la formula per la trasformazione della lunghezza d'onda data dall'effetto Doppler in relatività speciale.\
+  Sia $O$ il Sistema di Riferimento (SR) dell'osservatore che emette la luce e sia $O'$ il SR dell'osservatore che la riceve, e siano $lambda_s$ e $lambda_o$ le lunghezze d'onda misurate rispettivamente alla sorgente da $O$ e alla ricevitore da $O'$.
+  Assumiamo inoltre che i sistemi $O$ e $O'$ si stiano allontanando con velocità relativa $v$ e che la luce venga emessa parallelamente a questa.
+  Nel caso generico questa velocità diventerà la $v_("l.o.s.")$ (lungo la linea di vista).\
+  Il tempo che intercorre tra l'emissione di due fronti d'onda per l'osservatore $O$ è
+  #aeq[$Delta t_s = lambda_s/c$]
+  Sempre $O$ osserva che il tempo che intercorre tra la ricezione dei due fronti sarà maggiore, perché il ricevitore si sta allontanando (è come se il secondo fronte stesse rincorrendo il ricevitore)
+  #aeq[$Delta t_r = Delta t_s + (v Delta t_r)/c quad ==> quad Delta t_r = (Delta t_s)/(1 - beta)$]
+  Questo tempo (misurato in un sistema dove le ricezioni dei due fronti non avvengono nello stesso punto) è soggetto a dilatazione temporale rispetto a quello comovente con il ricevitore $Delta t_r = gamma Delta t'_r$.
+  Quindi lo stesso tempo misurato dall'osservatore $O'$ sarà
+  #aeq[$Delta t'_r = 1/gamma Delta t_r = sqrt(1 - beta^2)/(1 - beta) Delta t_s = Delta t_s sqrt((1+beta)/(1-beta))$]
+  da cui
+  $ lambda_o = c Delta t'_r = lambda_s sqrt((1+beta)/(1-beta)) arrow.long_(beta lt.double 1) lambda_s (1 + beta) $
+]]
+
+Osservando una galassia si possono vedere le sue righe di emissione. Se queste sono traslate rispetto ai valori che ci si aspetta (da misure di fisica nucleare fatte in laboratorio) questo significa che la galassia si sta allontando o avvicinando.
 #definizione[
-  Un tensore ha un indice *covariante* (indicato con un indice basso $tensor(U,-mu)$) se trasforma con lo Jacobiano
-  $ tensor(Tilde(U), -mu) = tensor(U, -nu) pdv(tensor(x,+nu), tensor(Tilde(x),+mu)) $
-  Un tensore ha un indice *controvariante* (indicato con un indice alto $tensor(V,+mu)$) se trasforma con lo Jacobiano inverso
-  $ tensor(Tilde(V), +mu) = tensor(V, +nu) pdv(tensor(Tilde(x),+mu), tensor(x,+nu)) $
-  Un generico tensore $(n,m)$ è un oggetto che trasforma con $n$ trasformazioni controvarianti e $m$ trasformazioni covarianti
-  $
-  tensor(Tilde(T), +mu_1, +dots, +mu_n, -nu_1, -dots, -nu_m) =
-  tensor(T, +rho_1, +dots, +rho_n, -sigma_1, -dots, -sigma_m)
-  pdv(tensor(Tilde(x),+mu_1), tensor(x,+rho_1)) dots pdv(tensor(Tilde(x),+mu_n), tensor(x,+rho_n))
-  pdv(tensor(x,+sigma_1), tensor(Tilde(x),+nu_1)) dots pdv(tensor(x,+sigma_m), tensor(Tilde(x),+nu_m))
-  $
-  Uno *scalare* è un tensore $(0,0)$ che quindi è uguale in tutti i sistemi di riferimento.
-  $ Tilde(phi.alt) = phi.alt $
-  Tensori con un solo indice vengono anche detti *vettori controvarianti* e *vettori covarianti* (o *covettori*).
+  Si definisce *redshift* $cal(Z)$ la quantità
+  $ heq(cal(Z) = (lambda_o - lambda_s)/lambda_s tilde.eq beta) $
+  Se la sorgente si allontana dall'osservatore lo spettro risulterà spostato verso il rosso, se si avvicina risulterà spostato verso il blu (in tal caso si parla di _blueshift_).
+]
+Hubble fu il primo a fare un catalogo di galassie misurandone la distanza e il redshift.
+Quello che notò fu una correlazione lineare tra queste due quantità: più una galassia è lontana, più velocemente recede da noi.
+In realtà i dati presi da Hubble erano parecchio dispersi e il fit di una retta al giorno d'oggi sarebbe stato considerato molto azzardato, tuttavia con l'arrivo di nuovi dati prima da parte di Humason e in seguito da altri esperimenti il grafico si arricchì dimostrando la correttezza dell'ipotesi di Hubble.
+
+#subpar.super(
+  [
+    #grid(
+      figure(
+        image("images/ch-2/1-1-legge_hubble_originale.jpg", height: 14em),
+        caption: [Dati originali di Hubble],
+      ),
+      figure(
+        image("images/ch-2/1-2-legge_hubble_humason.jpg", height: 14em),
+        caption: [Dati di Hubble e Humason],
+      ),
+
+      columns: (1fr, 1fr),
+    )
+    #figure(
+      image("images/ch-2/1-3-legge_hubble_completa.jpg", height: 16em),
+      caption: [Dati recenti],
+    )
+  ],
+  caption: [Andamento della velocità di recessione con la distanza.],
+)
+
+#legge(title: "Legge di Hubble-Lemaitre")[
+  Esiste una proporzionalità diretta tra la distanza di una galassia e la sua velocità di recessione
+  $ heq(v = H_0 d) $
+  con $H_0$ la *costante di Hubble*.
 ]
 
-Un esempio di vettore controvariante è un normale vettore, infatti se immaginiamo di dimezzare la base, le componenti dovranno raddoppiarsi per lasciarlo invariato.
-Un esempio di vettore covariante è il gradiente di un campo scalare.
+Notiamo che la dispersione si riduce all'aumentare della distanza.
+Ciò è dovuto al fatto che questa dispersione è data dai _moti peculiari_ delle galassie, che ci aspettiamo essere dello stesso ordine di grandezza ovunque ($v_"pec" approx sqty("100", "km/s")$).
+Quindi più aumentiamo la distanza e dunque la velocità di recessione, più i moti peculiari diventano trascurabili.
 
-Un tensore fondamentale nella teoria è il *tensore metrico* (o *metrica*), un tensore simmetrico che ci permette di definire le distanze:
-$ dd(s)^2 = tensor(g, -mu, -nu) dd(x)^mu dd(x)^nu $
-Con la metrica possiamo anche alzare e abbassare gli indici
-$ tensor(T, -mu) = tensor(T, +nu) tensor(g, -mu, -nu) quad tensor(T, +mu) = tensor(T, -nu) tensor(g, +mu, +nu) $
-dove $tensor(g, +mu, +nu)$ è la metrica inversa ($tensor(g, +mu, +nu)tensor(g, -nu, -rho) = tensor(delta, +mu, -rho)$).
+Per quanto riguarda il valore della costante di Hubble, questo è stato modificato più volte a causa di errori nella calibrazione delle distanze (la stima iniziale di Hubble era $H_0 approx sqty("500", "km/s/Mpc")$).\
+Ad oggi il valore è fissato a
+$ heq(H_0 approx (70 plus.minus 1%) "km/s/Mpc") $
+tuttavia è presente una _tensione_, in quanto le stime date dalla CMS tendono a $sqty("67", "km/s/Mpc")$ mentre le misure dirette tendono a $sqty("71", "km/s/Mpc")$.
+Questa discrepanza di $numrange("3", "5", delimiter: "#sym.div") sigma$ viene detta *tensione della costante di Hubble*.
 
-Per fare fisica è necessario avere il concetto di derivazione anche di campi vettoriali.
-Tuttavia questi non trasformano 'bene'. È quindi necessario definire il concetto di derivata covariante.
-#definizione[
-  La *derivata covariante* (di seguito indicata con $tensor(nabla, -mu)$ o $tensor(scr(D), -mu)$) di un campo scalare è definita con la normale derivata
-  $ tensor(nabla, -mu)phi.alt = tensor(partial, -mu)phi.alt $
-  La derivata covariante di un campo vettoriale è definita come
-  $ tensor(nabla, -mu) tensor(V, +nu) = tensor(partial, -mu) tensor(V, +nu) + tensor(Gamma, +nu, -mu, -sigma) tensor(V, +sigma) $
-  La derivata covariante di un campo covettoriale è definita come
-  $ tensor(nabla, -mu) tensor(U, -nu) = tensor(partial, -mu) tensor(U, -nu) - tensor(Gamma, +sigma, -mu, -nu) tensor(U, -sigma) $
-  La derivata covariante di un generico tensore è definita sommando alla derivata normale tante $Gamma$ per ogni indice controvariante e sottraendone tante per ogni indice covariante.
-
-  $tensor(Gamma, +mu, -nu, -sigma)$ è la *connessione*: un oggetto che trasforma in modo da far trasformare bene la derivata.
-  In linea di principio questa è l'unica condizione da applicare alla connessione, però noi siamo interessati a una particolare connessione detta *connessione di Levi-Civita*.
-  Questa ha la proprietà di essere _metric-compatible_ (ovvero tale che la derivata covariante della metrica sia nulla) e _torsion-free_ (ovvero simmetrica rispetto ai due indici bassi).\
-  Imponendo queste condizioni si ottiene una relazione tra la connessione di Levi-Civita e la metrica codificata nei *simboli di Christoffel*
-  $ heq(
-    tensor(Gamma, +mu, -nu, -rho) =
-    1/2 tensor(g, +mu, +sigma) (partial_nu tensor(g, -rho, -sigma) + partial_rho tensor(g, -sigma, -nu) - partial_sigma tensor(g, -nu, -rho))
-  ) $
-]
-
-Un'idea intuitiva di cosa sia la connessione la si può avere pensandola come quell'oggetto che 'connette' i piani tangenti su cui i vettori vivono.
-
-Avendo definito la derivata covariante si può anche introdurre il concetto di trasporto parallelo di un tensore su una curva, imponendo che la derivata covariante del tensore lungo la curva sia nullo
-$ dv(tensor(T, +mu_1, +dots, +mu_n, -nu_1, -dots, -nu_m), lambda, d:scr(D)) = dv(x^sigma, lambda) nabla_sigma tensor(T, +mu_1, +dots, +mu_n, -nu_1, -dots, -nu_m) = 0 $
-Dove $lambda$ è un parametro _affine_ per parametrizzare la curva.\
-Si può anche definire il concetto di geodetica come la curva che trasporta parallelamente il proprio vettore tangente (è l'analogo della retta in spazio piatto)
-$ dv(, lambda, d:scr(D))(dv(x^mu, lambda)) = dv(x^mu, lambda, 2) + tensor(Gamma, +mu, -nu, -sigma) dv(x^nu, lambda) dv(x^sigma, lambda) = 0 $
-
-Possiamo ora procedere a scrivere l'equazione che descrive come viene generata la curvatura.
-Questa consisterà nella versione covariante dell'equazione di Poisson per la gravità
-#aeq[$ laplacian psi = 4 pi G rho $]
-Notiamo che il laplaciano $laplacian = partial^i partial_i$ non è nient'altro che la traccia del *tensore mareale* $partial_j partial_i$.
-Questo contiene informazioni sulla curvatura (analogamente all'Hessiana per un campo scalare) ed è legato a quanto le geodetiche divergano o convergano.
-L'unico oggetto che trasformi tensorialmente e contenga informazioni sulle derivate seconde è il *tensore di Riemann*
-$ heq(
-  tensor("R", +mu, -nu, -rho, -kappa) =
-  partial_rho tensor(Gamma, +mu, -nu, -kappa) - partial_kappa tensor(Gamma, +mu, -nu, -rho) +
-  tensor(Gamma, +lambda, -nu, -kappa) tensor(Gamma, +mu, -lambda, -rho) - tensor(Gamma, +lambda, -nu, -rho) tensor(Gamma, +mu, -lambda, -kappa)
-) $
-A noi interessa la traccia che è rappresentata dal *tensore di Ricci*
-$ tensor("R", -mu, -nu) = tensor("R", +sigma, -mu, -sigma, -nu) $
-Possiamo pensare che la traccia descriva come i volumi vengono contratti o dilatati, mentre la parte trace-less (detta _tensore di Weil_) descriva come vengono deformati.
-
-Rimane un ultimo problema, ovvero che il tensore di Ricci non ha derivata covariante nulla, a differenza del tensore energia-impulso (nel secondo membro, che vedremo dopo) che rispetta una legge di continuità.
-Questo problema viene risolto definendo il *tensore di Einstein* che ha derivata nulla
-$ tensor(G, -mu, -nu) = tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu) "R" $
-dove $"R" = tensor("R", -mu, -nu) tensor(g, +mu, +nu)$ è lo *scalare di Ricci*.\
-
-=== Il tensore Energia-Impulso
-Passiamo ora al secondo membro dell'equazione di Einstein
-Dobbiamo scrivere qualcosa di analogo al termine $4 pi G rho$ dell'equazione di Poisson, ma che abbia 2 indici simmetrici e derivata covariante nulla.
-Sappiamo che la densità è legata alla massa, e questa la possiamo trovare nel quadrimomento $q^mu = m u^mu = gamma(E/c, m va(v))$ con $q^mu q^nu tensor(g, -mu, -nu) = -m^2$.\
-La densità è una massa su volume e segue la relazione
-#aeq[$ m = integral dd(V) rho$]
-ma in relatività parlare di volumi non è banale, in quanto questi sono ipersuperfici tridimensionali dello spazio-tempo valutati a tempo costante.
-Possiamo definire una relazione che sia più generale integrando una quantità $tensor(S, +alpha, +beta)$ su ipersuperfici 3D generiche (con una delle coordinate costanti) e imponendo che l'integrale sia uguale al quadrimomento.
-$ q^alpha = 1/(3!) integral dd(x^lambda, x^mu, x^nu, p: and) tensor(epsilon.alt, -lambda, -mu, -nu, -beta) tensor(S, +alpha, +beta)  $
-dove $1/(3!)$ è un fattore combinatorio per compensare le permutazioni dei differenziali (per coloro con una conoscenza di base di geometria differenziale stiamo facendo l'Hodge per ottenere un oggetto ad un indice da contrarre con un indice di $tensor(S, +alpha, +beta)$).
-Per chi non dovesse essere familiare con questa notazione, basti sapere che ad esempio
-#aeq[$1/(3!) integral dd(x^1, x^2, x^3, p: and) tensor(epsilon.alt, -1, -2, -3, -0) tensor(S, +alpha, +0) = integral dd(x^1, x^2, x^3) tensor(S, +alpha, +0) $]
-dove gli indici $lambda$, $mu$, $nu$ e $beta$ devono essere obbligatoriamente diversi tra loro
-
-Andiamo a studiare meglio le singole componenti per dare un senso fisico a $tensor(S, +alpha, +beta)$:
-#aeq[$ q^0 = integral dd(x^1, x^2, x^3) tensor(S, +0, +0)
-  + integral dd(x^0, x^2, x^3) tensor(S, +0, +1)
-  + integral dd(x^0, x^1, x^3) tensor(S, +0, +2)
-  + integral dd(x^0, x^1, x^2) tensor(S, +0, +3)$]
-Il primo integrale è integrato su un volume e ci restituisce un'energia $E/c$, quindi il termine $tensor(S, +0, +0)$ sarà una densità di Energia.
-Gli altri tre sono integrati su un'area e su un tempo, quindi $tensor(S, +0, +i)$ rappresenta una densità di corrente di energia (di qui in avanti la chiameremo solo corrente di energia) in analogia a quello che è $j^i$ per l'elettromagnetismo (che integrato su un area dà la corrente $I$, che a sua volta integrata sul tempo dà la variazione di carica).\
-Passiamo ai termini spaziali
-#aeq[$ q^i = integral dd(x^1, x^2, x^3) tensor(S, +i, +0)
-  + integral dd(x^0, x^2, x^3) tensor(S, +i, +1)
-  + integral dd(x^0, x^1, x^3) tensor(S, +i, +2)
-  + integral dd(x^0, x^1, x^2) tensor(S, +i, +3)$]
-Il primo integrale è integrato su un volume e ci restituisce un momento, quindi $tensor(S, +i, +0)$ sarà una densità di momento.
-Gli altri tre sono integrati su un'area e su un tempo, quindi $tensor(S, +i, +j)$ rappresenta una densità di corrente di momento.
-Questa non è nient'altro che una generalizzazione della pressione, infatti integrando la pressione su un'area otteniamo una forza, che integrata sul tempo dà un impulso.
-Questo è quello che in meccanica solida viene detto 'tensore degli sforzi' con le componenti pressorie sulla diagonale e le componenti di taglio (_shear_) fuori dalla diagonale.
+== Coordinate comoventi
+Siamo quasi pronti per ricavare le equazioni per l'evoluzioni dell'universo.
+Prima però introduciamo un concetto che ci accompagnerà in tutto il corso: le coordinate comoventi.\
+La legge di Hubble ha un andamento che ci permette un'interpretazione alternativa.
+Possiamo pensare che siano le distanze stesse ad aumentare (vedremo in seguito l'interpretazione spaziotemporale) e definire quindi un sistema di coordinate che fattorizzi questa crescita delle distanze e in generale fattorizzi qualsiasi moto omogeneo degli oggetti all'interno dell'universo.
+In questo modo non sono gli oggetti a muoversi, bensì le coordinate stesse a cambiare.
+Questo sistema viene detto *coordinate comoventi*.\
+Indichiamo con $va(x)_p$ le coordinate fisiche (quelle che effettivamente misuriamo) e con $va(x)_c$ le coordinate comoventi.
+Varrà la relazione
+$ heq(va(x)_p (t) = a (t) va(x)_c) $
+dove $a(t)$ è il *fattore di scala*.
 
 #osservazione[
-  Questa 'definizione' euristica del tensore $tensor(S, +alpha, +beta)$ l'abbiamo ottenuta da considerazioni fatte in relatività speciale, dove è sempre possibile definire ipersuperfici arbitrariamente grandi con una coordinata costante.
-  In relatività generale ciò non è così semplice e necessita di una maggior cautela.
-  Tuttavia noi ci faremo bastare l'intuizione che arriva dalla trattazione fatta sopra e non indagheremo oltre.
+  In linea di principio il fattore di scala dovrebbe essere una matrice 3x3.
+  Ma se così fosse, vorrebbe dire che esistono delle direzioni preferenziali, mentre abbiamo detto che l'universo è isotropo.
+  Dunque questo fattore non è nient'altro che uno scalare, cosa che rende questo sistema di coordinate molto comodo da usare.
 ]
 
-Possiamo a questo punto definire il *tensore energia-impulso*
-$ tensor(T, +alpha, +beta) = c tensor(S, +alpha, +beta) $
-che rispetterà la condizione di continuità come il tensore di Einstein
-$ nabla_beta tensor(T, +alpha, +beta) = 0 $
-In linea di principio la densità di momento e la corrente di energia sono quantità diverse, ma noi sappiamo (a posteriori) dall'equazione di Einstein che $tensor(T, -alpha, -beta)$ è proporzionale a $tensor(G, -alpha, -beta)$ che è simmetrico.
-Quindi a noi interesserà solo la parte simmetrica di $tensor(T, -alpha, -beta)$.
+Calcoliamo quanto vale la velocità a cui si muove una particella di fluido
+$ va(u) = dv(va(x)_p, t) = dot(a) va(x)_c + underbrace(a dot(va(x))_c, va(v)) = dot(a)/a va(x)_p + va(v) $
+Questa non è nient'altro che una versione più generale della legge di Hubble.
+Infatti tiene conto delle *velocià peculiari* $va(v)$ delle particelle rispetto alla griglia comovente e ammette una proporzionalità tra velocità e distanza variabile nel tempo
+$ H(t) = dot(a) / a $
+Questo fattore viene detto *tasso di espansione* o *tasso di Hubble*, mentre tutto il termine $H va(x)_p$ viene detto *flusso di Hubble*.
 
-Possiamo quindi scrivere l'*equazione di Einstein* che descrive come l'energia genera la curvatura
-$ heq(tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu) "R" = (8 pi G)/c^4 tensor(T, -mu, -nu)) $
-Il coefficiente di proporzionalità arriva da considerazioni dimensionali ($[laplacian(psi)] = T^(-2), [tensor(G, -mu, -nu)] = L^(-2), [rho] = M L^(-3), [tensor(T, -mu, -nu)] = M L^2 T^(-2) L^(-3) $) e imponendo che in approssimazione di campo debole l'equazione si riconduca a Poisson.
+Dato che il tasso di espansione varia nel tempo, avremo che la legge di Hubble è valida solo nell'universo locale (dove vediamo nel presente) mentre potrebbe avere diversi valori di $H$ in tempi passati (e quindi a distanze maggiori). D'ora in poi indicheremo con uno zero a pedice le quantità valutate nel presente (ad esempio $H_0$).
 
-== Metrica per universo omogeneo e isotropo
-Possiamo ora andare a scrivere l'equazione di Einstein per un universo omogeneo e isotropo.
-Ciò consiste nel trovare l'espressione per il tensore metrico.\
-Per prima cosa dobbiamo imporre le condizioni di omogeneità e isotropia.
-Queste ci dicono che l'universo può essere rappresentato come una sequenza ordinata di sezioni spaziali ciascuna omogenea e isotropa, da cui la forma della metrica
-$ dd(s)^2 = -c^2dd(t)^2 + a^2(t)dd(l)^2 $
-dove $dd(l)^2$ rappresenta la distanza spaziale e $a$ non è nient'altro che il fattore di scala che abbiamo introdotto in precedenza.
-Talvolta si usa ridefinire il tempo in modo tale da raccogliere $a$ anche per il primo termine
-$ dd(s)^2 = a^2(eta)(-c^2dd(eta)^2 + dd(l)^2) $
-$eta$ viene detto *tempo conforme*, ma lo riprenderemo solo in seguito.
-
-Rimane ancora da capire come sia fatto $dd(l)^2$.
-Questo, dovendo valere le due condizioni, dovrà essere massimamente simmetrico (ovvero con scalari di curvatura costanti ovunque).
-Si dà il caso che ci siano solo 3 opzioni possibili:
-// TODO: Mettere le 3 immagini
-/ Spazio piatto: con curvatura $=0$ (come lo spazio euclideo $EE^3$). La sua metrica la conosciamo
-$ dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 $
-/ Spazio sferico: con curvatura $>0$ (come una sfera ma tridimensionale $SS^3$). La sua metrica la possiamo costruire con un immersione in $RR^4$ (la coordinata aggiuntiva la chiamiamo $u$)
-$ cases(dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 + dd(u)^2, x^2 + y^2 + z^2 + u^2 = R^2) $
-/ Spazio iperbolico: con curvatura $<0$ (indicato con $HH^3$). Esiste un teorema che ci dice che non possiamo immergerlo in $RR^4$, tuttavia lo si può immergere in $RR^(1,3)$ (spazio pseudoeuclideo con segnatura $(-,+) = (1,3)$)
-$ cases(dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 - dd(u)^2, x^2 + y^2 + z^2 - u^2 = -R^2) $
-Possiamo riassumere questi tre casi in una forma generica
-$ cases(dd(l)^2 = dd(x)^2 + dd(y)^2 + dd(z)^2 + kappa dd(u)^2, u^2 = R^2 - kappa x^i x_i) $
-Dove $kappa$ può assumere i valori 0 per spazio piatto, $+1$ per spazio sferico, $-1$ per spazio iperbolico.\
-Differenziando la seconda equazione otteniamo
-#aeq[$ cancel(2) u dd(u) = - cancel(2) kappa x^i dd(x)_i $]
-#aeq[$ dd(l)^2 = dd(x)^i dd(x)_i + kappa (kappa^2(x^i dd(x)_i)^2)/u^2 = dd(x)^i dd(x)_i + (kappa^3(x^i dd(x)_i)^2)/(R^2 - kappa x^i x_i) $]
-Possiamo notare che $kappa^3 = kappa$ quindi
-$ dd(l)^2 = dd(x)^i dd(x)_i + (kappa (x^i dd(x)_i)^2)/(R^2 - kappa x^i x_i) $
-Passiamo ora in coordinate sferiche 3D $(r, theta, phi)$
-#aeq[$ cases(x^i x_i = r^2, x^i dd(x)_i = r dd(r), dd(x)^i dd(x)_i = dd(r)^2 + r^2 dd(theta)^2 + r^2 sin^2(theta) dd(phi)^2 = dd(r)^2 + r^2 dd(Omega)^2) $]
-$ dd(l)^2 = dd(r)^2 + r^2 dd(Omega)^2 + kappa r^2/R^2 (dd(r)^2)/(1 - kappa r^2/R^2) = (dd(r)^2)/(1 - kappa r^2/R^2) + r^2 dd(Omega)^2 $
-Rinominando $K := kappa/R^2$ otteniamo la *Metrica di Friedmann-Lemaitre-Robertson-Walker* (*FLRW*):
-$ heq(dd(s)^2 = -c^2 dd(t)^2 + a^2(t)[(dd(r)^2)/(1 - K r^2) + r^2 dd(Omega)^2]) $
-Notiamo un paio di cose:
-- #[La metrica è invariante sotto un riscalamento del tipo
-$ cases(a --> a lambda, r --> r/lambda, K --> K lambda^2) quad "per" forall lambda in RR $
-dove il riscalamento di $K$ corrisponde a fare $R --> R/lambda$.
-Questa invarianza ci permette di fissare il valore del fattore di scala odierno $a_0 = a(t_0) equiv 1$.\
-Quindi $K$ (dunque anche $R$) rappresenta il valore oggi.
-Un'interessante implicazione di ciò è che fino ad oggi $a$ è rimasto nell'intervallo $(0,1]$.
-]
-- La coordinata $r$ rappresenta una coordinata comovente, e non un'osservabile fisica (che misurerei con degli ipotetici righelli).\
-  La coordinata fisica sarà $r_p = r a(t)$ (come abbiamo definito precedentemente).
-  Potremmo provare a scrivere la metrica in questo sistema di coordinate, ma risulterebbe molto più complicata e scomoda la trattazione.
-  Conviene fare teoria in coordinate comoventi e fare la conversione in sede sperimentale.
-Talvolta può essere comodo cambiare la coordinata radiale per semplificare ulteriormente la trattazione:
-#aeq[$ dd(chi)^2 = dd(r)^2/(1-K r) $]
-#aeq[$ chi = integral dd(chi) = integral dd(r)/sqrt(1-K r^2) = 1/sqrt(K) arcsin(r sqrt(K)) $]
-$ r(chi) &= cases(
-  1/sqrt(K)sin(chi sqrt(K)) & "per" K>0,
-  chi & "per" K=0,
-  1/sqrt(abs(K))sinh(chi sqrt(abs(K))) & "per" K<0
-) quad
-= quad cases(
-  R sin(chi/R) & "per" kappa = +1,
-  chi & "per" kappa=0,
-  R sinh(chi/R) & "per" kappa =-1
-) $
-$ r(chi) = chi sinc(chi sqrt(K)) := S_K (chi) $
-Quindi in queste coordinate la metrica diventa
-$ heq(dd(s)^2 = -c^2 dd(t)^2 + a^2(t)[dd(chi)^2 + S_K^2 (chi) dd(Omega)^2]) $
-Se la scriviamo con il tempo conforme
-$ dd(s)^2 = a^2(eta)[-c^2 dd(eta)^2 + dd(chi)^2 + S_K^2 (chi) dd(Omega)^2] $
-
-== Nozioni di distanza
-Abbiamo già detto che la metrica che abbiamo scritto è in funzione di coordinate comoventi e ne abbiamo già viste due.
-Studiamo quindi cosa queste coordinate rappresentano, come si legano a nozioni fisiche e quali sono le distanze che misuriamo.
-=== Radial comoving distance
-La coordinata $chi$ che abbiamo visto nella seconda espressione della metrica viene detta *radial comoving distance* (o *proper distance*).\
-Consideriamo un fotone ($dd(s)^2 = 0$)
-#aeq[$ c^2 dd(eta)^2 = dd(chi)^2 quad ==> quad dd(chi) = plus.minus c dd(eta) $]
-Prendendo un fotone che viene verso di noi#h(1em) $heq(chi = (eta_0 - eta)c)$\
-
-Se volessi scriverlo in funzione del tempo $t$ avrei
-$ chi(t) = c integral^(t_0)_t 1/(a(t)) dd(t) = c integral^(a_0)_a dd(a)/(dot(a)a) = c integral^(cal(Z))_0 dd(cal(Z))/H(cal(Z)) $
-
-=== Angular comoving distance
-La coordinata $r = S_K (chi)$ viene detta *angular comoving distance* (o *transverse comoving distance* o *metric distance*).
-Essa rappresenta la distanza comovente che lega le lunghezze d'arco agli angoli sottesi.\
-Per uno spazio piatto la distanza angolare e radiale coincidono, così non è per spazi curvi dove per 'appiattire' una delle due devo 'stirare' l'altra.\
-Le figure seguenti cerca di dare un'intuizione di questo concetto.
-// TODO: Mettere immagine vista da davanti e non da sopra
-#subpar.grid(
-  figure(
-    image("images/2-1_parametrizzazione_sfera_a.pdf", width: 80%),
-    caption: [Rappresentazione\ immersa]
-  ),
-  figure(
-    image("images/2-1_parametrizzazione_sfera_b.pdf"),
-    caption: [Parametrizzazione\ in $r$ e $Omega$]
-  ),
-  figure(
-    image("images/2-1_parametrizzazione_sfera_c.pdf"),
-    caption: [Parameterizzazione\ in $chi$ e $Omega$]
-  ),
-  columns: (1fr, 1fr, 1fr),
-  caption: [Parametrizzazioni di uno spazio positivamente curvo.],
-)
-
-=== Angular diameter distance
-Passiamo ora alle distanze fisiche misurabili.\
-Si dice *angular diameter distance* $d_A$ la distanza ottenuta confrontando la dimensione angolare di un oggetto con la sua reale dimensione fisica.
-Questo ovviamente lo si può fare solo per oggetti di cui si conosce la dimensione reale, detti *righelli standard*.
-Un esempio di righello standard sono le Barionic Acustic Oscilltions.\
-Questa all'atto pratico si definisce come
-$ heq(d_A approx L/(delta theta)) $
-dove $L$ è la dimensione reale dell'oggetto (valutata al tempo dell'emissione dei fotoni che vediamo oggi), $delta theta$ la sua dimensione angolare e dove abbiamo fatto l'approssimazione di piccoli angoli (valida per osservazioni cosmologiche).\
-Vogliamo legarci ad una delle distanze comoventi.
-Per farlo basta usare la metrica, usando $dd(t) = dd(chi) = 0$ e sapendo che $L$ corrisponde alla distanza $dd(s)$
-#aeq[$ L = dd(s) = a(t) underbracket(dd(Omega), delta theta) $]
-dove $t$ è il tempo a cui è avvenuta l'emissione (ed effettivamente per i righelli standard noi conosciamo la dimensione a quel tempo)
-$ heq(d_A = r a = r/(1 + cal(Z))) $
-
-=== Luminosity distance
-Si dice *luminosity distance* $d_L$ la distanza ottenuta confrontando il flusso $F$ osservato con la luminosità reale di un oggetto.
-Gli oggetti con luminosità nota vengono detti *candele standard* (un esempio sono le supernove di tipo Ia).
-Operativamente si definisce tale che
-$ F = L_e/(4 pi d_L^2) $
-dove $L_e$ è la luminosità alla sorgente (che è quella che ci viene fornita dalla teoria).
-Questa luminosità però va riscalata per tenere conto di quello che succede alla luce nel percorso fino a noi.
-Avremo che la luminosità riscalata (che indichiamo con $L_o$) rispetterà la solita relazione con il flusso
-$ F = L_o/(4 pi r^2) $
-Per valutare la relazione tra le luminosità ricordiamo che
-#aeq[$ L = E_(gamma)/(Delta t) $]
-dove $E_(gamma) = planck nu = planck c/lambda$ è l'energia dei singoli fotoni, mentre $Delta t$ è la distanza temporale tra un fotone e un altro.\
-Ma la lunghezza d'onda dei fotoni viene stirata ($lambda_e = a lambda_o$) che quindi perdono energia
-#aeq[$ E_e = E_o/a $]
-Anche la distanza temporale di arrivo cambia (basta pensare che $Delta t ~ lambda/c$)
-#aeq[$ Delta t_e = a Delta t_o $]
-quindi la luminosità osservata sarà
-#aeq[$ L_o = a^2 L_e $]
+Possiamo anche vedere come trasforma la derivazione
+$ grad_p = pdv(, va(x)_p) = 1/a pdv(, va(x)_c) = 1/a grad_c $
+$ laplacian_p = 1/a^2 laplacian_c $
+Una cosa da notare quando cambiamo tra le due coordinate, è che la derivata temporale parziale non è uguale.
+Questo perché cambia il punto in cui la valutiamo.
+Quello che rimane uguale è la derivata totale per il tempo, che segue il fluido in qualsiasi sistema di riferimento
+#aeq[$
+  dv(, t) & = evaluated(pdv(, t))_p + va(u) dot grad_p = evaluated(pdv(, t))_p + 1/a (dot(a) va(x)_c + va(v)) dot grad_c \
+          & = evaluated(pdv(, t))_c + dot(va(x))_c dot grad_c = evaluated(pdv(, t))_c + va(v)/a dot grad_c
+$]
 quindi
-#aeq[$ F = L_o/(4 pi r^2) = (a^2 L_e)/(4 pi r^2) = L_e/(4 pi d_L^2) $]
-$ heq(d_L = r/a = (1 + cal(Z))r ) $
-Possiamo quindi scrivere una relazione tra le due distanze fisiche che viene detta *relazione di Etherington sulla dualità delle distanze*
-$ heq(d_L (cal(Z)) = (1 + cal(Z))^2 d_A (cal(Z))) $
+$ evaluated(pdv(, t))_p = evaluated(pdv(, t))_c - H(t) va(x)_c dot grad_c != evaluated(pdv(, t))_c $
 
-== Tensore di Einstein per universo omogeneo e isotropo
-Procediamo ora a calcolare il tensore di Einstein per la metrica FLRW.
-Volendo semplificare i calcoli, scegliamo l'espressione nelle coordinate $x^mu = (c t, chi, theta, phi)$.\
-In questa abbiamo
-$ tensor(g, -0, -0) = -1 wide tensor(g, -1, -1) = a^2 wide tensor(g, -2, -2) = a^2 S_K^2 wide tensor(g, -3, -3) = a^2 S_K^2 sin^2(theta) $
-Le funzioni metriche inverse sono
-$ tensor(g, +0, +0) = -1 wide tensor(g, +1, +1) = 1/a^2 wide tensor(g, +2, +2) = 1/(a^2 S_K^2) wide tensor(g, +3, +3) = 1/(a^2 sin^2(theta) S_K^2) $
-Di seguito indicheremo la metrica spaziale come $tensor(gamma, -i, -j)$, che non dipende dal tempo.\
-Possiamo quindi calcolare i simboli di Christoffel
-#aeq[$ tensor(Gamma, +mu, -nu, -rho) =
-  1/2 tensor(g, +mu, +sigma) (partial_nu tensor(g, -rho, -sigma) + partial_rho tensor(g, -sigma, -nu) - partial_sigma tensor(g, -nu, -rho)) $]
-Ricordando che la metrica è diagonale, ogni volta che uno dei due indici verrà fissato, potremo fissare anche l'altro.
-
-#aeq[$ tensor(Gamma, +0, -0, -0) &=
-  1/2 tensor(g, +0, +sigma) (cancel(partial_0 tensor(g, -0, -sigma)) + cancel(partial_0 tensor(g, -sigma, -0)) - cancel(partial_sigma tensor(g, -0, -0))) = 0 \
-
-  tensor(Gamma, +i, -0, -0) &=
-  1/2 tensor(g, +i, +sigma) (partial_0 tensor(g, -0, -sigma) + partial_0 tensor(g, -sigma, -0) - cancel(partial_sigma tensor(g, -0, -0))) =
-  1/2 tensor(g, +i, +i)(2 partial_0 cancel(tensor(g, -0, -i))) = 0\
-
- tensor(Gamma, +0, -i, -0) &=
-  1/2 tensor(g, +0, +sigma) (partial_i tensor(g, -0, -sigma) + partial_0 tensor(g, -sigma, -i) - partial_sigma cancel(tensor(g, -0, -i))) =
-  1/2 tensor(g, +0, +0)(cancel(partial_i tensor(g, -0, -0)) + partial_0 cancel(tensor(g, -0, -i))) = 0 = tensor(Gamma, +0, -0, -i)\
-
- tensor(Gamma, +0, -i, -j) &=
-  1/2 tensor(g, +0, +sigma) (partial_i tensor(g, -j, -sigma) + partial_j tensor(g, -sigma, -i) - partial_sigma tensor(g, -i, -j)) =
-  1/2 tensor(g, +0, +0)(partial_i cancel(tensor(g, -j, -0)) + partial_j cancel(tensor(g, -0, -i)) - partial_0 tensor(g, -i, -j)) = \
-  &= 1/2 (-1)( - partial_0 (a^2 tensor(gamma, -i, -j))) = (a dot(a))/c tensor(gamma, -i, -j) = 1/c dot(a)/a tensor(g, -i, -j)\
-
- tensor(Gamma, +i, -j, -0) &=
-  1/2 tensor(g, +i, +sigma) (partial_j tensor(g, -0, -sigma) + partial_0 tensor(g, -sigma, -j) - partial_sigma cancel(tensor(g, -j, -0))) =
-  1/2 tensor(g, +i, +i)(partial_j cancel(tensor(g, -0, -i)) + partial_0 tensor(g, -i, -j)) = \
-  &= 1/2 (a^(-2) tensor(gamma, +i, +i))(partial_0 (a^2 tensor(gamma, -i, -j))) = 1/c (dot(a))/a tensor(delta, -i, -j)\
-
- tensor(Gamma, +i, -j, -k) &=
-  1/2 tensor(g, +i, +sigma) (partial_j tensor(g, -k, -sigma) + partial_k tensor(g, -sigma, -j) - partial_sigma tensor(g, -j, -k)) = \
-  &= 1/2 (tensor(gamma, +i, +m))(partial_j tensor(gamma, -k, -m) + partial_k tensor(gamma, -m, -j) - partial_m tensor(gamma, -j, -k))$]
-
-Svolgendo i calcoli per le componenti spaziali riportiamo di seguito i termini non nulli
-$
- tensor(Gamma, +0, -i, -j) &= (a dot(a))/c tensor(gamma, -i, -j) wide &
- tensor(Gamma, +i, -j, -0) &= 1/c (dot(a))/a tensor(delta, -i, -j) wide &
- tensor(Gamma, +1, -2, -2) &= -S_K S'_K wide &
- tensor(Gamma, +1, -3, -3) &= -S_K S'_K sin^2(theta)\
- tensor(Gamma, +2, -2, -1) &= S'_K/S_K wide &
- tensor(Gamma, +2, -3, -3) &= - sin(theta)cos(theta) wide &
- tensor(Gamma, +3, -3, -1) &= S'_K/S_K wide &
- tensor(Gamma, +3, -3, -2) &= cot(theta)\
-$
-
-Possiamo quindi calcolare il tersore di Ricci
-#aeq[$ tensor("R", -mu, -nu) = tensor("R", +sigma, -mu, -sigma, -nu) =
-  partial_sigma tensor(Gamma, +sigma, -mu, -nu) - partial_nu tensor(Gamma, +sigma, -mu, -sigma) +
-  tensor(Gamma, +lambda, -mu, -nu) tensor(Gamma, +sigma, -lambda, -sigma) - tensor(Gamma, +lambda, -mu, -sigma) tensor(Gamma, +sigma, -lambda, -nu) $]
-Svolgendo i calcoli ci si rende conto che anche il tensore di Ricci è diagonale (ci si può anche arrivare ricordando che l'universo è isotropo e se Ricci avesse componenti off-diagonal, questo definirebbe direzioni preferenziali).
-Dunque mi basta calcolare 4 componenti (riportiamo di seguito solo i risultati):
+== Equazioni di Friedmann da principi fluidodinamici
+Possiamo ora ricavare le equazioni per l'evoluzione dell'universo in modo euristico.
+Iniziamo notando che alle scale a cui lavoriamo ($qty("100", "Mpc")$), la dimensione delle galassie ($qty("10", "kpc")$) è trascurabile.
+Quindi possiamo considerare le galassie come particelle puntiformi di un fluido molto rarefatto (le zone dense degli ammassi possono essere considerate anch'esse come singoli punti materiali) e non interagenti#footnote[Per maggiori approfondimenti consultare il corso Fondamenti di Astrofisica II: Galassie e strutture cosmiche.].\
+Questo fluido rispetterà le equazioni di continuità e di Eulero. Iniziamo dalla continuità
+#aeq[$ pdv(rho, t) + grad_p dot (rho va(u)) = 0 $]
+#aeq[$ pdv(rho, t) + rho grad_p dot va(u) + va(u) dot grad_p rho = 0 $]
+$ dot(rho) = - rho (grad_p dot va(u)) $
+scriviamola ora in funzione delle coordinate comoventi nel caso della materia che, essendo omogenea, sarà uguale al valore mediato (vedremo in seguito che per altre componenti potrei ottenere un risultato diverso)
 #aeq[$
- tensor("R", -0, -0) &= -3/c^2 dot.double(a)/a\
- tensor("R", -1, -1) &= (a dot.double(a))/c^2 + 2 dot(a)^2/c^2 - 2S''_K/S_K = a^2/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
- tensor("R", -2, -2) &= (a dot.double(a))/c^2 S^2_K + 2 dot(a)^2/c^2 S_K^2 - S_K S''_K + 1 -(S'_K)^2 = a^2/c^2 S_K^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
- tensor("R", -3, -3) &= sin^2(theta)[(a dot.double(a))/c^2 S^2_K + 2 dot(a)^2/c^2 S_K^2 - S_K S''_K + 1 -(S'_K)^2] = a^2/c^2 S_K^2 sin^2(theta)[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2]\
+  dot(overline(rho))_m =
+  -overline(rho)_m (grad_p dot va(u)) =
+  -overline(rho)_m 1/a grad_c dot (dot(a) va(x)_c + va(v)) =
+  -overline(rho)_m ( dot(a)/a underbracket(grad_c dot va(x)_c, 3) + 1/a underbracket(grad_c dot va(v), 0))
 $]
-Gli ultimi tre risultati possono essere riuniti assieme formando
-$
- tensor("R", -0, -0) &= -3/c^2 dot.double(a)/a\
- tensor("R", -i, -j) &= 1/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] tensor(g, -i, -j)
-$
-Calcoliamo lo scalare di Ricci
-$
-"R" &= tensor(g, +mu, +nu) tensor("R", -mu, -nu) = - tensor("R", -0, -0) + tensor(g, +i, +j) tensor("R", -i, -j)\
-&= 3/c^2 dot.double(a)/a + 1/c^2 [dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] underbracket(tensor(g, +i, +j) tensor(g, -i, -j), 3)\
-&= 6/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2]
-$
-Infine possiamo calcolare il tensore di Einstein $tensor(G, +mu, -nu) = tensor(G, -rho, -nu)tensor(g, +rho, +mu) = tensor("R", +mu, -nu) - 1/2 tensor(delta, +mu, -nu) "R"$ (questo è quello con la forma più semplice)
-$
- tensor(G, +0, -0) & = 3/c^2 dot.double(a)/a -3/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2] = -3/c^2 [(dot(a)/a)^2 + (K c^2)/a^2]\
- tensor(G, +i, -j) &= 1/c^2[dot.double(a)/a + 2(dot(a)/a)^2 + 2(K c^2)/a^2] tensor(delta, +i, -j) -3/c^2[dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2] tensor(delta, +i, -j) \
- &= -1/c^2[2 dot.double(a)/a + (dot(a)/a)^2 + (K c^2)/a^2] tensor(delta, +i, -j)
-$
+ottenendo l'*equazione di continuità cosmologica*
+$ heq(dot(overline(rho))_m = -3 overline(rho)_m dot(a)/a) $
+che si può integrare da un qualsiasi punto nel passato fino ad oggi (usiamo oggi come valore di scala perché sappiamo misurarlo)
+$ integral_(overline(rho)_m(t))^(overline(rho)_(m 0)) dd((ln(overline(rho)_m))) = -3 integral_(a(t))^(a_0) dd((ln(a))) $
+$ heq(overline(rho)_m (t) = overline(rho)_(m 0) ((a(t))/a_0)^(-3)) $
+vediamo che c'è un andamento del tipo $overline(rho)_m (t) ~ a^(-3)$ che è ragionevole ricordando che $a$ è legato alla distanza e dunque $a^3$ sarà legato al volume.
 
-== Tensore energia-impulso per un gas perfetto
-Vogliamo ora calcolare il tensore energia-impulso (ricordiamo che approssimiamo tutto ad un fluido).
-Dato che stiamo considerando un universo omogeneo e isotropo non possiamo avere densità di momenti, correnti di energia o sforzi di taglio (altrimenti questi definirebbero una direzione preferenziale, rompendo l'isotropia).
-Inoltre, sempre per isotropia, ci mettiamo nel sistema di riferimento a riposo con il fluido.\
-Dunque il tensore sarà diagonale
-#aeq[$tensor(T, +mu, +nu) = mat(
-  overline(rho)c^2, " " , va(0)^TT, " " ;
-  " ", " ", " ", " ";
-  va(0), " ", overline(p) bb(1)_3, " ";
-  " ", " ", " ", " ";
-augment: #(hline: 1, vline: 1))
- = mat(
-  overline(rho)c^2 + overline(p), " " , va(0)^TT, " " ;
-  " ", " ", " ", " ";
-  va(0), " ", bb(0)_3, " ";
-  " ", " ", " ", " ";
-augment: #(hline: 1, vline: 1))
- + overline(p) mat(
-  - 1, " " , va(0)^TT, " " ;
-  " ", " ", " ", " ";
-  va(0), " ", bb(1)_3, " ";
-  " ", " ", " ", " ";
-augment: #(hline: 1, vline: 1))
-  $]
-La prima matrice la possiamo ottenere sfruttando il fatto che, essendo comoventi con il fluido, $u^mu = (c, va(0))$ , mentre la seconda non è nient'altro che Minkowski, quindi otteniamo
-$ tensor(T, +mu, +nu) = (overline(rho) + overline(p)/c^2)u^mu u^nu + overline(p)tensor(eta, +mu, +nu) $
-passando in relatività generale
-$ heq(tensor(T, +mu, +nu) = (overline(rho) + overline(p)/c^2)u^mu u^nu + overline(p)tensor(g, +mu, +nu)) $
+Passiamo ora all'equazione di Eulero
+$ rho dot(va(u)) = underbrace(- grad_p p, "press.") + underbrace(rho va(g), "grav.") $
+La pressione sarà omogenea ovunque e dunque il suo gradiente sarà nullo.\
+Il campo gravitazionale possiamo scriverlo con l'equazione di Gauss
+$ grad_p dot va(g) = - 4 pi G rho $
+e passando al potenziale $psi$
+$ laplacian_p psi = 4 pi G rho $
 quindi
-#aeq[$tensor(T, +mu, +nu) = mat(
-  overline(rho)c^2, " " , va(0)^TT, " " ;
-  " ", " ", " ", " ";
-  va(0), " ", overline(p) 1/a^2 tensor(gamma, +i, +j), " ";
-  " ", " ", " ", " ";
-augment: #(hline: 1, vline: 1))
-  $]
+#aeq[$ cancel(overline(rho)_m) dot(va(u)) = - cancel(overline(rho)_m) grad_p psi $]
+#aeq[$dv(, t)(dot(a) va(x)_c + va(v)) = - 1/a grad_c psi$]
+Possiamo ora sfruttare l'omogeneità per mandare a 0 le velocità peculiari del fluido (anche se quelle delle singole particelle possono non esserlo).
+Inoltre possiamo portare fuori dalla derivata temporale $va(x)_c$ sempre per omogeneità#footnote[In realtà potrei avere un moto omogeneo (come una contrazione o un moto di gruppo) rispetto alla griglia. Ma questo vorrebbe solo dire che ho scelto male le coordinate comoventi e posso riassorbirlo cambiando SR.].\
+#aeq[$dot.double(a) va(x)_c = - 1/a grad_c psi$]
+Prendiamo ora la divergenza dell'equazione per poter sfruttare l'equazione di Poisson.
+#aeq[$grad_c dot (dot.double(a) va(x)_c) = - 1/a laplacian_c psi = - a laplacian_p psi$]
+#aeq[$ 3 dot.double(a) = - a 4 pi G overline(rho)_m $]
+ottenendo la *seconda equazione di Friedmann*
+$ heq(dot.double(a)/a = -(4 pi G)/3 overline(rho)_m) $
+$dot.double(a)/a$ viene detto *tasso di accelerazione* e possiamo notare che questo è negativo.
+Quindi se consideriamo solo la componente di materia, otteniamo che l'universo è destinato a fermare la sua espansione per poi contrarsi.
 
-Bisogna però fare attenzione che in relatività generale alzare e abbassare gli indici non è banale quanto cambiare dei segni.
-Infatti si ottiene
-#aeq[$tensor(T, +mu, -nu) = tensor(T, +mu, +rho) tensor(g, -nu, -rho)= mat(
-  -overline(rho)c^2, " " , va(0)^TT, " " ;
-  " ", " ", " ", " ";
-  va(0), " ", overline(p) tensor(delta, +i, -j), " ";
-  " ", " ", " ", " ";
-augment: #(hline: 1, vline: 1))
-  wide
-tensor(T, -mu, -nu) = tensor(T, +rho, -nu) tensor(g, -mu, -rho) = mat(
-  overline(rho)c^2, " " , va(0)^TT, " " ;
-  " ", " ", " ", " ";
-  va(0), " ", overline(p) a^2 tensor(gamma, -i, -j), " ";
-  " ", " ", " ", " ";
-augment: #(hline: 1, vline: 1))
-
-  $]
-
-== Equazioni di Friedmann
-Siamo pronti per mettere insieme tutti i risultati ottenuti finora.\
-Iniziamo dall'equazione di continuità $tensor(nabla, -mu) tensor(T, +mu, -nu) = 0$ per la componente $nu = 0$:
+Possiamo ora lavorare la seconda equazione per combinarla con l'equazione di continuità.
+Iniziamo scrivendo
+#aeq[$ dot.double(a) = dv(dot(a), t) = dv(dot(a), a) dv(a, t) = dot(a) dv(dot(a), a) $]
+ora sostituiamo questo nell'equazione di Friedmann assieme all'equazione per l'evoluzione della densità
+$ dot(a)/a dv(dot(a), a) = -(4 pi G)/3 overline(rho)_(m 0) (a/a_0)^(-3) $
 #aeq[$
-0 = tensor(nabla, -mu) tensor(T, +mu, -0)
-  &= partial_mu tensor(T, +mu, -0) + tensor(Gamma, +mu, -rho, -mu)tensor(T, +rho, -0) - tensor(Gamma, +rho, -mu, -0)tensor(T, +mu, -rho)\
-  &= partial_0 tensor(T, +0, -0) +partial_i cancel(tensor(T, +i, -0)) + cancel(tensor(Gamma, +0, -rho, -0))tensor(T, +rho, -0) + tensor(Gamma, +i, -rho, -i)tensor(T, +rho, -0) - cancel(tensor(Gamma, +rho, -0, -0))tensor(T, +0, -rho) - tensor(Gamma, +rho, -i, -0)tensor(T, +i, -rho)\
-  &= partial_0 tensor(T, +0, -0) + tensor(Gamma, +i, -0, -i)tensor(T, +0, -0) + tensor(Gamma, +i, -j, -i)cancel(tensor(T, +j, -0)) - tensor(Gamma, +0, -i, -0)cancel(tensor(T, +i, -0)) - tensor(Gamma, +j, -i, -0)tensor(T, +i, -j)\
-  &= 1/cancel(c) dv(,t) (-overline(rho)c^2) + 1/cancel(c) dot(a)/a underbracket(tensor(delta, +i, -i), 3)(-overline(rho)c^2) - 1/cancel(c) dot(a)/a overline(p) underbracket(tensor(delta, +j, -i)tensor(delta, +i, -j), 3)
+  integral_(dot(a)(t))^(dot(a)_0) dot(a) dd(dot(a)) = - (4 pi G)/3 underbracket(overline(rho)_(m 0) a_0^3, overline(rho)_m a^3) integral_(a(t))^(a_0) dd(a)/a^2
 $]
-$ heq(dot(overline(rho)) = -3 dot(a)/a (overline(rho) + overline(p)/c^2)) $
-Abbiamo riottenuto l'equazione di continuità cosmologica.\
-Non calcoliamo i termini $nu = i$, in quanto danno tutti soluzioni triviali $0=0$ (sopravvivono solo le derivate spaziali di $T$ che sono nulle).
-
-Passiamo ora all'equazione di Einstein $tensor("R", -mu, -nu) - 1/2 tensor(g, -mu, -nu)"R" = (8 pi G)/c^4 tensor(T, -mu, -nu)$:
-$ heq((dot(a)/a)^2 = (8 pi G)/3 overline(rho) - (K c^2)/a^2) $
-$ heq(dot.double(a)/a = - (4 pi G)/3 (overline(rho) + 3 overline(p)/c^2)) $
-Queste sono rispettivamente la prima e la seconda equazione di Friedmann. Notiamo che la prima è identica a quella già ottenuta in precedenza, solo che ora sappiamo il significato di $K$. La seconda invece ha un termine in più che nella trattazione classica ci siamo persi non avendo tenuto conto che anche la radiazione gravita.
-
-== Evoluzione in presenza di curvatura<ch:ev_curv>
-Oggi dalle misure sappiamo che $K$ è compatibile con $0$, tuttavia è interessante capire come sarebbe l'evoluzione dell'universo in presenza di curvatura.
-In particolare abbiamo già visto che l'universo è stato inizialmente dominato dalla radiazione e ora è dominato dalla materia, e se ci fosse anche la curvatura (che si diluisce come $~a^(-2)$) questa dominerebbe in un futuro.
-Abbiamo inoltre risolto le equazioni per universi a singola componente trovando
-#aeq[$ a ~ t^(2/(3(1+w))) quad "con" quad overline(p) = w overline(rho) $]
-Andiamo ora a studiare come evolve l'universo a due componenti materia e curvatura. Iniziamo dall'equazione con le abbondanze
-#aeq[$(dot(a)/a)^2 = H^2_0 (Omega_(m 0) a^(-3) + Omega_(k 0) a^(-2))$]
-#aeq[$dot(a)^2 = H^2_0 (Omega_(m 0) a^(-1) + Omega_(k 0))$]
-Passiamo poi al tempo conforme $dd(t) = a dd(eta) => dv(,t) = 1/a dv(,eta)$ (indichiamo $dot(Q) = dv(Q,t)$ e $Q' = dv(Q, eta)$)
 #aeq[$
-  (a')^2 &= H^2_0 (Omega_(m 0) a + Omega_(k 0) a ^2)\
-  &= H^2_0 Omega_(m 0) a (1 + Omega_(k 0)/Omega_(m 0) a)\
-  &= H^2_0 Omega_(m 0) a (1 - (-Omega_(k 0))/Omega_(m 0) a)
+  dot(a)_0^2/2 - dot(a)^2/2 =
+  - (4 pi G)/3 overline(rho)_m a^3 (1/a - 1/a_0) =
+  (4 pi G)/3 (overline(rho)_(m 0) a_0^2 - overline(rho)_m a^2)
 $]
-Facciamo ora un cambio di variabile $y^2 = -Omega_(k 0)/Omega_(m 0) a => a = -Omega_(m 0)/Omega_(k 0) y^2 => a' = - Omega_(m 0)/Omega_(k 0) 2 y y' $.
-Notiamo che $y$ può assumere anche valori immaginari (perché $Omega_(k 0)$ può essere positivo o negativo), ma questo non ci spaventa in quanto ci basta anteporre una $i$ a tutti i conti, e trasformare le funzioni trigonometriche in iperboliche.
-#aeq[$cancel(Omega_(m 0)^2)/Omega_(k 0)^(cancel(2)) 4 cancel(y^2) (y')^2 = - H^2_0 cancel(Omega_(m 0)) cancel(Omega_(m 0))/cancel(Omega_(k 0)) cancel(y^2) (1 - y^2)$]
-#aeq[$y' = dv(y, eta) = 1/2 H_0 sqrt(- Omega_(k 0))sqrt(1 - y^2)$]
-#aeq[$integral dd(eta) = 2/(H_0 sqrt(- Omega_(k 0))) integral dd(y)/sqrt(1 - y^2)$]
-#aeq[$eta = 2/(H_0 sqrt(- Omega_(k 0))) arcsin(y)$]
-#aeq[$y = sin(1/2 underbrace(H_0 sqrt(-Omega_(k 0)) eta, theta)) = sin(theta/2)$]
-#aeq[$a =  Omega_(m 0)/( - Omega_(k 0)) y^2 = Omega_(m 0)/(- Omega_(k 0)) sin^2(theta/2) = Omega_(m 0)/(- Omega_(k 0)) 1/2(1 - cos(theta)) $]
-$ a = Omega_(m 0)/(2(- Omega_(k 0))) (1 - cos(theta)) $
-Torniamo ora al tempo cosmologico $t$
-#aeq[$t = integral dd(t) = integral a dd(eta) = Omega_(m 0)/(2 (- Omega_(k 0))) integral dd(eta) (1 -cos(theta)) $]
-ma notiamo che
-#aeq[$dd(eta) = dd(theta)/(H_0 sqrt(-Omega_(k 0)))$]
-quindi
-$ t = 1/(2 H_0) Omega_(m 0)/(- Omega_(k 0))^(3/2)[theta - sin(theta)] $
-mettendo assieme $a$ e $t$
-$ cases(
-t = 1/(2 H_0) Omega_(m 0)/(- Omega_(k 0))^(3/2)[theta - sin(theta)],
-a = Omega_(m 0)/(2(-Omega_(k 0))) (1 - cos(theta))
-) $
-Questa è la parametrizzazione di una cicloide.
-- Se $K > 0 <=> Omega_(k 0) < 0$ ho effettivamente la cicloide.
-  All'inizio ho un _Big-Bang_ seguito da un'espansione, poi una decelerazione che porta ad una contrazione e infine un _Big-Crunch_. Si parla di *universo chiuso*.
-  Se sviluppo attorno a 0 (nella dominazione della materia) ottengo $t ~ a^(2/3)$ che è il risultato che avevamo già trovato.
-- Se $K < 0 <=> Omega_(k 0) > 0$ le funzioni trigonometriche diventano iperboliche.
-  Questo significa che non ho mai la ricontrazione, qundi l'universo si espande per sempre. Si parla di *universo aperto*.
-- Se $K = Omega_(k 0) = 0$ abbiamo il caso già visto in precedenza.
-#figure(
-  image("images/2-2_cicloide.pdf", width: 55%),
-  caption: [Evoluzione del fattore di scala per universo dominato da materia e curvatura.]
-)
+Definendo (vedremo in seguito il significato)
+$ K = 1/c^2 ((8 pi G)/3 overline(rho)_(m 0) a_0^2 - dot(a)_0^2) $
+otteniamo la *prima equazione di Friedmann*
+$ heq((dot(a)/a)^2 = (8 pi G)/3 overline(rho)_m - (K c^2)/a^2) $
+Abbiamo ottenuto le 3 equazioni (solo 2 sono indipendenti) che ci permettono di descrivere l'universo omogeneo e isotropo.
 
-== La costante cosmologica
-Abbiamo già visto l'equazione
-#aeq[$ 1 = Omega_(m 0) + Omega_(r 0) + Omega_(k 0) $]
-e abbiamo visto che le misure odierne sono $Omega_(r 0) approx num("e-4")$, $Omega_(m 0) approx num("0.3")$ e $Omega_(k 0) approx 0$.
-È evidente che queste non sommino a 1.
-Dunque è necessario aggiungere qualcosa, quello che si fa è introdurre una nuova componente detta *costante cosmologica* $Omega_(Lambda)$.
-
-La constante cosmologica è stata inizialmente introdotta da Einstein, non soddisfatto del risultato di un universo che non fosse statico.\
-Si rese conto che poteva ridefinire il tensore $tensor(G, -mu, -nu)$
-$ tensor(G, -mu, -nu) -> tensor(G, -mu, -nu) + tensor(g, -mu, -nu) Lambda $
-Questo tensore continua a rispettare la legge di continuità $tensor(nabla, -mu)tensor(G, +mu, -nu) = 0$ se $Lambda = "cost"$ (dato che $tensor(g, -mu, -nu)$ ha derivata covariante nulla).
-Con questa modifica le equazioni di Friedmann diventano
-$ heq((dot(a)/a)^2 = (8 pi G)/3 overline(rho) - (K c^2)/a^2 + Lambda/3) $
-$ heq(dot.double(a)/a = - (4 pi G)/3 (overline(rho) + 3 overline(p)/c^2) + Lambda/3) $
-Einstein voleva ottenere un universo statico ($dot.double(a) = dot(a) = 0$) e di sola materia ($overline(p) = 0$).
-Imponendo queste condizioni si ottiene
-$ Lambda_E = 4 pi G overline(rho)_m wide K_E = 4 pi G overline(rho)_m a^2/c^2 $
-In seguito si osservò che l'universo si stava espandendo e questa idea venne accantonata (alcune fonti riportano che Einstein l'abbia definita l'errore più grande della sua vita) anche se in linea di principio questa non era da escludere.\
-Un'ulteriore cosa da notare è che l'universo di Einstein era in un punto di equilibrio instabile (anche un solo elettrone in più avrebbe causato la contrazione o l'espansione).
-
-L'idea venne ripresa in considerazione negli anni \'90 quando le osservazioni delle SNeIa misero in evidenza dei problemi nel modello.
-
-=== Misura dell'espansione accelerata
-La misura dell'espanzione accelerata viene fatta con la stessa tecnica con cui è stata scoperta la legge di Hubble: si osservano oggetti di cui si riesce a misurare sia un qualche tipo di distanza (tendenzialmente la distanza di luminosità $d_L$) sia il redshift.
-L'unica differenza è che si osserva a distanze maggiori, dove si riesce ad apprezzare un termine superiore dello sviluppo in serie rispetto alla legge di Hubble.
-Gli oggetti osservati a così grande distanza sono le SNeIa e le sorgenti di onde gravitazionali.
-
-Andiamo a considerare un ordine superiore nello sviluppo in serie di $a$ nell'universo locale
-#aeq[$a(t) = 1 + H_0(t-t_0) + 1/2 evaluated(dot.double(a))_(a=1) (t- t_0)^2$]
-Definiamo il *parametro di decelerazione* (chiamato così per motivi storici)
-$ heq(q = - dot.double(a)/(a H^2)) $
-e otteniamo
-#aeq[$a(t) = 1 + H_0(t-t_0) - 1/2 H_0^2 q_0 (t- t_0)^2$]
-Quindi $q_0$ sarà il nuovo parametro che dovremo determinare con un fit sui dati.\
-Andiamo dunque a sviluppare l'espressione per la distanza di luminosità
-#aeq[$d_L (cal(Z)) = (1 + cal(Z)) r (cal(Z)) = (1 + cal(Z)) chi sinc(chi sqrt(K)) ~ (1 + cal(Z)) chi$]
-Sviluppiamo $chi$
-#aeq[$
-  chi (cal(Z)) = integral_0^cal(Z) (c dd(cal(Z)'))/(H (cal(Z)'))
-  = c integral_0^cal(Z) [1/H_0 + [- 1/H^2 dv(H, cal(Z)')]_(cal(Z) = 0) cal(Z)' + ...] dd(cal(Z)')
-  = (c cal(Z))/H_0 - cal(Z)^2 c/(2 H_0^2) evaluated(dv(H, cal(Z)))_(cal(Z)
-  = 0) + ...
-$]
-Dobbiamo calcolare la derivata di $H = dot(a)/a$
-#aeq[$dv(H, cal(Z)) = dv(H, t) dv(t, a) dv(a, cal(Z)) = (- dot(a)^2/a^2 + dot.double(a)/a ) 1/dot(a) (-a^2) = cancel(a^2)/cancel(dot(a)) dot(a)^(cancel(2))/cancel(a^2) (1 underbrace(- dot.double(a)/(a H^2) , +q)) = dot(a) (1+q)$]
-Reinserendo nello sviluppo di $chi$
-$ chi (cal(Z)) = c/H_0 (cal(Z) - cal(Z)^2/2(q_0 + 1)) + ... $
-Quindi
-$ d_L = (c cal(Z))/H_0 - 1/2 (c cal(Z)^2)/H_0 (1 + q_0) + (c cal(Z)^2)/H_0 + ... = (c cal(Z))/H_0 + (c cal(Z)^2)/(2 H_0) (1 - q_0) + ... $
-Questa viene detta *espansione cosmografica* e ha la meravigliosa caratteristica di essere indipendente dal modello di universo scelto.\
-Al giorno d'oggi tuttavia si tende a fare il fit direttamente con tutto il modello cosmologico per non perdere termini nello sviluppo in serie.
-
-Quando negli anni \'90 si iniziò a fare misure a grandi distanza, si notò che il fit dava un'accelerazione invece che una decelerazione come atteso.
-Le opzioni principali per spiegare questo andamento erano 2:
-- Violare la *strong enery condition* (SEC)
-  $ overline(rho) + 3 overline(p) > 0 $
-  dove ricordiamo $overline(rho) = sum_s overline(rho)_s$ e $overline(p) = sum_s overline(p)_s$ con $s$ le specie (radiazione, materia, ecc...)
-- Reinserire la costante cosmologica nelle equazioni di Einstein
-Si scelse di preservare la SEC e dunque si reinserì la costante cosmologica.
-
-=== Costante cosmologica come forma di energia
-Al giorno d'oggi, nelle equazioni di Einstein si tende a spostare $Lambda$ dall'altro lato
-$ tensor("R", -mu, -nu) -1/2 tensor(g, -mu, -nu) "R" = (8 pi G)/c^4 (tensor(T, -mu, -nu) + tensor(T^(Lambda), -mu, -nu)) wide "con" wide
-tensor(T^(Lambda), -mu, -nu) = - Lambda c^4/(8 pi G) tensor(g, -mu, -nu) $
-Questo per due motivi principali:
-- Operativamente risulta più semplice trattare $Lambda$ come tutte le altre sorgenti
-- Non sapremmo il significato di un termine aggiuntivo alla curvatura
-
-Andiamo a vedere le componenti del tensore energia-impulso di $Lambda$:
-#aeq[$ tensor(T^(Lambda), -0, -0) = - Lambda c^4/(8 pi G)(-1) wide tensor(T^(Lambda), -i, -j) = -Lambda c^4/(8 pi G) a^2 tensor(gamma, -i, -j)$]
-Interpretando i termini come densità e pressione ($ tensor(T, -0, -0) = rho c^2$ e $tensor(T, -i, -j) = p a^2 tensor(gamma, -i, -j)$) si ottiene
-$ overline(rho)_Lambda = Lambda c^2/(8 pi G) wide overline(p)_Lambda = -Lambda c^4/(8 pi G) = -overline(rho)_Lambda c^2 $
-Quindi abbiamo una nuova specie con $w_Lambda = -1$ (dove ricordiamo $overline(rho)_s = overline(p)_s w_s c^2$).\
-Sottolineiamo inoltre che essendo $Lambda$ costante avremo $overline(rho) = "cost" != overline(rho)(t)$.
-
-Questo ci porta ad aggiornare il grafico con le evoluzioni delle abbondanze al variare del fattore di scala (continuando a ignorare la curvatura)
-#subpar.grid(
-  figure(
-    image("images/2-3_evoluzione_specie.pdf", width: 100%),
-  ),
-  figure(
-    image("images/2-3_evoluzione_specie_b.png", width: 100%),
-  ),
-  columns: (1fr, 1fr),
-  caption: [Evoluzione delle densità delle specie.]
-)
-Abbiamo ancora che per la maggior parte del tempo l'universo è descrivibile come epoche dominate da una singola componente, intervallate da epoche di equivalenza:
-- L'*equivalenza materia-radiazione* che abbiamo già visto $overline(rho)_r (a_"eq") = overline(rho)_m (a_"eq")$
-- L'*equivalenza $Lambda$-materia* dove $overline(rho)_m (a_"eq") = overline(rho)_Lambda$
-Possiamo andare a calcolare il fattore di scala di quest'ultima dividendo per $rho_(c 0)$
-#aeq[$(overline(rho)_(m 0) a^(-3)_Lambda)/rho_(c 0) = overline(rho)_Lambda/rho_(c 0)$]
-#aeq[$Omega_(m 0) a^(-3)_Lambda = Omega_(Lambda 0)$]
-dove
-$ Omega_(Lambda 0) = Lambda/cancel(8 pi G) cancel(8 pi G)/(3 H_0^2) = Lambda/(3 H_0^2) $
-Notiamo che è importante mettere il pedice 0, perché sebbene $Lambda$ sia costante, $rho_c$ non lo è, quindi ho un'evoluzione
-#aeq[$Omega_Lambda (cal(Z)) = Omega_(Lambda 0)/(H^2 (cal(Z)) \/ H^2_0)$]
-Risolvendo per $a_Lambda$
-#aeq[$a_Lambda = root(3, Omega_(m 0) / Omega_(Lambda 0)) approx root(3, 0.3/0.7) approx 0.75 quad ==> quad cal(Z)_Lambda = 1/a_Lambda - 1 approx 0.33$]
-Notiamo che questo è un valore abbastanza vicino.
-
-Calcoliamo ora l'andamento temporale del fattore di scala nella dominazione della costante cosmologica
-#aeq[$dot(a)^2/a^2 = Lambda/3 = (8 pi G)/3 overline(rho)_Lambda = H_0^2 Omega_(Lambda, 0)$]
-#aeq[$dot(a) = H_0 a sqrt(Omega_(Lambda, 0))$]
-$ heq(a ~ exp{sqrt(Omega_(Lambda, 0)) H_0 t}) $
-
-Ricapitolando le epoche di dominazione abbiamo
-/ Radiation dominated: con un andamento $a ~ t^(1/2)$
-/ Matter dominated: con un andamento $a ~ t^(2/3)$ detto _universo di Einstein-De Sitter_
-/ Curvature dominated: con un andamento $a ~ sqrt(-K) t$ detto _universo di Milne_.\
-  Da notare come in questo caso sia concessa solo una curvatura positiva $K < 0$, quindi solo un universo chiuso
-/ $Lambda$ dominated: con un andamento $a ~ exp{sqrt(Omega_(Lambda, 0))H_0 t}$ detto _universo di De Sitter_ che è l'universo in cui ci troviamo noi oggi
-
-Possiamo anche aggiornare la nostra equazione delle abbondanze
-$ heq( H^2 (cal(Z)) = H_0^2 [Omega_(r, 0) (1 + cal(Z))^4 + Omega_(m, 0) (1 + cal(Z))^3 + Omega_(K, 0) (1 + cal(Z))^2 + Omega_(Lambda, 0)] ) $
-
-== Evoluzione delle disomogeneità e formazione delle galassie<sec:collasso_sferico>
-Facciamo ora un calcolo che ci tornerà molto utile nell'ultima parte del corso: l'evoluzione di usa sovradensità sferica.
-Consideriamo un universo matter-dominated con delle fluttuazioni rispetto all'omogeneità
-#aeq[$ rho = (1 + delta) overline(rho) $]
-Consideriamo una regione sferica di raggio comovente $R$ con densità $rho$ immersa in un universo di densità $overline(rho)$.
-La massa all'interno della regione sarà
-#aeq[$ M = 4/3 pi r^3 rho $]
-dove $r$ è la dimensione fisica ($r = a R$).\
-Un punto sulla superficie sferica sarà soggetta ad un'accelerazione gravitazionale
-$ dot.double(r) = -G M/r^2 = -(4 pi G)/3 rho r quad ==> quad dot.double(r)/r = - (4 pi G)/3 rho $<eq:acc_grav>
-che ricorda molto la seconda equazione di Friedmann.\
-Per ottenere la prima moltiplichiamo entrambi i membri per $dot(r)$
-#aeq[$ dot(r) dot.double(r) = -G M/r^2 dot(r) $]
-che possiamo scrivere come
-#aeq[$ dot(r)dot.double(r) = dot(r)dv(dot(r), t) = 1/2 dv(dot(r)^2, t) wide 1/r^2 dv(r, t) = - dv(,t)(1/r) $]
-Quindi intergrando su $t$ 
-#aeq[$ underbracket(1/2 dot(r)^2, E_K) = underbracket((G M)/r, -E_P) + underbracket(C, E_"tot") quad ==> quad 1/2 dot(r)^2 = (4 pi G)/3 rho r^2 + E_"tot" $]
-dove tutte le energie sono per unità di massa.
-Notiamo che se il sistema è legato, l'energia è negativa e possiamo scrivere
-$ (dot(r)/r)^2 = (8 pi G)/3 rho - (2 abs(E_"tot"))/(r^2) $<eq:energia>
-Abbiamo trovato la prima equazione di Friedmann dove $2 abs(E_"tot")$ gioca il ruolo di curvatura positiva.
-Mettendo insieme le due equazioni, scrivendole con il fattore di scala, otteniamo
-$ heq(cases(
-  dot.double(a)/a = -(4 pi G)/3 rho ,
-  (dot(a)/ a)^2 = (8 pi G)/3 rho - (2 abs(E_"tot"))/(a^2 R^2)
-)) $
-che abbiamo già risolto nella sezione @ch:ev_curv ottenendo la cicloide
-#aeq[$ cases(
-t = 1/(2 H_0) Omega_(m 0)/(- Omega_(k 0))^(3/2)[theta - sin(theta)],
-a = Omega_(m 0)/(2(-Omega_(k 0))) (1 - cos(theta))
-) $]
-dove le abbondanze sono (sfruttando che $r_0 = R$)
-$ Omega_(m 0) = 1/H_0^2 (8 pi G)/3 rho_0 = (2 G M)/(H_0^2 R^3) wide "e" wide -Omega_(k 0) = 1/H_0^2 (2 abs(E_"tot"))/R^2 $
+== Dilatazione della luce
+Ora che abbiamo scritto le equazioni per l'evoluzione di un universo omogeneo e isotropo in funzione del parametro $a$, andiamo a vedere un'altra interpretazione del redshift.
+Sappiamo che il redshift è una dilatazione delle lunghezze d'onda, ma le lunghezze d'onda non sono altro che lunghezze fisiche (le indichiamo con $lambda_p$).
+Quindi possiamo scriverle con le coordinate comoventi (le indichiamo con $lambda_c$)
+$ lambda_p (t) = a (t) lambda_c $
+Ma allora possiamo scrivere il redshift come
+#aeq[$cal(Z) = (lambda_o - lambda_e)/lambda_e = (lambda (t_o))/(lambda (t_e)) - 1 = (a_0 cancel(lambda_c))/(a (t_e) cancel(lambda_c)) - 1$]
 da cui
-#aeq[$ 1/(2 H_0) Omega_(m 0)/(- Omega_(k 0))^(3/2) = (G M)/(2 abs(E_"tot"))^(3/2) wide "e" wide
-  Omega_(m 0)/(2(-Omega_(k 0))) = (G M)/(2 abs(E_"tot") R) $]
-Inserendo nel sistema sopra (e ricordando che $a R = r$) otteniamo
-$ heq(cases(
-r = (G M)/(2 abs(E) r_i) [1 - cos(theta)],
-t = (G M)/(2 abs(E))^(3/2) [theta - sin(theta)]
-)) $
-Durante tutto questo processo, l'universo circostante evolve per conto proprio seguendo l'equazione di Friedmann
-$ r_"Uni" ~ a_"Uni" ~ t^(3/2) $
-Quello che fisicamente accade è che inizialmente la bolla sovradensa evolve espandendosi assieme all'universo circostante.
-In seguito inizia a decelerare e contrarsi, disaccoppiandosi dal comportamento omogeno del flusso di Hubble che coinvolge tutto l'universo circostante.\
-Questo possiamo intuire essere il modo in cui si sono formate le galassie, e il motivo per cui possiamo parlare di questi oggetti puntiformi in un universo a grande scala omogeneo.
-Notiamo inoltre che tanto più è massiva una sovradensità, tanto più sarà grande e tanto più ci metterà a contrarsi.
+$ (a(t))/a_0 = 1/(1 + cal(Z)) $
+Questa è una funzione monotona, quindi si può utilizzare $cal(Z)$ al posto di $a$ riparametrizzando tutta l'evoluzione.
+
+Consideriamo ora una zona vicina a noi e sviluppiamo entrambi i membri
+#aeq[$ (a (t))/a_0 ~ 1 + underbrace((dot(a)_0)/(a_0), H_0) (t-t_0) $]
+#aeq[$ 1/(1 + cal(Z)) ~ 1 - cal(Z) $]
+#aeq[$c cal(Z) = H_0 (t_0-t) c$]
+Ma $(t_0-t)c$ rappresenta la distanza $d$ percorsa dalla luce per arrivare all'osservatore (e quindi la distanza della sorgente da noi).
+$ c cal(Z) = H_0 d $
+Quindi otteniamo nuovamente la legge di Hubble Lemaitre, questa volta però esplicitamente come approssimazione nell'universo locale.
+
+== Gas interagente
+Nella trattazione fatta fin'ora abbiamo sempre considerato il fluido come non interagente, sfruttando il fatto che le dimensioni delle galassie (le particelle del fluido) sono ordini di grandezza più piccole delle distanze tra le stesse.
+Tuttavia abbiamo anche visto che l'universo si sta espandendo, quindi possiamo concludere che in un tempo passato le particelle fossero molto più vicine e dunque interagenti.
+Per descrivere questa situazione partiamo dalla prima legge della termodinamica
+$ dd(U) = T dd(S) - p dd(V) $
+ma questo lo consideriamo per tutto l'universo che non ha nulla con cui scambiare calore (è totalmente adiabatico), dunque $dd(S) = 0$.\
+#let fnote_pressione = [
+  Questa trattazione è molto euristica. Soprattutto se pensiamo che arriveremo a scrivere un risultato per la radiazione, che essendo _mass-less_ non può avere l'energia sotto forma di massa.
+  Inoltre in linea di principio nella trattazione con i fluidi non abbiamo fatto nulla che escludesse l'interazione di pressione, abbiamo solo escluso i termini relativistici.\
+  Per adesso dobbiamo prendere questi risultati abbastanza per buoni, facendoci un'intuizione della loro provenienza.
+  Tutto sarà più chiaro nella trattazione con la relatività generale.
+]
+Inoltre possiamo scrivere l'energia come $U = m c^2 = rho V c^2$ (andando ad assumere che tutta l'energia sia di massa#footnote(fnote_pressione)).
+Quindi $dd(U) = V c^2 dd(rho) + rho c^2 dd(V)$.
+#aeq[$ V c^2 dd(rho) + rho c^2 dd(V) = -p dd(V) quad ==> quad dd(rho) = - (rho + p/c^2) dd(V)/V $]
+Ma $V prop a^3 => dd(V)/V = 3 dd(a)/a$ quindi
+$ heq(dot(rho) = - 3 dot(a)/a (rho + p/c^2)) $
+Questa è l'equazione di continuità dove teniamo conto anche dei termini di interazione sotto forma di pressione.
+
+Possiamo ora chiederci quali valori può assumere $p$.
+Partiamo dai gas perfetti
+$ p V = N k_B T quad "e" quad expval(E) = 1/2 m expval(v^2) = 3/2 k_B T $
+Possiamo ricavare quindi la pressione
+#aeq[$ p = N/V k_B T = underbrace(N/V m, rho) 1/3 expval(v^2) = 1/3 rho expval(v^2) $]
+quindi
+$
+  p/c^2 = 1/3 rho expval(v^2)/c^2 =
+  cases(
+    approx 0 #[per particelle lente: *polvere* o *materia*],
+    approx 1/3 #[per particelle relativistiche: *radiazione*]
+  )
+$
+Notiamo che in entrambi i casi i fluidi sono barotropici (dove la pressione è esprimibile in funzione della sola densità $p = p(rho)$), possiamo quindi scrivere
+$ p(rho) = w rho c^2 quad "con" quad w = cases(w_m = 0, w_r = 1/3) $
+L'equazione di continuità per una determinata specie $s$ diventa
+$ dot(overline(rho))_s = -3 H rho_0 (1 + w_s) $
+che integrata dà
+$ overline(rho)_s = overline(rho)_(s 0) [a(t)/a_0]^(-3(1+w_s)) $
+Abbiamo che per la materia $rho prop a^(-3)$ come avevamo ottenuto in precedenza, mentre per la radiazione $rho prop a^(-4)$.
+Quindi quest'ultima si diluisce più velocemente.
+
+== Abbondanze
+Prendiamo la prima equazione di Friedmann
+#aeq[$ (dot(a)/a)^2 = (8 pi G)/3 overline(rho) - (K c^2)/a^2 $]
+Lavorare direttamnte con le densità può risultare scomodo. Quindi si tende ad esprimerle rispetto ad un valore di riferimento:
+#definizione[
+  Si definisce *densità critica* $rho_(c)$ il valore di densità tale per cui la costante $k$ sia nulla
+  $ heq(rho_(c) = (3 H^2)/(8 pi G)) $
+  Si definisce *abbondanza* il rapporto tra una densità e la densità critica (entrambi valutati allo stesso tempo)
+  $ heq(Omega_(s) = (overline(rho)_(s))/rho_(c)) $
+]
+Di solito si utilizza il valore valutato oggi
+$ rho_(c 0) = (3 H_0^2)/(8 pi G) quad approx fqty("1.3e-29", "g/cm^3") approx 7.7 "protoni"/"m"^3 $
+e si scrive il valore ad epoche passate in funzione di quello presente
+$ rho_c (cal(Z)) = rho_(c 0) (H^2 (cal(Z)))/H_0^2 $
+
+Alcuni esempi di abbondanze di cui conosciamo i valori sono
+#aeq[$
+  Omega_(m 0) & approx 0.3         && "da misure dirette" \
+  Omega_(r 0) & approx num("9e-5") && "da misure della CMB" \
+  Omega_(K 0) & approx 0           && "(vediamo tra poco il significato)" \
+$]
+Riprendiamo ora l'equazione di Friedmann
+#aeq[$
+  H^2 &= ((8 pi G)/3 overline(rho)_m + (8 pi G)/3 overline(rho)_r - (K c^2)/a^2)H_0^2/H_0^2\
+  &= H_0^2 (overline(rho)_m/rho_(c 0) + overline(rho)_r/rho_(c 0) - (K c^2)/(a^2 H_0^2))\
+  &= H_0^2 [(a/a_0)^(-3) underbrace(overline(rho)_(m 0)/rho_(c 0), Omega_(m 0)) + (a/a_0)^(-4) underbrace(overline(rho)_(r 0)/rho_(c 0), Omega_(r 0))- (a/a_0)^(-2) underbrace((K c^2)/(a_0^2 H_0^2), := - Omega_(K 0))]\
+$]
+$ heq(H^2/H_0^2 = Omega_(m 0) (a/a_0)^(-3) + Omega_(r 0) (a/a_0)^(-4) + Omega_(K 0) (a/a_0)^(-2)) $
+Se portiamo $H^2/H_0^2$ dall'altro lato otteniamo le abbondanze valutate in epoca passata (il fattore con gli $H$ è quello che corregge le $rho_c$)
+$ heq(1 = Omega_m (cal(Z)) + Omega_r (cal(Z)) + Omega_K (cal(Z))) $
+Quindi ad ogni epoca le abbondanze rappresentano la percentuale di massa delle specie.
+Valutando oggi si ottiene
+$ 1 = Omega_(m 0) + Omega_(r 0) + Omega_(K 0) $
+questo non quadra con i dati ed è il primo suggerimento del fatto che manca qualcosa (risolto con la costante cosmologica $Omega_Lambda$).
+
+== Evoluzione delle densità delle specie
+Proviamo a fare un grafico delle densità delle specie rispetto alla densità critica odierna
+
 #figure(
-  image("images/2-4_evoluzione_sovradens.pdf", width: 55%),
-  caption: [Evoluzione di una sovradensità.]
+  image("images/ch-2/2-evoluzione_specie.pdf", width: 60%),
+  caption: [Evoluzione delle densità delle specie (nella realtà $K$ è una costante a 0).],
 )
+
+Come possiamo notare la storia dell'universo può essere divisa in due *epoche*: una precedente dominata dalla radiazione, e una successiva dominata dalla materia (essendo $K = 0$ non abbiamo la dominazione di quest'ultima).
+Queste due epoche sono separate da quella che viene detta *epoca dell'equivalenza* dove le densità erano comparabili.
+Possiamo calcolare a che fattore di scala (o redshift) si trovava quest'epoca:
+#aeq[$ overline(rho)_m (a_"eq") = overline(rho)_r (a_"eq") $]
+#aeq[$ overline(rho)_(m 0) (a_"eq"/a_0)^(-3) = overline(rho)_(r 0) (a_"eq"/a_0)^(-4) $]
+$
+  heq(a_"eq"/a_0 = overline(rho)_(r 0)/overline(rho)_(m 0) = Omega_(r 0)/Omega_(m 0) approx num("3e-4")) wide ==> wide
+  heq(cal(Z)_"eq" = a_0/a_"eq" - 1 approx num("3.3e3"))
+$
+
+== Soluzioni a singola specie
+Fin'ora abbiamo collegato il fattore di scala a una nozione di tempo nella storia dell'universo, senza mai formalizzare questo legame.
+Possiamo procedere a studiare questa relazione nel caso di universo dominato da una singola specie, con $K=0$.
+#aeq[$ (dot(a)/a)^2 = (8 pi G)/3 overline(rho)_(s 0) (a/a_0)^(-3(1+w_s)) $]
+#aeq[$ dot(a) = dv(a, t) ~ a^(-1/2 (1+3w_s)) quad ==> quad dd(t) ~ a^(1/2 (1+3w_s)) dd(a) $]
+$
+  t ~ a^(3/2(1 + w_s)) ~ cases(a^(3/2) "materia", a^2 "radiazione") quad ==> quad heq(a ~ cases(t^(2/3) "materia", t^(1/2) "radiazione"))
+$
+Notiamo che queste due relazioni sono monotone e crescenti, quindi possiamo utilizzare $a$ come un orologio (non lineare).
+
+Se facciamo un grafico dell'evoluzione temporale dell'universo vediamo che questo decelera, come previsto dalla seconda equazione di Friedmann:
+#figure(
+  image("images/ch-2/3-evoluzione_scala.pdf", width: 55%),
+  caption: [Evoluzione delle densità delle specie.],
+)
+

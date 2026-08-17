@@ -32,4 +32,4 @@ for phi in phis:
         y = theta * np.sin(p)
         ax.plot(x, y, color="black", linewidth=0.5)
 
-fig.savefig("2-1_parametrizzazione_sfera_c.pdf", bbox_inches="tight")
+fig.savefig("1-3-parametrizzazione_sfera_c.pdf", bbox_inches="tight")

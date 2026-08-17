@@ -46,4 +46,4 @@ for x,y,z in zip(xs_lat, ys_lat, zs_lat):
     ax.plot3D(x, y, z, color="black", linewidth=0.5)
 
 plt.show()
-# fig.savefig("2-1_parametrizzazione_sfera_a.pdf", bbox_inches="tight")
+# fig.savefig("1-1-parametrizzazione_sfera_a.pdf", bbox_inches="tight")
