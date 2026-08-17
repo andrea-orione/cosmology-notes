@@ -60,17 +60,18 @@ In realtà i dati presi da Hubble erano parecchio dispersi e il fit di una retta
     #grid(
       figure(
         image("images/1-0-0_legge_hubble_originale.jpg", height: 14em),
-        caption: [Dati originali di Hubble]
+        caption: [Dati originali di Hubble],
       ),
       figure(
         image("images/1-0-1_legge_hubble_humason.jpg", height: 14em),
-        caption: [Dati di Hubble e Humason]
+        caption: [Dati di Hubble e Humason],
       ),
+
       columns: (1fr, 1fr),
     )
     #figure(
-      image("images/1-0-2_legge_hubble_completa.jpg", height:16em),
-      caption: [Dati recenti]
+      image("images/1-0-2_legge_hubble_completa.jpg", height: 16em),
+      caption: [Dati recenti],
     )
   ],
   caption: [Andamento della velocità di recessione con la distanza.],
@@ -88,9 +89,9 @@ Quindi più aumentiamo la distanza e dunque la velocità di recessione, più i m
 
 Per quanto riguarda il valore della costante di Hubble, questo è stato modificato più volte a causa di errori nella calibrazione delle distanze (la stima iniziale di Hubble era $H_0 approx sqty("500", "km/s/Mpc")$).\
 Ad oggi il valore è fissato a
-$ heq(H_0 approx (70 plus.minus 1%)  "km/s/Mpc") $
+$ heq(H_0 approx (70 plus.minus 1%) "km/s/Mpc") $
 tuttavia è presente una _tensione_, in quanto le stime date dalla CMS tendono a $sqty("67", "km/s/Mpc")$ mentre le misure dirette tendono a $sqty("71", "km/s/Mpc")$.
-Questa discrepanza di $numrange("3", "5", delimiter:"#sym.div") sigma$ viene detta *tensione della costante di Hubble*.
+Questa discrepanza di $numrange("3", "5", delimiter: "#sym.div") sigma$ viene detta *tensione della costante di Hubble*.
 
 == Coordinate comoventi
 Siamo quasi pronti per ricavare le equazioni per l'evoluzioni dell'universo.
@@ -120,21 +121,21 @@ Questo fattore viene detto *tasso di espansione* o *tasso di Hubble*, mentre tut
 Dato che il tasso di espansione varia nel tempo, avremo che la legge di Hubble è valida solo nell'universo locale (dove vediamo nel presente) mentre potrebbe avere diversi valori di $H$ in tempi passati (e quindi a distanze maggiori). D'ora in poi indicheremo con uno zero a pedice le quantità valutate nel presente (ad esempio $H_0$).
 
 Possiamo anche vedere come trasforma la derivazione
-$ grad_p = pdv(,va(x)_p) = 1/a pdv(,va(x)_c) = 1/a grad_c $
+$ grad_p = pdv(, va(x)_p) = 1/a pdv(, va(x)_c) = 1/a grad_c $
 $ laplacian_p = 1/a^2 laplacian_c $
 Una cosa da notare quando cambiamo tra le due coordinate, è che la derivata temporale parziale non è uguale.
 Questo perché cambia il punto in cui la valutiamo.
 Quello che rimane uguale è la derivata totale per il tempo, che segue il fluido in qualsiasi sistema di riferimento
 #aeq[$
-  dv(,t) & = evaluated(pdv(,t))_p + va(u) dot grad_p = evaluated(pdv(,t))_p + 1/a (dot(a) va(x)_c + va(v)) dot grad_c \
-         & = evaluated(pdv(,t))_c + dot(va(x))_c dot grad_c = evaluated(pdv(,t))_c + va(v)/a dot grad_c
+  dv(, t) & = evaluated(pdv(, t))_p + va(u) dot grad_p = evaluated(pdv(, t))_p + 1/a (dot(a) va(x)_c + va(v)) dot grad_c \
+          & = evaluated(pdv(, t))_c + dot(va(x))_c dot grad_c = evaluated(pdv(, t))_c + va(v)/a dot grad_c
 $]
 quindi
-$ evaluated(pdv(,t))_p = evaluated(pdv(,t))_c - H(t) va(x)_c dot grad_c != evaluated(pdv(,t))_c $
+$ evaluated(pdv(, t))_p = evaluated(pdv(, t))_c - H(t) va(x)_c dot grad_c != evaluated(pdv(, t))_c $
 
 == Equazioni di Friedmann da principi fluidodinamici
 Possiamo ora ricavare le equazioni per l'evoluzione dell'universo in modo euristico.
-Iniziamo notando che alle scale a cui lavoriamo ($qty("100", "Mpc")$), la dimensione delle galassie ($qty("10","kpc")$) è trascurabile.
+Iniziamo notando che alle scale a cui lavoriamo ($qty("100", "Mpc")$), la dimensione delle galassie ($qty("10", "kpc")$) è trascurabile.
 Quindi possiamo considerare le galassie come particelle puntiformi di un fluido molto rarefatto (le zone dense degli ammassi possono essere considerate anch'esse come singoli punti materiali) e non interagenti#footnote[Per maggiori approfondimenti consultare il corso Fondamenti di Astrofisica II: Galassie e strutture cosmiche.].\
 Questo fluido rispetterà le equazioni di continuità e di Eulero. Iniziamo dalla continuità
 #aeq[$ pdv(rho, t) + grad_p dot (rho va(u)) = 0 $]
@@ -148,7 +149,7 @@ scriviamola ora in funzione delle coordinate comoventi nel caso della materia ch
   -overline(rho)_m ( dot(a)/a underbracket(grad_c dot va(x)_c, 3) + 1/a underbracket(grad_c dot va(v), 0))
 $]
 ottenendo l'*equazione di continuità cosmologica*
-$ heq( dot(overline(rho))_m = -3 overline(rho)_m dot(a)/a ) $
+$ heq(dot(overline(rho))_m = -3 overline(rho)_m dot(a)/a) $
 che si può integrare da un qualsiasi punto nel passato fino ad oggi (usiamo oggi come valore di scala perché sappiamo misurarlo)
 $ integral_(overline(rho)_m(t))^(overline(rho)_(m 0)) dd((ln(overline(rho)_m))) = -3 integral_(a(t))^(a_0) dd((ln(a))) $
 $ heq(overline(rho)_m (t) = overline(rho)_(m 0) ((a(t))/a_0)^(-3)) $
@@ -163,12 +164,12 @@ e passando al potenziale $psi$
 $ laplacian_p psi = 4 pi G rho $
 quindi
 #aeq[$ cancel(overline(rho)_m) dot(va(u)) = - cancel(overline(rho)_m) grad_p psi $]
-#aeq[$ dv(,t)(dot(a) va(x)_c + va(v)) = - 1/a grad_c psi$]
+#aeq[$dv(, t)(dot(a) va(x)_c + va(v)) = - 1/a grad_c psi$]
 Possiamo ora sfruttare l'omogeneità per mandare a 0 le velocità peculiari del fluido (anche se quelle delle singole particelle possono non esserlo).
 Inoltre possiamo portare fuori dalla derivata temporale $va(x)_c$ sempre per omogeneità#footnote[In realtà potrei avere un moto omogeneo (come una contrazione o un moto di gruppo) rispetto alla griglia. Ma questo vorrebbe solo dire che ho scelto male le coordinate comoventi e posso riassorbirlo cambiando SR.].\
-#aeq[$ dot.double(a) va(x)_c = - 1/a grad_c psi$]
+#aeq[$dot.double(a) va(x)_c = - 1/a grad_c psi$]
 Prendiamo ora la divergenza dell'equazione per poter sfruttare l'equazione di Poisson.
-#aeq[$ grad_c dot (dot.double(a) va(x)_c) = - 1/a laplacian_c psi = - a laplacian_p$]
+#aeq[$grad_c dot (dot.double(a) va(x)_c) = - 1/a laplacian_c psi = - a laplacian_p psi$]
 #aeq[$ 3 dot.double(a) = - a 4 pi G overline(rho)_m $]
 ottenendo la *seconda equazione di Friedmann*
 $ heq(dot.double(a)/a = -(4 pi G)/3 overline(rho)_m) $
@@ -177,10 +178,12 @@ Quindi se consideriamo solo la componente di materia, otteniamo che l'universo �
 
 Possiamo ora lavorare la seconda equazione per combinarla con l'equazione di continuità.
 Iniziamo scrivendo
-#aeq[$ dot.double(a) = dv(dot(a),t) = dv(dot(a),a) dv(a,t) = dot(a) dv(dot(a),a) $]
+#aeq[$ dot.double(a) = dv(dot(a), t) = dv(dot(a), a) dv(a, t) = dot(a) dv(dot(a), a) $]
 ora sostituiamo questo nell'equazione di Friedmann assieme all'equazione per l'evoluzione della densità
-$ dot(a)/a dv(dot(a),a) = -(4 pi G)/3 overline(rho)_(m 0) (a/a_0)^(-3) $
-#aeq[$ integral_(dot(a)(t))^(dot(a)_0) dot(a) dd(dot(a)) = - (4 pi G)/3 underbracket(overline(rho)_(m 0) a_0^3, overline(rho)_m a^3) integral_(a(t))^(a_0) dd(a)/a^2 $]
+$ dot(a)/a dv(dot(a), a) = -(4 pi G)/3 overline(rho)_(m 0) (a/a_0)^(-3) $
+#aeq[$
+  integral_(dot(a)(t))^(dot(a)_0) dot(a) dd(dot(a)) = - (4 pi G)/3 underbracket(overline(rho)_(m 0) a_0^3, overline(rho)_m a^3) integral_(a(t))^(a_0) dd(a)/a^2
+$]
 #aeq[$
   dot(a)_0^2/2 - dot(a)^2/2 =
   - (4 pi G)/3 overline(rho)_m a^3 (1/a - 1/a_0) =
@@ -198,7 +201,7 @@ Sappiamo che il redshift è una dilatazione delle lunghezze d'onda, ma le lunghe
 Quindi possiamo scriverle con le coordinate comoventi (le indichiamo con $lambda_c$)
 $ lambda_p (t) = a (t) lambda_c $
 Ma allora possiamo scrivere il redshift come
-#aeq[$ cal(Z) = (lambda_o - lambda_e)/lambda_e = (lambda (t_o))/(lambda (t_e)) - 1 = (a_0 cancel(lambda_c))/(a (t_e) cancel(lambda_c)) - 1$]
+#aeq[$cal(Z) = (lambda_o - lambda_e)/lambda_e = (lambda (t_o))/(lambda (t_e)) - 1 = (a_0 cancel(lambda_c))/(a (t_e) cancel(lambda_c)) - 1$]
 da cui
 $ (a(t))/a_0 = 1/(1 + cal(Z)) $
 Questa è una funzione monotona, quindi si può utilizzare $cal(Z)$ al posto di $a$ riparametrizzando tutta l'evoluzione.
@@ -206,7 +209,7 @@ Questa è una funzione monotona, quindi si può utilizzare $cal(Z)$ al posto di 
 Consideriamo ora una zona vicina a noi e sviluppiamo entrambi i membri
 #aeq[$ (a (t))/a_0 ~ 1 + underbrace((dot(a)_0)/(a_0), H_0) (t-t_0) $]
 #aeq[$ 1/(1 + cal(Z)) ~ 1 - cal(Z) $]
-#aeq[$ c cal(Z) = H_0 (t_0-t) c$]
+#aeq[$c cal(Z) = H_0 (t_0-t) c$]
 Ma $(t_0-t)c$ rappresenta la distanza $d$ percorsa dalla luce per arrivare all'osservatore (e quindi la distanza della sorgente da noi).
 $ c cal(Z) = H_0 d $
 Quindi otteniamo nuovamente la legge di Hubble Lemaitre, questa volta però esplicitamente come approssimazione nell'universo locale.
@@ -237,11 +240,11 @@ Possiamo ricavare quindi la pressione
 #aeq[$ p = N/V k_B T = underbrace(N/V m, rho) 1/3 expval(v^2) = 1/3 rho expval(v^2) $]
 quindi
 $
-p/c^2 = 1/3 rho expval(v^2)/c^2 =
-cases(
-  approx 0 #[per particelle lente: *polvere* o *materia*],
-  approx 1/3 #[per particelle relativistiche: *radiazione*]
-)
+  p/c^2 = 1/3 rho expval(v^2)/c^2 =
+  cases(
+    approx 0 #[per particelle lente: *polvere* o *materia*],
+    approx 1/3 #[per particelle relativistiche: *radiazione*]
+  )
 $
 Notiamo che in entrambi i casi i fluidi sono barotropici (dove la pressione è esprimibile in funzione della sola densità $p = p(rho)$), possiamo quindi scrivere
 $ p(rho) = w rho c^2 quad "con" quad w = cases(w_m = 0, w_r = 1/3) $
@@ -269,15 +272,15 @@ $ rho_c (cal(Z)) = rho_(c 0) (H^2 (cal(Z)))/H_0^2 $
 
 Alcuni esempi di abbondanze di cui conosciamo i valori sono
 #aeq[$
-  Omega_(m 0) & approx 0.3 && "da misure dirette"\
-  Omega_(r 0) & approx num("9e-5") && "da misure della CMB"\
-  Omega_(k 0) & approx 0 && "(vediamo tra poco il significato)"\
+  Omega_(m 0) & approx 0.3         && "da misure dirette" \
+  Omega_(r 0) & approx num("9e-5") && "da misure della CMB" \
+  Omega_(K 0) & approx 0           && "(vediamo tra poco il significato)" \
 $]
 Riprendiamo ora l'equazione di Friedmann
 #aeq[$
   H^2 &= ((8 pi G)/3 overline(rho)_m + (8 pi G)/3 overline(rho)_r - (K c^2)/a^2)H_0^2/H_0^2\
-  &= H_0^2 (overline(rho)_m/rho_c + overline(rho)_r/rho_c - (K c^2)/(a^2 H_0^2))\
-  &= H_0^2 [(a/a_0)^(-3) underbrace(overline(rho)_(m 0)/rho_c, Omega_(m 0)) + (a/a_0)^(-4) underbrace(overline(rho)_r/rho_c, Omega_(r 0))- (a/a_0)^(-2) underbrace((K c^2)/(a_0^2 H_0^2), := - Omega_(k 0))]\
+  &= H_0^2 (overline(rho)_m/rho_(c 0) + overline(rho)_r/rho_(c 0) - (K c^2)/(a^2 H_0^2))\
+  &= H_0^2 [(a/a_0)^(-3) underbrace(overline(rho)_(m 0)/rho_(c 0), Omega_(m 0)) + (a/a_0)^(-4) underbrace(overline(rho)_(r 0)/rho_(c 0), Omega_(r 0))- (a/a_0)^(-2) underbrace((K c^2)/(a_0^2 H_0^2), := - Omega_(K 0))]\
 $]
 $ heq(H^2/H_0^2 = Omega_(m 0) (a/a_0)^(-3) + Omega_(r 0) (a/a_0)^(-4) + Omega_(K 0) (a/a_0)^(-2)) $
 Se portiamo $H^2/H_0^2$ dall'altro lato otteniamo le abbondanze valutate in epoca passata (il fattore con gli $H$ è quello che corregge le $rho_c$)
@@ -292,7 +295,7 @@ Proviamo a fare un grafico delle densità delle specie rispetto alla densità cr
 
 #figure(
   image("images/1-1_evoluzione_specie.pdf", width: 60%),
-  caption: [Evoluzione delle densità delle specie (nella realtà $K$ è una costante a 0).]
+  caption: [Evoluzione delle densità delle specie (nella realtà $K$ è una costante a 0).],
 )
 
 Come possiamo notare la storia dell'universo può essere divisa in due *epoche*: una precedente dominata dalla radiazione, e una successiva dominata dalla materia (essendo $K = 0$ non abbiamo la dominazione di quest'ultima).
@@ -300,20 +303,24 @@ Queste due epoche sono separate da quella che viene detta *epoca dell'equivalenz
 Possiamo calcolare a che fattore di scala (o redshift) si trovava quest'epoca:
 #aeq[$ overline(rho)_m (a_"eq") = overline(rho)_r (a_"eq") $]
 #aeq[$ overline(rho)_(m 0) (a_"eq"/a_0)^(-3) = overline(rho)_(r 0) (a_"eq"/a_0)^(-4) $]
-$ heq(a_"eq"/a_0 = overline(rho)_(r 0)/overline(rho)_(m 0) = Omega_(r 0)/Omega_(m 0) approx num("3e-4")) wide ==> wide
- heq(cal(Z)_"eq" = a_0/a_"eq" - 1 approx num("3.3e3")) $
+$
+  heq(a_"eq"/a_0 = overline(rho)_(r 0)/overline(rho)_(m 0) = Omega_(r 0)/Omega_(m 0) approx num("3e-4")) wide ==> wide
+  heq(cal(Z)_"eq" = a_0/a_"eq" - 1 approx num("3.3e3"))
+$
 
 == Soluzioni a singola specie
 Fin'ora abbiamo collegato il fattore di scala a una nozione di tempo nella storia dell'universo, senza mai formalizzare questo legame.
 Possiamo procedere a studiare questa relazione nel caso di universo dominato da una singola specie, con $K=0$.
 #aeq[$ (dot(a)/a)^2 = (8 pi G)/3 overline(rho)_(s 0) (a/a_0)^(-3(1+w_s)) $]
-#aeq[$ dot(a) = dv(a,t) ~ a^(-1/2 (1+3w_s)) quad ==> quad dd(t) ~ a^(1/2 (1+3w_s)) dd(a) $]
-$ t ~ a^(3/2(1 + w_s)) ~ cases(a^(3/2) "materia", a^2 "radiazione") quad ==> quad heq(a ~ cases(t^(2/3) "materia", t^(1/2) "radiazione")) $
+#aeq[$ dot(a) = dv(a, t) ~ a^(-1/2 (1+3w_s)) quad ==> quad dd(t) ~ a^(1/2 (1+3w_s)) dd(a) $]
+$
+  t ~ a^(3/2(1 + w_s)) ~ cases(a^(3/2) "materia", a^2 "radiazione") quad ==> quad heq(a ~ cases(t^(2/3) "materia", t^(1/2) "radiazione"))
+$
 Notiamo che queste due relazioni sono monotone e crescenti, quindi possiamo utilizzare $a$ come un orologio (non lineare).
 
 Se facciamo un grafico dell'evoluzione temporale dell'universo vediamo che questo decelera, come previsto dalla seconda equazione di Friedmann:
 #figure(
   image("images/1-2_evoluzione_scala.pdf", width: 55%),
-  caption: [Evoluzione delle densità delle specie.]
+  caption: [Evoluzione delle densità delle specie.],
 )
 

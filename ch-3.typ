@@ -110,7 +110,10 @@ Quindi l'impulso scambiato $dd(I)$ sarà
 #aeq[$ dd(I) = n/(4 pi) abs(va(v)) dd(t) dd(Omega) dd(S) 2 abs(va(q)) cos^2(theta) $]
 Ma la pressione non è nient'altro che impulso scambiato per unità di tempo per unità di area
 #aeq[$p = dd(I)/(dd(t)dd(S))$]
-#let foot_angolo = [Il motivo vero per cui integriamo su metà dell'angolo solido è che quando facciamo i prodotti scalari dobbiamo trascurare i valori negativi perché corrispondono a particelle che si allontanano. Il risultato è però equivalente a considerare particelle solo da un lato.]
+#let foot_angolo = [Il motivo vero per cui integriamo su metà dell'angolo solido è che la pressione è definita all'equilibrio, quando la forza applicata dalle particelle da un lato è uguale a quella applicata da quelle dall'altro lato.
+Dunque è sufficiente considerare metà dell'angolo solido.\
+Volendola pensare geometricamente, quando facciamo i prodotti scalari dobbiamo trascurare i valori negativi perché corrispondono a particelle che si allontanano.
+Il risultato è però equivalente a considerare particelle solo da un lato.]
 Quindi otteniamo, riscrivendo $va(v) = va(q)/E$ (relazione in realtà valida solo in relatività speciale) e integrando su metà dell'angolo solido (perché le particelle abbiamo detto essere solo da un lato#footnote(foot_angolo)) si ottiene che la pressione data da particelle con momento $va(q)$ sarà
 $
   p(va(q)) = integral_0^(2 pi) integral_0^1 n/(2 pi) abs(va(q))^2/E cos^2(theta) dd((cos(theta))) dd(phi)= n/cancel(2 pi) abs(va(q))^2/E cancel(2 pi) 1/3 = n abs(va(q))^2/(3 E)
@@ -296,7 +299,7 @@ Quindi se consideriamo energie abbastanza alte possiamo assegnare lo stesso valo
 Mettendo tutto assieme otteniamo l'andamento per il rate di interazione
 $ Gamma_A ~ T^3 alpha^2 T^(-2) ~ alpha^2 T $
 Quindi
-$ Gamma/H ~ (alpha T)/(sqrt(G) T^2) ~ qty("e15", "GeV")/T $<eq:limite_temp>
+$ Gamma/H ~ (alpha^2 T)/(sqrt(G) T^2) ~ qty("e15", "GeV")/T $<eq:limite_temp>
 Se vogliamo $Gamma >> H$ dovremo avere $T << qty("e15", "GeV")$.\
 Questo significa che inizialmente si parte da una temperatura altissima e l'universo si espande in modo incredibilmente veloce da non far interagire le particelle.
 Poi si scende sotto $qty("e15", "GeV")$ e iniziano ad avvenire le interazioni che portano al raggiungimento dell'equilibrio chimico.
@@ -603,7 +606,7 @@ Questo è vero perché $B_E > T$, infatti siamo a temperature al di sotto del $u
 $B_"D" approx qty("2.2", "MeV")$ ($"D"$ è il deutone), $B_(isotope("H", a: 3)) approx qty("7.8", "MeV")$, $B_(isotope("He", a: 3)) approx qty("3.4", "MeV")$ e $B_(isotope("He", a: 4)) approx qty("25", "MeV")$.\
 Prendiamo il logaritmo dell'espressione
 $
-  ln(x_E) prop (A-1) ln(eta) + B_E/T
+  ln(x_E) ~ (A-1) ln(eta) + B_E/T
 $
 $
   heq(T = B_E/((1-A) ln(eta) + ln(x_E)))

@@ -29,8 +29,8 @@ $ heq(laplacian delta psi = 4 pi G a^2 delta rho) $
 Passiamo all'equazione di continuità
 $ dot(rho)_m = -rho_m/a div va(u) $
 #aeq[$ dv(,t) (overline(rho)_m + delta rho_m) = -(overline(rho)_m + delta rho_m)/a div (dot(a) va(x) + va(v)) $]
-#aeq[$ cancel(dot(overline(rho)_m)) + dot(delta rho_m) = cancel(-overline(rho)_m dot(a)/a div va(x)) - delta rho_m dot(a)/a underbracket(div va(x), 3) -overline(rho)_m 1/a div va(v) -1/a underbracket(rho_m div va(v), Order(2))$]
-$ heq( dot(delta rho_m) - 3 H delta rho_m = -overline(rho)_m 1/a div va(v) ) $
+#aeq[$ cancel(dot(overline(rho))_m) + dot(delta rho_m) = cancel(-overline(rho)_m dot(a)/a div va(x)) - delta rho_m dot(a)/a underbracket(div va(x), 3) -overline(rho)_m 1/a div va(v) -1/a underbracket(delta rho_m div va(v), Order(2))$]
+$ heq( dot(delta rho_m) + 3 H delta rho_m = -overline(rho)_m 1/a div va(v) ) $
 Questa equazione è corretta, tuttavia può essere scritta in un modo più utile introducendo una nuova quantità
 #definizione[
   Si definisce *density contrast* $delta$ la quantità

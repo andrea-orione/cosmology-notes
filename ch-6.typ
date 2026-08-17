@@ -227,7 +227,7 @@ Quello che più ci interessa è come evolve $v$.
 Questo però non compare da solo in nessuna delle componenti di $delta T$.
 Dobbiamo quindi vedere come evolve la densità di momento $va(v)(overline(rho) + overline(p))$.
 Otterremo l'analogo dell'equazione di Eulero, che sarà legata al gradiente di pressione e al potenziale gravitazionale.
-Ci sarà anche il termine dovuto alla diluzione che va con una potenza di $a$.
+Ci sarà anche il termine dovuto alla diluizione che va con una potenza di $a$.
 Ci aspettiamo che ci sia un contributo 3 dato che si tratta di una densità, e un contributo 1 dato dal legame tra momento fisico e momento comovente $va(q) = a^(-1) va(P)$.
 Quindi davanti al termine di diluizione avremo un fattore $3+1 = 4$.\
 Si ottiene
@@ -242,7 +242,7 @@ $
 Anche il secondo membro può essere scritto sfruttando l'equazione di stato
 #aeq[$ -4 cal(H) overline(rho) (1 + w) va(v) - overline(rho) (1 + w) grad Psi - c_s^2 grad delta rho - grad^TT dot vt(Pi) $]
 Possiamo mettere assieme e isolare $va(v)'$
-$ heq( v_i' = -(c_s^2 partial_i delta rho + partial_j tensor(Pi, -i, +j))/(overline(rho) (1+w)) - partial_i Psi - w'/(1+w) v_i - cal(H) v_i (1-3w) ) $
+$ heq( v'_i = -(c_s^2 partial_i delta rho + partial_j tensor(Pi, -i, +j))/(overline(rho) (1+w)) - partial_i Psi - w'/(1+w) v_i - cal(H) v_i (1-3w) ) $
 il termine $w'/(1 + w)$ ci aspettiamo sia 0 per radiazione e materia.
 Abbiamo già visto però che per l'inflatone $w$ dipende dal tempo e dunque può dare un termine non nullo.
 Questo è valido in generale per dei campi scalari o non.
@@ -295,7 +295,7 @@ Per vedere quando diventa importante possiamo trasformare con Fourier
 $ -k^2 Phi - 3 cal(H) (Phi' - cal(H) Psi) = - 4 pi G a^2 delta rho $
 Vediamo che il primo termine scala con $k^2$ mentre il secondo con $cal(H)^2$ (assumiamo che la derivata rispetto ad $eta$ sia anch'essa dell'ordine di $cal(H)$).
 Ricordiamo che $cal(H)^(-1)$ è il raggio di Hubble che è un indicatore della scala di causalità.
-- Se $k cal(H)^(-1) << 1 thick ==> thick lambda >> cal(H)^(-1)$ la dimensione scala della perturbazione è molto maggorie del raggio di Hubble (quindi siamo a scale cosmologiche).
+- Se $k cal(H)^(-1) << 1 thick ==> thick lambda >> cal(H)^(-1)$ la dimensione scala della perturbazione è molto maggiore del raggio di Hubble (quindi siamo a scale cosmologiche).
   In questo caso il termine relativistico è dominante.
 - Se $k cal(H)^(-1) >> 1 thick ==> thick lambda << cal(H)^(-1)$ la dimensione scala della perturbazione è molto minore del raggio di Hubble (quindi siamo nell'universo vicino).
   In questo caso il termine relativistico è trascurabile.
@@ -329,12 +329,12 @@ dove
  &= cal(H)^2 - a^2 (4 pi G)/3 (overline(rho) + 3 overline(p)) = cal(H)^2 - underbrace((4 pi G)/3 overline(rho) a^2, cal(H)^2/2)(1 + 3w) = cal(H)^2/2 (1 - 3w)$]
 #aeq[$ ==> quad cal(H)' = a''/a - (a'/a)^2 = cal(H)^2/2 (1 - 3w) - cal(H)^2 = -cal(H)^2/2(1 + 3w)$]
 #aeq[$ ==> quad 2 cal(H)' + cal(H)^2 = -cal(H)^2(1 + 3w) + cal(H)^2 = -3w cal(H)^2 $]
-Sostituendo ora nella prima equazione e sfurttando $Phi'' = - Psi''$ si ottiene
+Sostituendo ora nella prima equazione e sfruttando $Phi'' = - Psi''$ si ottiene
 // FIXME: Controllare conti
 $ heq(Psi'' + 3 Psi' cal(H)(1+ w) - w laplacian Psi = 0) $
 Passiamo nello spazio di Fourier
 $ Psi'' + 3 (1 + w) cal(H) Psi' + k^2 w Psi = 0 $
-Possiamo ora risolverla nei due perio di dominazione
+Possiamo ora risolverla nei due periodi di dominazione
 
 Durante la dominazione della materia ($w = 0$) vale
 $ Psi'' + 3 cal(H) Psi' = 0 $
@@ -388,8 +388,10 @@ image("images/6-1_curvature_evolution.png", width: 80%)
 )
 Ricordiamo che $k$ sono numeri d'onda comoventi, quindi vengono stirati assieme alla 'griglia' e in questo sistema di coordinate rimangono uguali.
 Invece $cal(H)^(-1)$ si allarga rispetto alla griglia al passare del tempo.
-Se un modo di oscillazione entra nel raggio di Hubble prima di $eta_"eq"$ viene soprresso, mentre se entra dopo $eta_"eq"$ sopravvive solo ridotto del 10%.
+Se un modo di oscillazione entra nel raggio di Hubble prima di $eta_"eq"$ viene soppresso, mentre se entra dopo $eta_"eq"$ sopravvive solo ridotto del 10%.
 // TODO: Mettere immagine
+
+#text(red)[mettere immagine]
 
 Possiamo quindi passare al calcolo delle perturbazioni di massa
 $ -k^2 Psi = 4 pi G a^2 overline(rho) Delta $
@@ -407,19 +409,22 @@ $ Delta prop cases(a^2 quad &"se rad. dom.", a quad &"se mat. dom.") $
 Quindi una volta entrati nell'era di dominazione della materia, le perturbazioni a tutte le scale evolvono linearmente.
 Al contrario durante la dominazione della radiazione le piccole scale vengono soppresse con una crescita solo logaritmica in confronto a quella quadratica delle grandi scale.\
 Possiamo poi fare una supposizione dicendo che la $Delta (k, a)$ sia scomponibile in fattori che evolvono in funzione dello spazio e del tempo separatamente
-$ Delta (k, a) = G(a) + T(k) + Delta (k, a_i) $
+$ Delta (k, a) = G(a) med T(k) med Delta (k, a_i) $
 dove $G$ viene detta *growth function* mentre $T$ viene detta *transfer function*.\
-Questa approssimazione non è esatta, però descrive abbastanza bene l'andamento generale
+Questa approssimazione non è esatta, però descrive abbastanza bene l'andamento generale.
 // TODO: Inserire immagine
-Cerchiamo a valutare $G$ e $T$ andando a studiare due casi particolari: il caso di un modo $k_1$ che entra nel raggio di Hubble dopo l'equivalenza e uno $k_2$ che ci entra prima.
-Per semplicità possiamo definire indichiamo con $k_"eq" = cal(H)(a_"eq")$ e con $a_k$ il fattore di scala a cui vale $k = cal(H)(a_k)$.
+#text(red)[mettere immagine]
+
+Cerchiamo di valutare $G$ e $T$ andando a studiare due casi particolari: il caso di un modo $k_1$ che entra nel raggio di Hubble dopo l'equivalenza e uno $k_2$ che ci entra prima.
+Per semplicità indichiamo con $k_"eq" = cal(H)(a_"eq")$ e con $a_k$ il fattore di scala a cui vale $k = cal(H)(a_k)$.
 Possiamo iniziare studiando il caso $k_1 < k_"eq"$.
-Questo evolverà quadraticamente fino all'equivalena e poi linearmente
+Questo evolverà quadraticamente fino all'equivalenza e poi linearmente
 #aeq[$ (Delta_m (k_1, a))/(Delta_m (k_1, a_i)) = (Delta_m (k_1, a_"eq"))/(Delta_m (k_1, a_i))(Delta_m (k_1, a))/(Delta_m (k_1, a_"eq"))=
   a^2_"eq"/a^2_i a/a_"eq"$]
 Vediamo che otteniamo una dipendenza solo da $a$ e non da $k$, quindi possiamo concludere
 $ heq((G (a))/(G (a_i)) = a^2_"eq"/a^2_i a/a_"eq") wide "e" wide heq( T(k < k_"eq") = 1) $
-Passiamo ora a $k_2 > k_"eq"$. Questo ha un'evoluzione quadratica fino al quando non entra all'interno del raggio di Hubble, dopo ha una crescita logaritmica fino all'equivalenza e infine anche questo ha crescita lineare.
+Passiamo ora a $k_2 > k_"eq"$.
+Questo ha un'evoluzione quadratica fino a quando non entra all'interno del raggio di Hubble, dopo ha una crescita logaritmica fino all'equivalenza e infine anche questo ha crescita lineare.
 Dobbiamo fare inoltre un'approssimazione forte: dato che la crescita logaritmica è molto più lenta delle altre due, la trascureremo approssimando che in quel tratto rimanga $Delta$ rimanga costante
 #aeq[$ (Delta_m (k_2, a))/(Delta_m (k_2, a_i)) = (Delta_m (k_2, a_(k_2)))/(Delta_m (k_2, a_i)) underbracket((Delta_m (k_2, a_"eq"))/(Delta_m (k_2, a_(k_2))), approx 1) (Delta_m (k_2, a))/(Delta_m (k_2, a_"eq"))=
   a^2_(k_2)/a^2_i a/a_"eq" = (a_"eq"/a_i)^2 a/a_"eq" a^2_(k_2)/a^2_"eq"$]
@@ -480,9 +485,9 @@ In linea di principio noi non sappiamo com'è fatta $PP$, però possiamo sfrutta
 - Dato che deve esserci invarianza rotazionale, può dipendere solo dal modulo della distanza e non dalla direzione
 Quindi $xi (va(x)_1,va(x)_2) = xi (s)$.
 Questa condizione ha un'interessante conseguenza detta *integral constraint* sull'integrale di $xi$ rispetto a $s$
-$ dd(s,3) xi(s) &= integral dd(s,3) 1/V integral dd(x,3) Delta_m (va(x)) Delta_m (va(x) + va(s))\ &= 1/V integral dd(x_1,3) integral dd(x_2,3) Delta_m (va(x)_1) Delta_m (va(x)_2)\ &= 1/V integral dd(x_1,3) Delta_m (va(x)_1) integral dd(x_2,3) Delta_m (va(x)_2) = 0 $
+$ integral dd(s,3) xi(s) &= integral dd(s,3) 1/V integral dd(x,3) Delta_m (va(x)) Delta_m (va(x) + va(s))\ &= 1/V integral dd(x_1,3) integral dd(x_2,3) Delta_m (va(x)_1) Delta_m (va(x)_2)\ &= 1/V integral dd(x_1,3) Delta_m (va(x)_1) integral dd(x_2,3) Delta_m (va(x)_2) = 0 $
 dove l'ultima uguaglianza arriva dal fatto che il valor medio della singola $Delta_m$ deve essere nullo.\
-Questo risultato vuo dire che se la varianza (corrispondente a $xi(0)$) è positiva, allora alle distanze maggiori di zero ci aspettiamo ci sia anticorrelazione.
+Questo risultato vuol dire che se la varianza (corrispondente a $xi(0)$) è positiva, allora alle distanze maggiori di zero ci aspettiamo ci sia anticorrelazione.
 Ciò possiamo spiegarcelo pensando che attorno ad una sovradensità è più probabile che ci sia una sottodensità.
 
 Possiamo adesso scrivere la covarianza in spazio di Fourier
@@ -501,7 +506,7 @@ Possiamo ora sfruttare il fatto che $xi$ dipende solo dal modulo di $s$.
 Questo fa sì che la trasformata di Fourier assuma una forma particolare, detta trasformata di Hankel
 $
 scr(F) [xi] (va(k))
-&= integral dd(s) e^(-i va(k) dot va(s)) xi(s)\
+&= integral dd(s, 3) e^(-i va(k) dot va(s)) xi(s)\
 &= integral_0^(2 pi) dd(phi) integral_(-1)^(1) dd(cos(theta)) integral_0^(+ infinity) dd(s) s^2 e^(-i k s cos(theta)) xi(s)\
 &= 2 pi integral_0^(+ infinity) dd(s) s^2 [(e^(-i k s cos(theta)))/(-i k s)]_(-1)^(+1) xi(s)\
 &= 4 pi integral_0^(+ infinity) dd(s) s^2 (-e^(-i k s) + e^(+i k s))/(2 i) xi(s)/(k s)\
@@ -509,11 +514,11 @@ scr(F) [xi] (va(k))
 $
 Vediamo quindi che anche la trasformata dipende solo dal modulo di $va(k)$ come ci aspettavamo.\
 Possiamo analogamente calcolare l'antitrasformata
-$ xi(s) = integral_0^(+ infinity) dd(k)/(2 pi^2) k^2 sin(k s)/(k s) scr(F)[xi](k) = scr(F)[xi] (k) $
-Adesso abbiamo due formule per la varianaza che possiamo confrontare
+$ xi(s) = integral_0^(+ infinity) dd(k)/(2 pi^2) k^2 sin(k s)/(k s) scr(F)[xi](k) $
+Adesso abbiamo due formule per la varianza che possiamo confrontare
 #aeq[$ xi(0) = sum_(va(k)) abs(Delta_m (va(k)))^2 --> integral dd(k,3)/(2 pi)^3 abs(Delta_m (va(k)))^2 = integral dd(ln(k)) underbrace(k^3/(2 pi^2) abs(Delta_m (va(k)))^2, cal(P)_m (k))$]
 e
-#aeq[$ xi(0) = integral dd(k)/(2 pi^2) k^2 1 scr(F)[xi](k) $]
+#aeq[$ xi(0) = integral dd(k)/(2 pi^2) k^2 underbracket(sin(0)/0, 1) scr(F)[xi](k) $]
 quindi
 $ heq(scr(F)[xi](k) = (2 pi^2)/k^3 cal(P)_m (k) = P_m (k)) $
 
@@ -526,7 +531,7 @@ Per far ciò iniziamo dall'equazione di Poisson
 riscriviamo il secondo termine in funzione dell'evoluzione di $overline(rho) = overline(rho)_(m 0) a^(-3) = Omega rho_c a^(-3)$
 #aeq[
   $4 pi G a^2 Delta_m (va(k), a) overline(rho)_m &= (G(a))/G(a_i) T(k) 4 pi G a^2 a^(-3) Omega_m rho_c Delta_m (va(k), a_i)\
-&= (G(a)"/"a)/(G(a_i)"/"a_i) T(k) underbrace(4 pi G Omega_m rho_c Delta_m (va(k), a_i) a^(-1), laplacian Psi (k^2, a_i))
+&= (G(a)"/"a)/(G(a_i)"/"a_i) T(k) underbrace(4 pi G Omega_m rho_c Delta_m (va(k), a_i) a_i^(-1), laplacian Psi (k^2, a_i))
   $]
 quindi 
 $ Psi(va(k), a) = (G(a)"/"a)/(G(a_i)"/"a_i) Psi(va(k), a_i) T(k) $
@@ -535,7 +540,7 @@ Si definisce quindi il *growth suppression rate*
 $ heq(g(a) prop G(a)/a) $
 tornando allo spettro di potenza
 $
-cal(P)_m (k, a) &= k^3/(2 pi^2) abs(Delta_m (va(k),a))^2 = [(G(a))/(G(a_i))]^2 T^2 (k) k^3/(2 pi^2) abs(Delta_m (va(k), a))^2\
+cal(P)_m (k, a) &= k^3/(2 pi^2) abs(Delta_m (va(k),a))^2 = [(G(a))/(G(a_i))]^2 T^2 (k) k^3/(2 pi^2) abs(Delta_m (va(k), a_i))^2\
 &= [(G(a))/(G(a_i))]^2 T^2 (k) k^3/(2 pi^2) (-3/2 Omega_m H_0^2 (k^(-2))/(a_i))^(-2) abs(Psi(va(k), a_i))^2\
 $
 a questo punto passiamo a $zeta = (5 +3w)/(3+3w) Psi$ con $w=0$
@@ -569,7 +574,7 @@ Tendenzialmente però si tende ad utilizzare la densità $P$, perché è anche q
 Dal punto di inversione che osserviamo, possiamo ricavare informazioni sul punto di equivalenza.\
 C'è però un problema: se andiamo a $k$ alti, ad un certo punto arriviamo alle scale delle singole galassie e delle singole stelle.
 Queste strutture però sono soggette a fenomeni più complessi rispetto alla sola interazione gravitazionale, e questi effetti non possono essere catturati da un'approssimazione al primo ordine.
-Dunque bisogna aggingere una correzione ad alti $k$ ottenuta tramite simulazioni.
+Dunque bisogna aggiungere una correzione ad alti $k$ ottenuta tramite simulazioni.
 \ #text(red)[mettere grafico]\
 // TODO: Mettere grafico
 Fin'ora infatti ci siamo concentrati sul caso in cui il density contrast $delta$ fosse molto minore di 1.
@@ -656,7 +661,7 @@ $ M(va(x), <R) = expval(M)_R + expval(M)_R underbrace(1/rho integral dd(y,3) med
 dove
 // TODO: Considerare di chiamarla delta_R
 $ heq(delta_M (va(x)) = 1/rho integral dd(y,3) med delta rho(va(y)) thick W_"TH" (abs(va(x) - va(y)), R)) $
-Notiamo che questo calcolo non sta aggiungengo informazione 'fisica', dunque la statistica di $delta_M$ sarà la stessa di $delta$.
+Notiamo che questo calcolo non sta aggiungendo informazione 'fisica', dunque la statistica di $delta_M$ sarà la stessa di $delta$.
 Possiamo pensarlo come il processo analogo al _blurring_ (sfocamento) che si può fare nelle immagini, dove ogni pixel viene sostituito con la media pesata dei vicini.
 In questo caso $W_"TH"$ rappresenta il peso.
 In termini tecnici stiamo facendo la convoluzione di $delta$ con $W_"TH"$.\

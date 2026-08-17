@@ -514,11 +514,16 @@ Quindi $q_0$ sarà il nuovo parametro che dovremo determinare con un fit sui dat
 Andiamo dunque a sviluppare l'espressione per la distanza di luminosità
 #aeq[$d_L (cal(Z)) = (1 + cal(Z)) r (cal(Z)) = (1 + cal(Z)) chi sinc(chi sqrt(K)) ~ (1 + cal(Z)) chi$]
 Sviluppiamo $chi$
-#aeq[$chi (cal(Z)) = integral_0^cal(Z) (c dd(cal(Z)'))/(H (cal(Z)')) = c integral_0^cal(Z) [1/H_0 + evaluated(dv(H, cal(Z)'))_(cal(Z) = 0) cal(Z)' + ...] dd(cal(Z)') = (c cal(Z))/H_0 - cal(Z)^2 c/(2 H_0^2) evaluated(dv(H, cal(Z)))_(cal(Z) = 0) + ... $]
+#aeq[$
+  chi (cal(Z)) = integral_0^cal(Z) (c dd(cal(Z)'))/(H (cal(Z)'))
+  = c integral_0^cal(Z) [1/H_0 + [- 1/H^2 dv(H, cal(Z)')]_(cal(Z) = 0) cal(Z)' + ...] dd(cal(Z)')
+  = (c cal(Z))/H_0 - cal(Z)^2 c/(2 H_0^2) evaluated(dv(H, cal(Z)))_(cal(Z)
+  = 0) + ...
+$]
 Dobbiamo calcolare la derivata di $H = dot(a)/a$
 #aeq[$dv(H, cal(Z)) = dv(H, t) dv(t, a) dv(a, cal(Z)) = (- dot(a)^2/a^2 + dot.double(a)/a ) 1/dot(a) (-a^2) = cancel(a^2)/cancel(dot(a)) dot(a)^(cancel(2))/cancel(a^2) (1 underbrace(- dot.double(a)/(a H^2) , +q)) = dot(a) (1+q)$]
 Reinserendo nello sviluppo di $chi$
-$ chi (cal(Z)) = c/H_0 (cal(Z) - cal(Z)^2(q_0 + 1)) + ... $
+$ chi (cal(Z)) = c/H_0 (cal(Z) - cal(Z)^2/2(q_0 + 1)) + ... $
 Quindi
 $ d_L = (c cal(Z))/H_0 - 1/2 (c cal(Z)^2)/H_0 (1 + q_0) + (c cal(Z)^2)/H_0 + ... = (c cal(Z))/H_0 + (c cal(Z)^2)/(2 H_0) (1 - q_0) + ... $
 Questa viene detta *espansione cosmografica* e ha la meravigliosa caratteristica di essere indipendente dal modello di universo scelto.\
