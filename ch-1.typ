@@ -28,7 +28,6 @@ $Lambda$#sub[CDM] è il modello attualmente più accreditato ed è quello che vi
 Nel grafico di destra di @img:triangle_model vediamo infatti che le tre fonti di dati si sovrappongono in corrispondenza di $Lambda$#sub[CDM].
 Andiamo ad approfondire brevemente cosa sono queste misure.
 
-// TODO: Cambiare in sottoparagrafo
 / Supernovae (SNe): #[\
 Quando parliamo di supernovae in contesto cosmologico, tendenzialmente intendiamo supernovae di tipo Ia.
 Questo fenomeno si verifica in sistemi binari composti da una nana bianca (WD) e una gigante rossa (RG).

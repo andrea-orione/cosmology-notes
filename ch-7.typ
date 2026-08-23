@@ -99,7 +99,6 @@ Passiamo alla componente $tensor(T, +i, -0)$.
 Sappiamo che all'ordine 0 è nullo perché altrimenti avremmo individuato una direzione preferenziale che avrebbe violato l'isotropia.
 Facendo effettivamente i calcoli (che noi non vediamo) si ottiene
 $ tensor(delta T, +i, -0) = - (overline(rho)+ overline(p)) v^i $
-// TODO: Magari spiegare (se lo capisci) perché c'è anche p.
 dove $v^i$ è la velocità peculiare del fluido in un determinato punto.
 
 Infine consideriamo $tensor(T, +i, -j)$.
@@ -419,7 +418,6 @@ In questo caso c'è una differenza di comportamento in base alla scala (se la pe
     $
     ma se $k << cal(H) => Psi = "cost"$ quindi
     $ zeta = Psi + 2/3 Psi/(1 + w) = (5 + 3w)/(3 + 3w) Psi $
-    // TODO: Sono consapevole che è una gran cazzata questa, è un ragionamento circolare da manuale
     Essendo $Psi$ costante, anche $zeta$ lo sarà quindi
     $
       zeta(a_"RD") = zeta(a_"MD") quad & ==> quad 6/4 Psi(a_"RD") = 5/3 Psi(a_"MD") \
@@ -434,7 +432,7 @@ In questo caso c'è una differenza di comportamento in base alla scala (se la pe
     #aeq[$ eta^2 Psi'' + 4 eta Psi' + eta^2 k^2/3 Psi = 0 $]
     per risolvere questa equazione cambio variabile
     #aeq[$ y = (k eta)/sqrt(3) wide "e" wide psi(y) =Psi/y $]
-    // TODO: Girare la seconda
+    ottenendo
     #aeq[$ y^2 dv(psi, y, 2) + 2 y dv(psi, y) + (y^2 - 2) psi = 0 $]
     Questa è l'equazione per le funzioni di Bessel di ordine 1 (l'ordine $l$ è determinato dal 2 nel terzo termine che corrisponde a $l(l+1)$).
     $
@@ -744,7 +742,6 @@ $
   M(va(x), <R) = expval(M)_R + expval(M)_R underbrace(1/rho integral dd(y, 3) med delta rho(va(y)) thick W_"TH" (abs(va(x) - va(y)), R), delta_M) = expval(M)_R [1 + delta_M]
 $
 dove
-// TODO: Considerare di chiamarla delta_R
 $ heq(delta_M (va(x)) = 1/rho integral dd(y, 3) med delta rho(va(y)) thick W_"TH" (abs(va(x) - va(y)), R)) $
 Notiamo che questo calcolo non sta aggiungendo informazione 'fisica', dunque la statistica di $delta_M$ sarà la stessa di $delta$.
 Possiamo pensarlo come il processo analogo al _blurring_ (sfocamento) che si può fare nelle immagini, dove ogni pixel viene sostituito con la media pesata dei vicini.
@@ -781,7 +778,7 @@ Notiamo che questo integrale converge perchè $W_"TH"$ scende con $(k R)^(-3)$
 Noi vogliamo calcolare la probabilità che si formi un alone, questo corrisponde alla probabilità che $delta_M$ superi il valore critico $delta_c approx 1.69$.
 Quindi avremo
 $
-  PP[delta_M >= delta_c] integral_(delta_c)^(+ infinity) dd(delta_M, d: cal(D)) PP[delta_M] = 1/2 op("erfc") [delta_c/(sqrt(2) sigma_M)]
+  PP[delta_M >= delta_c] = integral_(delta_c)^(+ infinity) dd(delta_M, d: cal(D)) PP[delta_M] = 1/2 op("erfc") [delta_c/(sqrt(2) sigma_M)]
 $<eq:prob_alone>
 dove $op("erfc")$ è la _complementary error function_ $op("erfc") (x) = 1-erf(x)$
 // TODO: Mettere immagine
@@ -807,17 +804,25 @@ Quest'idea è stata poi studiata da Bond, Cole, Efstathiou e Kaiser che sono riu
 Innanzitutto notano che l'idea che le sovradensità sferiche si disaccoppino dall'universo circostante non può essere del tutto corretta, in quanto se c'è della materia che fluisce dentro queste sovradensità allora la zona circostante deve perdere materia.
 Dunque la $delta_M$ va trattata in modo diverso.
 Loro proposero di assumere che $delta_M$ segua un random walk centrato in 0 con varianza $sigma_M$.
-La probabilità gaussiana la si ottiene come la 'proiezione integrata nel tempo
-// TODO: Mettere immagine
-\ #text(red)[mettere immagine]\
+La probabilità gaussiana la si ottiene come la distribuzione delle posizioni del random walk ad oggi
+#figure(
+  image("images/ch-7/random_walk_noreturn.pdf", width: 70%),
+  caption: [Random walk di $delta_M$ e distribuzione ad oggi],
+)
 Il problema è che in questo modello ci sono anche dei casi in cui $delta_M$ supera $delta_c$ e poi torna indietro.
 Ma noi sappiamo che una volta superato $delta_c$ si forma l'alone.
 Dunque alla gaussiana devo togliere i contributi di tutti questi eventi.
-Si può dimostrare che questo corrisponde a togliere un'altra gaussiana centrata in $2 delta_c$.
-// TODO: Mettere immagine
-\ #text(red)[mettere immagine]\
+Si può dimostrare che questo corrisponde ad aggiungere i contributi di un'altra gaussiana centrata in $2 delta_c$.
+#figure(
+  image("images/ch-7/random_walk_return.pdf", width: 70%),
+  caption: [Random walk di $delta_M$ e distribuzione ad oggi,\ considerando gli aloni che ritornano sotto il limite],
+)
+// TODO: Guandare posizione immagine per impaginaizone
 $
-  PP[delta_M >= delta_c] = integral_(delta_c)^(+ infinity) dd(delta_M, d: cal(D)) (e^(-(delta^2_M)/(2 sigma_M^2)) - e^(-(delta_M - 2 delta_c)^2/(2 sigma_M^2)))/(sqrt(2 pi) sigma_M) = op("erfc") [nu_c/sqrt(2)] = PP_(>= delta_c) (M)
+  PP[delta_M >= delta_c] =& 1/(sqrt(2 pi) sigma_M) [integral_(delta_c)^(+ infinity) dd(delta_M, d: cal(D)) e^(-(delta^2_M)/(2 sigma_M^2))
+    + integral^(delta_c)_(- infinity) dd(delta_M, d: cal(D)) e^(-(delta_M - 2 delta_c)^2/(2 sigma_M^2))] \
+  =& 2/(sqrt(2 pi) sigma_M) integral_(delta_c)^(+ infinity) dd(delta_M, d: cal(D)) e^(-(delta^2_M)/(2 sigma_M^2))\
+  =& op("erfc") [nu_c/sqrt(2)] = PP_(>= delta_c) (M)
 $
 Molto bene. Adesso però vogliamo la probabilità di formare un alone di una specifica massa, mentre quella calcolata fin'ora era per una qualsiasi massa più piccola.
 $

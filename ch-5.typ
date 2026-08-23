@@ -43,7 +43,6 @@ Per specie ordinarie $cal(H)$ è una funzione decrescente, verifichiamolo:
 - Matter dominated: $rho ~ a^(-3) ==> H ~ a^(-3/2)  ==>  cal(H) ~ a^(-1/2)$
 Questo significa che $cal(H)^(-1)$ è crescente, dunque l'integrale per il tempo conforme è dominato dai contributi a tempi fisici più grandi.
 Quindi il tempo conforme tra il Big Bang e ricombinazione sarà molto minore rispetto al tempo tra la ricombinazione e il presente.
-// TODO: Sostituire immagine
 #figure(
   image("images/ch-5/3-ricombinazione_noi.png", width: 80%)
 )
@@ -81,7 +80,6 @@ Questo periodo di accelerazione viene detto *inflazione*.
   image("images/ch-5/5-inflazione.png", width: 80%)
 )
 
-// TODO: Spostare questa parte sotto
 Possimo provare a valutare quanto deve essere stata grande questa espansione.
 Se consideriamo un universo radiation-dominated abbiamo $cal(H)^(-1) ~ a ~ T^(-1)$, quindi calcoliamo il rapporto tra il raggio di Hubble conforme oggi e alla fine dell'inflazione (che corrisponde al Big Bang caldo).
 Alla fine dell'inflazione abbiamo la temperatura di reheating $T approx qty("e15", "GeV")$ (temperatura a cui tutte le interazioni iniziano ad avvenire con tasso maggiore all'espansione dell'universo, vedi @eq:limite_temp della @sec:eq_chimico).
@@ -159,7 +157,6 @@ Quindi è necessario che inizialmente il potenziale sia alto e vari poco (si par
   image("images/ch-5/6-slow_roll.png", width: 60%),
   caption: [Esempio di potenziale slow-roll.\ L'inflazione avviene nella zona evidenziata in grigio.]
 )
-// TODO: Cambiare sta parte appena ci capisci di più
 Poi man mano che aumenta l'energia cinetica, l'inflazione finisce.
 In questo periodo c'è stato un 'super raffreddamento'.
 Una volta che si arriva al minimo, il campo inizia ad oscillare rilasciando energia e decadendo in tutte le particelle del modello standard.
